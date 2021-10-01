@@ -12,12 +12,32 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          AbaetéFest
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <!-- <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
     </q-header>
+
+    <q-footer class="lt-sm">
+      <q-tabs
+        align="justify"
+        dense
+        no-caps
+        indicator-color="white"
+        class="bg-white text-weight-thin text-grey-7"
+        active-color="dark"
+      >
+        <q-route-tab
+          v-for="(tab, index) in essentialLinks"
+          :key="index"
+          :icon="tab.icon"
+          :label="tab.title"
+          content-class="text-weight-thin"
+          :to="{ name: tab.route }"
+        />
+      </q-tabs>
+    </q-footer>
 
     <q-drawer
       v-model="leftDrawerOpen"
@@ -30,7 +50,7 @@
           header
           class="text-grey-8"
         >
-          Essential Links
+          Menu
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -49,48 +69,18 @@
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
 
-const linksData = [
+const menusRoute = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'Início',
+    // caption: 'quasar.dev',
+    icon: 'mdi-calendar',
+    route: 'home'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    title: 'Contato',
+    // caption: 'quasar.dev',
+    icon: 'mdi-card-account-mail-outline',
+    route: 'contact'
   }
 ]
 
@@ -100,7 +90,7 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
+      essentialLinks: menusRoute
     }
   }
 }

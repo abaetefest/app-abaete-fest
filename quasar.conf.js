@@ -8,7 +8,7 @@
 /* eslint-env node */
 const ESLintPlugin = require('eslint-webpack-plugin')
 
-module.exports = function (/* ctx */) {
+module.exports = function (ctx) {
   return {
     // https://v1.quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
@@ -20,7 +20,7 @@ module.exports = function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://v1.quasar.dev/quasar-cli/boot-files
     boot: [
-
+      'services',
       'i18n',
       'axios'
     ],
@@ -41,13 +41,22 @@ module.exports = function (/* ctx */) {
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
       'roboto-font', // optional, you are not bound to it
-      'material-icons' // optional, you are not bound to it
+      'material-icons',
+      'mdi-v5' // optional, you are not bound to it
     ],
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
-
+      env: ctx.dev
+        ? {
+            VERSION: require('./package.json').version,
+            URI_API: 'https://capacita-blu.herokuapp.com/api/v1/'
+          }
+        : {
+            VERSION: require('./package.json').version,
+            URI_API: 'https://capacita-blu.herokuapp.com/api/v1/'
+          },
       // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
@@ -81,9 +90,22 @@ module.exports = function (/* ctx */) {
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
-      iconSet: 'material-icons', // Quasar icon set
-      lang: 'en-us', // Quasar language pack
-      config: {},
+      iconSet: 'mdi-v5', // Quasar icon set
+      lang: 'pt-br', // Quasar language pack
+      config: {
+        brand: {
+          primary: '#204f8f',
+          secondary: '#ededed',
+          accent: '#9C27B0',
+
+          dark: '#1d1d1d',
+
+          positive: '#21BA45',
+          negative: '#C10015',
+          info: '#31CCEC',
+          warning: '#F2C037'
+        }
+      },
 
       // Possible values for "importStrategy":
       // * 'auto' - (DEFAULT) Auto-import needed Quasar components & directives
