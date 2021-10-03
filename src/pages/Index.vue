@@ -1,27 +1,9 @@
 <template>
   <q-page padding>
-    <div class="row q-col-gutter-sm justify-center q-pb-md">
-      <div class="col-xs-12 col-sm-12 col-md-6">
-        <q-img
-          class="rounded-borders cursor-pointer"
-          src="banner_tecnologia.jpg"
-          :ratio="19 / 4"
-          @click="goTo('events')"
-        />
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-6">
-        <q-img
-          class="rounded-borders"
-          src="banner_marketing.jpg"
-          :ratio="19 / 4"
-          @click="goTo('events')"
-        />
-      </div>
-    </div>
-    <p class="text-h6 text-center text-primary text-bold text-uppercase">
-      Escolha o tipo de evento
+    <p class="text-subtitle1 text-center text-primary text-bold text-uppercase">
+      O que temos para hoje ?
     </p>
-    <div class="row q-col-gutter-md q-pt-xs">
+    <div class="row q-col-gutter-md">
       <div
         class="col-sm-6 col-xs-6 col-md-3"
         v-for="(op, index) in opcoes"

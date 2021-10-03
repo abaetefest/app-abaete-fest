@@ -3,6 +3,7 @@
     <q-header elevated>
       <q-toolbar>
         <q-btn
+          class="gt-sm"
           flat
           dense
           round
@@ -19,7 +20,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-footer class="lt-sm">
+    <q-footer class="lt-md">
       <q-tabs
         align="justify"
         dense
@@ -58,6 +59,20 @@
           v-bind="link"
         />
       </q-list>
+
+      <q-list>
+        <q-item-label
+          header
+          class="text-grey-8"
+        >
+          Admin
+        </q-item-label>
+        <EssentialLink
+          v-for="link in adminLinks"
+          :key="link.title"
+          v-bind="link"
+        />
+      </q-list>
     </q-drawer>
 
     <q-page-container>
@@ -72,15 +87,21 @@ import EssentialLink from 'components/EssentialLink.vue'
 const menusRoute = [
   {
     title: 'Início',
-    // caption: 'quasar.dev',
     icon: 'mdi-calendar',
     route: 'home'
   },
   {
     title: 'Contato',
-    // caption: 'quasar.dev',
     icon: 'mdi-card-account-mail-outline',
     route: 'contact'
+  }
+]
+
+const adminRoute = [
+  {
+    title: 'Gerenciar Eventos',
+    icon: 'mdi-monitor-dashboard',
+    route: 'manageEvents'
   }
 ]
 
@@ -90,7 +111,8 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      essentialLinks: menusRoute
+      essentialLinks: menusRoute,
+      adminLinks: adminRoute
     }
   }
 }

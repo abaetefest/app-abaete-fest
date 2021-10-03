@@ -37,17 +37,16 @@
       <template v-slot:item="props">
         <div class="q-pa-md col-xs-12 col-sm-6 col-md-3">
           <q-card
-            class="fit card-cursos cursor-pointer"
-            @click="openDialogCourse(props.row)"
+            class="fit cursor-pointer"
           >
-            <q-img :src="props.row.banner" :ratio="4/3" />
+            <q-img :src="props.row.banner" :ratio="4/3" @click="openDialogCourse(props.row)" />
 
             <q-card-section>
               <div class="text-h6">
                 {{ props.row.title }}
               </div>
-              <q-item-label caption>
-                <q-rating
+              <q-item-label class="row justify-between">
+                <!-- <q-rating
                   v-model="props.row.average"
                   size="1.5em"
                   color="amber"
@@ -60,13 +59,22 @@
                   color="primary"
                   :label="getCategoryName(props.row.categoryId)"
                   class="float-right"
-                />
+                /> -->
               </q-item-label>
             </q-card-section>
 
-            <q-card-section class="q-pt-none">
-              {{ props.row.resumo }}
+            <q-card-section class="q-pa-none q-pb-sm">
+              <q-separator />
             </q-card-section>
+
+            <q-card-actions align="around">
+              <q-btn flat dense size="sm" color="primary" label="Vou nada" icon="mdi-emoticon-cry-outline" />
+              <q-btn flat dense size="sm" color="primary" label="Eu vou" icon="mdi-emoticon-cool-outline" />
+            </q-card-actions>
+
+            <!-- <q-card-section class="q-pt-none">
+              {{ props.row.resumo }}
+            </q-card-section> -->
           </q-card>
         </div>
       </template>
