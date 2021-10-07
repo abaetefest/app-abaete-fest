@@ -1,21 +1,5 @@
 <template>
   <q-page padding>
-    <!-- <div class="row justify-center">
-      <div class="col-xs-12 col-sm-12 col-md-4 text-center">
-        <q-select
-          v-model="filtro"
-          :options="category"
-          outlined
-          label="Selecione uma categoria"
-          dense
-          emit-value
-          map-options
-          option-label="title"
-          option-value="id"
-          @input="setFilter"
-        />
-      </div>
-    </div> -->
     <q-table
       :grid="grid"
       title="Eventos"
