@@ -54,32 +54,6 @@
         </template>
       </q-input>
 
-      <q-select
-        v-model="form.occupationId"
-        :options="occupations"
-        outlined
-        label="Selecione uma Ocupação"
-        emit-value
-        map-options
-        option-label="title"
-        option-value="id"
-        filled
-        bottom-slots
-        :rules="[ val => val && val.length > 0 || 'Ocupação obrigatória']"
-      />
-
-      <q-select
-        v-model="form.gender"
-        :options="optionsGender"
-        outlined
-        label="Seleciona um Sexo"
-        filled
-        emit-value
-        map-options
-        bottom-slots
-        :rules="[ val => val && val.length > 0 || 'Ocupação obrigatória']"
-      />
-
       <q-input v-model="form.password" filled bottom-slots :type="isPwd ? 'password' : 'text'" label="Senha" :rules="[ val => val && val.length > 0 || 'Senha obrigatória']">
         <template v-slot:prepend>
           <q-icon name="mdi-lock" />
@@ -134,30 +108,13 @@ export default {
         phone: '',
         birthday: '',
         type: 'USER',
-        active: true,
-        occupationId: ''
+        active: true
       },
-      occupations: [],
-      optionsGender: [
-        {
-          label: 'Masculino',
-          value: 'M'
-        },
-        {
-          label: 'Feminino',
-          value: 'F'
-        },
-        {
-          label: 'Outro',
-          value: 'O'
-        }
-      ],
       fade: true,
       isPwd: true
     }
   },
   mounted () {
-    this.listOcupation()
   },
   methods: {
     async onSubmit () {
@@ -175,15 +132,6 @@ export default {
         console.error(error)
         this.loading1 = false
         this.$q.notify('Usuário ou senha incorreto.')
-      }
-    },
-    async listOcupation () {
-      try {
-        const occupation = await this.$services.occupation().list()
-        console.log(occupation)
-        this.occupations = occupation.data
-      } catch (error) {
-        console.log(error)
       }
     },
     backToLogin () {
