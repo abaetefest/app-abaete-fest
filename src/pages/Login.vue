@@ -5,7 +5,7 @@
         <div class="column self-center q-mx-auto">
           <img
             class="q-mx-auto q-pb-md"
-            src="../assets/quasar-logo-vertical.svg"
+            src="icons/icon-384x384.png"
             :width="$q.screen.gt.sm ? '400' : '140'"
           />
           <!-- <p
