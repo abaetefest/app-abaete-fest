@@ -3,7 +3,7 @@
     <q-table
       :grid="grid"
       title="Eventos"
-      :data="courses"
+      :data="events"
       :columns="columns"
       row-key="name"
       :filter="filter"
@@ -19,17 +19,20 @@
         </q-input>
       </template>
       <template v-slot:item="props">
-        <div class="q-pa-md col-xs-12 col-sm-6 col-md-3">
+        <div class="q-pa-sm col-xs-12 col-sm-6 col-md-3">
           <q-card
             class="fit cursor-pointer"
           >
-            <q-img :src="props.row.banner" :ratio="4/3" @click="openDialogCourse(props.row)" />
+            <q-img :src="props.row.image_url" :ratio="4/3" @click="openDialogCourse(props.row)" />
 
             <q-card-section>
               <div class="text-h6">
-                {{ props.row.title }}
+                {{ props.row.name }}
               </div>
               <q-item-label class="row justify-between">
+                <span class="text-caption text-grey">
+                  {{ formatDateString(props.row.start_date) }} - {{ formatHourString(props.row.start_date)}}
+                </span>
                 <!-- <q-rating
                   v-model="props.row.average"
                   size="1.5em"
@@ -47,14 +50,14 @@
               </q-item-label>
             </q-card-section>
 
-            <q-card-section class="q-pa-none q-pb-sm">
+            <!-- <q-card-section class="q-pa-none q-pb-sm">
               <q-separator />
-            </q-card-section>
+            </q-card-section> -->
 
-            <q-card-actions align="around">
+            <!-- <q-card-actions align="around">
               <q-btn flat dense size="sm" color="primary" label="Vou nada" icon="mdi-emoticon-cry-outline" />
               <q-btn flat dense size="sm" color="primary" label="Eu vou" icon="mdi-emoticon-cool-outline" />
-            </q-card-actions>
+            </q-card-actions> -->
 
             <!-- <q-card-section class="q-pt-none">
               {{ props.row.resumo }}
@@ -71,8 +74,9 @@
 </template>
 
 <script>
+import { date } from 'quasar'
 export default {
-  name: 'PageCursos',
+  name: 'PageEvents',
   props: {
     grid: {
       type: Boolean,
@@ -96,10 +100,10 @@ export default {
       category: [],
       columns: [
         {
-          name: 'titulo',
+          name: 'name',
           required: true,
           label: 'Título',
-          field: 'titulo',
+          field: 'name',
           format: val => `${val}`,
           sortable: true
         },
@@ -107,57 +111,25 @@ export default {
         { name: 'resumo', label: 'Resumo', field: 'resumo', sortable: true },
         { name: 'avaliacao', label: 'Avaliação', field: 'avaliacao' }
       ],
-      courses: [],
-      data: [],
+      events: [],
       load: true,
       modalCourse: false,
       courseDetails: {}
     }
   },
   async mounted () {
-    await this.listCategory()
-    await this.listCourses()
-    this.setFilter()
+    await this.listEvents(this.$route.params.type)
   },
   methods: {
-    setFilter () {
-      if (this.filtro !== 'TODAS') {
-        this.courses = this.data.filter((curso) => curso.categoryId === this.filtro)
-      } else {
-        this.courses = this.data
-      }
-    },
-    async listCategory () {
-      try {
-        const category = await this.$services.category().list()
-        this.category = [
-          {
-            id: 'TODAS',
-            title: 'TODAS'
-          },
-          ...category.data
-        ]
-      } catch (error) {
-        console.log(error)
-      }
-    },
-    async listCourses () {
+    async listEvents (category) {
       this.load = true
       try {
-        const courses = await this.$services.courses().list()
-        this.data = courses.data
+        const { data } = await this.$services.events().listByCategory(category)
+        this.events = data.data
         this.load = false
       } catch (error) {
         this.load = false
         console.log(error)
-      }
-    },
-    getCategoryName (categoryId) {
-      const categoryFilter = this.category.find((categoryItem) => categoryItem.id === categoryId)
-      if (categoryFilter) {
-        return categoryFilter.title
-      } else {
-        return ''
       }
     },
     openDialogCourse (course) {
@@ -167,6 +139,12 @@ export default {
     closeModal () {
       this.modalCourse = false
       this.courseDetails = {}
+    },
+    formatDateString (dateOriginal) {
+      return date.formatDate(dateOriginal, 'DD/MM/YYYY')
+    },
+    formatHourString (dateOriginal) {
+      return date.formatDate(dateOriginal, 'HH:mm')
     }
   }
 }

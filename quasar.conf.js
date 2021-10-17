@@ -22,7 +22,8 @@ module.exports = function (ctx) {
     boot: [
       'services',
       'i18n',
-      'axios'
+      'axios',
+      'notify'
     ],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -51,11 +52,11 @@ module.exports = function (ctx) {
       env: ctx.dev
         ? {
             VERSION: require('./package.json').version,
-            URI_API: 'https://capacita-blu.herokuapp.com/api/v1/'
+            URI_API: 'https://polished-snowflake-9723.fly.dev/api'
           }
         : {
             VERSION: require('./package.json').version,
-            URI_API: 'https://capacita-blu.herokuapp.com/api/v1/'
+            URI_API: 'https://polished-snowflake-9723.fly.dev/api'
           },
       // transpile: false,
 
@@ -83,7 +84,7 @@ module.exports = function (ctx) {
 
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
-      https: false,
+      https: true,
       port: 8080,
       open: true // opens browser window automatically
     },

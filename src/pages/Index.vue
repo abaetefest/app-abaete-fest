@@ -51,7 +51,7 @@ export default {
           title: 'Festas',
           icon: 'drink.png',
           route: 'events',
-          type: 'party',
+          type: 'parties',
           textColor: 'primary',
           color: 'white'
         },
@@ -59,7 +59,7 @@ export default {
           title: 'Cultural',
           icon: 'guitar.png',
           route: 'events',
-          type: 'culture',
+          type: 'cultural',
           textColor: 'primary',
           color: 'white'
         },
@@ -67,7 +67,7 @@ export default {
           title: 'Religiosos',
           icon: 'church.png',
           route: 'events',
-          type: 'religion',
+          type: 'religious',
           textColor: 'primary',
           color: 'white'
         },
@@ -75,7 +75,7 @@ export default {
           title: 'Esportivos',
           icon: 'sport.png',
           route: 'events',
-          type: 'sport',
+          type: 'sports',
           textColor: 'primary',
           color: 'white'
         },

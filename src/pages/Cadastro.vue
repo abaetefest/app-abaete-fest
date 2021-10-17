@@ -48,11 +48,11 @@
         </template>
       </q-input>
 
-      <q-input filled bottom-slots v-model="form.birthday" label="Data de Nascimento" mask="##/##/####" :rules="[ val => val && val.length >= 10 || 'Data de nascimento obrigatória']">
+      <!-- <q-input filled bottom-slots v-model="form.birthday" label="Data de Nascimento" mask="##/##/####" :rules="[ val => val && val.length >= 10 || 'Data de nascimento obrigatória']">
         <template v-slot:prepend>
           <q-icon name="mdi-calendar" />
         </template>
-      </q-input>
+      </q-input> -->
 
       <q-input v-model="form.password" filled bottom-slots :type="isPwd ? 'password' : 'text'" label="Senha" :rules="[ val => val && val.length > 0 || 'Senha obrigatória']">
         <template v-slot:prepend>
@@ -96,7 +96,7 @@
   </div>
 </template>
 <script>
-import { date } from 'quasar'
+// import { date } from 'quasar'
 export default {
   data () {
     return {
@@ -105,10 +105,10 @@ export default {
         name: '',
         email: '',
         password: '',
-        phone: '',
-        birthday: '',
-        type: 'USER',
-        active: true
+        phone: ''
+        // birthday: '',
+        // type: 'USER',
+        // active: true
       },
       fade: true,
       isPwd: true
@@ -119,12 +119,12 @@ export default {
   methods: {
     async onSubmit () {
       this.loading1 = true
-      const birthday = date.extractDate(this.form.birthday, 'DD/MM/YYYY')
-      const formattedString = date.formatDate(birthday, 'YYYY-MM-DD')
+      // const birthday = date.extractDate(this.form.birthday, 'DD/MM/YYYY')
+      // const formattedString = date.formatDate(birthday, 'YYYY-MM-DD')
       try {
-        await this.$services.user().store({
-          ...this.form,
-          birthday: formattedString
+        await this.$services.users().store({
+          ...this.form
+          // birthday: formattedString
         })
         this.$notifySuccess('Cadastro realizado com Sucesso!')
         this.$router.push({ name: 'login' })

@@ -3,18 +3,18 @@
       <q-card class="full-width q-pa-sm" :key="courseData.id">
         <q-card-section>
           <div class="text-subtitle1 text-bold q-mb-sm">
-            CURSO: {{ courseData.title}}
+            Evento: {{ courseData.name}}
           </div>
         </q-card-section>
 
         <q-separator />
 
-        <div class="text-body2 text-grey-9 q-mb-md" v-if="courseData.banner">
-          <q-img :src="courseData.banner" />
+        <div class="text-body2 text-grey-9 q-mb-md" v-if="courseData.image_url">
+          <q-img :src="courseData.image_url" />
         </div>
 
         <div class="text-body2 text-grey-9 q-mb-md" v-if="courseData.description">
-          <strong> DECRIÇÃO DO CURSO:</strong> {{ courseData.description }}
+          <strong> SOBRE O EVENTO:</strong> {{ courseData.description }}
         </div>
 
         <div class="text-body2 text-grey-9 q-mb-md" v-if="courseData.link">
@@ -26,16 +26,7 @@
         </div>
 
         <div class="text-body2 text-grey-9">
-          <strong>AVALIAÇÃO:</strong>
-          <q-rating
-            :value="courseData.average"
-            size="1.5em"
-            color="amber"
-            icon="mdi-star-outline"
-            icon-selected="mdi-star"
-            readonly
-          />
-          <span class="text-caption text-grey q-ml-sm">({{courseData.average}})</span>
+          <strong>DATA:</strong> {{ courseData.start_date}}
         </div>
 
         <!-- <div class="text-body2 text-grey-9">
@@ -96,7 +87,7 @@ export default {
     }
   },
   async mounted () {
-    this.listCategory()
+    // this.listCategory()
   },
   methods: {
     setJobs () {

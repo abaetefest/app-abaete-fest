@@ -4,9 +4,9 @@
       Eventos
     </p>
     <q-table
-      :data="courses"
+      :data="events"
       :columns="columns"
-      row-key="name"
+      row-key="id"
       :filter="filter"
     >
       <template v-slot:top-left>
@@ -18,12 +18,17 @@
       </template>
 
       <template v-slot:top-right>
-        <q-btn label="Novo" dense icon="mdi-plus" color="primary" class="q-ml-md" :to="{name: 'formCurso'}" />
+        <q-btn label="Novo" dense icon="mdi-plus" color="primary" class="q-ml-md" :to="{name: 'formEvents'}" />
       </template>
 
-      <template v-slot:body-cell-img="props">
+      <template v-slot:body-cell-image_url="props">
         <q-td :props="props">
-          <q-img :src="props.row.banner" :ratio="4/3" width="4rem" />
+          <q-img :src="props.row.image_url" :ratio="4/3" width="4rem" />
+        </q-td>
+      </template>
+      <template v-slot:body-cell-category="props">
+        <q-td :props="props">
+          {{ formatCategoryString(props.row.category) }}
         </q-td>
       </template>
 
@@ -54,7 +59,7 @@
             @click="editCourse(props.row)"
           >
             <q-tooltip>
-              Editar categoria
+              Editar Evento
             </q-tooltip>
           </q-btn>
           <q-btn
@@ -64,7 +69,7 @@
             dense size="sm"
             @click="confirmDelete(props.row)">
             <q-tooltip>
-              Deletar vaga
+              Deletar Evento
             </q-tooltip>
           </q-btn>
         </q-td>
@@ -74,56 +79,56 @@
 </template>
 
 <script>
+import { date } from 'quasar'
 export default {
   name: 'ManageEvents',
   data () {
     return {
       filter: '',
-      filtro: 'TODAS',
       options: ['TODAS', 'Tecnologia', 'Mercado e Vendas', 'Moda', 'Administração'],
       columns: [
-        { name: 'img', label: 'Imagem', field: 'img', sortable: false, align: 'left' },
+        { name: 'image_url', label: 'Imagem', field: 'image_url', sortable: false, align: 'left' },
         {
-          name: 'title',
+          name: 'name',
           required: true,
-          label: 'Título',
-          field: 'title',
+          label: 'Nome do Evento',
+          field: 'name',
           format: val => `${val}`,
           sortable: true,
           align: 'left'
         },
-        { name: 'categoria', label: 'Categoria', field: 'categoria', sortable: true, align: 'left' },
-        { name: 'average', label: 'Avaliação', field: 'average', align: 'left' },
+        { name: 'category', label: 'Categoria', field: 'category', sortable: true, align: 'left' },
+        { name: 'start_date', label: 'Data', field: 'start_date', align: 'left', format: (data) => this.formatDateString(data) },
         { name: 'acoes', label: 'Ações', field: 'Ações', align: 'right' }
       ],
-      courses: [],
+      events: [],
+      category: [
+        { label: 'Festas', value: 'parties' },
+        { label: 'Cultural', value: 'cultural' },
+        { label: 'Religiosos', value: 'religious' },
+        { label: 'Esportivos', value: 'sports' },
+        { label: 'Geek', value: 'geek' },
+        { label: 'Turismo', value: 'tourism' }
+      ],
       data: []
     }
   },
   mounted () {
-    this.setFilter()
-    this.listCourses()
+    this.listEvents()
   },
   methods: {
-    setFilter () {
-      if (this.filtro !== 'TODAS') {
-        this.cursos = this.data.filter((curso) => curso.categoria === this.filtro)
-      } else {
-        this.cursos = this.data
-      }
-    },
-    async listCourses () {
+    async listEvents () {
       try {
-        const courses = await this.$services.courses().list()
-        this.courses = courses.data
+        const { data } = await this.$services.events().list()
+        this.events = data.data
       } catch (error) {
         console.log(error)
       }
     },
     confirmDelete (course) {
       this.$q.dialog({
-        title: 'Deleter Curso',
-        message: `Tem certeza que deseja deletar o curso <b>${course.title}</b> ?`,
+        title: 'Deleter Evento',
+        message: `Tem certeza que deseja deletar o evento <b>${course.name}</b> ?`,
         cancel: true,
         html: true,
         persistent: true
@@ -133,16 +138,23 @@ export default {
     },
     async deleteCourse (course) {
       try {
-        await this.$services.courses().delete(course.id)
-        this.$notifySuccess('Curso excluído com Sucesso!')
-        this.listJobs()
+        await this.$services.events().delete(course.id)
+        this.$notifySuccess('Evento excluído com Sucesso!')
+        this.listEvents()
       } catch (error) {
         console.error(error)
         this.$q.notify('Erro ao excluir curso')
       }
     },
     editCourse (course) {
-      this.$router.push({ name: 'formCurso', params: { course: course } })
+      this.$router.push({ name: 'formEvents', params: { course: course } })
+    },
+    formatDateString (dateOriginal) {
+      return date.formatDate(dateOriginal, 'DD/MM/YYYY HH:mm')
+    },
+    formatCategoryString (categoryName) {
+      const category = this.category.find(item => item.value === categoryName)
+      return category.label
     }
   }
 }

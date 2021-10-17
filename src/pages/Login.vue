@@ -142,19 +142,20 @@ export default {
     //   }, 1000)
     // },
     async onSubmit () {
-      this.loading1 = true
-      try {
-        const response = await this.$services.user().login({
-          ...this.form
-        })
-        await localStorage.setItem('capacitaBluToken', response.data)
-        this.$notifySuccess('Logado com sucesso!')
-        this.$router.push({ name: 'home' })
-      } catch (error) {
-        console.error(error)
-        this.loading1 = false
-        this.$q.notify('Usuário ou senha incorreto.')
-      }
+      // this.loading1 = true
+      // try {
+      //   const response = await this.$services.user().login({
+      //     ...this.form
+      //   })
+      //   await localStorage.setItem('capacitaBluToken', response.data)
+      //   this.$notifySuccess('Logado com sucesso!')
+      //   this.$router.push({ name: 'home' })
+      // } catch (error) {
+      //   console.error(error)
+      //   this.loading1 = false
+      //   this.$q.notify('Usuário ou senha incorreto.')
+      // }
+      this.$router.push({ name: 'home' })
     },
     goToRegister () {
       this.$router.push({ name: 'cadastro' })

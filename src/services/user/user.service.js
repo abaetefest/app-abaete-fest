@@ -1,11 +1,11 @@
 import Rest from 'src/services/rest'
 // const axios = require('axios')
 
-export default class ClientesService extends Rest {
+export default class UsersService extends Rest {
   constructor (http) {
-    super('/user', http)
+    super('/users', http)
     this.http = http
-    this.url = '/user'
+    this.url = '/users'
   }
 
   async login ($dados) {
