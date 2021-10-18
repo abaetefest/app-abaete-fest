@@ -10,7 +10,15 @@ export default class UsersService extends Rest {
 
   async login ($dados) {
     try {
-      return await this.http.post(this.url + '/auth', $dados)
+      return await this.http.post(this.url + '/signin', $dados)
+    } catch (error) {
+      throw error.response
+    }
+  }
+
+  async register ($dados) {
+    try {
+      return await this.http.post(this.url + '/signup', $dados)
     } catch (error) {
       throw error.response
     }

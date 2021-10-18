@@ -122,8 +122,10 @@ export default {
       // const birthday = date.extractDate(this.form.birthday, 'DD/MM/YYYY')
       // const formattedString = date.formatDate(birthday, 'YYYY-MM-DD')
       try {
-        await this.$services.users().store({
-          ...this.form
+        await this.$services.users().register({
+          user: {
+            ...this.form
+          }
           // birthday: formattedString
         })
         this.$notifySuccess('Cadastro realizado com Sucesso!')
