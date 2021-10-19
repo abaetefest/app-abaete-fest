@@ -51,6 +51,18 @@
       <template v-slot:body-cell-acoes="props">
         <q-td :props="props">
           <q-btn
+            icon="mdi-magnify"
+            color="positive"
+            class="q-ml-md"
+            dense
+            size="sm"
+            @click="openDialogEvents(props.row)"
+          >
+            <q-tooltip>
+              Editar Evento
+            </q-tooltip>
+          </q-btn>
+          <q-btn
             icon="mdi-pencil"
             color="primary"
             class="q-ml-md"
@@ -75,6 +87,11 @@
         </q-td>
       </template>
     </q-table>
+    <dialog-course-details
+      :modal-course="modalEvents"
+      :course-data="eventDetails"
+      @close="closeModal"
+    />
   </q-page>
 </template>
 
@@ -82,6 +99,9 @@
 import { date } from 'quasar'
 export default {
   name: 'ManageEvents',
+  components: {
+    DialogCourseDetails: () => import('components/DialogCourseDetails')
+  },
   data () {
     return {
       filter: '',
@@ -110,7 +130,9 @@ export default {
         { label: 'Geek', value: 'geek' },
         { label: 'Turismo', value: 'tourism' }
       ],
-      data: []
+      data: [],
+      modalEvents: false,
+      eventDetails: {}
     }
   },
   mounted () {
@@ -155,6 +177,16 @@ export default {
     formatCategoryString (categoryName) {
       const category = this.category.find(item => item.value === categoryName)
       return category.label
+    },
+    viewEvent (event) {
+    },
+    openDialogEvents (course) {
+      this.modalEvents = true
+      this.eventDetails = course
+    },
+    closeModal () {
+      this.modalEvents = false
+      this.eventDetails = {}
     }
   }
 }

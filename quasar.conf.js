@@ -23,7 +23,8 @@ module.exports = function (ctx) {
       'services',
       'i18n',
       'axios',
-      'notify'
+      'notify',
+      'auth-router'
     ],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css

@@ -116,7 +116,7 @@ export default {
     return {
       form: {
         name: '',
-        image_url: 'https://brasilagoraonline.com.br/wp-content/uploads/2017/11/unnamed-1.jpg',
+        image_url: 'https://historiadofutebol.com/blog/wp-content/uploads/2012/12/Independente-de-AbaetE-2009-500x301.jpg',
         description: '',
         category: '',
         start_date: ''

@@ -17,7 +17,10 @@ const routes = [
       { path: 'manage-events', name: 'manageEvents', component: () => import('src/pages/ManageEvents.vue') },
       { path: 'contact', name: 'contact', component: () => import('pages/Contact.vue') },
       { path: 'form-events/:id?', name: 'formEvents', component: () => import('pages/FormEvents.vue'), props: true }
-    ]
+    ],
+    meta: {
+      requiresAuth: true
+    }
   },
 
   // Always leave this as last one,
