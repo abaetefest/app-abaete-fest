@@ -120,7 +120,7 @@
               /> -->
             </div>
             <div class="col-12 text-center q-gutter-y-sm q-pt-md">
-              <q-btn class="btn-fixed-width" flat rounded size="sm" label="Registrar" @click="goToRegister" />
+              <q-btn class="btn-fixed-width" flat rounded size="sm" label="Cadastre-se" @click="goToRegister" />
               <!-- <q-btn class="btn-fixed-width" flat rounded size="sm" label="Esqueci minha senha" /> -->
             </div>
           </div>

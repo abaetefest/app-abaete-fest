@@ -143,8 +143,8 @@ module.exports = function (ctx) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: { skipWaiting: true, clientsClaim: true }, // only for GenerateSW
       manifest: {
-        name: 'App Abaete Fest',
-        short_name: 'App Abaete Fest',
+        name: 'App AbaetéFest',
+        short_name: 'App AbaetéFest',
         description: 'Aplicativo de eventos e festivais',
         display: 'standalone',
         orientation: 'portrait',

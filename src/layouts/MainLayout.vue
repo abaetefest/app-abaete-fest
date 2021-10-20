@@ -17,6 +17,18 @@
         </q-toolbar-title>
 
         <!-- <div>Quasar v{{ $q.version }}</div> -->
+        <q-btn-dropdown color="primary" label="" rounded>
+          <q-list>
+            <q-item clickable @click="confirmLogout">
+              <q-item-section avatar>
+                <q-icon color="primary" name="mdi-open-in-new" size="1rem" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>Sair</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
       </q-toolbar>
     </q-header>
 
@@ -26,7 +38,7 @@
         dense
         no-caps
         indicator-color="white"
-        class="bg-white text-weight-thin text-grey-7"
+        class="bg-white text-weight-thin text-grey-7 shadow-3"
         active-color="dark"
       >
         <q-route-tab
@@ -36,7 +48,8 @@
           :label="tab.title"
           content-class="text-weight-thin"
           :to="{ name: tab.route }"
-        />
+        >
+        </q-route-tab>
       </q-tabs>
     </q-footer>
 
@@ -86,9 +99,15 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const menusRoute = [
   {
-    title: 'Início',
+    title: 'Eventos',
     icon: 'mdi-calendar',
     route: 'home'
+  },
+  {
+    title: 'Promoções',
+    icon: 'mdi-food',
+    route: 'combos',
+    disable: true
   },
   {
     title: 'Contato',
@@ -113,6 +132,23 @@ export default {
       leftDrawerOpen: false,
       essentialLinks: menusRoute,
       adminLinks: adminRoute
+    }
+  },
+  methods: {
+    logout () {
+      localStorage.removeItem('abaete-fest-token')
+      this.$router.push('/')
+    },
+    confirmLogout () {
+      this.$q.dialog({
+        title: 'Sair da Sessão ?',
+        message: 'Tem certeza que deseja fazer o logout ?',
+        cancel: true,
+        html: true,
+        persistent: true
+      }).onOk(() => {
+        this.logout()
+      })
     }
   }
 }
