@@ -148,8 +148,8 @@ module.exports = function (ctx) {
         description: 'Aplicativo de eventos e festivais',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#293039',
-        theme_color: '#293039',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
         icons: [
           {
             src: 'icons/icon-128x128.png',
