@@ -13,7 +13,15 @@
         <q-btn label="Email" color="primary" icon="mdi-email" class="full-width" />
       </div>
       <div class="col-sm-12 col-xs-12 col-sm-4">
-        <q-btn  label="WhatsApp" color="green-7" icon="mdi-whatsapp" class="full-width" />
+        <q-btn
+          label="WhatsApp"
+          color="green-7"
+          icon="mdi-whatsapp"
+          class="full-width"
+          href="https://api.whatsapp.com/send?phone=5591982828945&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20como%20publicar%20meu%20evento%20no%20app%20Abaet%C3%A9Fest"
+          target="_blank"
+          type="a"
+        />
       </div>
     </div>
       <!-- <div class="col-12 text-subtitle2">
