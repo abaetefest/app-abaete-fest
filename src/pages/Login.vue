@@ -4,10 +4,22 @@
       <div class="col-xs-12 col-sm-6 flex container-logo bg-grey-3">
         <div class="column self-center q-mx-auto">
           <img
-            class="q-mx-auto q-pb-md"
-            src="icons/icon-384x384.png"
+            src="architecture-and-city.png"
             :width="$q.screen.gt.sm ? '400' : '140'"
           />
+          <span
+            class="text-center text-bold text-primary"
+            :class="$q.screen.gt.sm ? 'text-h3' : 'text-h6'"
+          >
+            AbaetéFest
+          </span>
+          <!-- <div style="visibility: hidden;">
+            Icons made by
+            <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a>
+              from <a href="https://www.flaticon.com/" title="Flaticon">
+              www.flaticon.com
+            </a>
+          </div> -->
           <!-- <p
             :class="$q.screen.gt.sm ? 'text-h3': 'text-h4'"
             class="text-center text-primary text-bold"
