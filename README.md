@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/59e2e55b-3a56-4120-b259-62a4315bfa40/deploy-status)](https://app.netlify.com/sites/app-abaetefest/deploys)
 # App Abaete Fest (app-abaete-fest)
 
 Aplicativo de eventos e festivais
