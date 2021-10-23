@@ -14,13 +14,21 @@
               class="col-md-8 col-xs-12 col-sm-12"
               :rules="[ val => val && val.length > 0 || 'Título obrigatório']"
             />
-            <q-input
+            <div class="col-md-8 col-xs-12 col-sm-12 q-pb-md">
+              <q-editor
+                label="Descrição"
+                v-model="form.description"
+                min-height="5rem"
+                :rules="[ val => val && val.length > 0 || 'Descrição obrigatório']"
+              />
+            </div>
+            <!-- <q-input
               v-model="form.description"
               label="Descrição"
               outlined
               class="col-md-8 col-xs-12 col-sm-12"
               :rules="[ val => val && val.length > 0 || 'Descrição obrigatório']"
-            />
+            /> -->
 
             <!-- <q-input
               v-model="form.link"

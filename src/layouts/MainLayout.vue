@@ -17,14 +17,14 @@
         </q-toolbar-title>
 
         <!-- <div>Quasar v{{ $q.version }}</div> -->
-        <q-btn-dropdown color="primary" label="" rounded>
+        <q-btn-dropdown color="white" size="lg" label="" flat rounded>
           <q-list>
             <q-item clickable @click="confirmLogout">
-              <q-item-section avatar>
-                <q-icon color="primary" name="mdi-open-in-new" size="1rem" />
-              </q-item-section>
               <q-item-section>
                 <q-item-label>Sair</q-item-label>
+              </q-item-section>
+               <q-item-section avatar>
+                <q-icon color="primary" name="mdi-open-in-new" size="1rem" />
               </q-item-section>
             </q-item>
           </q-list>
@@ -39,7 +39,7 @@
         no-caps
         indicator-color="white"
         class="bg-white text-weight-thin text-grey-7 shadow-3"
-        active-color="dark"
+        active-color="primary"
       >
         <q-route-tab
           v-for="(tab, index) in essentialLinks"
