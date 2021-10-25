@@ -67,22 +67,36 @@
             </div>
 
             <q-file
-              v-model="image"
+              v-if="!preview"
+              v-model="form.image_url"
               outlined
               label="Banner"
+              ref="imgFileInput"
               class="col-md-8 col-xs-12 col-sm-12"
+              @input="setFile(form.image_url)"
             />
 
             <div
-              v-if="form.banner"
-              class="col-md-8 col-xs-12 col-sm-12"
+              v-if="preview"
+              class="col-md-8 col-xs-12 col-sm-12 text-left"
             >
-              <p class="text-body1 text-bold">Banner Atual:</p>
+              <p class="text-body1 text-bold">Imagem Atual:</p>
               <q-img
-                :src="form.banner"
+                :src="preview"
                 :ratio="16/9"
                 width="300px"
               />
+              <div class="row q-pt-sm">
+                <div class="col-md-4">
+                  <q-btn
+                    label="Alterar Imagem"
+                    icon="mdi-image-edit-outline"
+                    color="primary"
+                    class="full-width"
+                    @click="updateImg"
+                  />
+                </div>
+              </div>
             </div>
 
           </div>
@@ -124,11 +138,12 @@ export default {
     return {
       form: {
         name: '',
-        image_url: 'https://historiadofutebol.com/blog/wp-content/uploads/2012/12/Independente-de-AbaetE-2009-500x301.jpg',
+        image_url: [],
         description: '',
         category: '',
         start_date: ''
       },
+      preview: '',
       model: '',
       category: [
         { label: 'Festas', value: 'parties' },
@@ -143,11 +158,14 @@ export default {
     }
   },
   mounted () {
-    // this.listCategory()
     const timeStamp = Date.now()
     const formattedString = date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm:ss')
     this.form.start_date = formattedString
     if (this.course && this.course.id) {
+      // this.$refs.imgFileInput.value = this.form.image_url
+      if (this.course.image_url) {
+        this.preview = this.course.image_url
+      }
       this.form = {
         ...this.course
       }
@@ -161,6 +179,21 @@ export default {
         this.registerEvent()
       }
     },
+    toBase64 (file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = error => reject(error)
+      })
+    },
+    async setFile (file) {
+      this.preview = await this.toBase64(file)
+    },
+    updateImg () {
+      this.preview = ''
+      this.form.image_url = []
+    },
     async registerEvent () {
       try {
         // if (this.image) {
@@ -168,11 +201,8 @@ export default {
         // }
         // const birthday = date.extractDate(this.form.start_date, 'DD/MM/YYYY')
         // const formattedString = date.formatDate(birthday, 'YYYY-MM-DD')
-        await this.$services.events().store({
-          event: {
-            ...this.form
-            // start_date: formattedString
-          }
+        await this.$services.events().register({
+          ...this.form
         })
         this.$notifySuccess('Evento cadastrado com Sucesso!')
         this.$router.push({ name: 'manageEvents' })
@@ -183,27 +213,11 @@ export default {
     },
     async updateEvent () {
       try {
-        // if (this.image) {
-        //   await this.registerImage()
-        // }
-        await this.$services.events().update(this.form.id, {
-          event: {
-            ...this.form
-          }
+        await this.$services.events().updateEvent(this.form.id, {
+          ...this.form
         })
         this.$notifySuccess('Categoria atualizada com Sucesso!')
         this.$router.push({ name: 'manageEvents' })
-      } catch (error) {
-        console.error(error)
-        this.$q.notify('Erro ao cadastrar categoria')
-      }
-    },
-    async registerImage () {
-      const formData = new FormData()
-      await formData.append('image', this.image)
-      try {
-        const responseImage = await this.$services.files().store(formData)
-        this.form.banner = responseImage.data.secure_url
       } catch (error) {
         console.error(error)
         this.$q.notify('Erro ao cadastrar categoria')
