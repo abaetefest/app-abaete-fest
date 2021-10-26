@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "br.com.abaetefest.app.twa",
+                     "sha256_cert_fingerprints": ["EB:61:B7:B1:E7:46:FE:3E:45:89:F3:01:6E:49:D3:A9:8D:9D:5F:68:9A:F0:7C:15:DF:A7:AE:73:D7:56:A0:2F"] }
+      }
+]
