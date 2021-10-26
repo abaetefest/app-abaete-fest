@@ -8,10 +8,6 @@ export default ({ router, store, Vue }) => {
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
     const adminRoute = to.matched.some(record => record.meta.admin)
     const isAdmin = JSON.parse(localStorage.getItem('abaete-manage'))
-    console.log('routeadmin', adminRoute)
-    console.log('isadmin', isAdmin)
-    // console.log(requiresAuth)
-    // console.log(userExist())
     if (requiresAuth && !userExist()) {
       Notify.create({
         color: 'negative',
