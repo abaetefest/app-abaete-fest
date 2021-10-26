@@ -150,6 +150,7 @@ module.exports = function (ctx) {
         orientation: 'portrait',
         background_color: '#ffffff',
         theme_color: '#ffffff',
+        categories: ['lifestyle', 'news', 'social'],
         icons: [
           {
             src: 'icons/icon-128x128.png',
