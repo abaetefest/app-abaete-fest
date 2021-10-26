@@ -13,33 +13,34 @@ register(process.env.SERVICE_WORKER_FILE, {
   // registrationOptions: { scope: './' },
 
   ready (/* registration */) {
-    // console.log('Service worker is active.')
+    console.log('Service worker is active.')
   },
 
   registered (/* registration */) {
-    // console.log('Service worker has been registered.')
+    console.log('Service worker has been registered.')
   },
 
   cached (/* registration */) {
-    // console.log('Content has been cached for offline use.')
+    console.log('Content has been cached for offline use.')
   },
 
   updatefound (/* registration */) {
-    Notify.create({
-      message: 'Nova Atualização Disponível!',
-      icon: 'mdi-cellphone-arrow-down',
-      closeBtn: 'Atualizar',
-      timeout: 10000,
-      type: 'positive',
-      classes: 'glossy text-white',
-      onDismiss () {
-        location.reload()
-      }
-    })
-    // console.log('New content is downloading.')
+    // Notify.create({
+    //   message: 'Nova Atualização Disponível!',
+    //   icon: 'mdi-cellphone-arrow-down',
+    //   closeBtn: 'Atualizar',
+    //   timeout: 10000,
+    //   type: 'positive',
+    //   classes: 'glossy text-white',
+    //   onDismiss () {
+    //     location.reload(true)
+    //   }
+    // })
+    console.log('New content is downloading.')
   },
 
   updated (/* registration */) {
+    console.log('Updated is avaible.')
     Notify.create({
       message: 'Nova Atualização Disponível!',
       icon: 'mdi-cellphone-arrow-down',
@@ -48,16 +49,16 @@ register(process.env.SERVICE_WORKER_FILE, {
       type: 'positive',
       classes: 'glossy text-white',
       onDismiss () {
-        location.reload()
+        location.reload(true)
       }
     })
   },
 
   offline () {
-    // console.log('No internet connection found. App is running in offline mode.')
+    console.log('No internet connection found. App is running in offline mode.')
   },
 
   error (/* err */) {
-    // console.error('Error during service worker registration:', err)
+    console.error('Error during service worker registration:', err)
   }
 })
