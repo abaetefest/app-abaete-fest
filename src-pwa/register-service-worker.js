@@ -17,6 +17,7 @@ register(process.env.SERVICE_WORKER_FILE, {
   },
 
   registered (/* registration */) {
+    register('./OneSignalSDKWorker.js')
     // console.log('Service worker has been registered.')
   },
 
