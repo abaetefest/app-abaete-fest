@@ -161,6 +161,7 @@ export default {
           ...this.form
         })
         await localStorage.setItem('abaete-fest-token', response.data.token)
+        localStorage.setItem('abaete-manage', response.data.is_admin)
         this.$notifySuccess('Logado com sucesso!')
         this.$router.push({ name: 'home' })
       } catch (error) {

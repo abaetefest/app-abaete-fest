@@ -6,8 +6,8 @@
           animated
           v-model="slide"
           infinite
-          autoplay="1500"
-          height="150px"
+          :autoplay="2000"
+          :height="$q.screen.lt.sm ? '150px' : '300px'"
         >
           <q-carousel-slide :name="1" img-src="advertising/1.jpg" />
           <q-carousel-slide :name="2" img-src="advertising/2.jpg" />

@@ -73,7 +73,7 @@
         />
       </q-list>
 
-      <q-list>
+      <q-list v-if="isAdmin">
         <q-item-label
           header
           class="text-grey-8"
@@ -131,12 +131,19 @@ export default {
     return {
       leftDrawerOpen: false,
       essentialLinks: menusRoute,
-      adminLinks: adminRoute
+      adminLinks: adminRoute,
+      isAdmin: false
+    }
+  },
+  mounted () {
+    if (JSON.parse(localStorage.getItem('abaete-manage'))) {
+      this.isAdmin = true
     }
   },
   methods: {
     logout () {
       localStorage.removeItem('abaete-fest-token')
+      localStorage.removeItem('abaete-manage')
       this.$router.push('/')
     },
     confirmLogout () {
