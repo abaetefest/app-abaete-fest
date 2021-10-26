@@ -7,7 +7,9 @@
 export default {
   name: 'App',
   beforeMount () {
-    this.$OneSignal.init({ appId: '818f99e8-5855-4bc2-817b-69cfd8c9a1f9' })
+    this.$OneSignal.init({ appId: '4f62905e-971d-4a77-884a-636e73ca93d2' }).then((res) => {
+      console.log('ONE SIGNAUL INSTALADO', res)
+    })
   }
 }
 </script>
