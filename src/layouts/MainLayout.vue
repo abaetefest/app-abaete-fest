@@ -139,6 +139,12 @@ export default {
     if (JSON.parse(localStorage.getItem('abaete-manage'))) {
       this.isAdmin = true
     }
+    const OneSignal = window.OneSignal || null
+    console.log('ONESIGNAL', OneSignal)
+    if (OneSignal) {
+      OneSignal.showSlidedownPrompt()
+      console.log('isSubscribed', OneSignal.isSubscribed)
+    }
   },
   methods: {
     logout () {
