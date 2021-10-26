@@ -17,7 +17,6 @@ register(process.env.SERVICE_WORKER_FILE, {
   },
 
   registered (/* registration */) {
-    register('./OneSignalSDKWorker.js')
     // console.log('Service worker has been registered.')
   },
 
@@ -26,6 +25,17 @@ register(process.env.SERVICE_WORKER_FILE, {
   },
 
   updatefound (/* registration */) {
+    Notify.create({
+      message: 'Nova Atualização Disponível!',
+      icon: 'mdi-cellphone-arrow-down',
+      closeBtn: 'Atualizar',
+      timeout: 10000,
+      type: 'positive',
+      classes: 'glossy text-white',
+      onDismiss () {
+        location.reload()
+      }
+    })
     // console.log('New content is downloading.')
   },
 
