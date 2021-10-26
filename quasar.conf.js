@@ -145,8 +145,7 @@ module.exports = function (ctx) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {
         skipWaiting: true,
-        clientsClaim: true,
-        exclude: [/OneSignal.*\.js$/]
+        clientsClaim: true
       }, // only for GenerateSW
       manifest: {
         name: 'App AbaetéFest',
