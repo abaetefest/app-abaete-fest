@@ -21,7 +21,6 @@ module.exports = function (ctx) {
     // https://v1.quasar.dev/quasar-cli/boot-files
     boot: [
       'services',
-      'onesignal',
       'i18n',
       'axios',
       'notify',
@@ -144,7 +143,11 @@ module.exports = function (ctx) {
     // https://v1.quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
-      workboxOptions: { skipWaiting: true, clientsClaim: true }, // only for GenerateSW
+      workboxOptions: {
+        skipWaiting: true,
+        clientsClaim: true,
+        exclude: [/OneSignal.*\.js$/]
+      }, // only for GenerateSW
       manifest: {
         name: 'App AbaetéFest',
         short_name: 'App AbaetéFest',
