@@ -21,6 +21,7 @@ module.exports = function (ctx) {
     // https://v1.quasar.dev/quasar-cli/boot-files
     boot: [
       'services',
+      // 'onesignal',
       'i18n',
       'axios',
       'notify',
@@ -54,7 +55,7 @@ module.exports = function (ctx) {
         ? {
             VERSION: require('./package.json').version,
             URI_API: 'https://polished-snowflake-9723.fly.dev/api',
-            ONE_SIGNAL_KEY: '4f62905e-971d-4a77-884a-636e73ca93d2'
+            ONE_SIGNAL_KEY: '20a1804c-3398-4303-bbb9-9ee2d7465ce8'
           }
         : {
             VERSION: require('./package.json').version,
