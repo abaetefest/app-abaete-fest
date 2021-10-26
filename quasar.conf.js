@@ -149,7 +149,7 @@ module.exports = function (ctx) {
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
-        theme_color: '#ffffff',
+        theme_color: '#204f8f',
         categories: ['lifestyle', 'news', 'social'],
         icons: [
           {
