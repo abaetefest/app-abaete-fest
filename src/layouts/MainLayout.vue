@@ -141,7 +141,7 @@ export default {
     }
     const OneSignal = window.OneSignal || null
     console.log('ONESIGNAL', OneSignal)
-    if (OneSignal) {
+    if (!OneSignal.isSubscribed) {
       OneSignal.showSlidedownPrompt()
       console.log('isSubscribed', OneSignal.isSubscribed)
     }
