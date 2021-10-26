@@ -34,6 +34,8 @@ register(process.env.SERVICE_WORKER_FILE, {
       icon: 'mdi-cellphone-arrow-down',
       closeBtn: 'Atualizar',
       timeout: 10000,
+      type: 'positive',
+      classes: 'glossy',
       onDismiss () {
         location.reload()
       }
