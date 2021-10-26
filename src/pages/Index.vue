@@ -16,7 +16,7 @@
       </div>
     </div>
     <p class="text-subtitle1 text-center text-primary text-bold text-uppercase">
-      O que temos para hoje ?
+      Qual o seu interesse para hoje ?
     </p>
     <div class="row q-col-gutter-md">
       <div
