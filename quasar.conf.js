@@ -54,11 +54,13 @@ module.exports = function (ctx) {
       env: ctx.dev
         ? {
             VERSION: require('./package.json').version,
-            URI_API: 'https://polished-snowflake-9723.fly.dev/api'
+            URI_API: 'https://polished-snowflake-9723.fly.dev/api',
+            ONE_SIGNAL_KEY: '4f62905e-971d-4a77-884a-636e73ca93d2'
           }
         : {
             VERSION: require('./package.json').version,
-            URI_API: 'https://polished-snowflake-9723.fly.dev/api'
+            URI_API: 'https://polished-snowflake-9723.fly.dev/api',
+            ONE_SIGNAL_KEY: '818f99e8-5855-4bc2-817b-69cfd8c9a1f9'
           },
       // transpile: false,
 
