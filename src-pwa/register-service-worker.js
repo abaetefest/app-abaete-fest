@@ -35,7 +35,7 @@ register(process.env.SERVICE_WORKER_FILE, {
       closeBtn: 'Atualizar',
       timeout: 10000,
       type: 'positive',
-      classes: 'glossy',
+      classes: 'glossy text-white',
       onDismiss () {
         location.reload()
       }
