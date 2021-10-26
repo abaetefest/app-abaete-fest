@@ -98,6 +98,7 @@
 <script>
 // import { date } from 'quasar'
 export default {
+  name: 'PageRegister',
   data () {
     return {
       loading1: false,

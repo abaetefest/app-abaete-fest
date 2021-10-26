@@ -147,20 +147,20 @@ export default {
         console.log(error)
       }
     },
-    confirmDelete (course) {
+    confirmDelete (event) {
       this.$q.dialog({
         title: 'Deleter Evento',
-        message: `Tem certeza que deseja deletar o evento <b>${course.name}</b> ?`,
+        message: `Tem certeza que deseja deletar o evento <b>${event.name}</b> ?`,
         cancel: true,
         html: true,
         persistent: true
       }).onOk(() => {
-        this.deleteCourse(course)
+        this.deleteCourse(event)
       })
     },
-    async deleteCourse (course) {
+    async deleteCourse (event) {
       try {
-        await this.$services.events().delete(course.id)
+        await this.$services.events().delete(event.id)
         this.$notifySuccess('Evento excluído com Sucesso!')
         this.listEvents()
       } catch (error) {
@@ -168,8 +168,8 @@ export default {
         this.$q.notify('Erro ao excluir curso')
       }
     },
-    editCourse (course) {
-      this.$router.push({ name: 'formEvents', params: { course: course } })
+    editCourse (event) {
+      this.$router.push({ name: 'formEvents', params: { event: event } })
     },
     formatDateString (dateOriginal) {
       return date.formatDate(dateOriginal, 'DD/MM/YYYY HH:mm')
@@ -180,9 +180,9 @@ export default {
     },
     viewEvent (event) {
     },
-    openDialogEvents (course) {
+    openDialogEvents (event) {
       this.modalEvents = true
-      this.eventDetails = course
+      this.eventDetails = event
     },
     closeModal () {
       this.modalEvents = false

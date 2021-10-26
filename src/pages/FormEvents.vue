@@ -129,7 +129,7 @@ import { date } from 'quasar'
 export default {
   name: 'FormEvents',
   props: {
-    course: {
+    event: {
       type: Object,
       required: false
     }
@@ -161,13 +161,13 @@ export default {
     const timeStamp = Date.now()
     const formattedString = date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm:ss')
     this.form.start_date = formattedString
-    if (this.course && this.course.id) {
+    if (this.event && this.event.id) {
       // this.$refs.imgFileInput.value = this.form.image_url
-      if (this.course.image_url) {
-        this.preview = this.course.image_url
+      if (this.event.image_url) {
+        this.preview = this.event.image_url
       }
       this.form = {
-        ...this.course
+        ...this.event
       }
     }
   },

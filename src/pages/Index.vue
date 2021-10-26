@@ -1,5 +1,20 @@
 <template>
   <q-page padding>
+    <div class="row">
+      <div class="col">
+        <q-carousel
+          animated
+          v-model="slide"
+          infinite
+          autoplay="1500"
+          height="150px"
+        >
+          <q-carousel-slide :name="1" img-src="advertising/1.jpg" />
+          <q-carousel-slide :name="2" img-src="advertising/2.jpg" />
+          <q-carousel-slide :name="3" img-src="advertising/3.jpg" />
+        </q-carousel>
+      </div>
+    </div>
     <p class="text-subtitle1 text-center text-primary text-bold text-uppercase">
       O que temos para hoje ?
     </p>
@@ -26,13 +41,6 @@
             </div>
             <div class="flex column justify-center items-end">
               <q-icon :name="`img:flat/${op.icon}`" size="2.5rem" />
-              <!-- <q-icon :name="op.icon" :color="op.textColor" size="2.5rem" /> -->
-              <!-- <span
-                class="text-subtitle2 text-primary text-weight-medium"
-                :class="`text-${op.textColor}`"
-              >
-                {{ op.title }}
-              </span> -->
             </div>
           </q-card-section>
         </q-card>
@@ -46,6 +54,7 @@ export default {
   name: 'PageIndex',
   data () {
     return {
+      slide: 1,
       opcoes: [
         {
           title: 'Festas',

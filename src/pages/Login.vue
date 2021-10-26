@@ -132,6 +132,7 @@
 </template>
 <script>
 export default {
+  name: 'PageLogin',
   data () {
     return {
       loading1: false,
@@ -167,7 +168,6 @@ export default {
         this.loading1 = false
         this.$q.notify('Usuário ou senha incorreto.')
       }
-      // this.$router.push({ name: 'home' })
     },
     goToRegister () {
       this.$router.push({ name: 'cadastro' })
