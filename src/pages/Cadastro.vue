@@ -48,11 +48,11 @@
         </template>
       </q-input>
 
-      <!-- <q-input filled bottom-slots v-model="form.birthday" label="Data de Nascimento" mask="##/##/####" :rules="[ val => val && val.length >= 10 || 'Data de nascimento obrigatória']">
+      <q-input filled bottom-slots v-model="form.birthday" label="Data de Nascimento" mask="##/##/####" :rules="[ val => val && val.length >= 10 || 'Data de nascimento obrigatória']">
         <template v-slot:prepend>
           <q-icon name="mdi-calendar" />
         </template>
-      </q-input> -->
+      </q-input>
 
       <q-input v-model="form.password" filled bottom-slots :type="isPwd ? 'password' : 'text'" label="Senha" :rules="[ val => val && val.length > 0 || 'Senha obrigatória']">
         <template v-slot:prepend>
@@ -96,7 +96,7 @@
   </div>
 </template>
 <script>
-// import { date } from 'quasar'
+import { date } from 'quasar'
 export default {
   name: 'PageRegister',
   data () {
@@ -106,7 +106,8 @@ export default {
         name: '',
         email: '',
         password: '',
-        phone: ''
+        phone: '',
+        birth_date: ''
         // birthday: '',
         // type: 'USER',
         // active: true
@@ -120,17 +121,19 @@ export default {
   methods: {
     async onSubmit () {
       this.loading1 = true
-      // const birthday = date.extractDate(this.form.birthday, 'DD/MM/YYYY')
-      // const formattedString = date.formatDate(birthday, 'YYYY-MM-DD')
+      const birthday = date.extractDate(this.form.birth_date, 'DD/MM/YYYY')
+      const formattedString = date.formatDate(birthday, 'YYYY-MM-DD')
       try {
-        await this.$services.users().register({
+        const response = await this.$services.users().register({
           user: {
-            ...this.form
+            ...this.form,
+            birth_date: formattedString
           }
-          // birthday: formattedString
         })
+        await localStorage.setItem('abaete-fest-token', response.data.token)
+        localStorage.setItem('abaete-manage', response.data.is_admin)
         this.$notifySuccess('Cadastro realizado com Sucesso!')
-        this.$router.push({ name: 'login' })
+        this.$router.push({ name: 'home' })
       } catch (error) {
         console.error(error)
         this.loading1 = false
