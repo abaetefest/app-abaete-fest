@@ -32,17 +32,34 @@ export default {
   },
   methods: {
     enableNotifications () {
-      Notification.requestPermission()
-        .then((result) => {
-          if (result === 'denied' || result === 'default') {
-            this.notify = false
-            this.$notifyDanger('Desculpe, não conseguimos ativar as notificações')
-            console.log('result', result)
-          }
-        })
-        .catch((e) => {
-          console.log(e)
-        })
+      const OneSignal = window.OneSignal || []
+      OneSignal.getNotificationPermission((permission) => {
+        if (permission === 'default' || permission === 'denied') {
+          OneSignal.showNativePrompt()
+          this.notify = false
+        } else {
+          this.notify = true
+        }
+      })
+      // OneSignal.push(["getNotificationPermission", function(permission) {
+      //     console.log("Site Notification Permission:", permission);
+      //     // (Output) Site Notification Permission: default
+      // }]);
+
+      // OneSignal.push(() => {
+      //   OneSignal.showNativePrompt()
+      // })
+      // Notification.requestPermission()
+      //   .then((result) => {
+      //     if (result === 'denied' || result === 'default') {
+      //       this.notify = false
+      //       this.$notifyDanger('Desculpe, não conseguimos ativar as notificações')
+      //     }
+      //     this.notify = true
+      //   })
+      //   .catch((e) => {
+      //     console.log(e)
+      //   })
       // Notification.requestPermission().then((result) => {
       //   console.log(result)
       // })
