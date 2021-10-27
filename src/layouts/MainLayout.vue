@@ -19,12 +19,20 @@
         <!-- <div>Quasar v{{ $q.version }}</div> -->
         <q-btn-dropdown color="white" size="lg" label="" flat rounded>
           <q-list>
+            <q-item clickable @click="goTo('userInformations')">
+              <q-item-section>
+                <q-item-label>Perfil</q-item-label>
+              </q-item-section>
+               <q-item-section avatar>
+                <q-icon color="primary" name="mdi-account-circle-outline" size="1.2rem" />
+              </q-item-section>
+            </q-item>
             <q-item clickable @click="confirmLogout">
               <q-item-section>
                 <q-item-label>Sair</q-item-label>
               </q-item-section>
                <q-item-section avatar>
-                <q-icon color="primary" name="mdi-open-in-new" size="1rem" />
+                <q-icon color="primary" name="mdi-open-in-new" size="1.2rem" />
               </q-item-section>
             </q-item>
           </q-list>
@@ -145,6 +153,9 @@ export default {
       localStorage.removeItem('abaete-fest-token')
       localStorage.removeItem('abaete-manage')
       this.$router.push('/')
+    },
+    goTo (routeName) {
+      this.$router.push({ name: routeName })
     },
     confirmLogout () {
       this.$q.dialog({

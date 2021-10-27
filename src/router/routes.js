@@ -17,7 +17,8 @@ const routes = [
       { path: 'manage-events', name: 'manageEvents', component: () => import('src/pages/ManageEvents.vue'), meta: { admin: true } },
       { path: 'contact', name: 'contact', component: () => import('pages/Contact.vue') },
       { path: 'combos', name: 'combos', component: () => import('pages/Combos.vue') },
-      { path: 'form-events/:id?', name: 'formEvents', component: () => import('pages/FormEvents.vue'), props: true }
+      { path: 'form-events/:id?', name: 'formEvents', component: () => import('pages/FormEvents.vue'), props: true },
+      { path: 'user-informations', name: 'userInformations', component: () => import('pages/UserInformations.vue'), props: true }
     ],
     meta: {
       requiresAuth: true
