@@ -22,6 +22,14 @@
                 :rules="[ val => val && val.length > 0 || 'Descrição obrigatório']"
               />
             </div>
+            <q-input
+              v-if="!form.id"
+              v-model="form.content_push"
+              label="Mensagem Push Notification"
+              outlined
+              class="col-md-8 col-xs-12 col-sm-12"
+              :rules="[ val => val && val.length > 0 || 'Título obrigatório']"
+            />
             <!-- <q-input
               v-model="form.description"
               label="Descrição"
@@ -141,7 +149,8 @@ export default {
         image_url: [],
         description: '',
         category: '',
-        start_date: ''
+        start_date: '',
+        content_push: ''
       },
       preview: '',
       model: '',
@@ -169,6 +178,8 @@ export default {
       this.form = {
         ...this.event
       }
+      delete this.form.image_url
+      console.log(this.form)
     }
   },
   methods: {
