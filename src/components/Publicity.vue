@@ -1,22 +1,22 @@
 <template>
-  <div class="row q-col-gutter-sm justify-center q-pb-md">
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <q-img
-        class="rounded-borders cursor-pointer"
-        src="banner_tecnologia.jpg"
-        :ratio="19 / 4"
-        @click="goTo('events')"
-      />
+  <div class="row">
+      <div class="col">
+        <q-carousel
+          animated
+          v-model="slide"
+          control-color="primary"
+          arrows
+          infinite
+          navigation-icon="radio_button_unchecked"
+          :autoplay="2500"
+          :height="$q.screen.lt.sm ? '150px' : '300px'"
+        >
+          <q-carousel-slide :name="1" img-src="advertising/1.jpg" @click="goTo" />
+          <q-carousel-slide :name="2" img-src="advertising/2.jpg" @click="goTo" />
+          <q-carousel-slide :name="3" img-src="advertising/3.jpg" @click="goTo" />
+        </q-carousel>
+      </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <q-img
-        class="rounded-borders"
-        src="banner_marketing.jpg"
-        :ratio="19 / 4"
-        @click="goTo('events')"
-      />
-    </div>
-  </div>
 </template>
 
 <script>
@@ -24,11 +24,12 @@ export default {
   name: 'Publicity',
   data () {
     return {
+      slide: 1
     }
   },
   methods: {
-    goTo (menu) {
-      this.$router.push({ name: menu.route, params: { type: menu.type } })
+    goTo () {
+      alert('HE HE HE HEY')
     }
   }
 }

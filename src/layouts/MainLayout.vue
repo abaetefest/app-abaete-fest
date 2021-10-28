@@ -152,6 +152,7 @@ export default {
     logout () {
       localStorage.removeItem('abaete-fest-token')
       localStorage.removeItem('abaete-manage')
+      localStorage.removeItem('abaete-email')
       this.$router.push('/')
     },
     goTo (routeName) {

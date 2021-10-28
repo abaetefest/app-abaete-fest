@@ -2,22 +2,22 @@
   <q-page>
     <div class="row">
       <div class="col-xs-12">
-        <q-list bordered padding>
-          <q-item tag="label" v-ripple>
+        <q-list bordered >
+          <q-item v-ripple>
             <q-item-section>
               <q-item-label>
-                Email: eng.patrickmonteiro@gmail.com
+                <strong>Email:</strong> {{ email || ' Não identificado'}}
               </q-item-label>
             </q-item-section>
           </q-item>
-          <!-- <q-item tag="label" v-ripple>
+          <q-separator />
+          <q-item v-ripple>
             <q-item-section>
-              <q-item-label>Habilitar Notificações</q-item-label>
+              <q-item-label>
+                <strong>Notificações:</strong> Para habilitar e desabilitar as notificações acesse as configurações do aplicativo em seu aparelho.
+              </q-item-label>
             </q-item-section>
-            <q-item-section side >
-              <q-toggle color="positive" v-model="notify" val="battery" @input="enableNotifications" />
-            </q-item-section>
-          </q-item> -->
+          </q-item>
         </q-list>
       </div>
     </div>
@@ -29,12 +29,21 @@ export default {
   name: 'PageUserInformations',
   data () {
     return {
-      notify: false
+      notify: false,
+      email: ''
     }
   },
   mounted () {
+    this.getEmail()
   },
   methods: {
+    getEmail () {
+      const email = localStorage.getItem('abaete-email')
+      if (email) {
+        this.email = email
+      }
+      console.log(email)
+    }
   }
 }
 </script>

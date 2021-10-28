@@ -1,20 +1,6 @@
 <template>
   <q-page padding>
-    <div class="row">
-      <div class="col">
-        <q-carousel
-          animated
-          v-model="slide"
-          infinite
-          :autoplay="2000"
-          :height="$q.screen.lt.sm ? '150px' : '300px'"
-        >
-          <q-carousel-slide :name="1" img-src="advertising/1.jpg" />
-          <q-carousel-slide :name="2" img-src="advertising/2.jpg" />
-          <q-carousel-slide :name="3" img-src="advertising/3.jpg" />
-        </q-carousel>
-      </div>
-    </div>
+    <publicity />
     <p class="text-subtitle1 text-center text-primary text-bold text-uppercase">
       Qual o seu interesse para hoje ?
     </p>
@@ -52,9 +38,11 @@
 <script>
 export default {
   name: 'PageIndex',
+  components: {
+    publicity: () => import('components/publicity')
+  },
   data () {
     return {
-      slide: 1,
       opcoes: [
         {
           title: 'Festas',
