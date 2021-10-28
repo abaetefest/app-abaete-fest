@@ -39,7 +39,7 @@
 export default {
   name: 'PageIndex',
   components: {
-    publicity: () => import('components/publicity')
+    publicity: () => import('components/Publicity')
   },
   data () {
     return {
