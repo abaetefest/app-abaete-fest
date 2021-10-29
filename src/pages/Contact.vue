@@ -14,16 +14,20 @@
       </div> -->
       <div class="col-sm-12 col-xs-12 col-md-12 text-center q-gutter-sm">
         <q-btn
-          round
+          rounded
+          push
           color="green-7"
+          class="shadow-6"
           icon="mdi-whatsapp"
           href="https://api.whatsapp.com/send?phone=5591982828945&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20como%20publicar%20meu%20evento%20no%20app%20Abaet%C3%A9Fest"
           target="_blank"
           type="a"
         />
         <q-btn
-          round
+          rounded
+          push
           color="pink"
+          class="shadow-6"
           icon="mdi-instagram"
           href="https://www.instagram.com/abaetefest/"
           target="_blank"

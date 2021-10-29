@@ -1,12 +1,14 @@
 <template>
   <q-dialog persistent full-height :value="modalCourse">
       <q-card class="full-width" :key="courseData.id">
-        <q-card-section class="row items-center q-pb-none">
-          <div class="text-h6 q-py-none">
+        <q-card-section class="row q-pb-none">
+          <div class="text-h6 q-py-none col-11">
            {{ courseData.name}}
           </div>
           <q-space />
-          <q-btn icon="close" flat round dense @click="$emit('close')" />
+          <div class="col-1">
+            <q-btn icon="close" flat round dense @click="$emit('close')" />
+          </div>
         </q-card-section>
 
         <q-separator />
