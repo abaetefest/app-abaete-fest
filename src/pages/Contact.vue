@@ -12,7 +12,7 @@
       <!-- <div class="col-sm-12 col-xs-12 col-sm-4">
         <q-btn label="Email" color="primary" icon="mdi-email" class="full-width" />
       </div> -->
-      <div class="col-sm-12 col-xs-12 col-sm-4 text-center q-gutter-md">
+      <div class="col-sm-12 col-xs-12 col-md-12 text-center q-gutter-sm">
         <q-btn
           round
           color="green-7"
