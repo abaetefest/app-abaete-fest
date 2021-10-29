@@ -29,7 +29,6 @@ export default {
   },
   methods: {
     goTo () {
-      alert('HE HE HE HEY')
     }
   }
 }
