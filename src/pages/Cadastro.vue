@@ -67,6 +67,25 @@
         </template>
       </q-input>
 
+      <q-input
+        v-model="confirmPass"
+        filled bottom-slots
+        :type="isPwd2 ? 'password' : 'text'"
+        label="Confirme a senha"
+        :rules="[ val => val && val === form.password || 'Senhas não conferem']"
+      >
+        <template v-slot:prepend>
+          <q-icon name="mdi-lock" />
+        </template>
+        <template v-slot:append>
+          <q-icon
+            :name="isPwd2 ? 'mdi-eye-off' : 'mdi-eye'"
+            class="cursor-pointer"
+            @click="isPwd2 = !isPwd2"
+          />
+        </template>
+      </q-input>
+
       <q-btn
         id="btn-login"
         rounded
@@ -112,8 +131,10 @@ export default {
         // type: 'USER',
         // active: true
       },
+      confirmPass: '',
       fade: true,
-      isPwd: true
+      isPwd: true,
+      isPwd2: true
     }
   },
   mounted () {
