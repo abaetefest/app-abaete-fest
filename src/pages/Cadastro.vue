@@ -158,7 +158,7 @@ export default {
       } catch (error) {
         console.error(error)
         this.loading1 = false
-        this.$q.notify('Usuário ou senha incorreto.')
+        this.$setNotifyDanger('Erro ao realizar cadastro! Se o celular for sansumg tente mudar o navegador padrão')
       }
     },
     backToLogin () {
