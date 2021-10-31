@@ -40,9 +40,6 @@
         class="text-center text-weight-bold"
         :class="$q.screen.gt.sm ? 'text-h5' : 'text-body1'"
       >
-        <q-banner dense rounded class="text-white text-caption bg-red">
-          Tivemos um problema em nosso servidor no dia <strong>29/10/2021</strong>. Por favor, cadastre-se novamente para ter acesso.
-        </q-banner>
         <p>Acessar minha conta</p>
       </div>
 
