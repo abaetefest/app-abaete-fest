@@ -1,21 +1,24 @@
 <template>
-  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
+  <div class="fullscreen text-white text-center q-pa-md flex flex-center">
     <div>
-      <div style="font-size: 30vh">
-        404
+      <div>
+        <q-img
+            src="not-found.svg"
+            :width="$q.screen.gt.sm ? '400' : '300'"
+          />
       </div>
 
-      <div class="text-h2" style="opacity:.4">
-        Oops. Nothing here...
+      <div class="text-h2 text-primary">
+        Página não encontrada
       </div>
 
       <q-btn
         class="q-mt-xl"
-        color="white"
-        text-color="blue"
+        color="primary"
+        text-color="white"
         unelevated
         to="/"
-        label="Go Home"
+        label="Voltar para o Início"
         no-caps
       />
     </div>

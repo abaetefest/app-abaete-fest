@@ -40,7 +40,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-footer class="lt-md">
+    <q-footer v-if="!!$route.meta.tabs" class="lt-md" >
       <q-tabs
         align="justify"
         dense

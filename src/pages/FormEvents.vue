@@ -18,8 +18,10 @@
               <q-editor
                 label="Descrição"
                 v-model="form.description"
-                min-height="5rem"
+                min-height="8rem"
                 :rules="[ val => val && val.length > 0 || 'Descrição obrigatório']"
+                :toolbar="toolbar"
+                :fonts="fonts"
               />
             </div>
             <q-input
@@ -163,7 +165,70 @@ export default {
         { label: 'Turismo', value: 'tourism' }
       ],
       image: null,
-      date: Date.now()
+      date: Date.now(),
+      fonts: {
+        arial: 'Arial',
+        arial_black: 'Arial Black',
+        comic_sans: 'Comic Sans MS',
+        courier_new: 'Courier New',
+        impact: 'Impact',
+        lucida_grande: 'Lucida Grande',
+        times_new_roman: 'Times New Roman',
+        verdana: 'Verdana'
+      },
+      toolbar: [
+        [
+          {
+            label: this.$q.lang.editor.align,
+            icon: this.$q.iconSet.editor.align,
+            fixedLabel: true,
+            list: 'only-icons',
+            options: ['left', 'center', 'right', 'justify']
+          }
+        ],
+        ['bold', 'italic', 'strike', 'underline', 'subscript', 'superscript'],
+        ['token', 'hr', 'link', 'custom_btn'],
+        [
+          {
+            label: this.$q.lang.editor.fontSize,
+            icon: this.$q.iconSet.editor.fontSize,
+            fixedLabel: true,
+            fixedIcon: true,
+            list: 'no-icons',
+            options: [
+              'size-1',
+              'size-2',
+              'size-3',
+              'size-4',
+              'size-5',
+              'size-6',
+              'size-7'
+            ]
+          },
+          {
+            label: this.$q.lang.editor.defaultFont,
+            icon: this.$q.iconSet.editor.font,
+            fixedIcon: true,
+            list: 'no-icons',
+            options: [
+              'default_font',
+              'arial',
+              'arial_black',
+              'comic_sans',
+              'courier_new',
+              'impact',
+              'lucida_grande',
+              'times_new_roman',
+              'verdana'
+            ]
+          },
+          'removeFormat'
+        ],
+        ['quote', 'unordered', 'ordered', 'outdent', 'indent'],
+
+        ['undo', 'redo'],
+        ['viewsource']
+      ]
     }
   },
   mounted () {

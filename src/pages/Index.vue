@@ -22,7 +22,7 @@
                 {{op.title}}
               </span>
               <span>
-                Conheça os melhores eventos da região
+                {{ op.subtitle }}
               </span>
             </div>
             <div class="flex column justify-center items-end">
@@ -50,7 +50,8 @@ export default {
           route: 'events',
           type: 'parties',
           textColor: 'primary',
-          color: 'white'
+          color: 'white',
+          subtitle: 'As melhores baladas, pubs e barzinhos'
         },
         {
           title: 'Cultural',
@@ -58,7 +59,8 @@ export default {
           route: 'events',
           type: 'cultural',
           textColor: 'primary',
-          color: 'white'
+          color: 'white',
+          subtitle: 'Conheça a cultura da cidade'
         },
         {
           title: 'Religiosos',
@@ -66,7 +68,8 @@ export default {
           route: 'events',
           type: 'religious',
           textColor: 'primary',
-          color: 'white'
+          color: 'white',
+          subtitle: 'Eventos voltados para religiosidadade'
         },
         {
           title: 'Esportivos',
@@ -74,7 +77,8 @@ export default {
           route: 'events',
           type: 'sports',
           textColor: 'primary',
-          color: 'white'
+          color: 'white',
+          subtitle: 'Torneios e jogos para você participar'
         },
         {
           title: 'Geek',
@@ -82,7 +86,8 @@ export default {
           route: 'events',
           type: 'geek',
           textColor: 'primary',
-          color: 'white'
+          color: 'white',
+          subtitle: 'Games, eventos e muito mais'
         },
         {
           title: 'Turísmo',
@@ -90,7 +95,8 @@ export default {
           route: 'events',
           type: 'tourism',
           textColor: 'primary',
-          color: 'white'
+          color: 'white',
+          subtitle: 'Passeios, trilhas e eventos'
         }
       ]
     }

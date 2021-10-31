@@ -136,6 +136,10 @@ export default {
       this.modalCourse = true
       this.courseDetails = course
     },
+    detailsEvent (course) {
+      this.$router.push({ name: 'eventDetails', params: { id: course.id } })
+      // this.$router.push({ name: menu.route, params: { type: menu.type } })
+    },
     closeModal () {
       this.modalCourse = false
       this.courseDetails = {}

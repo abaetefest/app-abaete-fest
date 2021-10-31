@@ -14,6 +14,7 @@ const routes = [
     children: [
       { path: 'home', name: 'home', component: () => import('src/pages/Index.vue') },
       { path: 'events/:type', name: 'events', component: () => import('src/pages/Events.vue') },
+      { path: 'event-details/:id', name: 'eventDetails', component: () => import('src/pages/EventDetails.vue'), meta: { tab: false } },
       { path: 'manage-events', name: 'manageEvents', component: () => import('src/pages/ManageEvents.vue'), meta: { admin: true } },
       { path: 'contact', name: 'contact', component: () => import('pages/Contact.vue') },
       { path: 'combos', name: 'combos', component: () => import('pages/Combos.vue') },
