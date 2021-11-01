@@ -8,18 +8,19 @@
           arrows
           infinite
           navigation-icon="radio_button_unchecked"
-          :autoplay="3000"
+          :autoplay="4000"
           :height="$q.screen.lt.sm ? '150px' : '300px'"
         >
-          <q-carousel-slide :name="1" img-src="advertising/1.jpg" @click="goTo" />
-          <q-carousel-slide :name="2" img-src="advertising/2.jpg" @click="goTo" />
-          <q-carousel-slide :name="3" img-src="advertising/3.jpg" @click="goTo" />
+          <q-carousel-slide :name="1" img-src="advertising/1.png" @click="goTo('https://www.instagram.com/p/CUaK16trdoC/')" />
+          <q-carousel-slide :name="2" img-src="advertising/2.png" @click="goTo('https://wpe4bank.com/')" />
+          <q-carousel-slide :name="3" img-src="advertising/3.png" @click="goTo('https://abaetefest.com.br/')" />
         </q-carousel>
       </div>
     </div>
 </template>
 
 <script>
+import { openURL } from 'quasar'
 export default {
   name: 'Publicity',
   data () {
@@ -28,7 +29,8 @@ export default {
     }
   },
   methods: {
-    goTo () {
+    goTo (url) {
+      openURL(url)
     }
   }
 }
