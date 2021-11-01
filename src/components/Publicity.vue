@@ -8,7 +8,7 @@
           arrows
           infinite
           navigation-icon="radio_button_unchecked"
-          :autoplay="4000"
+          :autoplay="true"
           :height="$q.screen.lt.sm ? '150px' : '300px'"
         >
           <q-carousel-slide :name="1" img-src="advertising/1.png" @click="goTo('https://www.instagram.com/p/CUaK16trdoC/')" />
