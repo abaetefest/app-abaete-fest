@@ -90,6 +90,15 @@ export default {
           subtitle: 'Games, eventos e muito mais'
         },
         {
+          title: 'Automotivo',
+          icon: 'speaker.png',
+          route: 'events',
+          type: 'automotive',
+          textColor: 'primary',
+          color: 'white',
+          subtitle: 'Carro, moto e som automotivo'
+        },
+        {
           title: 'Turísmo',
           icon: 'boat.png',
           route: 'events',
