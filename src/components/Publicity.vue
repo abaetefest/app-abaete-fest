@@ -1,6 +1,6 @@
 <template>
-  <div class="row">
-      <div class="col">
+  <div class="row justify-center">
+      <div class="col-md-8 col-xs-12 col-sm-12">
         <q-carousel
           animated
           v-model="slide"
@@ -9,7 +9,7 @@
           infinite
           navigation-icon="radio_button_unchecked"
           :autoplay="true"
-          :height="$q.screen.lt.sm ? '150px' : '300px'"
+          :height="$q.screen.lt.sm ? '150px' : '350px'"
         >
           <q-carousel-slide :name="1" img-src="advertising/1.png" @click="goTo('https://www.instagram.com/p/CUaK16trdoC/')" />
           <q-carousel-slide :name="2" img-src="advertising/2.png" @click="goTo('https://wpe4bank.com/')" />
