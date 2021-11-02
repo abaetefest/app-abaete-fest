@@ -148,22 +148,22 @@ export default {
     if (JSON.parse(localStorage.getItem('abaete-manage'))) {
       this.isAdmin = true
     }
-    const versionStorage = JSON.parse(localStorage.getItem('abaete-version'))
-    if (!versionStorage) {
-      this.$q.dialog({
-        title: 'ATUALIZAÇÃO IMPORTANTE',
-        html: true,
-        message: `
-          Tivemos um problema em nosso servidor e precisamos limpar nosso banco de dados.
-          Por favor realize novamente seu cadastro para utilizar o aplicativo!<br>
-          Se o problema persistir envie um email para <b>eng.patrickmonteiro@gmail.com</b> para solucionarmos.
-        `
-      }).onOk(() => {
-        console.log('ATUALIZANDO VERSÃO ATUAL')
-        localStorage.setItem('abaete-version', JSON.stringify(this.version))
-        this.logout('/cadastro')
-      })
-    }
+    // const versionStorage = JSON.parse(localStorage.getItem('abaete-version'))
+    // if (!versionStorage) {
+    //   this.$q.dialog({
+    //     title: 'ATUALIZAÇÃO IMPORTANTE',
+    //     html: true,
+    //     message: `
+    //       Tivemos um problema em nosso servidor e precisamos limpar nosso banco de dados.
+    //       Por favor realize novamente seu cadastro para utilizar o aplicativo!<br>
+    //       Se o problema persistir envie um email para <b>eng.patrickmonteiro@gmail.com</b> para solucionarmos.
+    //     `
+    //   }).onOk(() => {
+    //     console.log('ATUALIZANDO VERSÃO ATUAL')
+    //     localStorage.setItem('abaete-version', JSON.stringify(this.version))
+    //     this.logout('/cadastro')
+    //   })
+    // }
     // else if (!versionStorage) {
     //   console.log('SALVANDO VERSAO INEXISTENTE')
     //   localStorage.setItem('abaete-version', JSON.stringify(this.version))
