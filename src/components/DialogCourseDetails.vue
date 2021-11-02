@@ -19,7 +19,7 @@
           </div>
 
           <div class="text-body2 text-grey-9 q-mb-md" v-if="courseData.description">
-            <strong> SOBRE O EVENTO:</strong>
+            <!-- <strong> SOBRE O EVENTO:</strong> -->
             <p v-html="courseData.description">
               {{ courseData.description }}
             </p>
