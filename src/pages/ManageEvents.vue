@@ -128,7 +128,8 @@ export default {
         { label: 'Religiosos', value: 'religious' },
         { label: 'Esportivos', value: 'sports' },
         { label: 'Geek', value: 'geek' },
-        { label: 'Turismo', value: 'tourism' }
+        { label: 'Turismo', value: 'tourism' },
+        { label: 'Automotivo', value: 'automotive' }
       ],
       data: [],
       modalEvents: false,
