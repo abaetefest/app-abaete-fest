@@ -129,6 +129,11 @@ const adminRoute = [
     title: 'Gerenciar Eventos',
     icon: 'mdi-monitor-dashboard',
     route: 'manageEvents'
+  },
+  {
+    title: 'Gerenciar Usuários',
+    icon: 'mdi-monitor-dashboard',
+    route: 'manageUsers'
   }
 ]
 

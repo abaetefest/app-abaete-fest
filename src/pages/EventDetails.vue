@@ -50,7 +50,7 @@
           </div>
 
           <div class="text-body2 text-grey-9 q-mb-md" v-if="event.description">
-            <strong> SOBRE O EVENTO:</strong>
+            <!-- <strong> SOBRE O EVENTO:</strong> -->
             <p v-html="event.description">
               {{ event.description }}
             </p>
@@ -114,6 +114,15 @@ export default {
     },
     backToEvents (category) {
       this.$router.push({ name: 'events', params: { type: category } })
+    }
+  },
+  meta () {
+    return {
+      title: this.event.name,
+      meta: {
+        // description: { name: 'description', content: this.event.description },
+        keywords: { name: 'keywords', content: 'AbaetéFest, festas, abaetetuba, eventos' }
+      }
     }
   }
 }

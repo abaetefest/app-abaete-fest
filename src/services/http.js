@@ -14,7 +14,7 @@ axios.defaults.headers = {
 }
 
 axios.interceptors.request.use(function (config) {
-  const token = window.localStorage.getItem('capacitaBluToken')
+  const token = window.localStorage.getItem('abaete-fest-token')
   if (token) {
     config.headers.Authorization = token
     return config
