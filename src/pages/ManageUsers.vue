@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
     <p class="text-h6">
-      Eventos
+      Usuários
     </p>
     <q-table
       :data="events"
@@ -32,9 +32,12 @@
         </q-td>
       </template>
 
-      <template v-slot:body-cell-average="props">
+      <template v-slot:body-cell-is_admin="props">
         <q-td :props="props">
-          <q-rating
+          <q-badge transparent align="middle" :color="props.row.is_admin ? 'negative' : 'blue-7'">
+            {{ props.row.is_admin ? 'Admin' : 'Usuário'}}
+          </q-badge>
+          <!-- <q-rating
             v-model="props.row.average"
             size="1.5em"
             color="amber"
@@ -44,7 +47,7 @@
           />
           <span class="text-caption text-grey-6">
             ({{props.row.average}})
-          </span>
+          </span> -->
         </q-td>
       </template>
 
@@ -107,18 +110,20 @@ export default {
       filter: '',
       options: ['TODAS', 'Tecnologia', 'Mercado e Vendas', 'Moda', 'Administração'],
       columns: [
-        { name: 'image_url', label: 'Imagem', field: 'image_url', sortable: false, align: 'left' },
-        {
-          name: 'name',
-          required: true,
-          label: 'Nome do Evento',
-          field: 'name',
-          format: val => `${val}`,
-          sortable: true,
-          align: 'left'
-        },
-        { name: 'category', label: 'Categoria', field: 'category', sortable: true, align: 'left' },
-        { name: 'start_date', label: 'Data', field: 'start_date', align: 'left', format: (data) => this.formatDateString(data) },
+        { name: 'id', label: 'Id', field: 'id', sortable: false, align: 'left' },
+        { name: 'email', label: 'Email', field: 'email', sortable: false, align: 'left' },
+        { name: 'is_admin', label: 'Permissão', field: 'is_admin', sortable: false, align: 'left' },
+        // {
+        //   name: 'name',
+        //   required: true,
+        //   label: 'Nome do Evento',
+        //   field: 'name',
+        //   format: val => `${val}`,
+        //   sortable: true,
+        //   align: 'left'
+        // },
+        // { name: 'category', label: 'Categoria', field: 'category', sortable: true, align: 'left' },
+        // { name: 'start_date', label: 'Data', field: 'start_date', align: 'left', format: (data) => this.formatDateString(data) },
         { name: 'acoes', label: 'Ações', field: 'Ações', align: 'right' }
       ],
       events: [],
