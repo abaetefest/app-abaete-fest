@@ -183,7 +183,25 @@ module.exports = function (ctx) {
             src: 'icons/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png'
+          },
+          {
+            src: 'maskable.png',
+            sizes: '196x196',
+            type: 'image/png',
+            purpose: 'maskable'
           }
+        ],
+        iarc_rating_id: 'e7959d08-255e-4940-82ef-654b203603e2',
+        related_applications: [
+          {
+            platform: 'play',
+            url: 'https://play.google.com/store/apps/details?id=br.com.abaetefest.app.twa',
+            id: 'br.com.abaetefest.app.twa'
+          }
+          // {
+          //   platform: 'itunes',
+          //   url: 'https://itunes.apple.com/app/example-app1/id123456789'
+          // }
         ]
       }
     },
