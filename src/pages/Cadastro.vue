@@ -48,7 +48,7 @@
         </template>
       </q-input>
 
-      <q-input filled bottom-slots v-model="form.birthday" label="Data de Nascimento" mask="##/##/####" :rules="[ val => val && val.length >= 10 || 'Data de nascimento obrigatória']">
+      <q-input filled bottom-slots v-model="form.birth_date" label="Data de Nascimento" mask="##/##/####" :rules="[ val => val && val.length >= 10 || 'Data de nascimento obrigatória']">
         <template v-slot:prepend>
           <q-icon name="mdi-calendar" />
         </template>

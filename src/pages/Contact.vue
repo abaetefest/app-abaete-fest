@@ -8,7 +8,7 @@
         <p>Você gostaria de ver o seu evento no nosso app? Entre em contato conosco para mais informações:</p>
       </div>
     </div>
-    <div class="row">
+    <div class="row justify-center">
       <!-- <div class="col-sm-12 col-xs-12 col-sm-4">
         <q-btn label="Email" color="primary" icon="mdi-email" class="full-width" />
       </div> -->
@@ -33,6 +33,12 @@
           target="_blank"
           type="a"
         />
+      </div>
+      <div class="col-sm-12 col-xs-12 col-md-6 q-pt-md">
+         <q-img
+            src="contact.svg"
+            :width="$q.screen.gt.sm ? '400' : '400'"
+          />
       </div>
     </div>
       <!-- <div class="col-12 text-subtitle2">
