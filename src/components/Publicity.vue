@@ -9,7 +9,7 @@
           infinite
           navigation-icon="radio_button_unchecked"
           :autoplay="true"
-          :height="$q.screen.lt.sm ? '150px' : '300px'"
+          :height="$q.screen.lt.sm ? '135px' : '300px'"
         >
           <q-carousel-slide :name="1" img-src="advertising/1.png" @click="goTo('https://www.instagram.com/p/CUaK16trdoC/')" />
           <q-carousel-slide :name="2" img-src="advertising/2.png" @click="goTo('https://wpe4bank.com/')" />
