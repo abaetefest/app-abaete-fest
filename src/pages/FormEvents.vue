@@ -24,6 +24,16 @@
                 :fonts="fonts"
               />
             </div>
+            <div class="col-12 q-pb-md">
+              <q-btn
+                label="Gerar link"
+                push
+                rounded
+                color="green"
+                icon="mdi-whatsapp"
+                @click="showDialogWpp"
+              />
+            </div>
             <q-input
               v-if="!form.id"
               v-model="form.content_push"
@@ -131,6 +141,10 @@
         </q-card-section>
       </q-card>
     </q-form>
+    <whatsapp-genarator
+      :modal-wpp="dialogWpp"
+      @close="closeDialogWpp"
+    />
   </q-page>
 </template>
 
@@ -144,6 +158,9 @@ export default {
       required: false
     }
   },
+  components: {
+    WhatsappGenarator: () => import('components/WhatsappGenarator')
+  },
   data () {
     return {
       form: {
@@ -154,6 +171,7 @@ export default {
         start_date: '',
         content_push: ''
       },
+      dialogWpp: false,
       preview: '',
       model: '',
       category: [
@@ -311,6 +329,12 @@ export default {
     optionsFn (dateCalendar) {
       const formattedString = date.formatDate(this.date, 'YYYY/MM/DD')
       return dateCalendar >= formattedString
+    },
+    showDialogWpp () {
+      this.dialogWpp = true
+    },
+    closeDialogWpp () {
+      this.dialogWpp = false
     }
   }
 }
