@@ -150,6 +150,7 @@
 
 <script>
 import { date } from 'quasar'
+import { category } from 'src/constants/category'
 export default {
   name: 'FormEvents',
   props: {
@@ -174,15 +175,7 @@ export default {
       dialogWpp: false,
       preview: '',
       model: '',
-      category: [
-        { label: 'Festas', value: 'parties' },
-        { label: 'Cultural', value: 'cultural' },
-        { label: 'Religiosos', value: 'religious' },
-        { label: 'Esportivos', value: 'sports' },
-        { label: 'Geek', value: 'geek' },
-        { label: 'Turismo', value: 'tourism' },
-        { label: 'Automotivo', value: 'automotive' }
-      ],
+      category: category,
       image: null,
       date: Date.now(),
       fonts: {

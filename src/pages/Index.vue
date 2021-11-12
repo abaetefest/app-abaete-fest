@@ -16,6 +16,9 @@
           v-ripple:primary
           @click="goTo(op)"
         >
+          <q-badge v-if="op.new" color="amber-8" floating >
+            NOVO
+          </q-badge>
           <q-card-section class="flex justify-between">
             <div class="flex column justify-center items-start text-black">
               <span class="text-h6">
@@ -52,6 +55,16 @@ export default {
           textColor: 'primary',
           color: 'white',
           subtitle: 'As melhores baladas, pubs e barzinhos'
+        },
+        {
+          title: 'Carnaval',
+          icon: 'carnival-mask.png',
+          route: 'events',
+          type: 'carnival',
+          textColor: 'primary',
+          color: 'white',
+          subtitle: 'Programação dos blocos',
+          new: true
         },
         {
           title: 'Cultural',

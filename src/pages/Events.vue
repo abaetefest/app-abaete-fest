@@ -1,5 +1,12 @@
 <template>
-  <q-page padding>
+  <q-page>
+    <div class="">
+      <div class="col-12 text-center">
+        <q-banner inline-actions class="text-primary bg-secondary">
+          <span class="text-h5"> {{ categoryName }}</span>
+        </q-banner>
+      </div>
+    </div>
     <q-table
       :grid="grid"
       title="Eventos"
@@ -75,6 +82,7 @@
 
 <script>
 import { date } from 'quasar'
+import { category } from 'src/constants/category'
 export default {
   name: 'PageEvents',
   props: {
@@ -115,6 +123,12 @@ export default {
       load: true,
       modalCourse: false,
       courseDetails: {}
+    }
+  },
+  computed: {
+    categoryName () {
+      const categorySearch = category.find((cat) => cat.value === this.$route.params.type)
+      return categorySearch.label
     }
   },
   async mounted () {
