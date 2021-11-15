@@ -111,11 +111,16 @@ const menusRoute = [
     icon: 'mdi-calendar',
     route: 'home'
   },
+  // {
+  //   title: 'Promoções',
+  //   icon: 'mdi-food',
+  //   route: 'combos',
+  //   disable: true
+  // },
   {
-    title: 'Promoções',
-    icon: 'mdi-food',
-    route: 'combos',
-    disable: true
+    title: 'Pontos Turísticos',
+    icon: 'mdi-map-marker-radius',
+    route: 'tourism'
   },
   {
     title: 'Contato',
@@ -129,6 +134,11 @@ const adminRoute = [
     title: 'Gerenciar Eventos',
     icon: 'mdi-monitor-dashboard',
     route: 'manageEvents'
+  },
+  {
+    title: 'Gerenciar Pontos Turísticos',
+    icon: 'mdi-map-marker-radius',
+    route: 'manageTourism'
   },
   {
     title: 'Gerenciar Usuários',

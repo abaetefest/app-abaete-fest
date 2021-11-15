@@ -22,6 +22,7 @@ module.exports = function (ctx) {
     boot: [
       'services',
       // 'onesignal',
+      'leaflet',
       'i18n',
       'axios',
       'notify',
