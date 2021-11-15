@@ -3,7 +3,7 @@
     <q-form @submit="onSubmit">
       <q-card>
         <q-card-section class="text-h6">
-          Formulário de Eventos
+          Formulário de Pontos Turísticos
         </q-card-section>
         <q-card-section>
           <div class="row q-col-gutter-sm">

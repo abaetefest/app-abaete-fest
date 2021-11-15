@@ -13,16 +13,21 @@
 
         <q-separator />
 
-        <q-card-section >
+        <q-card-section class="q-pb-none">
           <div class="text-body2 text-grey-9 q-mb-md text-center" v-if="tourismData.image_url">
             <q-img :src="tourismData.image_url" style="max-width: 350px" />
           </div>
 
           <div class="text-body2 text-grey-9 q-mb-md" v-if="tourismData.description">
-            <p v-html="tourismData.description">
-              {{ tourismData.description }}
+            <p v-html="tourismData.description"></p>
+          </div>
+
+          <div class="text-body2 text-grey-9 q-mb-md" v-if="tourismData.address">
+            <p>
+              <strong>Endereço:</strong> {{ tourismData.address }}
             </p>
           </div>
+
         </q-card-section>
         <q-card-section class="q-pt-none">
           <p class="text-h6">Veja no mapa:</p>
