@@ -1,39 +1,50 @@
 <template>
-  <q-dialog persistent full-height :value="modalCourse">
-      <q-card class="full-width" :key="courseData.id">
-        <q-card-section class="row q-pb-none">
-          <div class="text-h6 q-py-none col-11">
-           {{ courseData.name}}
-          </div>
-          <q-space />
-          <div class="col-1">
-            <q-btn icon="close" flat round dense @click="$emit('close')" />
-          </div>
-        </q-card-section>
+  <q-dialog persistent maximized :value="modalCourse">
+    <q-layout view="Lhh lpR fff" container class="bg-white">
+      <q-header class="bg-primary">
+        <q-toolbar>
+          <q-toolbar-title>
+            {{ courseData.name}}
+          </q-toolbar-title>
+          <q-btn icon="close" class="float-right" color="white" round flat dense @click="$emit('close')" />
+        </q-toolbar>
+      </q-header>
 
-        <q-separator />
+      <q-footer  class="bg-grey-2 text-primary">
+        <q-toolbar inset>
+          <q-toolbar-title>
+            <q-btn label="Fechar" class="float-right" color="primary" flat dense @click="$emit('close')" />
+          </q-toolbar-title>
+        </q-toolbar>
+      </q-footer>
+      <q-page-container>
+        <q-page>
+          <q-card class="full-width" :key="courseData.id">
 
-        <q-card-section style="max-height: 80vh;" class="scroll">
-          <div class="text-body2 text-grey-9 q-mb-md text-center" v-if="courseData.image_url">
-            <q-img :src="courseData.image_url" style="max-width: 350px" />
-          </div>
+            <q-card-section>
+              <div class="text-body2 text-grey-9 q-mb-md text-center" v-if="courseData.image_url">
+                <q-img :src="courseData.image_url" style="max-width: 350px">
+                  <template #loading>
+                    <q-skeleton class="full-width full-height" square />
+                  </template>
+                </q-img>
+              </div>
 
-          <div class="text-body2 text-grey-9 q-mb-md" v-if="courseData.description">
-            <!-- <strong> SOBRE O EVENTO:</strong> -->
-            <p v-html="courseData.description">
-              {{ courseData.description }}
-            </p>
-          </div>
+              <div class="text-body2 text-grey-9 q-mb-md" v-if="courseData.description">
+                <p v-html="courseData.description">
+                  {{ courseData.description }}
+                </p>
+              </div>
 
-          <div class="text-body2 text-grey-9">
-            <strong>DATA:</strong> {{ formatDateString(courseData.start_date)}} - {{ formatHourString(courseData.start_date) }}
-          </div>
-        </q-card-section>
+              <div class="text-body2 text-grey-9">
+                <strong>DATA:</strong> {{ formatDateString(courseData.start_date)}} - {{ formatHourString(courseData.start_date) }}
+              </div>
+            </q-card-section>
 
-        <!-- <q-card-actions align="right">
-          <q-btn flat label="Fechar" color="primary" @click="$emit('close')" />
-        </q-card-actions> -->
-      </q-card>
+          </q-card>
+        </q-page>
+      </q-page-container>
+      </q-layout>
     </q-dialog>
 </template>
 
