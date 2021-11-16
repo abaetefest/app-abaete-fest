@@ -30,7 +30,15 @@
           <q-card
             class="fit cursor-pointer"
           >
-            <q-img :src="props.row.image_url" :ratio="4/3" @click="openDialogCourse(props.row)" />
+            <q-img
+              :src="props.row.image_url"
+              :ratio="4/3"
+              @click="openDialogCourse(props.row)"
+            >
+              <template #loading>
+                <q-skeleton class="full-width full-height" square />
+              </template>
+            </q-img>
 
             <q-card-section>
               <div class="text-h6 text-center">
@@ -66,7 +74,7 @@ export default {
         sortBy: 'desc',
         descending: false,
         page: 1,
-        rowsPerPage: 8
+        rowsPerPage: 25
       },
       filter: '',
       filtro: 'TODAS',

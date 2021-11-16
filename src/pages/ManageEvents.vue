@@ -23,7 +23,11 @@
 
       <template v-slot:body-cell-image_url="props">
         <q-td :props="props">
-          <q-img :src="props.row.image_url" :ratio="4/3" width="4rem" />
+          <q-img :src="props.row.image_url" :ratio="4/3" width="4rem">
+            <template #loading>
+              <q-skeleton height="150px" width="150px" square />
+            </template>
+          </q-img>
         </q-td>
       </template>
       <template v-slot:body-cell-category="props">
