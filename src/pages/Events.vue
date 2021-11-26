@@ -1,5 +1,5 @@
 <template>
-  <q-page>
+  <q-page class="bg-grey-1">
     <div class="">
       <div class="col-12 text-center">
         <q-banner inline-actions class="text-primary bg-secondary">
@@ -28,7 +28,7 @@
       <template v-slot:item="props">
         <div class="q-pa-sm col-xs-12 col-sm-6 col-md-3">
           <q-card
-            class="fit cursor-pointer"
+            class="fit cursor-pointer shadow-5"
           >
             <q-img
               :src="props.row.image_url"

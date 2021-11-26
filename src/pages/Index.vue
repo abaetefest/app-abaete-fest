@@ -1,5 +1,5 @@
 <template>
-  <q-page padding>
+  <q-page padding class="bg-grey-1">
     <publicity />
     <p class="text-subtitle1 text-center text-primary text-bold text-uppercase">
       Qual o seu interesse para hoje ?
@@ -11,7 +11,7 @@
         :key="index"
       >
         <q-card
-          class="q-pa-xs cursor-pointer card-cursos-dashboard text-white"
+          class="q-pa-xs cursor-pointer card-cursos-dashboard text-white shadow-4"
           :class="`bg-${op.color}`"
           v-ripple:primary
           @click="goTo(op)"
