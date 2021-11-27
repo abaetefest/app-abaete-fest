@@ -13,6 +13,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: 'home', name: 'home', component: () => import('src/pages/Index.vue'), meta: { tab: true } },
+      { path: 'radio', name: 'radio', component: () => import('src/pages/Radio.vue'), meta: { tab: true } },
       { path: 'events/:type', name: 'events', component: () => import('src/pages/Events.vue'), meta: { tab: true } },
       { path: 'tourism', name: 'tourism', component: () => import('src/pages/Tourism.vue'), meta: { tab: true } },
       { path: 'event-details/:id', name: 'eventDetails', component: () => import('src/pages/EventDetails.vue'), meta: { tab: false } },

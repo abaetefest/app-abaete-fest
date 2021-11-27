@@ -123,6 +123,11 @@ const menusRoute = [
     route: 'tourism'
   },
   {
+    title: 'Rádios',
+    icon: 'mdi-radio',
+    route: 'radio'
+  },
+  {
     title: 'Contato',
     icon: 'mdi-card-account-mail-outline',
     route: 'contact'
