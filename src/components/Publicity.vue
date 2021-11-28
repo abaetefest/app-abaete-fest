@@ -10,6 +10,7 @@
           navigation-icon="radio_button_unchecked"
           :autoplay="true"
           :height="$q.screen.lt.sm ? '135px' : '300px'"
+          style="border-radius: 10px"
         >
           <q-carousel-slide :name="1" img-src="advertising/betfair.jpg" @click="goTo('https://promos.betfair.com/choose-your-refer-and-earn-offer?referrerCode=XKGYDJUHG')" />
           <q-carousel-slide :name="2" img-src="advertising/1.png" @click="goTo('https://www.instagram.com/p/CUaK16trdoC/')" />
