@@ -47,5 +47,12 @@ export const makers = [
     icon: 'map-icon/imperialfood.png',
     title: 'Imperial Food',
     description: 'Av. Dom Pedro II, 681 - Centro'
+  },
+  {
+    lat: -1.7247623,
+    long: -48.8823573,
+    icon: 'map-icon/primechoperia.png',
+    title: 'Prime Choperia',
+    description: 'Av. Dom Pedro II, 1035 - Centro'
   }
 ]
