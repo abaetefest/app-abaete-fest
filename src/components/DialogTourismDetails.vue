@@ -1,5 +1,5 @@
 <template>
-  <q-dialog persistent full-height maximized :value="modalTourism">
+  <q-dialog persistent full-height :maximized="$q.screen.lt.sm" :value="modalTourism">
     <q-layout view="Lhh lpR fff" container class="bg-white">
       <q-header class="bg-primary">
         <q-toolbar>
@@ -20,27 +20,30 @@
 
       <q-page-container>
         <q-page>
-          <q-card class="full-width" :key="tourismData.id">
+          <q-card class="full-width no-shadow" :key="tourismData.id">
 
-            <q-card-section class="q-pb-none">
+            <q-card-section class="q-pa-none">
               <div class="text-body2 text-grey-9 q-mb-md text-center" v-if="tourismData.image_url">
-                <q-img :src="tourismData.image_url" style="max-width: 350px">
+                <q-img :src="tourismData.image_url" >
                   <template #loading>
                     <q-skeleton class="full-width full-height" square />
                   </template>
+                  <div class="absolute-bottom text-subtitle1 text-center">
+                    {{tourismData.name}}
+                  </div>
                 </q-img>
               </div>
-
-              <div class="text-body2 text-grey-9 q-mb-md" v-if="tourismData.description">
+            </q-card-section>
+            <q-card-section class="q-pb-none">
+              <div class="text-body1 text-grey-9 q-mb-md" v-if="tourismData.description">
                 <p v-html="tourismData.description"></p>
               </div>
 
-              <div class="text-body2 text-grey-9 q-mb-md" v-if="tourismData.address">
+              <div class="text-body1 text-grey-9 q-mb-md" v-if="tourismData.address">
                 <p>
                   <strong>Endereço:</strong> {{ tourismData.address }}
                 </p>
               </div>
-
             </q-card-section>
             <q-card-section class="q-pt-none">
               <p class="text-h6">Veja no mapa:</p>

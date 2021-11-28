@@ -1,5 +1,5 @@
 <template>
-  <q-dialog persistent maximized :value="modalCourse">
+  <q-dialog persistent :maximized="$q.screen.lt.sm" :value="modalCourse">
     <q-layout view="Lhh lpR fff" container class="bg-white">
       <q-header class="bg-primary">
         <q-toolbar>
@@ -19,18 +19,19 @@
       </q-footer>
       <q-page-container>
         <q-page>
-          <q-card class="full-width" :key="courseData.id">
-
-            <q-card-section>
+          <q-card class="full-width no-shadow" :key="courseData.id">
+            <q-card-section class="q-pa-none">
               <div class="text-body2 text-grey-9 q-mb-md text-center" v-if="courseData.image_url">
-                <q-img :src="courseData.image_url" style="max-width: 350px">
+                <q-img :src="courseData.image_url" :style="$q.screen.lt.sm ? '' : 'width: 300px'">
                   <template #loading>
                     <q-skeleton class="full-width full-height" square />
                   </template>
                 </q-img>
               </div>
+            </q-card-section>
 
-              <div class="text-body2 text-grey-9 q-mb-md" v-if="courseData.description">
+            <q-card-section>
+              <div class="text-body2 text-grey-9" v-if="courseData.description">
                 <p v-html="courseData.description">
                   {{ courseData.description }}
                 </p>
@@ -40,7 +41,6 @@
                 <strong>DATA:</strong> {{ formatDateString(courseData.start_date)}} - {{ formatHourString(courseData.start_date) }}
               </div>
             </q-card-section>
-
           </q-card>
         </q-page>
       </q-page-container>
