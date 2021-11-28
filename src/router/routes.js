@@ -15,6 +15,7 @@ const routes = [
       { path: 'home', name: 'home', component: () => import('src/pages/Index.vue'), meta: { tab: true } },
       { path: 'events/:type', name: 'events', component: () => import('src/pages/Events.vue'), meta: { tab: true } },
       { path: 'tourism', name: 'tourism', component: () => import('src/pages/Tourism.vue'), meta: { tab: true } },
+      { path: 'map', name: 'map', component: () => import('src/pages/MapCity.vue'), meta: { tab: true } },
       { path: 'event-details/:id', name: 'eventDetails', component: () => import('src/pages/EventDetails.vue'), meta: { tab: false } },
       { path: 'manage-events', name: 'manageEvents', component: () => import('src/pages/ManageEvents.vue'), meta: { admin: true } },
       { path: 'manage-tourism', name: 'manageTourism', component: () => import('src/pages/ManageTourism.vue'), meta: { admin: true } },
