@@ -154,7 +154,7 @@ module.exports = function (ctx) {
         name: 'App AbaetéFest',
         short_name: 'App AbaetéFest',
         description: 'Aplicativo de eventos e festivais',
-        display: 'standalone',
+        display: 'fullscreen',
         orientation: 'portrait',
         background_color: '#ffffff',
         theme_color: '#204f8f',
