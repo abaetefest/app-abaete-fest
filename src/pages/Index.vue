@@ -44,6 +44,12 @@ export default {
   components: {
     publicity: () => import('components/Publicity')
   },
+  mounted () {
+    const onBackKeyDown = () => {
+      this.hideDialog()
+    }
+    document.addEventListener('backbutton', onBackKeyDown, false)
+  },
   data () {
     return {
       opcoes: [
