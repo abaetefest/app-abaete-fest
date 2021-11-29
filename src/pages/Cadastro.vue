@@ -30,31 +30,31 @@
         Cadastrar nova conta
       </div>
 
-      <q-input filled bottom-slots v-model="form.name" label="Nome" :rules="[ val => val && val.length > 0 || 'Nome obrigatório']">
+      <q-input filled bottom-slots v-model="form.name" label="Nome*" :rules="[ val => val && val.length > 0 || 'Nome obrigatório']">
         <template v-slot:prepend>
           <q-icon name="mdi-account" />
         </template>
       </q-input>
 
-      <q-input filled bottom-slots v-model="form.email" label="Email" :rules="[ val => val && val.length > 0 || 'Email obrigatório']">
+      <q-input filled bottom-slots v-model="form.email" label="Email*" :rules="[ val => val && val.length > 0 || 'Email obrigatório']">
         <template v-slot:prepend>
           <q-icon name="mdi-email" />
         </template>
       </q-input>
 
-      <q-input filled bottom-slots v-model="form.phone" label="Telefone" mask="(##) #####-####" :rules="[ val => val && val.length >= 15 || 'Telefone obrigatório']">
+      <q-input filled bottom-slots v-model="form.phone" label="Telefone" mask="(##) #####-####" >
         <template v-slot:prepend>
           <q-icon name="mdi-phone" />
         </template>
       </q-input>
 
-      <q-input filled bottom-slots v-model="form.birth_date" label="Data de Nascimento" mask="##/##/####" :rules="[ val => val && val.length >= 10 || 'Data de nascimento obrigatória']">
+      <q-input filled bottom-slots v-model="form.birth_date" label="Data de Nascimento" mask="##/##/####">
         <template v-slot:prepend>
           <q-icon name="mdi-calendar" />
         </template>
       </q-input>
 
-      <q-input v-model="form.password" filled bottom-slots :type="isPwd ? 'password' : 'text'" label="Senha" :rules="[ val => val && val.length > 0 || 'Senha obrigatória']">
+      <q-input v-model="form.password" filled bottom-slots :type="isPwd ? 'password' : 'text'" label="Senha*" :rules="[ val => val && val.length > 0 || 'Senha obrigatória']">
         <template v-slot:prepend>
           <q-icon name="mdi-lock" />
         </template>
@@ -71,7 +71,7 @@
         v-model="confirmPass"
         filled bottom-slots
         :type="isPwd2 ? 'password' : 'text'"
-        label="Confirme a senha"
+        label="Confirme a senha*"
         :rules="[ val => val && val === form.password || 'Senhas não conferem']"
       >
         <template v-slot:prepend>
@@ -153,6 +153,7 @@ export default {
         })
         await localStorage.setItem('abaete-fest-token', response.data.token)
         localStorage.setItem('abaete-manage', response.data.is_admin)
+        localStorage.setItem('abaete-email', this.form.email)
         this.$notifySuccess('Cadastro realizado com Sucesso!')
         this.$router.push({ name: 'home' })
       } catch (error) {
