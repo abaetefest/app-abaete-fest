@@ -89,7 +89,10 @@ export default {
         actions: [{ icon: 'close', color: 'white' }],
         message: 'Não foi possível recupera sua posição!'
       })
+      this.center = [this.latitude, this.longitude]
+      this.markerLatLng = [this.latitude, this.longitude]
       this.$q.loading.hide()
+      this.ready = true
     },
     successNotify () {
       this.$q.notify({
