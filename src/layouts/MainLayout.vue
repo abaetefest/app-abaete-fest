@@ -40,13 +40,14 @@
       </q-toolbar>
     </q-header>
 
-    <q-footer v-if="!!$route.meta.tab" class="lt-md" >
+    <q-footer v-if="!!$route.meta.tab" class="lt-md bg-white" :class="$q.platform.is.ios ? 'q-pb-md' : ''" >
       <q-tabs
         align="justify"
         dense
         no-caps
         indicator-color="white"
-        class="bg-white text-weight-thin text-grey-7 shadow-3"
+        class="bg-white text-weight-thin text-grey-7"
+        :class="$q.platform.is.ios ? 'q-pb-md' : ''"
         active-color="primary"
       >
         <q-route-tab
