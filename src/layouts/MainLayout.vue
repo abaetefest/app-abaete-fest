@@ -17,7 +17,7 @@
         </q-toolbar-title>
 
         <!-- <div>Quasar v{{ $q.version }}</div> -->
-        <q-btn-dropdown color="white" size="lg" label="" flat rounded>
+        <!-- <q-btn-dropdown color="white" size="lg" label="" flat rounded>
           <q-list>
             <q-item clickable @click="goTo('userInformations')">
               <q-item-section>
@@ -36,7 +36,7 @@
               </q-item-section>
             </q-item>
           </q-list>
-        </q-btn-dropdown>
+        </q-btn-dropdown> -->
       </q-toolbar>
     </q-header>
 
