@@ -54,5 +54,12 @@ export const makers = [
     icon: 'map-icon/primechoperia.png',
     title: 'Prime Choperia',
     description: 'Av. Dom Pedro II, 1035 - Centro'
+  },
+  {
+    lat: -1.733326,
+    long: -48.8603401,
+    icon: 'map-icon/nobrehall.png',
+    title: 'Nobre Hall',
+    description: 'PA-409 - Mutirão, Abaetetuba - PA'
   }
 ]
