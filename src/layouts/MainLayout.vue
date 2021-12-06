@@ -55,6 +55,7 @@
           :key="index"
           :icon="tab.icon"
           :label="tab.title"
+          exact
           content-class="text-weight-thin"
           :to="{ name: tab.route }"
         >
@@ -119,7 +120,7 @@ const menusRoute = [
   //   disable: true
   // },
   {
-    title: 'Pontos Turísticos',
+    title: 'P. Turísticos',
     icon: 'mdi-map-marker-radius',
     route: 'tourism'
   },
@@ -127,6 +128,11 @@ const menusRoute = [
     title: 'Mapa',
     icon: 'mdi-map',
     route: 'map'
+  },
+  {
+    title: 'Rádios',
+    icon: 'mdi-radio',
+    route: 'radio'
   },
   {
     title: 'Contato',
