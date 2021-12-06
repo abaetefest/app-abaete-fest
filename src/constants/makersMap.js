@@ -14,15 +14,15 @@ export const makers = [
     description: 'Av. Dom Pedro II, 1079'
   },
   {
-    lat: -1.7244361,
-    long: -48.8837972,
+    lat: -1.724212,
+    long: -48.884634,
     icon: 'map-icon/lenhador.png',
     title: 'Lenhador',
     description: 'Av. Dom Pedro II, 742'
   },
   {
-    lat: -1.7243585,
-    long: -48.8863851,
+    lat: -1.7243967,
+    long: -48.8841696,
     icon: 'map-icon/texas.png',
     title: 'Texas Pub & Burguer',
     description: 'Avenida Dom Pedro II'
