@@ -16,7 +16,7 @@
         Seu navegador não suporta o elemento audio
       </audio>
       <p class="text-caption">
-        Aguarde alguns segundos enquanto o rádio carrega e inicia automáticamente. Caso não inicie aperte no play.
+        Aguarde alguns segundos enquanto o rádio carrega e inicia automaticamente. Caso não inicie aperte no play.
       </p>
     </div>
   </q-page>

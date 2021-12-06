@@ -64,7 +64,7 @@ export const menus = [
     subtitle: 'Carro, moto e som automotivo'
   },
   {
-    title: 'Turísmo',
+    title: 'Turismo',
     icon: 'boat.png',
     route: 'events',
     type: 'tourism',
