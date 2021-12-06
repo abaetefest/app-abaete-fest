@@ -17,7 +17,7 @@
         </q-toolbar-title>
 
         <!-- <div>Quasar v{{ $q.version }}</div> -->
-        <q-btn-dropdown color="white" size="lg" label="" flat rounded>
+        <!-- <q-btn-dropdown color="white" size="lg" label="" flat rounded>
           <q-list>
             <q-item clickable @click="goTo('userInformations')">
               <q-item-section>
@@ -36,17 +36,18 @@
               </q-item-section>
             </q-item>
           </q-list>
-        </q-btn-dropdown>
+        </q-btn-dropdown> -->
       </q-toolbar>
     </q-header>
 
-    <q-footer v-if="!!$route.meta.tab" class="lt-md" >
+    <q-footer v-if="!!$route.meta.tab" class="lt-md bg-white" :class="$q.platform.is.ios ? 'q-pb-md' : ''" >
       <q-tabs
         align="justify"
         dense
         no-caps
         indicator-color="white"
-        class="bg-white text-weight-thin text-grey-7 shadow-3"
+        class="bg-white text-weight-thin text-grey-7"
+        :class="$q.platform.is.ios ? 'q-pb-md' : ''"
         active-color="primary"
       >
         <q-route-tab
@@ -54,6 +55,7 @@
           :key="index"
           :icon="tab.icon"
           :label="tab.title"
+          exact
           content-class="text-weight-thin"
           :to="{ name: tab.route }"
         >
@@ -118,9 +120,14 @@ const menusRoute = [
   //   disable: true
   // },
   {
-    title: 'Pontos Turísticos',
+    title: 'P. Turísticos',
     icon: 'mdi-map-marker-radius',
     route: 'tourism'
+  },
+  {
+    title: 'Mapa',
+    icon: 'mdi-map',
+    route: 'map'
   },
   {
     title: 'Rádios',
