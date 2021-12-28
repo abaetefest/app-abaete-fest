@@ -61,5 +61,12 @@ export const makers = [
     icon: 'map-icon/nobrehall.png',
     title: 'Nobre Hall',
     description: 'PA-409 - Mutirão, Abaetetuba - PA'
+  },
+  {
+    lat: -1.7242978,
+    long: -48.8828481,
+    icon: 'map-icon/berrodoboi.png',
+    title: 'Churrascaria Berro do Boi',
+    description: 'Dom Pedro II, anexo Hotel Jarumã'
   }
 ]
