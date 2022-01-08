@@ -4,6 +4,7 @@ export const makers = [
     long: -48.8866242,
     icon: 'map-icon/barbudos.png',
     title: 'Barbudos',
+    category: 'Pub',
     description: 'Av.Dom Pedro II, ao lado do INSS.'
   },
   {
@@ -11,6 +12,7 @@ export const makers = [
     long: -48.8817265,
     icon: 'map-icon/resenha-beer.png',
     title: 'Resenha Beer',
+    category: 'Pub',
     description: 'Av. Dom Pedro II, 1079'
   },
   {
@@ -18,6 +20,7 @@ export const makers = [
     long: -48.884634,
     icon: 'map-icon/lenhador.png',
     title: 'Lenhador',
+    category: 'Pub',
     description: 'Av. Dom Pedro II, 742'
   },
   {
@@ -25,6 +28,7 @@ export const makers = [
     long: -48.8841696,
     icon: 'map-icon/texas.png',
     title: 'Texas Pub & Burguer',
+    category: 'Pub, Hambúrguer',
     description: 'Avenida Dom Pedro II'
   },
   {
@@ -32,6 +36,7 @@ export const makers = [
     long: -48.8844702,
     icon: 'map-icon/garagem693.png',
     title: 'Garagem 693',
+    category: 'Pub',
     description: 'Av. 15 de Agosto, 693'
   },
   {
@@ -39,6 +44,7 @@ export const makers = [
     long: -48.8867696,
     icon: 'map-icon/ducaliari.png',
     title: "Du'Calliari Pub & Restô",
+    category: 'Pub, Restaurante',
     description: 'Av. Dom Pedro II, 502 - Centro'
   },
   {
@@ -46,6 +52,7 @@ export const makers = [
     long: -48.8851456,
     icon: 'map-icon/imperialfood.png',
     title: 'Imperial Food',
+    category: 'Pub, Restaurante',
     description: 'Av. Dom Pedro II, 681 - Centro'
   },
   {
@@ -53,6 +60,7 @@ export const makers = [
     long: -48.8823573,
     icon: 'map-icon/primechoperia.png',
     title: 'Prime Choperia',
+    category: 'Pub, Chopp',
     description: 'Av. Dom Pedro II, 1035 - Centro'
   },
   {
@@ -60,6 +68,7 @@ export const makers = [
     long: -48.8603401,
     icon: 'map-icon/nobrehall.png',
     title: 'Nobre Hall',
+    category: 'Salão de Eventos',
     description: 'PA-409 - Mutirão, Abaetetuba - PA'
   },
   {
@@ -67,6 +76,15 @@ export const makers = [
     long: -48.8828481,
     icon: 'map-icon/berrodoboi.png',
     title: 'Churrascaria Berro do Boi',
+    category: 'Churrascaria',
     description: 'Dom Pedro II, anexo Hotel Jarumã'
+  },
+  {
+    lat: -1.7187595,
+    long: -48.8830095,
+    icon: 'map-icon/simple.png',
+    title: 'Simple. Bar & Restaurante',
+    category: 'Pub, Restaurante',
+    description: '1° de Maio, 2174,Atrás da Igreja de Nazaré.'
   }
 ]

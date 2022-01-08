@@ -17,6 +17,7 @@
         >
           <l-tooltip>
             <strong>{{ maker.title }} </strong><br>
+            Categoria: <strong>{{ maker.category }} </strong><br>
             <span>{{ maker.description }}</span>
           </l-tooltip>
         </l-marker>
