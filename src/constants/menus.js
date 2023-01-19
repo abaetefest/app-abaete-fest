@@ -8,16 +8,16 @@ export const menus = [
     color: 'white',
     subtitle: 'As melhores baladas, pubs e barzinhos'
   },
-  // {
-  //   title: 'Carnaval',
-  //   icon: 'carnival-mask.png',
-  //   route: 'events',
-  //   type: 'carnival',
-  //   textColor: 'primary',
-  //   color: 'white',
-  //   subtitle: 'Programação dos blocos',
-  //   new: true
-  // },
+  {
+    title: 'Carnaval',
+    icon: 'carnival-mask.png',
+    route: 'events',
+    type: 'carnival',
+    textColor: 'primary',
+    color: 'white',
+    subtitle: 'Programação dos blocos',
+    new: true
+  },
   {
     title: 'Cultural',
     icon: 'guitar.png',
