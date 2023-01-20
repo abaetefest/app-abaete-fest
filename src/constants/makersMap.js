@@ -5,6 +5,7 @@ export const makers = [
     icon: 'map-icon/barbudos.png',
     title: 'Barbudos',
     category: 'Pub',
+    preco: 2,
     description: 'Av.Dom Pedro II, ao lado do INSS.'
   },
   {
@@ -13,6 +14,7 @@ export const makers = [
     icon: 'map-icon/resenha-beer.png',
     title: 'Resenha Beer',
     category: 'Pub',
+    preco: 2,
     description: 'Av. Dom Pedro II, 1079'
   },
   {
@@ -21,6 +23,7 @@ export const makers = [
     icon: 'map-icon/lenhador.png',
     title: 'Lenhador',
     category: 'Pub',
+    preco: 2,
     description: 'Av. Dom Pedro II, 742'
   },
   {
@@ -29,6 +32,7 @@ export const makers = [
     icon: 'map-icon/texas.png',
     title: 'Texas Pub & Burguer',
     category: 'Pub, Hambúrguer',
+    preco: 3,
     description: 'Avenida Dom Pedro II'
   },
   {
@@ -37,6 +41,7 @@ export const makers = [
     icon: 'map-icon/garagem693.png',
     title: 'Garagem 693',
     category: 'Pub',
+    preco: 2,
     description: 'Av. 15 de Agosto, 693'
   },
   {
@@ -45,6 +50,7 @@ export const makers = [
     icon: 'map-icon/ducaliari.png',
     title: "Du'Calliari Pub & Restô",
     category: 'Pub, Restaurante',
+    preco: 2,
     description: 'Av. Dom Pedro II, 502 - Centro'
   },
   {
@@ -53,6 +59,7 @@ export const makers = [
     icon: 'map-icon/imperialfood.png',
     title: 'Imperial Food',
     category: 'Pub, Restaurante',
+    preco: 3,
     description: 'Av. Dom Pedro II, 681 - Centro'
   },
   {
@@ -61,6 +68,7 @@ export const makers = [
     icon: 'map-icon/primechoperia.png',
     title: 'Prime Choperia',
     category: 'Pub, Chopp',
+    preco: 2,
     description: 'Av. Dom Pedro II, 1035 - Centro'
   },
   {
@@ -69,6 +77,7 @@ export const makers = [
     icon: 'map-icon/nobrehall.png',
     title: 'Nobre Hall',
     category: 'Salão de Eventos',
+    preco: 2,
     description: 'PA-409 - Mutirão, Abaetetuba - PA'
   },
   {
@@ -77,6 +86,7 @@ export const makers = [
     icon: 'map-icon/berrodoboi.png',
     title: 'Churrascaria Berro do Boi',
     category: 'Churrascaria',
+    preco: 2,
     description: 'Dom Pedro II, anexo Hotel Jarumã'
   },
   {
@@ -85,6 +95,7 @@ export const makers = [
     icon: 'map-icon/simple.png',
     title: 'Simple. Bar & Restaurante',
     category: 'Pub, Restaurante',
+    preco: 2,
     description: '1° de Maio, 2174,Atrás da Igreja de Nazaré.'
   }
 ]

@@ -113,6 +113,11 @@ const menusRoute = [
     icon: 'mdi-calendar',
     route: 'home'
   },
+  {
+    title: 'Locais',
+    icon: 'mdi-map',
+    route: 'places'
+  },
   // {
   //   title: 'Promoções',
   //   icon: 'mdi-food',
@@ -123,11 +128,6 @@ const menusRoute = [
     title: 'P. Turísticos',
     icon: 'mdi-map-marker-radius',
     route: 'tourism'
-  },
-  {
-    title: 'Mapa',
-    icon: 'mdi-map',
-    route: 'map'
   },
   {
     title: 'Rádios',
