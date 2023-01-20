@@ -57,7 +57,7 @@ export default {
       places: makers,
       ratingModel: 3,
       categoria: 'Bancos',
-      options: ['Bancos', 'Farmácias', 'Pub', 'Restaurante']
+      options: ['Bancos', 'Hotéis', 'Farmácias', 'Pub', 'Restaurante']
     }
   },
   computed: {
