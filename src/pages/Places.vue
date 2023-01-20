@@ -8,6 +8,8 @@
         label="Selecione uma categoria"
         class="col-sm-12 col-xs-12 col-md-6"
         bg-color="white"
+        label-color="primary"
+        color="primary"
       />
     </div>
     <div class="row q-gutter-y-md">
@@ -19,9 +21,9 @@
         <q-item>
 
           <q-item-section>
-            <q-item-label>{{ place.title }}</q-item-label>
+            <q-item-label class="text-weight-medium">{{ place.title }}</q-item-label>
             <q-item-label caption>{{ place.description }}</q-item-label>
-            <q-item-label caption>
+            <q-item-label caption v-if="place.preco">
               Preço:
               <q-rating
                 v-model="place.preco"
@@ -34,8 +36,8 @@
           </q-item-section>
 
           <q-item-section avatar>
-            <q-avatar>
-              <img src="flat/cheers.png">
+            <q-avatar rounded>
+              <img :src="place.icon">
             </q-avatar>
           </q-item-section>
         </q-item>

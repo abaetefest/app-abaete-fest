@@ -1,5 +1,45 @@
 export const makers = [
   {
+    lat: -1.7238821,
+    long: -48.8899339,
+    icon: 'flat/bank.png',
+    title: 'Banco do Brasil',
+    category: 'Bancos',
+    preco: 0,
+    phone: '91 4003-3001',
+    description: 'Av. Dom Pedro II, 410 - Centro'
+  },
+  {
+    lat: -1.7237305,
+    long: -48.8895201,
+    icon: 'flat/bank.png',
+    title: 'Bradesco',
+    category: 'Bancos',
+    preco: 0,
+    phone: '91 3751-1506',
+    description: 'Av. Dom Pedro II, 424 - Centro'
+  },
+  {
+    lat: -1.7238821,
+    long: -48.8899339,
+    icon: 'flat/bank.png',
+    title: 'Caixa Econômica Federal',
+    category: 'Bancos',
+    preco: 0,
+    phone: '91 3751-7150',
+    description: 'Rua Siqueira Mendes, 1375 - Centro'
+  },
+  {
+    lat: -1.7242736,
+    long: -48.8882101,
+    icon: 'flat/bank.png',
+    title: 'Itaú',
+    category: 'Bancos',
+    preco: 0,
+    phone: '91 4004-4828',
+    description: 'Rua Barão do Rio Branco, 1506 - Centro'
+  },
+  {
     lat: -1.7239596,
     long: -48.8866242,
     icon: 'map-icon/barbudos.png',
@@ -49,7 +89,7 @@ export const makers = [
     long: -48.8867696,
     icon: 'map-icon/ducaliari.png',
     title: "Du'Calliari Pub & Restô",
-    category: 'Pub, Restaurante',
+    category: 'Pub',
     preco: 2,
     description: 'Av. Dom Pedro II, 502 - Centro'
   },
@@ -58,7 +98,7 @@ export const makers = [
     long: -48.8851456,
     icon: 'map-icon/imperialfood.png',
     title: 'Imperial Food',
-    category: 'Pub, Restaurante',
+    category: 'Restaurante',
     preco: 3,
     description: 'Av. Dom Pedro II, 681 - Centro'
   },
@@ -67,7 +107,7 @@ export const makers = [
     long: -48.8823573,
     icon: 'map-icon/primechoperia.png',
     title: 'Prime Choperia',
-    category: 'Pub, Chopp',
+    category: 'Pub',
     preco: 2,
     description: 'Av. Dom Pedro II, 1035 - Centro'
   },
@@ -94,7 +134,7 @@ export const makers = [
     long: -48.8830095,
     icon: 'map-icon/simple.png',
     title: 'Simple. Bar & Restaurante',
-    category: 'Pub, Restaurante',
+    category: 'Restaurante',
     preco: 2,
     description: '1° de Maio, 2174,Atrás da Igreja de Nazaré.'
   }
