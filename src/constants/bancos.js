@@ -1,7 +1,7 @@
 export const bancos = [
   {
-    latitude: '-1.7238821',
-    longitude: '-48.8899339',
+    latitude: '-1.7236845',
+    longitude: '-48.8879783',
     icon: 'places/bancobrasil.png',
     title: 'Banco do Brasil',
     category: 'Bancos',
@@ -10,8 +10,8 @@ export const bancos = [
     address: 'Av. Dom Pedro II, 410 - Centro'
   },
   {
-    latitude: '-1.7259202',
-    longitude: '-48.8800221',
+    latitude: '-1.7258585',
+    longitude: '-48.8793673',
     icon: 'places/banpara.png',
     title: 'Banpará',
     category: 'Bancos',
@@ -20,8 +20,8 @@ export const bancos = [
     address: 'Av. Dom Pedro II, 1406 - Santa Rosa'
   },
   {
-    latitude: '-1.723824',
-    longitude: '-48.8873937',
+    latitude: '-1.7233557',
+    longitude: '-48.8889714',
     icon: 'places/basa.png',
     title: 'Basa',
     category: 'Bancos',
@@ -30,8 +30,8 @@ export const bancos = [
     address: 'Av. Dom Pedro II, 270 - Centro'
   },
   {
-    latitude: '-1.7237305',
-    longitude: '-48.8895201',
+    latitude: '-1.7238046',
+    longitude: '-48.8874328',
     icon: 'places/bradesco.png',
     title: 'Bradesco',
     category: 'Bancos',
@@ -40,8 +40,8 @@ export const bancos = [
     address: 'Av. Dom Pedro II, 424 - Centro'
   },
   {
-    latitude: '-1.7238821',
-    longitude: '-48.8899339',
+    latitude: '-1.7248895',
+    longitude: '-48.8902235',
     icon: 'places/caixa.png',
     title: 'Caixa Econômica Federal',
     category: 'Bancos',
@@ -50,8 +50,8 @@ export const bancos = [
     address: 'Rua Siqueira Mendes, 1375 - Centro'
   },
   {
-    latitude: '-1.7242736',
-    longitude: '-48.8882101',
+    latitude: '-1.7239915',
+    longitude: '-48.8887968',
     icon: 'places/itau.png',
     title: 'Itaú',
     category: 'Bancos',
@@ -60,8 +60,8 @@ export const bancos = [
     address: 'Rua Barão do Rio Branco, 1506 - Centro'
   },
   {
-    latitude: '-1.7265764',
-    longitude: '-48.89014',
+    latitude: '-1.7265462',
+    longitude: '-48.8903371',
     icon: 'places/santander.png',
     title: 'Santander',
     category: 'Bancos',
@@ -70,8 +70,8 @@ export const bancos = [
     address: 'Rua Siqueira Mendes, 1208 A - Centro'
   },
   {
-    latitude: '-1.7244284',
-    longitude: '-48.8869443',
+    latitude: '-1.7240067',
+    longitude: '-48.8860424',
     icon: 'places/sicoob.png',
     title: 'Sicoob',
     category: 'Bancos',
