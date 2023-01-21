@@ -1,7 +1,6 @@
 <template>
   <q-page padding class="bg-grey-1">
     <div class="row q-pb-md">
-    {{ categoria }}
       <q-select
         outlined
         v-model="categoria"

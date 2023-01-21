@@ -115,8 +115,13 @@ const menusRoute = [
   },
   {
     title: 'Locais',
-    icon: 'mdi-map',
+    icon: 'mdi-storefront-outline',
     route: 'places'
+  },
+  {
+    title: 'Mapa',
+    icon: 'mdi-map',
+    route: 'map'
   },
   // {
   //   title: 'Promoções',
@@ -129,11 +134,11 @@ const menusRoute = [
     icon: 'mdi-map-marker-radius',
     route: 'tourism'
   },
-  {
-    title: 'Rádios',
-    icon: 'mdi-radio',
-    route: 'radio'
-  },
+  // {
+  //   title: 'Rádios',
+  //   icon: 'mdi-radio',
+  //   route: 'radio'
+  // },
   {
     title: 'Contato',
     icon: 'mdi-card-account-mail-outline',

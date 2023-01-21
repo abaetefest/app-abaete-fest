@@ -3,6 +3,12 @@
     <div class="">
       <div class="col-12 text-center">
         <q-banner inline-actions class="text-primary bg-secondary">
+          <q-icon
+            name="mdi-arrow-left"
+            size="2em"
+            class="float-left"
+            @click="backToEvents"
+          />
           <span class="text-h5"> {{ categoryName }}</span>
         </q-banner>
       </div>
@@ -109,7 +115,6 @@ export default {
         descending: false,
         page: 1,
         rowsPerPage: 8
-        // rowsNumber: xx if getting data from a server
       },
       filter: '',
       filtro: 'TODAS',
@@ -171,6 +176,9 @@ export default {
     },
     formatHourString (dateOriginal) {
       return date.formatDate(dateOriginal, 'HH:mm')
+    },
+    backToEvents () {
+      this.$router.push({ name: 'home' })
     }
   }
 }

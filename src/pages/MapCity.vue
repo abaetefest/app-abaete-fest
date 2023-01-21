@@ -1,5 +1,39 @@
 <template>
   <q-page class="bg-grey-1">
+    <q-select
+        outlined
+        v-model="categoria"
+        :options="options"
+        label="Selecione uma categoria"
+        class="col-sm-12 col-xs-12 col-md-6"
+        bg-color="white"
+        label-color="primary"
+        color="primary"
+        map-options
+        emit-value
+        @input="setFilterMap"
+      >
+        <template v-slot:prepend>
+          <q-avatar rounded>
+            <img :src="getIconCategory">
+          </q-avatar>
+        </template>
+        <template v-slot:option="scope">
+            <q-item
+              v-bind="scope.itemProps"
+              v-on="scope.itemEvents"
+            >
+              <q-item-section avatar>
+                <q-avatar rounded>
+                  <img :src="scope.opt.icon">
+                </q-avatar>
+              </q-item-section>
+              <q-item-section>
+                <q-item-label v-html="scope.opt.label" />
+              </q-item-section>
+            </q-item>
+          </template>
+      </q-select>
       <l-map
         v-if="ready"
         :zoom="zoom"
@@ -9,9 +43,9 @@
       >
         <l-tile-layer :url="url"></l-tile-layer>
         <l-marker
-          v-for="(maker, index) in makers"
+          v-for="(maker, index) in makersMap"
           :key="index"
-          :lat-lng="[maker.lat, maker.long]"
+          :lat-lng="[maker.latitude, maker.longitude]"
           :icon="getIcon(maker.icon)"
           @click="showDialog"
         >
@@ -23,6 +57,7 @@
         </l-marker>
         <l-control-zoom position="bottomright"  ></l-control-zoom>
       </l-map>
+
       <q-inner-loading :showing="!ready">
         <p>Carregando mapa</p>
         <q-spinner size="50px" color="primary" />
@@ -42,19 +77,54 @@ export default {
       center: [],
       ready: false,
       makers: makers,
+      makersMap: makers,
+      categoria: 'Todas',
       icon: L.icon({
         iconUrl: 'map-icon/barbudos.png',
         iconSize: [50, 50],
         iconAnchor: [16, 37]
-      })
+      }),
+      options: [
+        {
+          label: 'Todas',
+          value: 'Todas',
+          icon: 'flat/all.png'
+        },
+        {
+          label: 'Bancos',
+          value: 'Bancos',
+          icon: 'flat/bank.png'
+        },
+        {
+          label: 'Hotéis',
+          value: 'Hotéis',
+          icon: 'places/hotel.png'
+        },
+        {
+          label: 'Farmácias',
+          value: 'Farmácias',
+          icon: 'places/farmacia.png'
+        },
+        {
+          label: 'Pub & Restaurante',
+          value: 'Pub&Restaurante',
+          icon: 'flat/cheers.png'
+        }
+      ]
     }
   },
   mounted () {
     this.setPosition()
   },
+  computed: {
+    getIconCategory: function () {
+      const img = this.options.filter(opt => opt.value === this.categoria)
+      return img[0].icon
+    }
+  },
   methods: {
     async setPosition (position) {
-      this.center = [-1.7292281, -48.8908916]
+      this.center = [-1.7282768, -48.8749289]
       this.ready = true
     },
     errorPosition () {
@@ -87,6 +157,15 @@ export default {
         iconSize: [50, 50],
         iconAnchor: [16, 37]
       })
+    },
+    async setFilterMap () {
+      this.ready = false
+      if (this.categoria === 'Todas') {
+        this.makersMap = makers
+      } else {
+        this.makersMap = makers.filter(mk => mk.category === this.categoria)
+      }
+      this.ready = true
     }
   }
 }
@@ -95,13 +174,13 @@ export default {
 <style scoped>
 .map-size {
   /* Firefox */
-  height: -moz-calc(100vh - 105px);
+  height: -moz-calc(100vh - 170px);
   /* WebKit */
-  height: -webkit-calc(100vh - 105px);
+  height: -webkit-calc(100vh - 170px);
   /* Opera */
-  height: -o-calc(100vh - 105px);
+  height: -o-calc(100vh - 170px);
   /* Standard */
-  height: calc(100vh - 105px);
+  height: calc(100vh - 170px);
   /* min-height: 90vh; */
 }
 </style>
