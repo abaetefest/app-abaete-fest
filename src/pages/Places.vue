@@ -10,6 +10,8 @@
         bg-color="white"
         label-color="primary"
         color="primary"
+        map-options
+        emit-value
       />
     </div>
     <div class="row q-gutter-y-md">
@@ -65,7 +67,24 @@ export default {
       places: makers,
       ratingModel: 3,
       categoria: 'Bancos',
-      options: ['Bancos', 'Hotéis', 'Farmácias', 'Pub', 'Restaurante'],
+      options: [
+        {
+          label: 'Bancos',
+          value: 'Bancos'
+        },
+        {
+          label: 'Hotéis',
+          value: 'Hotéis'
+        },
+        {
+          label: 'Farmácias',
+          value: 'Farmácias'
+        },
+        {
+          label: 'Pub & Restaurante',
+          value: 'Pub&Restaurante'
+        }
+      ],
       modalPlaces: false,
       placeDetails: {}
     }

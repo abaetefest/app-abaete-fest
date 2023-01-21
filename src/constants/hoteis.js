@@ -7,7 +7,7 @@ export const hoteis = [
     category: 'Hotéis',
     preco: 3,
     phone: '91 3751-2760',
-    description: 'Av. Dom Pedro II, 945 - Centro'
+    address: 'Av. Dom Pedro II, 945 - Centro'
   },
   {
     latitude: '-1.7263945',
@@ -17,7 +17,7 @@ export const hoteis = [
     category: 'Hotéis',
     preco: 2,
     phone: '91 983206240',
-    description: 'R. Joaquim Mendes Contente, 1347 - Santa Rosa'
+    address: 'R. Joaquim Mendes Contente, 1347 - Santa Rosa'
   },
   {
     latitude: '-1.7243662',
@@ -27,7 +27,7 @@ export const hoteis = [
     category: 'Hotéis',
     preco: 2,
     phone: '91 991325108',
-    description: 'Av. São Paulo, 1697 - Centro'
+    address: 'Av. São Paulo, 1697 - Centro'
   },
   {
     latitude: '-1.7203128',
@@ -37,7 +37,7 @@ export const hoteis = [
     category: 'Hotéis',
     preco: 2,
     phone: '91 998319099',
-    description: 'Av. São Paulo, 2298 - Aviação'
+    address: 'Av. São Paulo, 2298 - Aviação'
   },
   {
     latitude: '-1.7276616',
@@ -47,7 +47,7 @@ export const hoteis = [
     category: 'Hotéis',
     preco: 2,
     phone: '91 982096013',
-    description: 'R. José latitudeino Lidio da Silva, 1459 - Santa Rosa'
+    address: 'R. José latitudeino Lidio da Silva, 1459 - Santa Rosa'
   },
   {
     latitude: '-1.7279973',
@@ -57,7 +57,7 @@ export const hoteis = [
     category: 'Hotéis',
     preco: 2,
     phone: '91 992724455',
-    description: 'Rod. Dr. João Miranda, 1752 - Santa Rosa'
+    address: 'Rod. Dr. João Miranda, 1752 - Santa Rosa'
   },
   {
     latitude: '-1.7285482',
@@ -67,7 +67,7 @@ export const hoteis = [
     category: 'Hotéis',
     preco: 2,
     phone: '91 989609948',
-    description: 'Tv. do Hospital, 1018 - Santa Rosa'
+    address: 'Tv. do Hospital, 1018 - Santa Rosa'
   },
   {
     latitude: '-1.728464',
