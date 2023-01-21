@@ -52,7 +52,7 @@
           <l-tooltip>
             <strong>{{ maker.title }} </strong><br>
             Categoria: <strong>{{ maker.category }} </strong><br>
-            <span>{{ maker.description }}</span>
+            <span>{{ maker.address }}</span>
           </l-tooltip>
         </l-marker>
         <l-control-zoom position="bottomright"  ></l-control-zoom>
