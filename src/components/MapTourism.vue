@@ -7,7 +7,7 @@
       :center="center"
     >
       <l-tile-layer :url="url"></l-tile-layer>
-      <l-marker :lat-lng="markerLatLng" >
+      <l-marker :lat-lng="markerLatLng">
         <l-popup v-if="description">
           Você está aqui!
         </l-popup>
@@ -42,21 +42,20 @@ export default {
     description: {
       type: String,
       required: false
+    },
+    zoom: {
+      type: Number,
+      required: false,
+      default: 12
     }
   },
   data () {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      zoom: 12,
       center: [],
       markerLatLng: [10, 10],
       picoleLatLng: [],
       ready: false
-      // icon: L.icon({
-      //   iconUrl: 'support.png',
-      //   iconSize: [50, 50],
-      //   iconAnchor: [16, 37]
-      // })
     }
   },
   mounted () {

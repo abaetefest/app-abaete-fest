@@ -17,12 +17,13 @@
         v-for="(place, index) in getPlaces"
         :key="index"
         class="col-sm-12 col-xs-12 col-md-6"
+        @click="openDialogCourse(place)"
       >
         <q-item>
 
           <q-item-section>
             <q-item-label class="text-weight-medium">{{ place.title }}</q-item-label>
-            <q-item-label caption>{{ place.description }}</q-item-label>
+            <q-item-label caption>{{ place.address }}</q-item-label>
             <q-item-label caption v-if="place.preco">
               Preço:
               <q-rating
@@ -45,6 +46,10 @@
         <!-- <img src="https://cdn.quasar.dev/img/parallax2.jpg"> -->
       </q-card>
     </div>
+    <dialog-places
+      :modal-places="modalPlaces"
+      :place-data="placeDetails"
+      @close="closeModal" />
   </q-page>
 </template>
 
@@ -52,12 +57,17 @@
 import { makers } from 'src/constants/makersMap'
 export default {
   name: 'PlacesPage',
+  components: {
+    DialogPlaces: () => import('components/DialogPlaces')
+  },
   data () {
     return {
       places: makers,
       ratingModel: 3,
       categoria: 'Bancos',
-      options: ['Bancos', 'Hotéis', 'Farmácias', 'Pub', 'Restaurante']
+      options: ['Bancos', 'Hotéis', 'Farmácias', 'Pub', 'Restaurante'],
+      modalPlaces: false,
+      placeDetails: {}
     }
   },
   computed: {
@@ -67,6 +77,16 @@ export default {
   },
   mounted () {
     console.log(this.categoria)
+  },
+  methods: {
+    openDialogCourse (course) {
+      this.modalPlaces = true
+      this.placeDetails = course
+    },
+    closeModal () {
+      this.modalPlaces = false
+      this.placeDetails = {}
+    }
   }
 }
 </script>
