@@ -1,6 +1,7 @@
 <template>
   <q-page padding class="bg-grey-1">
     <div class="row q-pb-md">
+    {{ categoria }}
       <q-select
         outlined
         v-model="categoria"
@@ -12,7 +13,29 @@
         color="primary"
         map-options
         emit-value
-      />
+      >
+        <template v-slot:prepend>
+          <q-avatar rounded>
+            <img :src="getIconCategory">
+          </q-avatar>
+        </template>
+        <template v-slot:option="scope">
+            <q-item
+              v-bind="scope.itemProps"
+              v-on="scope.itemEvents"
+            >
+              <q-item-section avatar>
+                <q-avatar rounded>
+                  <img :src="scope.opt.icon">
+                </q-avatar>
+                <!-- <q-icon :name="scope.opt.icon" /> -->
+              </q-item-section>
+              <q-item-section>
+                <q-item-label v-html="scope.opt.label" />
+              </q-item-section>
+            </q-item>
+          </template>
+      </q-select>
     </div>
     <div class="row q-gutter-y-md">
       <q-card
@@ -70,19 +93,23 @@ export default {
       options: [
         {
           label: 'Bancos',
-          value: 'Bancos'
+          value: 'Bancos',
+          icon: 'flat/bank.png'
         },
         {
           label: 'Hotéis',
-          value: 'Hotéis'
+          value: 'Hotéis',
+          icon: 'places/hotel.png'
         },
         {
           label: 'Farmácias',
-          value: 'Farmácias'
+          value: 'Farmácias',
+          icon: 'places/farmacia.png'
         },
         {
           label: 'Pub & Restaurante',
-          value: 'Pub&Restaurante'
+          value: 'Pub&Restaurante',
+          icon: 'flat/cheers.png'
         }
       ],
       modalPlaces: false,
@@ -92,6 +119,10 @@ export default {
   computed: {
     getPlaces: function () {
       return makers.filter(place => place.category === this.categoria)
+    },
+    getIconCategory: function () {
+      const img = this.options.filter(opt => opt.value === this.categoria)
+      return img[0].icon
     }
   },
   mounted () {

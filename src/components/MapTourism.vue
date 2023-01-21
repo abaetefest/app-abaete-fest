@@ -76,7 +76,7 @@ export default {
       this.markerLatLng = [coords.latitude, coords.longitude]
       // this.picoleLatLng = this.serviceData.location
       // this.$q.loading.hide()
-      this.successNotify()
+      // this.successNotify()
       this.ready = true
     },
     errorPosition () {
