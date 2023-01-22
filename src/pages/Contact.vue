@@ -40,6 +40,10 @@
             :width="$q.screen.gt.sm ? '400' : '400'"
           />
       </div>
+      <div class="col-sm-12 col-xs-12 col-md-6 q-pt-md">
+         <p><span class="text-bold">Mantido por:</span> Patrick Monteiro</p>
+         <p><span class="text-bold">Email:</span> eng.patrickmonteiro@gmail.com</p>
+      </div>
     </div>
       <!-- <div class="col-12 text-subtitle2">
         <q-icon name="mdi-mail" class="q-pr-md" size="sm" /> abaetefest@gmail.com
