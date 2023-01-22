@@ -36,13 +36,13 @@ export const pubRestaurante = [
     address: 'Avenida Dom Pedro II'
   },
   {
-    latitude: -1.7230875,
-    longitude: -48.8844702,
-    icon: 'map-icon/garagem693.png',
-    title: 'Garagem 693',
-    category: 'Pub&Restaurante',
-    preco: 2,
-    address: 'Av. 15 de Agosto, 693'
+    latitude: -1.7243967,
+    longitude: -48.8841696,
+    icon: 'map-icon/texas.png',
+    title: 'Texas Premium Steakhouse',
+    category: 'Pub,Restaurante',
+    preco: 4,
+    address: 'R. Magno de Araújo, 1959 - São Lourenço'
   },
   {
     latitude: -1.72372,
@@ -56,8 +56,8 @@ export const pubRestaurante = [
   {
     latitude: -1.7238808,
     longitude: -48.8851456,
-    icon: 'map-icon/imperialfood.png',
-    title: 'Imperial Food',
+    icon: '',
+    title: 'Restaurante DOMO',
     category: 'Pub&Restaurante',
     preco: 3,
     address: 'Av. Dom Pedro II, 681 - Centro'
@@ -71,23 +71,14 @@ export const pubRestaurante = [
     preco: 2,
     address: 'Av. Dom Pedro II, 1035 - Centro'
   },
-  // {
-  //   latitude: -1.733326,
-  //   longitude: -48.8603401,
-  //   icon: 'map-icon/nobrehall.png',
-  //   title: 'Nobre Hall',
-  //   category: 'Pub&Restaurante',
-  //   preco: 2,
-  //   address: 'PA-409 - Mutirão, Abaetetuba - PA'
-  // },
   {
-    latitude: -1.7242978,
-    longitude: -48.8828481,
+    latitude: -1.7274963,
+    longitude: -48.876478,
     icon: 'map-icon/berrodoboi.png',
     title: 'Churrascaria Berro do Boi',
     category: 'Pub&Restaurante',
     preco: 2,
-    address: 'Dom Pedro II, anexo Hotel Jarumã'
+    address: 'Rod. Dr. João Miranda, 1724 - Santa Rosa'
   },
   {
     latitude: -1.7187595,
@@ -97,5 +88,23 @@ export const pubRestaurante = [
     category: 'Pub&Restaurante',
     preco: 2,
     address: '1° de Maio, 2174,Atrás da Igreja de Nazaré.'
+  },
+  {
+    latitude: -1.7284656,
+    longitude: -48.8943648,
+    icon: 'map-icon/malocabelavista.png',
+    title: 'Maloca Bela Vista',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'Tv. Padre Pímentel, 1 - Centro'
+  },
+  {
+    latitude: -1.7180197,
+    longitude: -48.8894869,
+    icon: 'map-icon/hotfolia.png',
+    title: 'Hot Folia Beira Mar',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'R. Siqueira Mendes, 2207 - São José'
   }
 ]
