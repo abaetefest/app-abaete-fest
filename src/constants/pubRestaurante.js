@@ -31,7 +31,7 @@ export const pubRestaurante = [
     longitude: -48.8841696,
     icon: 'map-icon/texas.png',
     title: 'Texas Pub & Burguer',
-    category: 'Pub, Hambúrguer',
+    category: 'Pub&Restaurante',
     preco: 3,
     address: 'Avenida Dom Pedro II'
   },
@@ -40,7 +40,7 @@ export const pubRestaurante = [
     longitude: -48.8841696,
     icon: 'map-icon/texas.png',
     title: 'Texas Premium Steakhouse',
-    category: 'Pub,Restaurante',
+    category: 'Pub&Restaurante',
     preco: 4,
     address: 'R. Magno de Araújo, 1959 - São Lourenço'
   },
