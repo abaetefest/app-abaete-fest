@@ -165,7 +165,9 @@ export default {
       } else {
         this.makersMap = makers.filter(mk => mk.category === this.categoria)
       }
-      this.ready = true
+      setTimeout(() => {
+        this.ready = true
+      }, 300)
     }
   }
 }
