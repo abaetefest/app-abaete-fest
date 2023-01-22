@@ -113,6 +113,16 @@ const menusRoute = [
     icon: 'mdi-calendar',
     route: 'home'
   },
+  {
+    title: 'Locais',
+    icon: 'mdi-storefront-outline',
+    route: 'places'
+  },
+  {
+    title: 'Mapa',
+    icon: 'mdi-map',
+    route: 'map'
+  },
   // {
   //   title: 'Promoções',
   //   icon: 'mdi-food',
@@ -124,16 +134,11 @@ const menusRoute = [
     icon: 'mdi-map-marker-radius',
     route: 'tourism'
   },
-  {
-    title: 'Mapa',
-    icon: 'mdi-map',
-    route: 'map'
-  },
-  {
-    title: 'Rádios',
-    icon: 'mdi-radio',
-    route: 'radio'
-  },
+  // {
+  //   title: 'Rádios',
+  //   icon: 'mdi-radio',
+  //   route: 'radio'
+  // },
   {
     title: 'Contato',
     icon: 'mdi-card-account-mail-outline',
