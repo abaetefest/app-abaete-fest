@@ -37,9 +37,13 @@ export default class EventsService extends Rest {
     }
   }
 
-  async listByCategory ($category) {
+  async listByCategory ($category = '') {
     try {
-      return await this.http.get(`${this.url}?category=${$category}`)
+      if ($category && $category !== 'all') {
+        return await this.http.get(`${this.url}?category=${$category}`)
+      } else {
+        return await this.http.get(`${this.url}`)
+      }
     } catch (error) {
       throw error.response
     }

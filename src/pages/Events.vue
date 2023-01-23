@@ -1,17 +1,54 @@
 <template>
   <q-page class="bg-grey-1">
-    <div class="">
-      <div class="col-12 text-center">
-        <q-banner inline-actions class="text-primary bg-secondary">
-          <q-icon
+    <!-- <div class="">
+      <div class="col-12 text-center"> -->
+        <!-- <q-banner inline-actions class="text-primary bg-secondary"> -->
+          <!-- <q-icon
             name="mdi-arrow-left"
             size="2em"
             class="float-left"
             @click="backToEvents"
-          />
-          <span class="text-h5"> {{ categoryName }}</span>
-        </q-banner>
-      </div>
+          /> -->
+          <!-- <span class="text-h5"> {{ categoryName }}</span> -->
+        <!-- </q-banner> -->
+      <!-- </div>
+    </div> -->
+    <div class="row q-pa-sm">
+      <q-select
+        outlined
+        v-model="categoria"
+        :options="options"
+        label="Selecione uma categoria"
+        class="col-sm-12 col-xs-12 col-md-6"
+        bg-color="white"
+        label-color="primary"
+        color="primary"
+        map-options
+        emit-value
+        @input="listEvents(categoria)"
+      >
+        <template v-slot:prepend>
+          <q-avatar rounded>
+            <img :src="getIconCategory">
+          </q-avatar>
+        </template>
+        <template v-slot:option="scope">
+            <q-item
+              v-bind="scope.itemProps"
+              v-on="scope.itemEvents"
+            >
+              <q-item-section avatar>
+                <q-avatar rounded>
+                  <img :src="scope.opt.icon">
+                </q-avatar>
+                <!-- <q-icon :name="scope.opt.icon" /> -->
+              </q-item-section>
+              <q-item-section>
+                <q-item-label v-html="scope.opt.label" />
+              </q-item-section>
+            </q-item>
+          </template>
+      </q-select>
     </div>
     <q-table
       :grid="grid"
@@ -114,11 +151,13 @@ export default {
         sortBy: 'desc',
         descending: false,
         page: 1,
-        rowsPerPage: 8
+        rowsPerPage: 15
       },
       filter: '',
       filtro: 'TODAS',
-      category: [],
+      // category: [],
+      categoria: 'all',
+      options: category,
       columns: [
         {
           name: 'name',
@@ -139,16 +178,24 @@ export default {
     }
   },
   computed: {
-    categoryName () {
-      const categorySearch = category.find((cat) => cat.value === this.$route.params.type)
-      return categorySearch.label
+    getIconCategory: function () {
+      const img = this.options.filter(opt => opt.value === this.categoria)
+      return img[0].icon
     }
+  //   categoryName () {
+  //     const categorySearch = category.find((cat) => cat.value === this.$route.params.type)
+  //     return categorySearch.label
+  //   }
   },
   async mounted () {
-    await this.listEvents(this.$route.params.type)
+    if (this.$route.params.type) {
+      await this.listEvents(this.$route.params.type)
+    } else {
+      await this.listEvents()
+    }
   },
   methods: {
-    async listEvents (category) {
+    async listEvents (category = '') {
       this.load = true
       try {
         const { data } = await this.$services.events().listByCategory(category)
