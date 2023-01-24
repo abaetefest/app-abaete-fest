@@ -5,7 +5,7 @@
     </p>
     <div class="row q-pa-sm">
       <div class="col-12 text-subtitle1 text-justify">
-        <p>Você gostaria de ver o seu evento no nosso app? Entre em contato conosco para mais informações:</p>
+        <p>Você gostaria de ver o seu evento no nosso app? Envie as informações para nosso whatsapp ou instagram:</p>
       </div>
     </div>
     <div class="row justify-center">
@@ -18,6 +18,7 @@
           push
           color="green-7"
           class="shadow-6"
+          label="Whatsapp"
           icon="mdi-whatsapp"
           href="https://api.whatsapp.com/send?phone=5591982828945&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20como%20publicar%20meu%20evento%20no%20app%20Abaet%C3%A9Fest"
           target="_blank"
@@ -28,6 +29,7 @@
           push
           color="pink"
           class="shadow-6"
+          label="instagram"
           icon="mdi-instagram"
           href="https://www.instagram.com/abaetefest/"
           target="_blank"
@@ -40,6 +42,8 @@
             :width="$q.screen.gt.sm ? '400' : '400'"
           />
       </div>
+    </div>
+    <div class="row">
       <div class="col-sm-12 col-xs-12 col-md-6 q-pt-md">
          <p><span class="text-bold">Mantido por:</span> Patrick Monteiro</p>
          <p><span class="text-bold">Email:</span> eng.patrickmonteiro@gmail.com</p>

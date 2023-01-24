@@ -1,6 +1,7 @@
 <template>
   <q-page class="bg-grey-1">
-    <q-select
+    <div class="row q-pb-md q-px-sm q-pt-sm">
+      <q-select
         outlined
         v-model="categoria"
         :options="options"
@@ -34,6 +35,7 @@
             </q-item>
           </template>
       </q-select>
+    </div>
       <l-map
         v-if="ready"
         :zoom="zoom"
