@@ -77,17 +77,17 @@ export const hoteis = [
     category: 'Hotéis',
     preco: 2,
     phone: '91 982523369',
-    description: 'Rod. Dr. João Miranda, 714 - Santa Rosa'
+    address: 'Rod. Dr. João Miranda, 714 - Santa Rosa'
   },
   {
     latitude: '-1.7197482',
     longitude: '-48.8824579',
     icon: 'places/hotel.png',
-    title: 'Hotel 3 Irmãos:',
+    title: 'Hotel 3 Irmãos',
     category: 'Hotéis',
     preco: 2,
-    phone: '',
-    description: 'R. Primeiro de Maio, 2107 - São Lourenço'
+    phone: '91 98197-3550',
+    address: 'R. Primeiro de Maio, 2107 - São Lourenço'
   },
   {
     latitude: '-1.7221881',
@@ -97,6 +97,6 @@ export const hoteis = [
     category: 'Hotéis',
     preco: 2,
     phone: '91 983090901',
-    description: 'Av. São Paulo, 2015 - Aviação'
+    address: 'Av. São Paulo, 2015 - Aviação'
   }
 ]
