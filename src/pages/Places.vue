@@ -109,6 +109,11 @@ export default {
           label: 'Pub & Restaurante',
           value: 'Pub&Restaurante',
           icon: 'flat/cheers.png'
+        },
+        {
+          label: 'Artigos de Pesca Esportiva',
+          value: 'Pesca',
+          icon: 'flat/fishing.png'
         }
       ],
       modalPlaces: false,
