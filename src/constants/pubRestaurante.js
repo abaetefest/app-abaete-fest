@@ -29,7 +29,7 @@ export const pubRestaurante = [
   {
     latitude: -1.7243967,
     longitude: -48.8841696,
-    icon: 'map-icon/texas.png',
+    icon: 'map-icon/texasburguer.png',
     title: 'Texas Pub & Burguer',
     category: 'Pub&Restaurante',
     preco: 3,
@@ -41,7 +41,7 @@ export const pubRestaurante = [
     icon: 'map-icon/texas.png',
     title: 'Texas Premium Steakhouse',
     category: 'Pub&Restaurante',
-    preco: 4,
+    preco: 3,
     address: 'R. Magno de Araújo, 1959 - São Lourenço'
   },
   {
@@ -56,7 +56,7 @@ export const pubRestaurante = [
   {
     latitude: -1.7238808,
     longitude: -48.8851456,
-    icon: '',
+    icon: 'map-icon/domo.png',
     title: 'Restaurante DOMO',
     category: 'Pub&Restaurante',
     preco: 3,
@@ -81,13 +81,13 @@ export const pubRestaurante = [
     address: 'Rod. Dr. João Miranda, 1724 - Santa Rosa'
   },
   {
-    latitude: -1.7187595,
-    longitude: -48.8830095,
+    latitude: -1.724571,
+    longitude: -48.8821012,
     icon: 'map-icon/simple.png',
     title: 'Simple. Bar & Restaurante',
     category: 'Pub&Restaurante',
     preco: 2,
-    address: '1° de Maio, 2174,Atrás da Igreja de Nazaré.'
+    address: 'Av. Dom Pedro II, 1035 - Centro'
   },
   {
     latitude: -1.7284656,
