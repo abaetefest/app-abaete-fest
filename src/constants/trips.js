@@ -298,5 +298,126 @@ export const trips = [
         ]
       }
     ]
+  },
+  // Abaeté Expresso
+  {
+    empresa: 'Abaeté Expresso',
+    icon: 'trips/expresso.png',
+    viagens: [
+      {
+        origem: 'Abaetetuba',
+        destino: 'Belém',
+        // periodo: 'Segunda a Sexta',
+        horarios: [
+          {
+            hora: '05:30*',
+            modalidade: 'Alça Viária',
+            obs: 'Pode sofrer alterações domingos e feriados'
+          },
+          {
+            hora: '07:40',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '09:00',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '10:00',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '11:00',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '12:00',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '12:45',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '13:45*',
+            modalidade: 'Alça Viária',
+            obs: 'Pode sofrer alterações domingos e feriados'
+          },
+          {
+            hora: '15:00',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '16:30',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '17:15',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '17:45',
+            modalidade: 'Alça Viária'
+          }
+        ]
+      },
+      {
+        origem: 'Belém',
+        destino: 'Abaetetuba',
+        // periodo: 'Segunda a Sexta',
+        horarios: [
+          {
+            hora: '05:20*',
+            modalidade: 'Alça Viária',
+            obs: 'Pode sofrer alterações domingos e feriados'
+          },
+          {
+            hora: '07:00',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '08:00',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '09:00',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '10:00',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '11:20',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '12:20',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '13:30',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '14:00',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '14:45',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '16:10',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '18:00*',
+            modalidade: 'Alça Viária',
+            obs: 'Pode sofrer alterações domingos e feriados'
+          }
+        ]
+      }
+    ]
   }
 ]
