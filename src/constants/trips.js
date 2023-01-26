@@ -35,7 +35,7 @@ export const trips = [
             modalidade: 'Arapari'
           },
           {
-            hora: '06:30',
+            hora: '14:00',
             modalidade: 'Alça Viária'
           },
           {
@@ -50,6 +50,15 @@ export const trips = [
         periodo: 'Sábado e Domingo',
         modalidade: 'Arapari',
         horarios: [
+          {
+            hora: '06:30',
+            modalidade: 'Alça Viária'
+          },
+          {
+            hora: '07:00',
+            modalidade: 'Alça Viária',
+            obs: 'Somente Sábado'
+          },
           {
             hora: '08:45',
             modalidade: 'Arapari'
@@ -89,13 +98,11 @@ export const trips = [
           },
           {
             hora: '09:30',
-            modalidade: 'Alça Viária',
-            obs: 'Segunda a Sábado'
+            modalidade: 'Alça Viária'
           },
           {
             hora: '12:00',
-            modalidade: 'Alça Viária',
-            obs: 'Segunda a Sábado'
+            modalidade: 'Alça Viária'
           },
           {
             hora: '14:00',
@@ -107,8 +114,7 @@ export const trips = [
           },
           {
             hora: '16:30',
-            modalidade: 'Alça Viária',
-            obs: 'Segunda a Sábado'
+            modalidade: 'Alça Viária'
           }
         ]
       },
@@ -126,6 +132,11 @@ export const trips = [
             modalidade: 'Alça Viária'
           },
           {
+            hora: '12:00',
+            modalidade: 'Alça Viária',
+            obs: 'Somente Sábado'
+          },
+          {
             hora: '14:00',
             modalidade: 'Arapari'
           },
@@ -137,6 +148,11 @@ export const trips = [
           {
             hora: '16:30',
             modalidade: 'Arapari'
+          },
+          {
+            hora: '16:30',
+            modalidade: 'Alça Viária',
+            obs: 'Somente aos Sábados'
           },
           {
             hora: '18:00',
