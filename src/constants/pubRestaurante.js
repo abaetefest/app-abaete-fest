@@ -63,15 +63,6 @@ export const pubRestaurante = [
     address: 'Av. Dom Pedro II, 681 - Centro'
   },
   {
-    latitude: -1.7247623,
-    longitude: -48.8823573,
-    icon: 'map-icon/primechoperia.png',
-    title: 'Prime Choperia',
-    category: 'Pub&Restaurante',
-    preco: 2,
-    address: 'Av. Dom Pedro II, 1035 - Centro'
-  },
-  {
     latitude: -1.7274963,
     longitude: -48.876478,
     icon: 'map-icon/berrodoboi.png',
@@ -106,5 +97,50 @@ export const pubRestaurante = [
     category: 'Pub&Restaurante',
     preco: 2,
     address: 'R. Siqueira Mendes, 2207 - São José'
+  },
+  {
+    latitude: -1.7144146,
+    longitude: -48.9105237,
+    icon: 'map-icon/preamar.png',
+    title: 'Bar Point Pré a Mar',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'Rio Sirituba - Abaetetuba'
+  },
+  {
+    latitude: -1.7171225,
+    longitude: -48.8785428,
+    icon: 'map-icon/cantinhonilda.png',
+    title: 'Cantinho da Tia Nilda',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'Tv. Dom Pedro I, 1201 - Francilândia'
+  },
+  {
+    latitude: -1.7184173,
+    longitude: -48.8821348,
+    icon: 'map-icon/espetaria.png',
+    title: 'Espetaria Abaetetuba',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'Tv. José Gonçalves Chaves, 831 - São Lourenço.'
+  },
+  {
+    latitude: -1.7200579,
+    longitude: -48.8900612,
+    icon: 'map-icon/jbportorestaurante.png',
+    title: 'JB Restaurante',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'Tv. Santos Dumont, 23 - São Lourenço.'
+  },
+  {
+    latitude: -1.7129316,
+    longitude: -48.887089,
+    icon: 'map-icon/paxiuba.png',
+    title: 'Bar E Restaurante Paxiuba',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'Tv. São Joaquim, 1-117 - São João'
   }
 ]
