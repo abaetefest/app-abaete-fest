@@ -119,10 +119,15 @@ const menusRoute = [
     route: 'places'
   },
   {
-    title: 'Mapa',
-    icon: 'mdi-map',
-    route: 'map'
+    title: 'Viagens',
+    icon: 'mdi-bus-clock',
+    route: 'trips'
   },
+  // {
+  //   title: 'Mapa',
+  //   icon: 'mdi-map',
+  //   route: 'map'
+  // },
   // {
   //   title: 'Promoções',
   //   icon: 'mdi-food',

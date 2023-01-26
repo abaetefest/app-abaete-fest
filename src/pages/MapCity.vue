@@ -1,5 +1,22 @@
 <template>
   <q-page class="bg-grey-1">
+    <div class="row q-pb-md q-pt-sm justify-center">
+      <q-btn-group push>
+        <q-btn
+          push
+          label="Lista"
+          icon="mdi-format-list-bulleted-square"
+          :to="{ name: 'places'}"
+        />
+        <q-btn
+          push
+          label="Mapa"
+          icon="mdi-map-legend"
+          :to="{ name: 'map'}"
+          color="primary"
+        />
+      </q-btn-group>
+    </div>
     <div class="row q-pb-md q-px-sm q-pt-sm">
       <q-select
         outlined
@@ -183,13 +200,13 @@ export default {
 <style scoped>
 .map-size {
   /* Firefox */
-  height: -moz-calc(100vh - 170px);
+  height: -moz-calc(100vh - 250px);
   /* WebKit */
-  height: -webkit-calc(100vh - 170px);
+  height: -webkit-calc(100vh - 250px);
   /* Opera */
-  height: -o-calc(100vh - 170px);
+  height: -o-calc(100vh - 250px);
   /* Standard */
-  height: calc(100vh - 170px);
+  height: calc(100vh - 250px);
   /* min-height: 90vh; */
 }
 </style>
