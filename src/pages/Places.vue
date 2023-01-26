@@ -1,5 +1,22 @@
 <template>
   <q-page padding class="bg-grey-1">
+    <div class="row q-pb-md justify-center">
+      <q-btn-group push>
+        <q-btn
+          push
+          label="Lista"
+          icon="mdi-format-list-bulleted-square"
+          :to="{ name: 'places'}"
+          color="primary"
+        />
+        <q-btn
+          push
+          label="Mapa"
+          icon="mdi-map-legend"
+          :to="{ name: 'map'}"
+        />
+      </q-btn-group>
+    </div>
     <div class="row q-pb-md">
       <q-select
         outlined
