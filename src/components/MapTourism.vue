@@ -59,7 +59,8 @@ export default {
     }
   },
   mounted () {
-    this.getGeolocation()
+    // this.getGeolocation()
+    this.setStaticPosition()
   },
   methods: {
     getGeolocation () {
@@ -74,7 +75,13 @@ export default {
       const coords = position.coords
       this.center = [this.latitude, this.longitude]
       this.markerLatLng = [coords.latitude, coords.longitude]
-      // this.picoleLatLng = this.serviceData.location
+      // this.$q.loading.hide()
+      // this.successNotify()
+      this.ready = true
+    },
+    setStaticPosition () {
+      this.center = [this.latitude, this.longitude]
+      // this.markerLatLng = [coords.latitude, coords.longitude]
       // this.$q.loading.hide()
       // this.successNotify()
       this.ready = true
