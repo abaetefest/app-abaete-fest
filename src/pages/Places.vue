@@ -6,15 +6,10 @@
           push
           label="Lista"
           icon="mdi-format-list-bulleted-square"
-          :to="{ name: 'places'}"
+          :to="{ name: 'places' }"
           color="primary"
         />
-        <q-btn
-          push
-          label="Mapa"
-          icon="mdi-map-legend"
-          :to="{ name: 'map'}"
-        />
+        <q-btn push label="Mapa" icon="mdi-map-legend" :to="{ name: 'map' }" />
       </q-btn-group>
     </div>
     <div class="row q-pb-md">
@@ -32,65 +27,65 @@
       >
         <template v-slot:prepend>
           <q-avatar rounded>
-            <img :src="getIconCategory">
+            <img :src="getIconCategory" />
           </q-avatar>
         </template>
         <template v-slot:option="scope">
-            <q-item
-              v-bind="scope.itemProps"
-              v-on="scope.itemEvents"
-            >
-              <q-item-section avatar>
-                <q-avatar rounded>
-                  <img :src="scope.opt.icon">
-                </q-avatar>
-                <!-- <q-icon :name="scope.opt.icon" /> -->
-              </q-item-section>
-              <q-item-section>
-                <q-item-label v-html="scope.opt.label" />
-              </q-item-section>
-            </q-item>
-          </template>
+          <q-item v-bind="scope.itemProps" v-on="scope.itemEvents">
+            <q-item-section avatar>
+              <q-avatar rounded>
+                <img :src="scope.opt.icon" />
+              </q-avatar>
+              <!-- <q-icon :name="scope.opt.icon" /> -->
+            </q-item-section>
+            <q-item-section>
+              <q-item-label v-html="scope.opt.label" />
+            </q-item-section>
+          </q-item>
+        </template>
       </q-select>
     </div>
-    <div class="row q-gutter-y-md">
-      <q-card
+    <div class="row justify-between">
+      <div
+        class="col-sm-12 col-xs-12 col-md-6"
         v-for="(place, index) in getPlaces"
         :key="index"
-        class="col-sm-12 col-xs-12 col-md-6"
-        @click="openDialogCourse(place)"
       >
-        <q-item>
+        <q-card @click="openDialogCourse(place)" class="q-ma-xs">
+          <q-item>
+            <q-item-section>
+              <q-item-label class="text-weight-medium">{{
+                place.title
+              }}</q-item-label>
+              <q-item-label caption>{{ place.address }}</q-item-label>
+              <q-item-label caption v-if="place.preco">
+                Preço:
+                <q-rating
+                  v-model="place.preco"
+                  size="1rem"
+                  icon="mdi-currency-usd"
+                  color="green-5"
+                  readonly
+                />
+              </q-item-label>
+            </q-item-section>
 
-          <q-item-section>
-            <q-item-label class="text-weight-medium">{{ place.title }}</q-item-label>
-            <q-item-label caption>{{ place.address }}</q-item-label>
-            <q-item-label caption v-if="place.preco">
-              Preço:
-              <q-rating
-                v-model="place.preco"
-                size="1rem"
-                icon="mdi-currency-usd"
-                color="green-5"
-                readonly
-              />
-            </q-item-label>
-          </q-item-section>
+            <q-item-section avatar>
+              <q-avatar rounded>
+                <img :src="place.icon" />
+              </q-avatar>
+            </q-item-section>
+          </q-item>
 
-          <q-item-section avatar>
-            <q-avatar rounded>
-              <img :src="place.icon">
-            </q-avatar>
-          </q-item-section>
-        </q-item>
-
-        <!-- <img src="https://cdn.quasar.dev/img/parallax2.jpg"> -->
-      </q-card>
+          <!-- <img src="https://cdn.quasar.dev/img/parallax2.jpg"> -->
+        </q-card>
+      </div>
     </div>
     <dialog-places
       :modal-places="modalPlaces"
       :place-data="placeDetails"
-      @close="closeModal" />
+      @close="closeModal"
+    />
   </q-page>
 </template>
 
@@ -139,10 +134,10 @@ export default {
   },
   computed: {
     getPlaces: function () {
-      return makers.filter(place => place.category === this.categoria)
+      return makers.filter((place) => place.category === this.categoria)
     },
     getIconCategory: function () {
-      const img = this.options.filter(opt => opt.value === this.categoria)
+      const img = this.options.filter((opt) => opt.value === this.categoria)
       return img[0].icon
     }
   },
