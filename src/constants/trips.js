@@ -419,5 +419,78 @@ export const trips = [
         ]
       }
     ]
+  },
+  // Balsa
+  {
+    empresa: 'Horários Balsa',
+    icon: 'trips/balsa.png',
+    viagens: [
+      {
+        origem: 'Arapari',
+        destino: 'Belém',
+        periodo: 'Segunda a Sexta',
+        horarios: [
+          {
+            hora: '02:00 | 03:30 | 04:20 | 05:30 | 06:15 | 07:00 | 07:45 | 08:30 | 09:15 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 |16:00 | 17:00 |18:00 | 19:00 | 20:00 | 21:30 | 23:00',
+            modalidade: ''
+          }
+        ]
+      },
+      {
+        origem: 'Arapari',
+        destino: 'Belém',
+        periodo: 'Sábado',
+        horarios: [
+          {
+            hora: '02:00 | 04:00 | 06:00 | 07:00 | 08:00 | 09:00 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 | 16:00 | 17:00 | 18:00 | 20:00 | 22:00 | 00:00',
+            modalidade: ''
+          }
+        ]
+      },
+      {
+        origem: 'Arapari',
+        destino: 'Belém',
+        periodo: 'Domingo',
+        horarios: [
+          {
+            hora: '04:00 | 06:00 | 07:00 | 08:00 | 09:00 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 | 16:00 | 17:00 | 18:00 | 19:00 | 20:00 | 21:30 | 23:00',
+            modalidade: ''
+          }
+        ]
+      },
+      {
+        origem: 'Belém',
+        destino: 'Arapari',
+        periodo: 'Segunda a Sexta',
+        horarios: [
+          {
+            hora: '02:00 | 04:00 | 04:45 | 05:30 | 06:15 | 07:00 | 07:45 | 08:30 | 09:15 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 | 16:00 | 17:00 | 18:00 | 19:00 | 20:00 | 21:30 | 23:00',
+            modalidade: ''
+          }
+        ]
+      },
+      {
+        origem: 'Belém',
+        destino: 'Arapari',
+        periodo: 'Sábado',
+        horarios: [
+          {
+            hora: '02:00 | 04:00 | 06:00 | 07:00 | 08:00 | 09:00 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 | 16:00 | 17:00 | 18:00 | 20:00 | 22:00| 00:00',
+            modalidade: ''
+          }
+        ]
+      },
+      {
+        origem: 'Belém',
+        destino: 'Arapari',
+        periodo: 'Domingo',
+        horarios: [
+          {
+            hora: '04:00 | 06:00 | 07:00 | 08:00 | 09:00 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 | 16:00 | 17:00 | 18:00 | 19:00 | 20:00 | 21:30| 23:00',
+            modalidade: ''
+          }
+        ]
+      }
+    ]
   }
 ]
