@@ -36,8 +36,8 @@ export const pubRestaurante = [
     address: 'Avenida Dom Pedro II'
   },
   {
-    latitude: -1.7243967,
-    longitude: -48.8841696,
+    latitude: -1.7208352,
+    longitude: -48.8835972,
     icon: 'map-icon/texas.png',
     title: 'Texas Premium Steakhouse',
     category: 'Pub&Restaurante',
@@ -142,5 +142,50 @@ export const pubRestaurante = [
     category: 'Pub&Restaurante',
     preco: 2,
     address: 'Tv. São Joaquim, 1-117 - São João'
+  },
+  {
+    latitude: -1.7241297,
+    longitude: -48.8811825,
+    icon: 'map-icon/casarao.png',
+    title: 'Restaurante e Pizzaria Casarão',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'R. 7 de Setembro, 1609 - Centro'
+  },
+  {
+    latitude: -1.7242825,
+    longitude: -48.8847577,
+    icon: 'map-icon/spazio_gourmet.png',
+    title: 'Spazio Gourmet - Burger & Pizza',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'Av. Dom Pedro II, 712 - Centro'
+  },
+  {
+    latitude: -1.7239942,
+    longitude: -48.8860279,
+    icon: 'map-icon/salemelgrelhados.png',
+    title: 'Sal e Mel Grelhados',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'Av. Dom Pedro II, 696 - Centro'
+  },
+  {
+    latitude: -1.7257391,
+    longitude: -48.8810016,
+    icon: 'map-icon/aguanaboca.png',
+    title: 'Água na Boca',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'R. Joaquim Mendes Contente, 1501'
+  },
+  {
+    latitude: -1.7199928,
+    longitude: -48.8833546,
+    icon: 'map-icon/divinacolher.png',
+    title: 'Divina Colher',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'R. Magno de Araújo, 2047 - São Lourenço'
   }
 ]
