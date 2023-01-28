@@ -247,20 +247,14 @@ export default {
       })
     },
     async shareApp () {
-      const blob = await (await fetch('https://app.abaetefest.com.br/wpp-abaetefest.jpg')).blob()
-
-      const image = new File([blob], 'canvas.png', { type: blob.type })
-
       const shareData = {
         title: 'AbaetéFest',
         text: 'Conheça o app da cidade de Abaetetuba!',
-        url: 'https://abaetefest.com.br',
-        files: [image]
+        url: 'https://abaetefest.com.br'
       }
 
       try {
         await navigator.share(shareData)
-        // resultPara.textContent = 'MDN shared successfully';
       } catch (err) {
         this.$notifyDanger('Não foi possível compartilharo app!')
       }
