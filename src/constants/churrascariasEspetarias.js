@@ -8,15 +8,15 @@ export const churrascariasEspetarias = [
     preco: 2,
     address: 'Rod. Dr. João Miranda, 1724 - Santa Rosa'
   },
-  {
-    latitude: -1.7287605,
-    longitude: -48.8743045,
-    icon: 'categories/churrascaria.png',
-    title: 'Churrascaria e Restaurante Picanha de Ouro',
-    category: 'Churrascaria&Espetaria',
-    preco: 2,
-    address: 'Rod. Dr. João Miranda, 1924 - São Sebastião'
-  },
+  // {
+  //   latitude: -1.7287605,
+  //   longitude: -48.8743045,
+  //   icon: 'categories/churrascaria.png',
+  //   title: 'Churrascaria e Restaurante Picanha de Ouro',
+  //   category: 'Churrascaria&Espetaria',
+  //   preco: 2,
+  //   address: 'Rod. Dr. João Miranda, 1924 - São Sebastião'
+  // },
   {
     latitude: -1.7258891,
     longitude: -48.8811354,
