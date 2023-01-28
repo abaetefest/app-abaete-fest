@@ -247,10 +247,15 @@ export default {
       })
     },
     async shareApp () {
+      const blob = await (await fetch('https://app.abaetefest.com.br/wpp-abaetefest.jpg')).blob()
+
+      const image = new File([blob], 'canvas.png', { type: blob.type })
+
       const shareData = {
         title: 'AbaetéFest',
         text: 'Conheça o app da cidade de Abaetetuba!',
-        url: 'https://abaetefest.com.br'
+        url: 'https://abaetefest.com.br',
+        files: [image]
       }
 
       try {
