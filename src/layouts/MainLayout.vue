@@ -13,8 +13,20 @@
         />
 
         <q-toolbar-title>
+          <q-avatar size="sm">
+            <img src="architecture-and-city.png" />
+          </q-avatar>
           AbaetéFest
         </q-toolbar-title>
+
+        <q-btn
+          v-if="canShare"
+          flat
+          round
+          dense
+          icon="mdi-share-variant-outline"
+          @click="shareApp"
+        />
 
         <!-- <div>Quasar v{{ $q.version }}</div> -->
         <!-- <q-btn-dropdown color="white" size="lg" label="" flat rounded>
@@ -178,12 +190,18 @@ export default {
       essentialLinks: menusRoute,
       adminLinks: adminRoute,
       isAdmin: false,
-      version: process.env.VERSION
+      version: process.env.VERSION,
+      canShare: false
     }
   },
   mounted () {
     if (JSON.parse(localStorage.getItem('abaete-manage'))) {
       this.isAdmin = true
+    }
+    if (!navigator.canShare) {
+      this.canShare = false
+    } else {
+      this.canShare = true
     }
     // const versionStorage = JSON.parse(localStorage.getItem('abaete-version'))
     // if (!versionStorage) {
@@ -227,6 +245,19 @@ export default {
       }).onOk(() => {
         this.logout()
       })
+    },
+    async shareApp () {
+      const shareData = {
+        title: 'AbaetéFest',
+        text: 'Conheça o app da cidade de Abaetetuba!',
+        url: 'https://abaetefest.com.br'
+      }
+
+      try {
+        await navigator.share(shareData)
+      } catch (err) {
+        this.$notifyDanger('Não foi possível compartilharo app!')
+      }
     }
   }
 }
