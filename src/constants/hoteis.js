@@ -47,7 +47,7 @@ export const hoteis = [
     category: 'Hotéis',
     preco: 2,
     phone: '91 982096013',
-    address: 'R. José latitudeino Lidio da Silva, 1459 - Santa Rosa'
+    address: 'R. José Latino Lidio da Silva, 1459 - Santa Rosa'
   },
   {
     latitude: '-1.7280248',

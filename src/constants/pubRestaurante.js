@@ -45,7 +45,7 @@ export const pubRestaurante = [
     address: 'R. Magno de Araújo, 1959 - São Lourenço'
   },
   {
-    latitude: -1.72372,
+    latitude: -1.7238736,
     longitude: -48.8867696,
     icon: 'map-icon/ducaliari.png',
     title: "Du'Calliari Pub & Restô",
