@@ -11,7 +11,7 @@ export const hospitaisPostos = [
     latitude: -1.7279148,
     longitude: -48.8801879,
     icon: 'places/hospital.png',
-    title: 'Hospital Julia Sefer',
+    title: 'Hospital Júlia Sefer',
     category: 'HospitaisPostos',
     address: 'R. Cel. Pedro Borges do Rêgo, 1306 - Santa Rosa'
   },
@@ -43,7 +43,7 @@ export const hospitaisPostos = [
     latitude: -1.7224832,
     longitude: -48.8888308,
     icon: 'places/hospital.png',
-    title: 'UBS Dr.Roberto Contente (SESPA)',
+    title: 'UBS Dr. Roberto Contente (SESPA)',
     category: 'HospitaisPostos',
     address: 'R. Barão do Rio Branco, 1641 - Centro'
   },
