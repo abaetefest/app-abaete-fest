@@ -41,7 +41,7 @@ export const farmacias = [
   },
   {
     latitude: '-1.7222669',
-    longitude: '-48.8891602 ',
+    longitude: '-48.8891602',
     icon: 'places/farmacia.png',
     title: 'Farmácia das ilhas',
     category: 'Farmácias',
@@ -49,7 +49,16 @@ export const farmacias = [
     phone: '',
     address: 'Av. Quinze de Agosto, 168'
   },
-
+  {
+    latitude: '-1.7222113',
+    longitude: '-48.8890151',
+    icon: 'places/farmacia.png',
+    title: 'Farma Popular',
+    category: 'Farmácias',
+    preco: 2,
+    phone: '',
+    address: 'Av. Quinze de Agosto, 179'
+  },
   {
     latitude: '-1.7231623',
     longitude: '-48.8890914',
