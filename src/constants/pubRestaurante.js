@@ -6,7 +6,7 @@ export const pubRestaurante = [
     title: 'Barbudos',
     category: 'Pub&Restaurante',
     preco: 2,
-    address: 'Av.Dom Pedro II, ao lado do INSS.'
+    address: 'Av. Dom Pedro II, ao lado do INSS.'
   },
   {
     latitude: -1.7245973,

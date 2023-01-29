@@ -133,6 +133,11 @@ export default {
           icon: 'flat/cheers.png'
         },
         {
+          label: 'Sorveterias',
+          value: 'Sorveterias',
+          icon: 'categories/sorveteria.png'
+        },
+        {
           label: 'Artigos de Pesca Esportiva',
           value: 'Pesca',
           icon: 'flat/fishing.png'
