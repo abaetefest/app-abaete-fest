@@ -113,7 +113,7 @@ export default {
           icon: 'places/hotel.png'
         },
         {
-          label: 'Hospitais e postos de saúde',
+          label: 'Hospitais e Postos de Saúde',
           value: 'Hospital&Posto',
           icon: 'places/hospital.png'
         },

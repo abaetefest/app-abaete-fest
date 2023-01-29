@@ -8,15 +8,6 @@ export const churrascariasEspetarias = [
     preco: 2,
     address: 'Rod. Dr. João Miranda, 1724 - Santa Rosa'
   },
-  // {
-  //   latitude: -1.7287605,
-  //   longitude: -48.8743045,
-  //   icon: 'categories/churrascaria.png',
-  //   title: 'Churrascaria e Restaurante Picanha de Ouro',
-  //   category: 'Churrascaria&Espetaria',
-  //   preco: 2,
-  //   address: 'Rod. Dr. João Miranda, 1924 - São Sebastião'
-  // },
   {
     latitude: -1.7258891,
     longitude: -48.8811354,
@@ -25,6 +16,24 @@ export const churrascariasEspetarias = [
     category: 'Churrascaria&Espetaria',
     preco: 2,
     address: 'R. Joaquim Mendes Contente, 1436 - Santa Rosa'
+  },
+  {
+    latitude: -1.7184173,
+    longitude: -48.8821348,
+    icon: 'places/churrascaria/espetariaabaetetuba.png',
+    title: 'Espetaria Abaetetuba',
+    category: 'Churrascaria&Espetaria',
+    preco: 2,
+    address: 'Tv. José Gonçalves Chaves, 831 - São Lourenço.'
+  },
+  {
+    latitude: -1.7208352,
+    longitude: -48.8835972,
+    icon: 'map-icon/texas.png',
+    title: 'Texas Premium Steakhouse',
+    category: 'Churrascaria&Espetaria',
+    preco: 3,
+    address: 'R. Magno de Araújo, 1959 - São Lourenço'
   },
   {
     latitude: -1.7232899,
