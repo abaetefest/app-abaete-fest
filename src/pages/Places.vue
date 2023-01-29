@@ -113,14 +113,19 @@ export default {
           icon: 'places/hotel.png'
         },
         {
-          label: 'Hospitais e postos de saúde',
-          value: 'HospitaisPostos',
+          label: 'Hospitais e Postos de Saúde',
+          value: 'Hospital&Posto',
           icon: 'places/hospital.png'
         },
         {
           label: 'Farmácias',
           value: 'Farmácias',
           icon: 'places/farmacia.png'
+        },
+        {
+          label: 'Churrascarias/Espetarias',
+          value: 'Churrascaria&Espetaria',
+          icon: 'categories/churrascaria.png'
         },
         {
           label: 'Pub & Restaurante',

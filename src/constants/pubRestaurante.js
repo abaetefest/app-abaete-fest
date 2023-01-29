@@ -117,15 +117,6 @@ export const pubRestaurante = [
     address: 'Tv. Dom Pedro I, 1201 - Francilândia'
   },
   {
-    latitude: -1.7184173,
-    longitude: -48.8821348,
-    icon: 'map-icon/espetaria.png',
-    title: 'Espetaria Abaetetuba',
-    category: 'Pub&Restaurante',
-    preco: 2,
-    address: 'Tv. José Gonçalves Chaves, 831 - São Lourenço.'
-  },
-  {
     latitude: -1.7200579,
     longitude: -48.8900612,
     icon: 'map-icon/jbportorestaurante.png',

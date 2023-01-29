@@ -43,7 +43,7 @@ export const farmacias = [
     latitude: '-1.7222669',
     longitude: '-48.8891602',
     icon: 'places/farmacia.png',
-    title: 'Farmácia das ilhas',
+    title: 'Farmácia das Ilhas',
     category: 'Farmácias',
     preco: 2,
     phone: '',
