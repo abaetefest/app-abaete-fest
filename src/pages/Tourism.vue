@@ -74,7 +74,7 @@ export default {
         sortBy: 'desc',
         descending: false,
         page: 1,
-        rowsPerPage: 25
+        rowsPerPage: 50
       },
       filter: '',
       filtro: 'TODAS',

@@ -151,7 +151,7 @@ export default {
         sortBy: 'desc',
         descending: false,
         page: 1,
-        rowsPerPage: 15
+        rowsPerPage: 50
       },
       filter: '',
       filtro: 'TODAS',
