@@ -54,5 +54,14 @@ export const hospitaisPostos = [
     title: 'Centro Médico Nossa Senhora da Conceição',
     category: 'Hospital&Posto',
     address: 'Av. Quinze de Agosto - Centro'
+  },
+  {
+    latitude: -1.7252123,
+    longitude: -48.8915774,
+    phone: '91 9828282',
+    icon: 'places/hospital.png',
+    title: 'CEMA',
+    category: 'Hospital&Posto',
+    address: 'Travessa Pedro Pinheiro Paes, 77 - Centro'
   }
 ]
