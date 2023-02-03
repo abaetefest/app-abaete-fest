@@ -9,9 +9,6 @@
       </div>
     </div>
     <div class="row justify-center">
-      <!-- <div class="col-sm-12 col-xs-12 col-sm-4">
-        <q-btn label="Email" color="primary" icon="mdi-email" class="full-width" />
-      </div> -->
       <div class="col-sm-12 col-xs-12 col-md-12 text-center q-gutter-sm">
         <q-btn
           rounded
@@ -36,29 +33,58 @@
           type="a"
         />
       </div>
-      <div class="col-sm-12 col-xs-12 col-md-6 q-pt-md">
+      <div class="col-sm-12 col-xs-12 col-md-6 q-pt-md text-center">
          <q-img
             src="contact.svg"
-            :width="$q.screen.gt.sm ? '400' : '400'"
+            :width="$q.screen.gt.sm ? '300px' : '200px'"
           />
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-12 col-xs-12 col-md-6 q-pt-md">
-         <p><span class="text-bold">Mantido por:</span> Patrick Monteiro</p>
-         <p><span class="text-bold">Email:</span> eng.patrickmonteiro@gmail.com</p>
+    <div class="row justify-center">
+      <div class="col-sm-12 col-xs-12 col-md-5 q-py-md">
+         <!-- <p><span class="text-bold">Mantido por:</span> Patrick Monteiro</p>
+         <p><span class="text-bold">Email:</span> eng.patrickmonteiro@gmail.com</p> -->
+
+         <q-list>
+          <q-item>
+            <q-item-section top avatar>
+              <q-avatar>
+                <img src="contact/patrick.png">
+              </q-avatar>
+            </q-item-section>
+
+            <q-item-section>
+              <q-item-label>Patrick Monteiro</q-item-label>
+              <q-item-label caption>Idealizador e Desenvolvedor Front-end.</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item>
+            <q-item-section top avatar>
+              <q-avatar>
+                <img src="contact/waldener.png">
+              </q-avatar>
+            </q-item-section>
+
+            <q-item-section>
+              <q-item-label>Waldener Júnior</q-item-label>
+              <q-item-label caption>Mantenedor e Desenvolvedor Front-end.</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item>
+            <q-item-section top avatar>
+              <q-avatar>
+                <img src="contact/iago.png">
+              </q-avatar>
+            </q-item-section>
+
+            <q-item-section>
+              <q-item-label>Iago Cavalcante</q-item-label>
+              <q-item-label caption>Arquiteto e Desenvolvedor Back-end.</q-item-label>
+            </q-item-section>
+          </q-item>
+         </q-list>
       </div>
     </div>
-      <!-- <div class="col-12 text-subtitle2">
-        <q-icon name="mdi-mail" class="q-pr-md" size="sm" /> abaetefest@gmail.com
-      </div>
-      <div class="col-12 text-subtitle2">
-        <q-icon name="mdi-whatsapp" class="q-pr-md" size="sm" />
-        <a target="_blank" href="https://api.whatsapp.com/send?phone=5591982828945&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20como%20publicar%20meu%20evento%20no%20app%20Abaet%C3%A9Fest">
-          (91) 982828945
-        </a>
-      </div> -->
-    <!-- </div> -->
   </q-page>
 </template>
 
