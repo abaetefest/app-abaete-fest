@@ -98,8 +98,8 @@ export default {
     },
     async shareApp () {
       const shareData = {
-        title: this.courseData.name,
-        text: this.courseData.description,
+        title: 'Veja esse Evento no AbaetéFest',
+        text: this.courseData.name,
         url: window.location.origin + '/#/event-details/' + this.courseData.id
       }
 
