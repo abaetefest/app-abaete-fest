@@ -97,7 +97,7 @@ export default {
       return date.formatDate(dateOriginal, 'HH:mm')
     },
     async shareApp () {
-      const response = await fetch(this.event.image_url)
+      const response = await fetch(this.courseData.image_url)
       const blob = await response.blob()
       const filesArray = [
         new File(
