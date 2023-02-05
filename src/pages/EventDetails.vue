@@ -49,6 +49,18 @@
             <q-img :src="event.image_url" style="max-width: 350px" />
           </div>
 
+          <div class="q-mb-md">
+            <q-btn
+              v-if="canShare"
+              dense
+              label="Compartilhar"
+              icon="mdi-share-variant-outline"
+              @click="shareApp"
+              class="full-width"
+              color="blue"
+            />
+          </div>
+
           <div class="text-body2 text-grey-9 q-mb-md" v-if="event.description">
             <!-- <strong> SOBRE O EVENTO:</strong> -->
             <p v-html="event.description">
@@ -84,7 +96,8 @@ export default {
     return {
       idEvent: '',
       event: {},
-      load: true
+      load: true,
+      canShare: false
     }
   },
   mounted () {
@@ -92,6 +105,12 @@ export default {
       this.getEvent(this.$route.params.id)
     } else {
       this.$router.push('/')
+    }
+
+    if (!navigator.canShare) {
+      this.canShare = false
+    } else {
+      this.canShare = true
     }
   },
   methods: {
@@ -114,6 +133,31 @@ export default {
     },
     backToEvents (category) {
       this.$router.push({ name: 'events', params: { type: category } })
+    },
+    async shareApp () {
+      const response = await fetch(this.event.image_url)
+      const blob = await response.blob()
+      const filesArray = [
+        new File(
+          [blob],
+          'meme.jpg',
+          {
+            type: 'image/jpeg',
+            lastModified: new Date().getTime()
+          })
+      ]
+      const shareData = {
+        title: this.event.name,
+        text: this.event.description,
+        url: window.location.href,
+        files: filesArray
+      }
+
+      try {
+        await navigator.share(shareData)
+      } catch (err) {
+        this.$notifyDanger('Não foi possível compartilharo app!')
+      }
     }
   },
   meta () {
