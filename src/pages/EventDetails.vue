@@ -84,7 +84,8 @@ export default {
     return {
       idEvent: '',
       event: {},
-      load: true
+      load: true,
+      canShare: false
     }
   },
   mounted () {
@@ -92,6 +93,12 @@ export default {
       this.getEvent(this.$route.params.id)
     } else {
       this.$router.push('/')
+    }
+
+    if (!navigator.canShare) {
+      this.canShare = false
+    } else {
+      this.canShare = true
     }
   },
   methods: {
@@ -121,7 +128,27 @@ export default {
       title: this.event.name,
       meta: {
         // description: { name: 'description', content: this.event.description },
-        keywords: { name: 'keywords', content: 'AbaetéFest, festas, abaetetuba, eventos' }
+        keywords: { name: 'keywords', content: 'AbaetéFest, festas, abaetetuba, eventos' },
+        title: {
+          name: 'title',
+          content: this.event.name
+        },
+        ogTitle: {
+          name: 'og:title',
+          content: this.event.name
+        },
+        description: {
+          name: 'description',
+          content: this.event.description
+        },
+        ogDesc: {
+          name: 'og:description',
+          content: this.event.description
+        },
+        ogImage: {
+          name: 'og:image',
+          content: this.event.image_url
+        }
       }
     }
   }

@@ -30,6 +30,18 @@
               </div>
             </q-card-section>
 
+            <q-card-section class="q-pa-sm">
+              <q-btn
+                v-if="canShare"
+                dense
+                label="Compartilhar"
+                icon="mdi-share-variant-outline"
+                @click="shareApp"
+                class="full-width"
+                color="blue"
+              />
+            </q-card-section>
+
             <q-card-section>
               <div class="text-body2 text-grey-9" v-if="courseData.description">
                 <p v-html="courseData.description">
@@ -67,10 +79,16 @@ export default {
   data () {
     return {
       course: {},
-      category: []
+      category: [],
+      canShare: false
     }
   },
   async mounted () {
+    if (!navigator.canShare) {
+      this.canShare = false
+    } else {
+      this.canShare = true
+    }
   },
   methods: {
     formatDateString (dateOriginal) {
@@ -78,6 +96,19 @@ export default {
     },
     formatHourString (dateOriginal) {
       return date.formatDate(dateOriginal, 'HH:mm')
+    },
+    async shareApp () {
+      const shareData = {
+        title: 'Veja esse Evento no AbaetéFest',
+        text: this.courseData.name,
+        url: window.location.origin + '/#/event-details/' + this.courseData.id
+      }
+
+      try {
+        await navigator.share(shareData)
+      } catch (err) {
+        this.$notifyDanger('Não foi possível compartilharo app!')
+      }
     }
   }
 }
