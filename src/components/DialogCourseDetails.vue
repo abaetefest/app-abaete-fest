@@ -97,22 +97,10 @@ export default {
       return date.formatDate(dateOriginal, 'HH:mm')
     },
     async shareApp () {
-      const response = await fetch(this.courseData.image_url)
-      const blob = await response.blob()
-      const filesArray = [
-        new File(
-          [blob],
-          'meme.jpg',
-          {
-            type: 'image/jpeg',
-            lastModified: new Date().getTime()
-          })
-      ]
       const shareData = {
         title: this.courseData.name,
         text: this.courseData.description,
-        url: window.location.origin + '/#/event-details/' + this.courseData.id,
-        files: filesArray
+        url: window.location.origin + '/#/event-details/' + this.courseData.id
       }
 
       try {
