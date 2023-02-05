@@ -128,7 +128,11 @@ export default {
       title: this.event.name,
       meta: {
         // description: { name: 'description', content: this.event.description },
-        keywords: { name: 'keywords', content: 'AbaetéFest, festas, abaetetuba, eventos' }
+        keywords: { name: 'keywords', content: 'AbaetéFest, festas, abaetetuba, eventos' },
+        ogImage: {
+          name: 'og:image',
+          content: this.image.image_url
+        }
       }
     }
   }
