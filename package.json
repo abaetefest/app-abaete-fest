@@ -10,17 +10,17 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.12.2",
+    "@quasar/extras": "^1.15.10",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "leaflet": "^1.7.1",
     "onesignal-vue": "^1.0.0-beta2",
-    "quasar": "^1.16.3",
+    "quasar": "^1.22.5",
     "vue-i18n": "^8.0.0",
     "vue2-leaflet": "^2.7.1"
   },
   "devDependencies": {
-    "@quasar/app": "^2.2.11",
+    "@quasar/app": "^2.4.3",
     "babel-eslint": "^10.0.1",
     "eslint": "^7.21.0",
     "eslint-config-standard": "^16.0.2",
