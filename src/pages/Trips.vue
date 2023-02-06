@@ -2,32 +2,39 @@
   <q-page padding class="bg-grey-1">
     <div v-for="(trip, index) in trips" :key="index">
       <q-list padding bordered class="rounded-borders bg-white">
-        <q-expansion-item icon="perm_identity" :label="trip.empresa">
+        <q-expansion-item icon="perm_identity" :label="trip.trajeto">
           <template v-slot:header>
-            <q-item-section avatar>
-              <q-avatar class="float-right">
-                <img :src="trip.icon" rounded />
-              </q-avatar>
-            </q-item-section>
 
-            <q-item-section>
-              {{ trip.empresa }}
+            <q-item-section class="text-subtitle1 text-weight-medium">
+              {{ trip.trajeto }}
             </q-item-section>
           </template>
-          <div v-for="(cidade, index) in trip.cidades" :key="index">
-            <q-list padding bordered class="rounded-borders bg-white">
-              <q-expansion-item icon="perm_identity" :label="trip.empresa">
+          <q-card>
+            <q-list
+              padding
+              bordered
+              class="rounded-borders bg-white"
+              v-for="(empresa, index) in trip.empresas"
+              :key="index"
+            >
+              <q-expansion-item icon="perm_identity" :label="empresa.nome">
                 <template v-slot:header>
                   <q-item-section avatar>
-                    <q-avatar class="float-right"> </q-avatar>
+                    <q-avatar class="float-right">
+                      <img :src="empresa.icon" rounded />
+                    </q-avatar>
                   </q-item-section>
-                  <q-item-section class="text-h6">
-                    {{ cidade.nome }}
+
+                  <q-item-section>
+                    {{ empresa.nome }}
                   </q-item-section>
                 </template>
                 <q-card>
                   <q-card-section>
-                    <div v-for="(viagem, index) in cidade.viagens" :key="index">
+                    <div
+                      v-for="(viagem, index) in empresa.viagens"
+                      :key="index"
+                    >
                       <q-separator class="q-mt-md" />
                       <p class="text-h6 text-center q-mb-sm">
                         {{ viagem.origem }}
@@ -67,7 +74,7 @@
                 </q-card>
               </q-expansion-item>
             </q-list>
-          </div>
+          </q-card>
         </q-expansion-item>
       </q-list>
     </div>
