@@ -1,5 +1,6 @@
 export default {
-  trajeto: 'Abaetetuba-Belém Belém-Abaetetuba',
+  cidade1: 'Abaetetuba',
+  cidade2: 'Belém',
   empresas: [
     // Jarumã
     {
