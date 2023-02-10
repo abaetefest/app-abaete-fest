@@ -246,7 +246,7 @@ export default {
               modalidade: 'Arapari'
             },
             {
-              hora: '07:40',
+              hora: '08:00',
               modalidade: 'Arapari'
             },
             {

@@ -79,6 +79,13 @@
         </q-expansion-item>
       </q-list>
     </div>
+    <div class="row q-pa-sm">
+      <div class="col-12">
+          <p class="text-caption"><strong>Arapari</strong>: Portos próximo ao Açaí Biruta - R. Siqueira Mendes 10 - Cidade Velha, Belém - PA, 66020-600</p>
+          <p class="text-caption"><strong>Alça Viária</strong>: Terminal Rodoviário de Belém - São Brás, Belém - PA, 66090-000</p>
+          <p class="text-caption"><strong>Balsa</strong>: Terminal Rodofluvial de Belém - Av. Bernardo Sayão, 3786 - Cidade Velha, Belém - PA,</p>
+      </div>
+    </div>
   </q-page>
 </template>
 
