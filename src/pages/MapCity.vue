@@ -1,6 +1,6 @@
 <template>
   <q-page class="bg-grey-1">
-    <div class="row q-pb-md q-pt-sm justify-center">
+    <div class="row q-pb-sm q-pt-sm justify-center">
       <q-btn-group push>
         <q-btn
           push
@@ -71,7 +71,8 @@
           <l-tooltip>
             <strong>{{ maker.title }} </strong><br>
             Categoria: <strong>{{ maker.category }} </strong><br>
-            <span>{{ maker.address }}</span>
+            <span>{{ maker.address }}</span><br>
+            <span v-if="maker.phone">{{ maker.phone }}</span>
           </l-tooltip>
         </l-marker>
         <l-control-zoom position="bottomright"  ></l-control-zoom>
@@ -148,6 +149,11 @@ export default {
           label: 'Artigos de Pesca Esportiva',
           value: 'Pesca',
           icon: 'flat/fishing.png'
+        },
+        {
+          label: 'Suplementos e Saúde',
+          value: 'Suplemento&Saude',
+          icon: 'categories/whey.png'
         }
       ]
     }
