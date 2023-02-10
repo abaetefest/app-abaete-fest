@@ -30,12 +30,13 @@
                   </q-item-section>
                 </template>
                 <q-card>
-                  <q-card-section>
+                  <q-card-section class="row q-col-gutter-x-lg">
                     <div
                       v-for="(viagem, index) in empresa.viagens"
                       :key="index"
+                      class="col-12 col-sm-6"
                     >
-                      <q-separator class="q-mt-md" />
+                      <q-separator class="q-mb-sm" />
                       <p class="text-h6 text-center q-mb-sm">
                         {{ viagem.origem }}
                         <q-icon name="mdi-arrow-right-thick" />
