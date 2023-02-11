@@ -1,5 +1,5 @@
 import { register } from 'register-service-worker'
-import { Notify } from 'quasar'
+import { Notify, Dialog } from 'quasar'
 
 // The ready(), registered(), cached(), updatefound() and updated()
 // events passes a ServiceWorkerRegistration instance in their arguments.
@@ -11,7 +11,6 @@ register(process.env.SERVICE_WORKER_FILE, {
   // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register#Parameter
 
   // registrationOptions: { scope: './' },
-
   ready (/* registration */) {
     console.log('Service worker is active.')
   },
@@ -41,17 +40,34 @@ register(process.env.SERVICE_WORKER_FILE, {
 
   updated (/* registration */) {
     console.log('Updated is avaible.')
-    Notify.create({
-      message: 'Nova Atualização Disponível!',
-      icon: 'mdi-cellphone-arrow-down',
-      closeBtn: 'Atualizar',
-      timeout: 10000,
-      type: 'positive',
-      classes: 'glossy text-white',
-      onDismiss () {
-        location.reload(true)
-      }
-    })
+    if (!window.chrome) {
+      Dialog.create({
+        title: 'Atualização Disponível!',
+        class: 'text-center',
+        message: 'Por favor, feche e abre novamente o app para aplicar as atualizações.',
+        persistent: true,
+        ok: {
+          label: '',
+          color: 'white',
+          flat: true,
+          outlined: true
+        }
+      }).onOk(() => {
+        console.log('Botão pressionado')
+      })
+    } else {
+      Notify.create({
+        message: 'Nova Atualização Disponível! ',
+        icon: 'mdi-cellphone-arrow-down',
+        closeBtn: 'Atualizar',
+        timeout: 10000,
+        type: 'positive',
+        classes: 'glossy text-white',
+        onDismiss () {
+          location.reload(true)
+        }
+      })
+    }
   },
 
   offline () {
