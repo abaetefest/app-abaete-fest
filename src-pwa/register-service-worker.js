@@ -38,7 +38,7 @@ register(process.env.SERVICE_WORKER_FILE, {
     console.log('New content is downloading.')
   },
 
-  updated (registration) {
+  updated () {
     console.log('Updated is avaible.')
     Notify.create({
       message: 'Nova Atualização Disponível! ',
@@ -50,8 +50,10 @@ register(process.env.SERVICE_WORKER_FILE, {
       onDismiss () {
         // eslint-disable-next-line no-extra-boolean-cast
         if (!!window.chrome) {
+          console.log('isChrome')
           location.reload(true)
         } else {
+          console.log('isNotChrome')
           window.location = window.location.href + '?' + new Date().getTime()
           location.reload(true)
         }
