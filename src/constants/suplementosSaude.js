@@ -34,32 +34,5 @@ export const suplementosSaude = [
     category: 'Suplemento&Saude',
     phone: '(91) 98457-4115',
     address: 'Tv. Dom Pedro I, 1541 - Francilândia'
-  },
-  {
-    latitude: '-1.7179714',
-    longitude: '-48.8753396',
-    icon: 'categories/whey.png',
-    title: 'Boa forma Suplementos',
-    category: 'Suplemento&Saude',
-    phone: '(91) 98457-4115',
-    address: 'Tv. Dom Pedro I, 1541 - Francilândia'
-  },
-  {
-    latitude: '-1.7179714',
-    longitude: '-48.8753396',
-    icon: 'categories/whey.png',
-    title: 'Boa forma Suplementos',
-    category: 'Suplemento&Saude',
-    phone: '(91) 98457-4115',
-    address: 'Tv. Dom Pedro I, 1541 - Francilândia'
-  },
-  {
-    latitude: '-1.7179714',
-    longitude: '-48.8753396',
-    icon: 'categories/whey.png',
-    title: 'Boa forma Suplementos',
-    category: 'Suplemento&Saude',
-    phone: '(91) 98457-4115',
-    address: 'Tv. Dom Pedro I, 1541 - Francilândia'
   }
 ]
