@@ -206,7 +206,7 @@ export default {
     }
 
     window.addEventListener('error', (e) => {
-      console.log(e)
+      console.log(e.target)
     }, true)
   },
   methods: {
