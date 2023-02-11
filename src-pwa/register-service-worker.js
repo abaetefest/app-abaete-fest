@@ -12,15 +12,11 @@ register(process.env.SERVICE_WORKER_FILE, {
 
   // registrationOptions: { scope: './' },
   ready (registration) {
-    console.log('Service worker is active.')
-    // eslint-disable-next-line no-extra-boolean-cast
-    if (!window.chrome) {
-      registration.update()
-    }
+    console.log('Service worker is active.', registration)
   },
 
-  registered (/* registration */) {
-    console.log('Service worker has been registered.')
+  registered (registration) {
+    console.log('Service worker has been registered.', registration)
   },
 
   cached (/* registration */) {
@@ -43,6 +39,7 @@ register(process.env.SERVICE_WORKER_FILE, {
   },
 
   updated () {
+    console.log('New content updated')
     Notify.create({
       message: 'Nova Atualização Disponível! ',
       icon: 'mdi-cellphone-arrow-down',
