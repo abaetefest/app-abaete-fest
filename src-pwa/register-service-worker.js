@@ -44,7 +44,7 @@ register(process.env.SERVICE_WORKER_FILE, {
       message: 'Nova Atualização Disponível! ',
       icon: 'mdi-cellphone-arrow-down',
       closeBtn: 'Atualizar',
-      timeout: 20000,
+      timeout: 10000,
       type: 'positive',
       classes: 'glossy text-white',
       onDismiss () {
