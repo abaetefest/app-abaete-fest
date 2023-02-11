@@ -38,7 +38,7 @@ register(process.env.SERVICE_WORKER_FILE, {
     console.log('New content is downloading.')
   },
 
-  updated (/* registration */) {
+  updated (registration) {
     console.log('Updated is avaible.')
     // eslint-disable-next-line no-extra-boolean-cast
     if (!!window.chrome) {
@@ -54,9 +54,10 @@ register(process.env.SERVICE_WORKER_FILE, {
         }
       })
     } else {
-      setTimeout(() => {
-        location.reload(true)
-      }, 500)
+      const updateManual = () => {
+        registration.update().catch((er) => console.error('Error on update worker', er))
+      }
+      setInterval(updateManual, 500)
     }
   },
 
