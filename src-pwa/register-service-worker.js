@@ -55,7 +55,10 @@ register(process.env.SERVICE_WORKER_FILE, {
         } else {
           console.log('isNotChrome')
           window.location = window.location.href + '?' + new Date().getTime()
-          location.reload(true)
+          if (!window.isReloading) {
+            window.isReloading = true
+            window.location.reload()
+          }
         }
       }
     })
