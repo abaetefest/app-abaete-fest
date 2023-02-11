@@ -41,24 +41,29 @@ register(process.env.SERVICE_WORKER_FILE, {
   updated (registration) {
     console.log('Updated is avaible.')
     // eslint-disable-next-line no-extra-boolean-cast
-    if (!!window.chrome) {
-      Notify.create({
-        message: 'Nova Atualização Disponível! ',
-        icon: 'mdi-cellphone-arrow-down',
-        closeBtn: 'Atualizar',
-        timeout: 10000,
-        type: 'positive',
-        classes: 'glossy text-white',
-        onDismiss () {
-          location.reload(true)
-        }
-      })
-    } else {
-      const updateManual = () => {
-        registration.update().catch((er) => console.error('Error on update worker', er))
-      }
-      setInterval(updateManual, 500)
+    // if (!!window.chrome) {
+    const updateManual = () => {
+      registration.update().catch((er) => console.error('Error on update worker', er))
     }
+    // 500ms works for me, but you may want to set it higher.
+    Notify.create({
+      message: 'Nova Atualização Disponível! ',
+      icon: 'mdi-cellphone-arrow-down',
+      closeBtn: 'Atualizar',
+      timeout: 10000,
+      type: 'positive',
+      classes: 'glossy text-white',
+      onDismiss () {
+        // location.reload(true)
+        setInterval(updateManual, 500)
+      }
+    })
+    // } else {
+    //   const updateManual = () => {
+    //     registration.update().catch((er) => console.error('Error on update worker', er))
+    //   }
+    //   setInterval(updateManual, 500)
+    // }
   },
 
   offline () {
