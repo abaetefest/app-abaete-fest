@@ -53,6 +53,7 @@ register(process.env.SERVICE_WORKER_FILE, {
           location.reload(true)
         } else {
           window.location = window.location.href + '?' + new Date().getTime()
+          location.reload(true)
         }
       }
     })
