@@ -14,7 +14,7 @@ register(process.env.SERVICE_WORKER_FILE, {
   ready (registration) {
     console.log('Service worker is active.')
     // eslint-disable-next-line no-extra-boolean-cast
-    if (!!window.chrome) {
+    if (!window.chrome) {
       registration.update()
     }
   },
