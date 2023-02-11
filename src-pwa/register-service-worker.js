@@ -51,19 +51,21 @@ register(process.env.SERVICE_WORKER_FILE, {
     //     location.reload(true)
     //   }
     // })
-    Dialog.create({
-      title: 'Atualizações Disponíveis',
-      message: 'Por favor recarregue seu app para aplicar a atualização e ter os novos recursos disponíveis.',
-      persistent: true,
-      ok: {
-        push: true,
-        label: 'Atualizar',
-        color: 'positive',
-        icon: 'mdi-cellphone-arrow-down'
-      }
-    }).onOk(() => {
-      location.reload(true)
-    })
+    setTimeout(() => {
+      Dialog.create({
+        title: 'Atualizações Disponíveis',
+        message: 'Por favor recarregue seu app para aplicar a atualização e ter os novos recursos disponíveis.',
+        persistent: true,
+        ok: {
+          push: true,
+          label: 'Atualizar',
+          color: 'positive',
+          icon: 'mdi-cellphone-arrow-down'
+        }
+      }).onOk(() => {
+        location.reload(true)
+      })
+    }, 3000)
   },
 
   offline () {
