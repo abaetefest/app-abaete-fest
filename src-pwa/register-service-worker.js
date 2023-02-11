@@ -44,22 +44,23 @@ register(process.env.SERVICE_WORKER_FILE, {
       message: 'Nova Atualização Disponível! ',
       icon: 'mdi-cellphone-arrow-down',
       closeBtn: 'Atualizar',
-      timeout: 10000,
+      timeout: 20000,
       type: 'positive',
       classes: 'glossy text-white',
       onDismiss () {
+        location.reload(true)
         // eslint-disable-next-line no-extra-boolean-cast
-        if (!!window.chrome) {
-          console.log('isChrome')
-          location.reload(true)
-        } else {
-          console.log('isNotChrome')
-          window.location = window.location.href + '?' + new Date().getTime()
-          if (!window.isReloading) {
-            window.isReloading = true
-            window.location.reload()
-          }
-        }
+        // if (!!window.chrome) {
+        //   console.log('isChrome')
+        //   location.reload(true)
+        // } else {
+        //   console.log('isNotChrome')
+        //   window.location = window.location.href + '?' + new Date().getTime()
+        //   if (!window.isReloading) {
+        //     window.isReloading = true
+        //     window.location.reload()
+        //   }
+        // }
       }
     })
   },
