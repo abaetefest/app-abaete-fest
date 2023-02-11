@@ -5,3 +5,9 @@
   max-age=0,
   no-cache,
   must-revalidate'''
+  for = "/js/*"
+  [headers.values]
+  cache-control = '''
+  max-age=0,
+  no-cache,
+  must-revalidate'''
