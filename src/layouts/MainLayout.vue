@@ -28,7 +28,7 @@
           @click="shareApp"
         />
 
-        <div>Quasar v{{ version_app }}</div>
+        <!-- <div>Quasar v{{ version_app }}</div> -->
         <!-- <q-btn-dropdown color="white" size="lg" label="" flat rounded>
           <q-list>
             <q-item clickable @click="goTo('userInformations')">
@@ -196,7 +196,7 @@ export default {
     }
   },
   mounted () {
-    this.verificaVersaoNoCache()
+    // this.verificaVersaoNoCache()
     if (JSON.parse(localStorage.getItem('abaete-manage'))) {
       this.isAdmin = true
     }
@@ -260,19 +260,19 @@ export default {
       } catch (err) {
         this.$notifyDanger('Não foi possível compartilharo app!')
       }
-    },
-    verificaVersaoNoCache () {
-      console.log(process.env.VERSION_APP)
-      if (
-        localStorage.getItem('abaete-fest-version') !==
-        process.env.VERSION_APP
-      ) {
-        localStorage.setItem('abaete-fest-version', process.env.VERSION_APP)
-        setTimeout(() => {
-          window.location.reload(true)
-        }, 300)
-      }
     }
+    // verificaVersaoNoCache () {
+    //   console.log(process.env.VERSION_APP)
+    //   if (
+    //     localStorage.getItem('abaete-fest-version') !==
+    //     process.env.VERSION_APP
+    //   ) {
+    //     localStorage.setItem('abaete-fest-version', process.env.VERSION_APP)
+    //     setTimeout(() => {
+    //       window.location.reload(true)
+    //     }, 300)
+    //   }
+    // }
   }
 }
 </script>
