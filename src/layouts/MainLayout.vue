@@ -28,7 +28,7 @@
           @click="shareApp"
         />
 
-        <!-- <div>Quasar v{{ $q.version }}</div> -->
+        <div>Quasar v{{ version_app }}</div>
         <!-- <q-btn-dropdown color="white" size="lg" label="" flat rounded>
           <q-list>
             <q-item clickable @click="goTo('userInformations')">
@@ -191,10 +191,12 @@ export default {
       adminLinks: adminRoute,
       isAdmin: false,
       version: process.env.VERSION,
-      canShare: false
+      canShare: false,
+      version_app: process.env.VERSION_APP
     }
   },
   mounted () {
+    this.verificaVersaoNoCache()
     if (JSON.parse(localStorage.getItem('abaete-manage'))) {
       this.isAdmin = true
     }
@@ -257,6 +259,18 @@ export default {
         await navigator.share(shareData)
       } catch (err) {
         this.$notifyDanger('Não foi possível compartilharo app!')
+      }
+    },
+    verificaVersaoNoCache () {
+      console.log(process.env.VERSION_APP)
+      if (
+        localStorage.getItem('abaete-fest-version') !==
+        process.env.VERSION_APP
+      ) {
+        localStorage.setItem('abaete-fest-version', process.env.VERSION_APP)
+        setTimeout(() => {
+          window.location.reload(true)
+        }, 300)
       }
     }
   }
