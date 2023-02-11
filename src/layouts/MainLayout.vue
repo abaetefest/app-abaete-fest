@@ -28,7 +28,7 @@
           @click="shareApp"
         />
 
-        <!-- <div>Quasar v{{ $q.version }}</div> -->
+        <!-- <div>Quasar v{{ version_app }}</div> -->
         <!-- <q-btn-dropdown color="white" size="lg" label="" flat rounded>
           <q-list>
             <q-item clickable @click="goTo('userInformations')">
@@ -191,7 +191,8 @@ export default {
       adminLinks: adminRoute,
       isAdmin: false,
       version: process.env.VERSION,
-      canShare: false
+      canShare: false,
+      version_app: process.env.VERSION_APP
     }
   },
   mounted () {
@@ -203,27 +204,15 @@ export default {
     } else {
       this.canShare = true
     }
-    // const versionStorage = JSON.parse(localStorage.getItem('abaete-version'))
-    // if (!versionStorage) {
-    //   this.$q.dialog({
-    //     title: 'ATUALIZAÇÃO IMPORTANTE',
-    //     html: true,
-    //     message: `
-    //       Tivemos um problema em nosso servidor e precisamos limpar nosso banco de dados.
-    //       Por favor realize novamente seu cadastro para utilizar o aplicativo!<br>
-    //       Se o problema persistir envie um email para <b>eng.patrickmonteiro@gmail.com</b> para solucionarmos.
-    //     `
-    //   }).onOk(() => {
-    //     console.log('ATUALIZANDO VERSÃO ATUAL')
-    //     localStorage.setItem('abaete-version', JSON.stringify(this.version))
-    //     this.logout('/cadastro')
-    //   })
-    // }
-    // else if (!versionStorage) {
-    //   console.log('SALVANDO VERSAO INEXISTENTE')
-    //   localStorage.setItem('abaete-version', JSON.stringify(this.version))
-    //   // this.logout()
-    // }
+    // Solução para recarregar Safari quando não encontrar arquivos JS
+    if (!window.chrome) {
+      window.addEventListener('error', (e) => {
+        const srcError = e.target.src
+        if (srcError.includes('/js/')) {
+          window.location.reload()
+        }
+      }, true)
+    }
   },
   methods: {
     logout (rota = '/') {
