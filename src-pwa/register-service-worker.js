@@ -40,12 +40,6 @@ register(process.env.SERVICE_WORKER_FILE, {
 
   updated (registration) {
     console.log('Updated is avaible.')
-    // eslint-disable-next-line no-extra-boolean-cast
-    // if (!!window.chrome) {
-    const updateManual = () => {
-      registration.update().catch((er) => console.error('Error on update worker', er))
-    }
-    // 500ms works for me, but you may want to set it higher.
     Notify.create({
       message: 'Nova Atualização Disponível! ',
       icon: 'mdi-cellphone-arrow-down',
@@ -54,16 +48,14 @@ register(process.env.SERVICE_WORKER_FILE, {
       type: 'positive',
       classes: 'glossy text-white',
       onDismiss () {
-        // location.reload(true)
-        setInterval(updateManual, 500)
+        // eslint-disable-next-line no-extra-boolean-cast
+        if (!!window.chrome) {
+          location.reload(true)
+        } else {
+          window.location = window.location.href + '?' + new Date().getTime()
+        }
       }
     })
-    // } else {
-    //   const updateManual = () => {
-    //     registration.update().catch((er) => console.error('Error on update worker', er))
-    //   }
-    //   setInterval(updateManual, 500)
-    // }
   },
 
   offline () {
