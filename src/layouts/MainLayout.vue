@@ -204,6 +204,10 @@ export default {
     } else {
       this.canShare = true
     }
+
+    window.addEventListener('error', (e) => {
+      console.log(e)
+    }, true)
   },
   methods: {
     logout (rota = '/') {
