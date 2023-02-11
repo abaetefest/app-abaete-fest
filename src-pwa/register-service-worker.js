@@ -11,8 +11,12 @@ register(process.env.SERVICE_WORKER_FILE, {
   // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register#Parameter
 
   // registrationOptions: { scope: './' },
-  ready (/* registration */) {
+  ready (registration) {
     console.log('Service worker is active.')
+    // eslint-disable-next-line no-extra-boolean-cast
+    if (!!window.chrome) {
+      registration.update()
+    }
   },
 
   registered (/* registration */) {
@@ -39,7 +43,6 @@ register(process.env.SERVICE_WORKER_FILE, {
   },
 
   updated () {
-    console.log('Updated is avaible.')
     Notify.create({
       message: 'Nova Atualização Disponível! ',
       icon: 'mdi-cellphone-arrow-down',
