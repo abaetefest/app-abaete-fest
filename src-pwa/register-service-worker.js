@@ -77,5 +77,19 @@ register(process.env.SERVICE_WORKER_FILE, {
 
   error (err) {
     console.error('Error during service worker registration:', err)
+    Dialog.create({
+      title: 'Atualização Disponível!',
+      class: 'text-center',
+      message: 'Por favor, feche e abre novamente o app para aplicar as atualizações.',
+      persistent: true,
+      ok: {
+        label: '',
+        color: 'white',
+        flat: true,
+        outlined: true
+      }
+    }).onOk(() => {
+      console.log('Botão pressionado')
+    })
   }
 })
