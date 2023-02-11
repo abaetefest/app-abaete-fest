@@ -1,5 +1,5 @@
 import { register } from 'register-service-worker'
-import { Notify } from 'quasar'
+import { Dialog } from 'quasar'
 
 // The ready(), registered(), cached(), updatefound() and updated()
 // events passes a ServiceWorkerRegistration instance in their arguments.
@@ -40,28 +40,29 @@ register(process.env.SERVICE_WORKER_FILE, {
 
   updated () {
     console.log('New content updated')
-    Notify.create({
-      message: 'Nova Atualização Disponível! ',
-      icon: 'mdi-cellphone-arrow-down',
-      closeBtn: 'Atualizar',
-      timeout: 10000,
-      type: 'positive',
-      classes: 'glossy text-white',
-      onDismiss () {
-        location.reload(true)
-        // eslint-disable-next-line no-extra-boolean-cast
-        // if (!!window.chrome) {
-        //   console.log('isChrome')
-        //   location.reload(true)
-        // } else {
-        //   console.log('isNotChrome')
-        //   window.location = window.location.href + '?' + new Date().getTime()
-        //   if (!window.isReloading) {
-        //     window.isReloading = true
-        //     window.location.reload()
-        //   }
-        // }
+    // Notify.create({
+    //   message: 'Nova Atualização Disponível! ',
+    //   icon: 'mdi-cellphone-arrow-down',
+    //   closeBtn: 'Atualizar',
+    //   timeout: 10000,
+    //   type: 'positive',
+    //   classes: 'glossy text-white',
+    //   onDismiss () {
+    //     location.reload(true)
+    //   }
+    // })
+    Dialog.create({
+      title: 'Atualizações Disponíveis',
+      message: 'Por favor recarregue seu app para aplicar a atualização e ter os novos recursos disponíveis.',
+      persistent: true,
+      ok: {
+        push: true,
+        label: 'Atualizar',
+        color: 'positive',
+        icon: 'mdi-cellphone-arrow-down'
       }
+    }).onOk(() => {
+      location.reload(true)
     })
   },
 
