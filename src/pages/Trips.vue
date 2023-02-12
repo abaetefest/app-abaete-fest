@@ -1,5 +1,10 @@
 <template>
   <q-page padding class="bg-grey-1">
+    <div class="row justify-center lt-md">
+      <div class="col-xs-12 col-sm-12 col-md-4">
+        <q-img src="propagandas/machago.png" @click="openLink" />
+      </div>
+    </div>
     <div v-for="(trip, index) in trips" :key="index" >
       <!-- <p class="text-h5">
         {{ trip.empresa }}
@@ -115,6 +120,7 @@
 
 <script>
 import { trips } from 'src/constants/trips'
+import { openURL } from 'quasar'
 export default {
   name: 'TripsPage',
   data () {
@@ -137,6 +143,9 @@ export default {
   mounted () {
   },
   methods: {
+    openLink () {
+      openURL('https://linkr.bio/machago')
+    }
   }
 }
 </script>
