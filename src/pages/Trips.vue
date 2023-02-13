@@ -144,7 +144,7 @@ export default {
   },
   methods: {
     openLink () {
-      openURL('https://linkr.bio/machago')
+      openURL('https://linkr.bio/machago', '_blank')
     }
   }
 }
