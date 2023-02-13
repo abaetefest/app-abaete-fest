@@ -141,6 +141,11 @@ export default {
           label: 'Artigos de Pesca Esportiva',
           value: 'Pesca',
           icon: 'flat/fishing.png'
+        },
+        {
+          label: 'Suplementos e Saúde',
+          value: 'Suplemento&Saude',
+          icon: 'categories/whey.png'
         }
       ],
       modalPlaces: false,

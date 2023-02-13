@@ -1,5 +1,5 @@
 import { register } from 'register-service-worker'
-import { Notify } from 'quasar'
+import { Dialog } from 'quasar'
 
 // The ready(), registered(), cached(), updatefound() and updated()
 // events passes a ServiceWorkerRegistration instance in their arguments.
@@ -11,13 +11,12 @@ register(process.env.SERVICE_WORKER_FILE, {
   // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register#Parameter
 
   // registrationOptions: { scope: './' },
-
-  ready (/* registration */) {
-    console.log('Service worker is active.')
+  ready (registration) {
+    console.log('Service worker is active.', registration)
   },
 
-  registered (/* registration */) {
-    console.log('Service worker has been registered.')
+  registered (registration) {
+    console.log('Service worker has been registered.', registration)
   },
 
   cached (/* registration */) {
@@ -39,19 +38,34 @@ register(process.env.SERVICE_WORKER_FILE, {
     console.log('New content is downloading.')
   },
 
-  updated (/* registration */) {
-    console.log('Updated is avaible.')
-    Notify.create({
-      message: 'Nova Atualização Disponível!',
-      icon: 'mdi-cellphone-arrow-down',
-      closeBtn: 'Atualizar',
-      timeout: 10000,
-      type: 'positive',
-      classes: 'glossy text-white',
-      onDismiss () {
+  updated () {
+    console.log('New content updated')
+    // Notify.create({
+    //   message: 'Nova Atualização Disponível! ',
+    //   icon: 'mdi-cellphone-arrow-down',
+    //   closeBtn: 'Atualizar',
+    //   timeout: 10000,
+    //   type: 'positive',
+    //   classes: 'glossy text-white',
+    //   onDismiss () {
+    //     location.reload(true)
+    //   }
+    // })
+    setTimeout(() => {
+      Dialog.create({
+        title: 'Atualizações Disponíveis',
+        message: 'Por favor recarregue seu app para aplicar a atualização e ter os novos recursos disponíveis.',
+        persistent: true,
+        ok: {
+          push: true,
+          label: 'Atualizar',
+          color: 'positive',
+          icon: 'mdi-cellphone-arrow-down'
+        }
+      }).onOk(() => {
         location.reload(true)
-      }
-    })
+      })
+    }, 3000)
   },
 
   offline () {

@@ -1,5 +1,10 @@
 <template>
-  <q-page padding class="bg-grey-2">
+  <q-page padding class="bg-grey-1">
+    <div class="row justify-center lt-md">
+      <div class="col-xs-12 col-sm-12 col-md-4">
+        <q-img src="propagandas/machago.png" @click="openLink" />
+      </div>
+    </div>
     <div v-for="(trip, index) in trips" :key="index" >
       <q-card class="q-mb-md">
         <q-card-section class="text-center">
@@ -94,6 +99,7 @@
 
 <script>
 import { trips } from 'src/constants/trips'
+import { openURL } from 'quasar'
 export default {
   name: 'TripsPage',
   data () {
@@ -104,8 +110,27 @@ export default {
       placeDetails: {}
     }
   },
-  computed: {},
-  mounted () {},
-  methods: {}
+  computed: {
+    // getPlaces: function () {
+    //   return makers.filter(place => place.category === this.categoria)
+    // },
+    // getIconCategory: function () {
+    //   const img = this.options.filter(opt => opt.value === this.categoria)
+    //   return img[0].icon
+    // }
+  },
+  mounted () {
+  },
+  methods: {
+    openLink () {
+      if (this.$q.platform.is.ios) {
+        openURL('https://apps.apple.com/app/machago/id6444778780', '_blank')
+      } else if (this.$q.platform.is.android) {
+        openURL('https://play.google.com/store/apps/details?id=br.com.machago.passenger.drivermachine', '_blank')
+      } else {
+        openURL('https://linkr.bio/machago', '_blank')
+      }
+    }
+  }
 }
 </script>

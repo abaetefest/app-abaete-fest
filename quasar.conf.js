@@ -148,7 +148,8 @@ module.exports = function (ctx) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {
         skipWaiting: true,
-        clientsClaim: true
+        clientsClaim: true,
+        exclude: [/netlify.toml/]
       }, // only for GenerateSW
       manifest: {
         name: 'App AbaetéFest',

@@ -6,6 +6,7 @@ import { hospitaisPostos } from './hospitaisPostos'
 import { sorveterias } from './sorveterias'
 import { farmacias } from './farmacias.js'
 import { pesca } from './artigosPesca.js'
+import { suplementosSaude } from './suplementosSaude.js'
 
 export const makers = [
   ...bancos,
@@ -15,5 +16,6 @@ export const makers = [
   ...sorveterias,
   ...hospitaisPostos,
   ...farmacias,
-  ...pesca
+  ...pesca,
+  ...suplementosSaude
 ]
