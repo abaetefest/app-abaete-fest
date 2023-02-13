@@ -144,7 +144,13 @@ export default {
   },
   methods: {
     openLink () {
-      openURL('https://linkr.bio/machago', '_blank')
+      if (this.$q.platform.is.ios) {
+        openURL('https://apps.apple.com/app/machago/id6444778780', '_blank')
+      } else if (this.$q.platform.is.android) {
+        openURL('https://play.google.com/store/apps/details?id=br.com.machago.passenger.drivermachine', '_blank')
+      } else {
+        openURL('https://linkr.bio/machago', '_blank')
+      }
     }
   }
 }
