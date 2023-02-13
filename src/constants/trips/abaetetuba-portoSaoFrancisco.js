@@ -30,8 +30,8 @@ export default {
           ]
         },
         {
-          origem: 'Arapari',
-          destino: 'Belém',
+          origem: 'Abaetetuba',
+          destino: 'Porto São Francisco',
           periodo: 'Domingo - Feriado',
           horarios: [
             {
