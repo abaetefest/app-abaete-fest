@@ -315,7 +315,7 @@ export default {
             {
               hora: '05:30*',
               modalidade: 'Alça Viária',
-              obs: 'Pode sofrer alterações domingos e feriados'
+              obs: 'Pode sofrer alterações domingos e Feriados'
             },
             {
               hora: '07:40',
@@ -344,7 +344,7 @@ export default {
             {
               hora: '13:45*',
               modalidade: 'Alça Viária',
-              obs: 'Pode sofrer alterações domingos e feriados'
+              obs: 'Pode sofrer alterações domingos e Feriados'
             },
             {
               hora: '15:00',
@@ -372,7 +372,7 @@ export default {
             {
               hora: '05:20*',
               modalidade: 'Alça Viária',
-              obs: 'Pode sofrer alterações domingos e feriados'
+              obs: 'Pode sofrer alterações domingos e Feriados'
             },
             {
               hora: '07:00',
@@ -417,7 +417,7 @@ export default {
             {
               hora: '18:00*',
               modalidade: 'Alça Viária',
-              obs: 'Pode sofrer alterações domingos e feriados'
+              obs: 'Pode sofrer alterações domingos e Feriados'
             }
           ]
         }

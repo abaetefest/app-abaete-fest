@@ -1,11 +1,12 @@
 export default {
   cidade1: 'Abaetetuba',
   cidade2: 'Porto São Francisco',
+  somenteUmaCidade: true,
   empresas: [
-    // Porto São francisco
+    // Cootransbat-tur
     {
-      nome: 'Horários Porto São Francisco',
-      icon: 'trips/balsa.png',
+      nome: 'Cootransbat-Tur',
+      icon: 'trips/cootransbar-tur.png',
       viagens: [
         {
           origem: 'Abaetetuba',
@@ -32,7 +33,7 @@ export default {
         {
           origem: 'Abaetetuba',
           destino: 'Porto São Francisco',
-          periodo: 'Domingo - Feriado',
+          periodo: 'Domingos e Feriados',
           horarios: [
             {
               hora: '05:20 | 07:00 | 08:00 | 09:00 | 10:00 | 11:00 | 13:00 | 15:30 | 16:30',

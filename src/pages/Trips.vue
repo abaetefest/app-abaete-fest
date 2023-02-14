@@ -11,7 +11,7 @@
           <div class="text-h6">
             {{ trip.cidade1 }} <q-icon name="mdi-arrow-right-thick" /> {{ trip.cidade2 }}
           </div>
-          <div class="text-h6">
+          <div class="text-h6" v-if="!trip.somenteUmaCidade">
             {{ trip.cidade2 }} <q-icon name="mdi-arrow-right-thick" /> {{ trip.cidade1 }}
           </div>
         </q-card-section>

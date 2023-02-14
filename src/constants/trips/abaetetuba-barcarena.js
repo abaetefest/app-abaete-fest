@@ -2,7 +2,6 @@ export default {
   cidade1: 'Abaetetuba',
   cidade2: 'Barcarena',
   empresas: [
-
     // Arapari Navegação
     {
       nome: 'Arapari Navegação',
@@ -14,21 +13,18 @@ export default {
           periodo: 'Segunda a Sábado',
           horarios: [
             {
-              hora: '06:14',
-              modalidade: 'Arapari',
+              hora: '06:15',
+
               obs: 'Segunda a Sexta'
             },
             {
-              hora: '07:30',
-              modalidade: 'Arapari'
+              hora: '07:30'
             },
             {
-              hora: '11:30',
-              modalidade: 'Arapari'
+              hora: '11:30'
             },
             {
-              hora: '18:00',
-              modalidade: 'Arapari'
+              hora: '18:00'
             }
           ]
         },
@@ -38,8 +34,7 @@ export default {
           periodo: 'Domingos e Feriados',
           horarios: [
             {
-              hora: '11:00',
-              modalidade: 'Arapari'
+              hora: '11:00'
             }
           ]
         },
@@ -49,21 +44,17 @@ export default {
           periodo: 'Segunda a Sábado',
           horarios: [
             {
-              hora: '06:00',
-              modalidade: 'Arapari'
+              hora: '06:00'
             },
             {
               hora: '07:30',
-              modalidade: 'Arapari',
               obs: 'Segunda a Sexta'
             },
             {
-              hora: '09:30',
-              modalidade: 'Arapari'
+              hora: '09:30'
             },
             {
-              hora: '16:00',
-              modalidade: 'Arapari'
+              hora: '16:00'
             }
           ]
         },
@@ -73,13 +64,11 @@ export default {
           periodo: 'Domingos e Feriados',
           horarios: [
             {
-              hora: '07:00',
-              modalidade: 'Arapari'
+              hora: '07:00'
             }
           ]
         }
       ]
     }
-
   ]
 }
