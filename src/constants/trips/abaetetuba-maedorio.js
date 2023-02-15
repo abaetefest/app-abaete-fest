@@ -20,7 +20,7 @@ export default {
         {
           origem: 'Mãe do Rio',
           destino: 'Abaetetuba',
-          periodo: 'Segunda a Sábado',
+          periodo: 'Segunda a Domingo',
           horarios: [
             {
               hora: '05:30'

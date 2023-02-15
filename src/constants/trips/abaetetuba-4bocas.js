@@ -20,7 +20,7 @@ export default {
         {
           origem: '4 Bocas',
           destino: 'Abaetetuba',
-          periodo: 'Segunda a Sábado',
+          periodo: 'Segunda a Domingo',
           horarios: [
             {
               hora: '08:00'
