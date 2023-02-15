@@ -72,7 +72,7 @@ export default {
               hora: '06:40'
             },
             {
-              hora: '07:00'
+              hora: '07:05'
             },
             {
               hora: '07:35'
