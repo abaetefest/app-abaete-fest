@@ -61,7 +61,7 @@ export default {
           ]
         },
         {
-          origem: 'Porto de São Francisco-Núcleo',
+          origem: 'Núcleo-Porto de São Francisco',
           destino: 'Abaetetuba',
           periodo: 'Segunda a Sábado',
           horarios: [
