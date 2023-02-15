@@ -104,8 +104,8 @@ export default {
           ]
         },
         {
-          origem: 'Abaetetuba',
-          destino: 'Núcleo-Porto de São Francisco',
+          origem: 'Núcleo-Porto de São Francisco',
+          destino: 'Abaetetuba',
           periodo: 'Domingos e Feriados',
           horarios: [
             {
