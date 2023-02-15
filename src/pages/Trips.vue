@@ -6,113 +6,92 @@
       </div>
     </div>
     <div v-for="(trip, index) in trips" :key="index" >
-      <!-- <p class="text-h5">
-        {{ trip.empresa }}
-        <q-avatar class="float-right">
-          <img :src="trip.icon" rounded  />
-        </q-avatar>
-      </p> -->
-      <q-list padding bordered class="rounded-borders bg-white" >
-      <q-expansion-item
-        icon="perm_identity"
-        :label="trip.empresa"
-      >
-      <template v-slot:header>
-          <q-item-section avatar>
-            <q-avatar class="float-right">
-              <img :src="trip.icon" rounded  />
-            </q-avatar>
-          </q-item-section>
+      <q-card class="q-mb-md">
+        <q-card-section class="text-center">
+          <div class="text-h6">
+            {{ trip.cidade1 }} <q-icon name="mdi-arrow-right-thick" /> {{ trip.cidade2 }}
+          </div>
+          <div class="text-h6" v-if="!trip.somenteUmaCidade">
+            {{ trip.cidade2 }} <q-icon name="mdi-arrow-right-thick" /> {{ trip.cidade1 }}
+          </div>
+        </q-card-section>
+        <q-list
+          padding
+          bordered
+          class="rounded-borders bg-white"
+          v-for="(empresa, index) in trip.empresas"
+          :key="index"
+        >
+          <q-expansion-item icon="perm_identity" :label="empresa.nome">
+            <template v-slot:header>
+              <q-item-section avatar>
+                <q-avatar class="float-right">
+                  <img :src="empresa.icon" rounded />
+                </q-avatar>
+              </q-item-section>
 
-          <q-item-section>
-            {{ trip.empresa }}
-          </q-item-section>
-
-          <!-- <q-item-section side>
-            <div class="row items-center">
-              <q-icon name="star" color="red" size="24px" />
-              <q-icon name="star" color="red" size="24px" />
-              <q-icon name="star" color="red" size="24px" />
-            </div>
-          </q-item-section> -->
-        </template>
-        <q-card>
-          <q-card-section>
-            <div v-for="(viagem, index) in trip.viagens" :key="index">
-              <q-separator class="q-mt-md" />
-              <p class="text-h6 text-center q-mb-sm">
-                {{ viagem.origem }} <q-icon name="mdi-arrow-right-thick" /> {{ viagem.destino }}
-              </p>
-
-              <p class="text-subtitle1 text-center">
-                {{ viagem.periodo }}
-              </p>
-
-              <q-list bordered separator>
-                <q-item
-                  v-for="(horaViagem, index) in viagem.horarios"
+              <q-item-section>
+                {{ empresa.nome }}
+              </q-item-section>
+            </template>
+            <q-card>
+              <q-card-section class="row q-col-gutter-x-lg">
+                <div
+                  v-for="(viagem, index) in empresa.viagens"
                   :key="index"
-                  clickable
-                  v-ripple
-                  dense
+                  class="col-12 col-sm-6"
                 >
-                <q-item-section>
-                  <q-item-label>{{ horaViagem.hora }}</q-item-label>
-                  <q-item-label
-                    caption
-                    lines="2"
-                    class="text-negative"
-                  >
-                    {{ horaViagem.obs }}
-                  </q-item-label>
-                </q-item-section>
-                  <q-item-section side>{{ horaViagem.modalidade }}</q-item-section>
-                </q-item>
-              </q-list>
-            </div>
-          </q-card-section>
-        </q-card>
-      </q-expansion-item>
-      </q-list>
+                  <q-separator class="q-mb-sm" />
+                  <p class="text-h6 text-center q-mb-sm">
+                    {{ viagem.origem }}
+                    <q-icon name="mdi-arrow-right-thick" />
+                    {{ viagem.destino }}
+                  </p>
 
-      <!-- <div v-for="(viagem, index) in trip.viagens" :key="index">
-        <q-separator class="q-mt-md" />
-        <p class="text-h6 text-center q-mb-sm">
-          {{ viagem.origem }} <q-icon name="mdi-arrow-right-thick" /> {{ viagem.destino }}
-        </p>
+                  <p class="text-subtitle1 text-center">
+                    {{ viagem.periodo }}
+                  </p>
 
-        <p class="text-subtitle1 text-center">
-          {{ viagem.periodo }}
-        </p>
-
-        <q-list bordered separator>
-          <q-item
-            v-for="(horaViagem, index) in viagem.horarios"
-            :key="index"
-            clickable
-            v-ripple
-            dense
-          >
-          <q-item-section>
-            <q-item-label>{{ horaViagem.hora }}</q-item-label>
-            <q-item-label
-              caption
-              lines="2"
-              class="text-negative"
-            >
-              {{ horaViagem.obs }}
-            </q-item-label>
-          </q-item-section>
-            <q-item-section side>{{ horaViagem.modalidade }}</q-item-section>
-          </q-item>
+                  <q-list bordered separator>
+                    <q-item
+                      v-for="(horaViagem, index) in viagem.horarios"
+                      :key="index"
+                      clickable
+                      v-ripple
+                      dense
+                    >
+                      <q-item-section>
+                        <q-item-label>{{ horaViagem.hora }}</q-item-label>
+                        <q-item-label caption lines="2" class="text-negative">
+                          {{ horaViagem.obs }}
+                        </q-item-label>
+                      </q-item-section>
+                      <q-item-section side>{{
+                        horaViagem.modalidade
+                      }}</q-item-section>
+                    </q-item>
+                  </q-list>
+                </div>
+              </q-card-section>
+            </q-card>
+          </q-expansion-item>
         </q-list>
-      </div> -->
+      </q-card>
     </div>
     <div class="row q-pa-sm">
       <div class="col-12">
-          <p class="text-caption"><strong>Arapari</strong>: Portos próximo ao Açaí Biruta - R. Siqueira Mendes 10 - Cidade Velha, Belém - PA, 66020-600</p>
-          <p class="text-caption"><strong>Alça Viária</strong>: Terminal Rodoviário de Belém - São Brás, Belém - PA, 66090-000</p>
-          <p class="text-caption"><strong>Balsa</strong>: Terminal Rodofluvial de Belém - Av. Bernardo Sayão, 3786 - Cidade Velha, Belém - PA,</p>
+        <p class="text-caption">
+          <strong>Arapari</strong>: Portos próximo ao Açaí Biruta - R. Siqueira
+          Mendes 10 - Cidade Velha, Belém - PA, 66020-600
+        </p>
+        <p class="text-caption">
+          <strong>Alça Viária</strong>: Terminal Rodoviário de Belém - São Brás,
+          Belém - PA, 66090-000
+        </p>
+        <p class="text-caption">
+          <strong>Balsa</strong>: Terminal Rodofluvial de Belém - Av. Bernardo
+          Sayão, 3786 - Cidade Velha, Belém - PA,
+        </p>
       </div>
     </div>
   </q-page>
