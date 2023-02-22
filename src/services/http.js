@@ -1,7 +1,6 @@
 import Axios from 'axios'
-// import { axiosDecorator } from 'amazonia-framework-frontend'
 
-export const urlBase = process.env.URI_API // 'https://medico.sige.dev.br/webservices/app'
+export const urlBase = process.env.URI_API
 const axios = Axios.create({
   baseURL: urlBase
 })
@@ -39,10 +38,3 @@ axios.interceptors.request.use(function (config) {
 // })
 
 export const http = axios
-
-// axiosDecorator.oauth2(http)
-// axiosDecorator.notification(http)
-// Ou utilizar as linhas acimas para settar decorators específicos
-// Ou a linha abaixo para settar todos os decorators disponíveis
-// Nunca utilizar o 'axiosDecorator.all' com os outros decorators para não incluí-los múltiplas vezes
-// axiosDecorator.all(http)

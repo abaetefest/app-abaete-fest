@@ -178,6 +178,11 @@ const adminRoute = [
     title: 'Gerenciar Usuários',
     icon: 'mdi-monitor-dashboard',
     route: 'manageUsers'
+  },
+  {
+    title: 'Gerenciar Categorias de Serviço',
+    icon: 'mdi-shape-outline',
+    route: 'manageServicesCategories'
   }
 ]
 
