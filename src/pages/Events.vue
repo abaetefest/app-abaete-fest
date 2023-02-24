@@ -1,5 +1,5 @@
 <template>
-  <q-page class="bg-grey-1">
+  <q-page :class="$q.dark.isActive ? '': 'bg-grey-1'">
     <!-- <div class="">
       <div class="col-12 text-center"> -->
         <!-- <q-banner inline-actions class="text-primary bg-secondary"> -->
@@ -20,9 +20,9 @@
         :options="options"
         label="Selecione uma categoria"
         class="col-sm-12 col-xs-12 col-md-6"
-        bg-color="white"
-        label-color="primary"
-        color="primary"
+        :bg-color="$q.dark.isActive ? '' : 'white'"
+        :label-color="$q.dark.isActive ? 'white' : 'primary'"
+        :color="$q.dark.isActive ? 'white' : 'primary'"
         map-options
         emit-value
         @input="listEvents(categoria)"

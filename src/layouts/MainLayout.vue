@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated :class="$q.dark.isActive ? 'bg-dark' : 'bg-primary'">
       <q-toolbar>
         <q-btn
           class="gt-sm"
@@ -18,6 +18,15 @@
           </q-avatar>
           AbaetéFest
         </q-toolbar-title>
+
+        <q-toggle
+          v-model="darkMode"
+          checked-icon="mdi-moon-waning-crescent"
+          :color="$q.dark.isActive ? 'grey-7' : 'white'"
+          unchecked-icon="mdi-white-balance-sunny"
+          size="lg"
+          @input="setDarkMode"
+        />
 
         <q-btn
           v-if="canShare"
@@ -58,9 +67,11 @@
         dense
         no-caps
         indicator-color="white"
-        class="bg-white text-weight-thin text-grey-7"
-        :class="$q.platform.is.ios ? 'q-pb-md' : ''"
-        active-color="primary"
+        :class="[
+          $q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-weight-thin text-grey-7',
+          $q.platform.is.ios ? 'q-pb-md' : ''
+        ]"
+        :active-color="$q.dark.isActive ? 'white' : 'primary'"
       >
         <q-route-tab
           v-for="(tab, index) in essentialLinks"
@@ -79,7 +90,7 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-grey-1"
+      :content-class="$q.dark.isActive ? '' : 'bg-grey-1'"
     >
       <q-list>
         <q-item-label
@@ -192,7 +203,8 @@ export default {
       isAdmin: false,
       version: process.env.VERSION,
       canShare: false,
-      version_app: process.env.VERSION_APP
+      version_app: process.env.VERSION_APP,
+      darkMode: false
     }
   },
   mounted () {
@@ -245,6 +257,9 @@ export default {
       } catch (err) {
         this.$notifyDanger('Não foi possível compartilharo app!')
       }
+    },
+    setDarkMode (darkValue) {
+      this.$q.dark.set(darkValue)
     }
   }
 }
