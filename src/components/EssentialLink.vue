@@ -3,6 +3,7 @@
     clickable
     exact
     :to="{ name: route }"
+    :active-class="$q.dark.isActive ? 'text-black bg-white': 'bg-grey-3 text-primary'"
   >
     <q-item-section
       v-if="icon"

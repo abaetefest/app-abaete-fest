@@ -1,5 +1,5 @@
 <template>
-  <q-page padding class="bg-grey-1">
+  <q-page padding :class="$q.dark.isActive ? '': 'bg-grey-1'">
     <div class="row q-pb-md justify-center">
       <q-btn-group push>
         <q-btn
@@ -7,9 +7,15 @@
           label="Lista"
           icon="mdi-format-list-bulleted-square"
           :to="{ name: 'places' }"
-          color="primary"
+          :class="$q.dark.isActive ? 'text-black' : 'text-white'"
+          :color="$q.dark.isActive ? 'white' : 'primary'"
         />
-        <q-btn push label="Mapa" icon="mdi-map-legend" :to="{ name: 'map' }" />
+        <q-btn
+          push
+          label="Mapa"
+          icon="mdi-map-legend"
+          :to="{ name: 'map' }"
+        />
       </q-btn-group>
     </div>
     <div class="row q-pb-md">
@@ -19,9 +25,9 @@
         :options="options"
         label="Selecione uma categoria"
         class="col-sm-12 col-xs-12 col-md-6"
-        bg-color="white"
-        label-color="primary"
-        color="primary"
+        :bg-color="$q.dark.isActive ? '' : 'white'"
+        :label-color="$q.dark.isActive ? 'white' : 'primary'"
+        :color="$q.dark.isActive ? 'white' : 'primary'"
         map-options
         emit-value
       >
