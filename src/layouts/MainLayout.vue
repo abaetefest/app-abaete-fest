@@ -61,7 +61,13 @@
       </q-toolbar>
     </q-header>
 
-    <q-footer v-if="!!$route.meta.tab" class="lt-md bg-white" :class="$q.platform.is.ios ? 'q-pb-md' : ''" >
+    <q-footer
+      v-if="!!$route.meta.tab" class="lt-md"
+      :class="[
+        $q.platform.is.ios ? 'q-pb-md' : '',
+        $q.dark.isActive ? 'bg-dark' : 'bg-white'
+      ]"
+      >
       <q-tabs
         align="justify"
         dense
