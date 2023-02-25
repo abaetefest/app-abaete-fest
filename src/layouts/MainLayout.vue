@@ -229,6 +229,8 @@ export default {
         window.location.reload()
       }
     }, true)
+
+    this.verifyDarkMode()
   },
   methods: {
     logout (rota = '/') {
@@ -266,6 +268,17 @@ export default {
     },
     setDarkMode (darkValue) {
       this.$q.dark.set(darkValue)
+      this.$q.localStorage.set('dark-mode-abaetefest', darkValue)
+    },
+    verifyDarkMode () {
+      const darkModeLocalStorage = this.$q.localStorage.getItem('dark-mode-abaetefest')
+      if (darkModeLocalStorage) {
+        this.setDarkMode(true)
+        this.darkMode = true
+      } else {
+        this.setDarkMode(false)
+        this.darkMode = false
+      }
     }
   }
 }
