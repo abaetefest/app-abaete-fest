@@ -7,10 +7,15 @@
           label="Lista"
           icon="mdi-format-list-bulleted-square"
           :to="{ name: 'places' }"
-          :class="$q.dark.isActive ? 'text-black' : 'text-black'"
+          :class="$q.dark.isActive ? 'text-black' : 'text-white'"
           :color="$q.dark.isActive ? 'white' : 'primary'"
         />
-        <q-btn push label="Mapa" icon="mdi-map-legend" :to="{ name: 'map' }" />
+        <q-btn
+          push
+          label="Mapa"
+          icon="mdi-map-legend"
+          :to="{ name: 'map' }"
+        />
       </q-btn-group>
     </div>
     <div class="row q-pb-md">

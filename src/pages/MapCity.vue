@@ -1,5 +1,5 @@
 <template>
-  <q-page class="bg-grey-1">
+  <q-page :class="$q.dark.isActive ? '': 'bg-grey-1'">
     <div class="row q-pb-sm q-pt-sm justify-center">
       <q-btn-group push>
         <q-btn
@@ -13,7 +13,8 @@
           label="Mapa"
           icon="mdi-map-legend"
           :to="{ name: 'map'}"
-          color="primary"
+          :class="$q.dark.isActive ? 'text-black' : 'text-white'"
+          :color="$q.dark.isActive ? 'white' : 'primary'"
         />
       </q-btn-group>
     </div>
@@ -24,9 +25,9 @@
         :options="options"
         label="Selecione uma categoria"
         class="col-sm-12 col-xs-12 col-md-6"
-        bg-color="white"
-        label-color="primary"
-        color="primary"
+        :bg-color="$q.dark.isActive ? '' : 'white'"
+        :label-color="$q.dark.isActive ? 'white' : 'primary'"
+        :color="$q.dark.isActive ? 'white' : 'primary'"
         map-options
         emit-value
         @input="setFilterMap"
@@ -68,7 +69,7 @@
           :icon="getIcon(maker.icon)"
           @click="showDialog"
         >
-          <l-tooltip>
+          <l-tooltip class="text-body2 bg-white">
             <strong>{{ maker.title }} </strong><br>
             Categoria: <strong>{{ maker.category }} </strong><br>
             <span>{{ maker.address }}</span><br>

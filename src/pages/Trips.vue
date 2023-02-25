@@ -1,5 +1,5 @@
 <template>
-  <q-page padding class="bg-grey-1">
+  <q-page padding :class="$q.dark.isActive ? 'bg-dark' :  'bg-grey-1'">
     <div class="row justify-center lt-md">
       <div class="col-xs-12 col-sm-12 col-md-4">
         <q-img src="propagandas/machago.png" @click="openLink" />
@@ -18,7 +18,8 @@
         <q-list
           padding
           bordered
-          class="rounded-borders bg-white"
+          class="rounded-borders"
+          :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
           v-for="(empresa, index) in trip.empresas"
           :key="index"
         >
@@ -62,7 +63,7 @@
                     >
                       <q-item-section>
                         <q-item-label>{{ horaViagem.hora }}</q-item-label>
-                        <q-item-label caption lines="2" class="text-negative">
+                        <q-item-label caption lines="2" :class="$q.dark.isActive ? 'text-red-6' : 'text-negative'" >
                           {{ horaViagem.obs }}
                         </q-item-label>
                       </q-item-section>
