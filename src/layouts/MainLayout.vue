@@ -267,6 +267,7 @@ export default {
       }
     },
     setDarkMode (darkValue) {
+      this.$mixpanel.track('darkMode', { darkModeValue: darkValue })
       this.$q.dark.set(darkValue)
       this.$q.localStorage.set('dark-mode-abaetefest', darkValue)
     },

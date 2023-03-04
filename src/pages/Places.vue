@@ -171,9 +171,10 @@ export default {
     console.log(this.categoria)
   },
   methods: {
-    openDialogCourse (course) {
+    openDialogCourse (place) {
       this.modalPlaces = true
-      this.placeDetails = course
+      this.placeDetails = place
+      this.$mixpanel.track(place.title)
     },
     closeModal () {
       this.modalPlaces = false

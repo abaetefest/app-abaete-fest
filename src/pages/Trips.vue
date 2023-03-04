@@ -23,7 +23,7 @@
           v-for="(empresa, index) in trip.empresas"
           :key="index"
         >
-          <q-expansion-item icon="perm_identity" :label="empresa.nome">
+          <q-expansion-item icon="perm_identity" :label="empresa.nome" @click="handleMixPanelEvent(empresa.nome)">
             <template v-slot:header>
               <q-item-section avatar>
                 <q-avatar class="float-right">
@@ -131,6 +131,9 @@ export default {
       } else {
         openURL('https://linkr.bio/machago', '_blank')
       }
+    },
+    handleMixPanelEvent (empresa) {
+      this.$mixpanel.track(empresa)
     }
   }
 }
