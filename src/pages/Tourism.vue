@@ -120,9 +120,10 @@ export default {
         console.log(error)
       }
     },
-    openDialogCourse (course) {
+    openDialogCourse (place) {
       this.modalTourism = true
-      this.tourismDetails = course
+      this.tourismDetails = place
+      this.$mixpanel.track(place.name)
     },
     detailsEvent (course) {
       this.$router.push({ name: 'eventDetails', params: { id: course.id } })
