@@ -6,15 +6,16 @@ import abaetetubaMaedorio from './trips/abaetetuba-maedorio'
 import abaetetubaMoju from './trips/abaetetuba-moju'
 import abaetetubaNucleoPortoSaoFrancisco from './trips/abaetetuba-nucleo-portoSaoFrancisco'
 import abaetetubaPortoSaoFrancisco from './trips/abaetetuba-portoSaoFrancisco'
+import abaetetubaBeja from './trips/abaetetuba-beja'
 
 export const trips = [
   { ...abaetetubaBelem },
   { ...abaetetubaBarcarena },
+  { ...abaetetubaBeja },
   { ...abaetetubaMoju },
   { ...abaetetubaIgarapemiri },
   { ...abaetetubaPortoSaoFrancisco },
   { ...abaetetubaNucleoPortoSaoFrancisco },
   { ...abaetetubaMaedorio },
   { ...abaetetuba4bocas }
-
 ]
