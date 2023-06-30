@@ -169,7 +169,8 @@ export default {
         },
         { name: 'categoria', label: 'Categoria', field: 'categoria', sortable: true },
         { name: 'resumo', label: 'Resumo', field: 'resumo', sortable: true },
-        { name: 'avaliacao', label: 'Avaliação', field: 'avaliacao' }
+        { name: 'avaliacao', label: 'Avaliação', field: 'avaliacao' },
+        { name: 'start_date', label: 'Data', field: 'start_date', align: 'left', format: (data) => this.formatDateString(data) }
       ],
       events: [],
       load: true,
