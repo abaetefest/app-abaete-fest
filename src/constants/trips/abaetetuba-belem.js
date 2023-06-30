@@ -396,7 +396,8 @@ export default {
             },
             {
               hora: '12:20',
-              modalidade: 'Alça Viária'
+              modalidade: 'Alça Viária',
+              obs: 'A saída está ocorrendo 12:30 do terminal'
             },
             {
               hora: '13:30',
