@@ -13,7 +13,7 @@ export default {
           periodo: 'Segunda a Sexta (Saída da Praça da Bandeira, em frente a Pizzaria Sal e Mel.)',
           horarios: [
             {
-              hora: 'De 06:00h às 20:00h. A saída depende do movimento. Lotou os assentos o ônibus sai. São 70 ônibus disponíveis'
+              hora: 'De 06:00h às 20:00h. A saída é de hora em hora.'
             }
             // {
             //   hora: '07:30'
@@ -130,7 +130,7 @@ export default {
           periodo: 'Segunda a Sexta',
           horarios: [
             {
-              hora: 'A saída depende do movimento, com horários até 5h da manhã. Lotou os assentos o ônibus sai. São 70 ônibus disponíveis'
+              hora: 'De hora em hora.'
             }
             // {
             //   hora: '06:00'
