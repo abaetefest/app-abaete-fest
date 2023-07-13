@@ -35,6 +35,7 @@
         <q-skeleton type="QBtn" class="full-width" />
       </q-card-actions>
     </q-card>
+
     <q-card v-else class="full-width full-height" :key="event.id">
         <q-card-section class="row q-pb-none">
           <div class="text-h6 text-center q-py-none col-12">
@@ -45,18 +46,29 @@
         <q-separator />
 
         <q-card-section>
-          <div class="text-body2 text-grey-9 q-mb-md text-center" v-if="event.image_url">
-            <q-img :src="event.image_url" style="max-width: 350px" />
+          <div class="text-body2 text-grey-9 q-mb-md text-center" style="min-height: 200px;">
+            <q-img
+              :src="event.image_url"
+              style="max-width: 350px; min-width: 300px;"
+              placeholder-src="loadPlaceholder.png"
+            />
           </div>
 
-          <div class="text-body2 text-grey-9 q-mb-md" v-if="event.description">
+          <div
+            v-if="event.description"
+            class="text-body1 q-mb-md"
+            :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
+          >
             <!-- <strong> SOBRE O EVENTO:</strong> -->
             <p v-html="event.description">
               {{ event.description }}
             </p>
           </div>
 
-          <div class="text-body2 text-grey-9">
+          <div
+            class="text-body2"
+            :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
+          >
             <strong>DATA:</strong> {{ formatDateString(event.start_date)}} - {{ formatHourString(event.start_date) }}
           </div>
         </q-card-section>
@@ -154,3 +166,9 @@ export default {
   }
 }
 </script>
+
+<style>
+ .link-custom a {
+  color: rgb(180, 196, 242);
+};
+</style>

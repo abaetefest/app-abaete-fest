@@ -72,7 +72,7 @@
         <div class="q-pa-sm col-xs-12 col-sm-6 col-md-3">
           <q-card
             class="fit cursor-pointer shadow-5"
-            @click="openDialogCourse(props.row)"
+            @click="detailsEvent(props.row)"
           >
             <q-img
               :src="props.row.image_url"
