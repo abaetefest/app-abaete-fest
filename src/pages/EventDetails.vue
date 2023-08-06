@@ -132,7 +132,7 @@ export default {
       return date.formatDate(dateOriginal, 'HH:mm')
     },
     backToEvents (category) {
-      this.$router.push({ name: 'events', params: { type: category } })
+      this.$router.push({ name: 'events' })
     }
   },
   meta () {
