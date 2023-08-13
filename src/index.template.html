@@ -59,6 +59,10 @@
           a.appendChild(r);
       })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
+
+    <!-- Yandex.RTB -->
+    <script>window.yaContextCb=window.yaContextCb||[]</script>
+    <script src="https://yandex.ru/ads/system/context.js" async></script>
   </head>
   <body>
     <!-- DO NOT touch the following DIV -->
@@ -78,6 +82,17 @@
             OneSignal.SERVICE_WORKER_UPDATER_PATH = 'push/OneSignalSDKUpdaterWorker.js'
             OneSignal.init(initConfig);
         });
+    </script>
+
+    <!-- Yandex.RTB R-A-2589910-1 -->
+    <div id="yandex_rtb_R-A-2589910-1"></div>
+    <script>window.yaContextCb.push(()=>{
+      Ya.Context.AdvManager.render({
+        "blockId": "R-A-2589910-1",
+        "renderTo": "yandex_rtb_R-A-2589910-1",
+        "type": "feed"
+      })
+    })
     </script>
   </body>
 </html>
