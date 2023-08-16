@@ -156,12 +156,14 @@ module.exports = function (ctx) {
       manifest: {
         name: 'App AbaetéFest',
         short_name: 'App AbaetéFest',
-        description: 'Aplicativo de eventos e festivais',
+        description: 'Aplicativo de eventos, horários de viagem e muito mais!',
         display: 'fullscreen',
         orientation: 'portrait',
         background_color: '#ffffff',
         theme_color: '#204f8f',
         categories: ['lifestyle', 'news', 'social'],
+        id: '/',
+        start_url: '/',
         icons: [
           {
             src: 'icons/icon-128x128.png',
@@ -206,7 +208,33 @@ module.exports = function (ctx) {
           //   platform: 'itunes',
           //   url: 'https://itunes.apple.com/app/example-app1/id123456789'
           // }
-        ]
+        ],
+        launch_handler: {
+          client_mode: ['navigate-existing, auto']
+        },
+        screenshots: [
+          {
+            src: 'desktop.png',
+            sizes: '1280x720',
+            type: 'image/jpg',
+            platform: 'wide'
+          }
+        ],
+        share_target: {
+          action: '/share-action/',
+          method: 'GET',
+          enctype: 'application/x-www-form-urlencoded',
+          params: {
+            title: 'App AbaetéFest',
+            text: 'Aplicativo de eventos, horários de viagem e muito mais!'
+          }
+        },
+        display_override: ['standalone', 'browser'],
+        scope_extensions: [
+          { origin: '*.abaetefest.com.br' },
+          { origin: '*.app-abaetefest.netlify.app' }
+        ],
+        edge_side_panel: {}
       }
     },
 
