@@ -228,7 +228,13 @@ module.exports = function (ctx) {
             title: 'App AbaetéFest',
             text: 'Aplicativo de eventos, horários de viagem e muito mais!'
           }
-        }
+        },
+        display_override: ['standalone', 'browser'],
+        scope_extensions: [
+          { origin: '*.abaetefest.com.br' },
+          { origin: '*.app-abaetefest.netlify.app' }
+        ],
+        edge_side_panel: {}
       }
     },
 
