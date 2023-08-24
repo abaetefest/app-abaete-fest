@@ -1,3 +1,4 @@
+import { acai } from './acai.js'
 import { bancos } from './bancos.js'
 import { hoteis } from './hoteis.js'
 import { churrascariasEspetarias } from './churrascariasEspetarias'
@@ -9,6 +10,7 @@ import { pesca } from './artigosPesca.js'
 import { suplementosSaude } from './suplementosSaude.js'
 
 export const makers = [
+  ...acai,
   ...bancos,
   ...hoteis,
   ...churrascariasEspetarias,

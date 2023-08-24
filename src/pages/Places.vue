@@ -60,10 +60,13 @@
         <q-card @click="openDialogCourse(place)" class="q-ma-xs">
           <q-item>
             <q-item-section>
-              <q-item-label class="text-weight-medium">{{
+              <q-item-label
+                class="text-bold text-primary"
+                :class="$q.dark.isActive ? 'text-blue-2' : 'text-primary'"
+              >{{
                 place.title
               }}</q-item-label>
-              <q-item-label caption>{{ place.address }}</q-item-label>
+              <q-item-label class="caption">{{ place.address }}</q-item-label>
               <q-item-label caption v-if="place.preco">
                 Preço:
                 <q-rating
@@ -73,6 +76,10 @@
                   color="green-5"
                   readonly
                 />
+              </q-item-label>
+              <q-item-label class="text-caption text-weight-medium" v-if="place.phone">
+                Telefone:
+                {{ place.phone }}
               </q-item-label>
             </q-item-section>
 
@@ -106,8 +113,13 @@ export default {
     return {
       places: makers,
       ratingModel: 3,
-      categoria: 'Bancos',
+      categoria: 'Açaí',
       options: [
+        {
+          label: 'Açaí',
+          value: 'Açaí',
+          icon: 'flat/acai.png'
+        },
         {
           label: 'Bancos',
           value: 'Bancos',
