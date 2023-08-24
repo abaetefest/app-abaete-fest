@@ -28,5 +28,15 @@ export const acai = [
     preco: 0,
     phone: '91 99319-8970 | 91 999367-2338',
     address: 'Rua Primeiro de Maio 1064, Santa Rosa'
+  },
+  {
+    latitude: '-1.7232276',
+    longitude: '-48.8809302',
+    icon: 'flat/acai.png',
+    title: 'Estação do Açaí',
+    category: 'Açaí',
+    preco: 0,
+    phone: '91 98306-2026',
+    address: 'Avenida São Paulo 1861, Aviação'
   }
 ]
