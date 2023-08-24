@@ -112,6 +112,11 @@ export default {
           icon: 'flat/all.png'
         },
         {
+          label: 'Açaí',
+          value: 'Açaí',
+          icon: 'flat/acai.png'
+        },
+        {
           label: 'Bancos',
           value: 'Bancos',
           icon: 'flat/bank.png'
