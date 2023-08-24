@@ -1,5 +1,15 @@
 export const acai = [
   {
+    latitude: '-1.7243786',
+    longitude: '-48.8822046',
+    icon: 'flat/acai.png',
+    title: 'Açaiteria IAÇA FROZEN®️',
+    category: 'Açaí',
+    preco: 0,
+    phone: '91 9321-0974',
+    address: 'Av. Dom Pedro II - Centro'
+  },
+  {
     latitude: '-1.729252',
     longitude: '-48.8833743',
     icon: 'flat/acai.png',
