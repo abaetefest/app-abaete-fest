@@ -191,7 +191,7 @@ module.exports = function (ctx) {
             type: 'image/png'
           },
           {
-            src: 'maskable.png',
+            src: 'architecture-and-city.png',
             sizes: '196x196',
             type: 'image/png',
             purpose: 'maskable'
