@@ -1,6 +1,6 @@
 <template>
   <q-page padding :class="$q.dark.isActive ? 'bg-dark' :  'bg-grey-1'">
-    <div class="row justify-center lt-md">
+    <div v-if="false" class="row justify-center lt-md">
       <div class="col-xs-12 col-sm-12 col-md-4">
         <q-img src="propagandas/machago.png" @click="openLink" />
       </div>
