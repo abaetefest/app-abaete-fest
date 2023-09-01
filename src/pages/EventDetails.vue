@@ -54,6 +54,18 @@
             />
           </div>
 
+          <q-card-section class="q-pa-sm">
+              <q-btn
+                v-if="canShare"
+                dense
+                label="Compartilhar"
+                icon="mdi-share-variant-outline"
+                @click="shareApp"
+                class="full-width"
+                color="blue"
+              />
+          </q-card-section>
+
           <div
             v-if="event.description"
             class="text-body1 q-mb-md"
@@ -133,6 +145,19 @@ export default {
     },
     backToEvents (category) {
       this.$router.push({ name: 'events' })
+    },
+    async shareApp () {
+      const shareData = {
+        title: 'Veja esse Evento no AbaetéFest',
+        text: this.event.name,
+        url: window.location.origin + '/#/event-details/' + this.event.id
+      }
+
+      try {
+        await navigator.share(shareData)
+      } catch (err) {
+        this.$notifyDanger('Não foi possível compartilharo app!')
+      }
     }
   },
   meta () {
