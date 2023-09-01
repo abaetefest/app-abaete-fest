@@ -56,6 +56,7 @@
 
           <q-card-section class="q-pa-sm">
               <q-btn
+                v-if="canShare"
                 dense
                 label="Compartilhar"
                 icon="mdi-share-variant-outline"
