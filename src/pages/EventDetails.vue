@@ -149,7 +149,7 @@ export default {
     async shareApp () {
       const shareData = {
         title: 'Veja esse Evento no AbaetéFest',
-        text: this.event.name,
+        text: this.event.name + this.event.description,
         url: window.location.origin + '/#/event-details/' + this.event.id
       }
 
