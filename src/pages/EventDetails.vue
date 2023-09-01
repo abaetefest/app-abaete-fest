@@ -56,7 +56,6 @@
 
           <q-card-section class="q-pa-sm">
               <q-btn
-                v-if="canShare"
                 dense
                 label="Compartilhar"
                 icon="mdi-share-variant-outline"
@@ -149,7 +148,7 @@ export default {
     async shareApp () {
       const shareData = {
         title: 'Veja esse Evento no AbaetéFest',
-        text: this.event.name + this.event.description,
+        text: this.event.name,
         url: window.location.origin + '/#/event-details/' + this.event.id
       }
 
