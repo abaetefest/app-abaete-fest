@@ -68,5 +68,15 @@ export const acai = [
     preco: 0,
     phone: '91 9 92448077',
     address: 'Av. Dom Pedro II, n⁰ 703- Centro'
+  },
+  {
+    latitude: '-1.7285304',
+    longitude: '-48.8698371',
+    icon: 'flat/acai.png',
+    title: 'Açaí do Vandinho',
+    category: 'Açaí',
+    preco: 0,
+    phone: '91 9 82643795',
+    address: 'Rua Padre Mário Lanciott, 1178- Cristo Redentor'
   }
 ]
