@@ -9,7 +9,7 @@ export default {
         {
           origem: 'Praça da Bandeira',
           destino: 'UFPA',
-          periodo: '',
+          periodo: 'Somente para alunos do campus',
           horarios: [
             {
               hora: '07:10'
@@ -34,7 +34,7 @@ export default {
         {
           origem: 'UFPA',
           destino: 'Praça da Bandeira',
-          periodo: '',
+          periodo: 'Somente para alunos do campus',
           horarios: [
             {
               hora: '11:50'
