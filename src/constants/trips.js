@@ -7,9 +7,11 @@ import abaetetubaMoju from './trips/abaetetuba-moju'
 import abaetetubaNucleoPortoSaoFrancisco from './trips/abaetetuba-nucleo-portoSaoFrancisco'
 import abaetetubaPortoSaoFrancisco from './trips/abaetetuba-portoSaoFrancisco'
 import abaetetubaBeja from './trips/abaetetuba-beja'
+import abaetetubaUfpa from './trips/abaetetuba-ufpa'
 
 export const trips = [
   { ...abaetetubaBelem },
+  { ...abaetetubaUfpa },
   { ...abaetetubaBarcarena },
   { ...abaetetubaBeja },
   { ...abaetetubaMoju },
