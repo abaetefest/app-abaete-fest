@@ -101,8 +101,7 @@ module.exports = function (ctx) {
       lang: 'pt-br', // Quasar language pack
       config: {
         brand: {
-          // primary: '#204f8f',
-          primary: '#E0586E',
+          primary: '#204f8f',
           secondary: '#ededed',
           accent: '#9C27B0',
 
