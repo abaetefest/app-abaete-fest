@@ -74,14 +74,23 @@
             class="fit cursor-pointer shadow-5"
             @click="detailsEvent(props.row)"
           >
-            <q-img
+            <img
               :src="props.row.image_url"
-              :ratio="4/3"
-            >
-              <template #loading>
-                <q-skeleton class="full-width full-height" square />
-              </template>
-            </q-img>
+              class="full-width q-pa-sm"
+              style="max-height: 28\7rem;width: 100%; position: absolute;filter: blur(1rem); opacity: 0.9"
+              placeholder-src="loadPlaceholder.png"
+            />
+            <div class="q-pa-lg">
+              <q-img
+                :src="props.row.image_url"
+                :ratio="3/4"
+                style="border-radius: 8px"
+              >
+                <template #loading>
+                  <q-skeleton class="full-width full-height" square />
+                </template>
+              </q-img>
+            </div>
 
             <q-card-section>
               <div class="text-h6">

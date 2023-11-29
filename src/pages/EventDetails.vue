@@ -37,21 +37,30 @@
     </q-card>
 
     <q-card v-else class="full-width full-height" :key="event.id">
-        <q-card-section class="row q-pb-none">
-          <div class="text-h6 text-center q-py-none col-12">
-           {{ event.name}}
-          </div>
-        </q-card-section>
+      <img
+        :src="event.image_url"
+        class="full-width"
+        style="max-height: 30rem;width: 400px; position: absolute;filter: blur(1rem); opacity: 0.9"
+        placeholder-src="loadPlaceholder.png"
+      />
+        <!-- <q-card-section class="row q-pb-none">
+        </q-card-section> -->
 
         <q-separator />
 
         <q-card-section>
-          <div class="text-body2 text-grey-9 q-mb-md text-center" style="min-height: 200px;">
+          <div class="text-body2 text-grey-9 q-mb-lg q-pa-sm text-center" style="min-height: 200px;">
             <q-img
               :src="event.image_url"
-              style="max-width: 350px; min-width: 300px;"
+              style="max-width: 350px; min-width: 300px;border-radius: 10px"
               placeholder-src="loadPlaceholder.png"
             />
+          </div>
+
+          <q-separator />
+
+          <div class="text-h6 text-center q-py-none col-12 q-pt-lg">
+          {{ event.name}}
           </div>
 
           <q-card-section class="q-pa-sm">
