@@ -76,9 +76,9 @@
           >
             <q-img
               :src="props.row.image_url"
-              class="full-width q-pa-sm"
-              style=" position: absolute;filter: blur(1rem); opacity: 0.9"
-              :ratio="3/4"
+              class="full-width q-pa-sm q"
+              style="position: absolute;filter: blur(1rem); opacity: 0.9"
+              :ratio="3/3.9"
               placeholder-src="loadPlaceholder.png"
             >
           </q-img>
@@ -95,7 +95,7 @@
             </div>
 
             <q-card-section>
-              <div class="text-h6">
+              <div class="text-h6" >
                 {{ props.row.name }}
               </div>
               <q-item-label class="row justify-between">
