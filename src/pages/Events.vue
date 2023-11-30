@@ -74,12 +74,14 @@
             class="fit cursor-pointer shadow-5"
             @click="detailsEvent(props.row)"
           >
-            <img
+            <q-img
               :src="props.row.image_url"
               class="full-width q-pa-sm"
-              style="max-height: 28\7rem;width: 100%; position: absolute;filter: blur(1rem); opacity: 0.9"
+              style=" position: absolute;filter: blur(1rem); opacity: 0.9"
+              :ratio="3/4"
               placeholder-src="loadPlaceholder.png"
-            />
+            >
+          </q-img>
             <div class="q-pa-lg">
               <q-img
                 :src="props.row.image_url"
