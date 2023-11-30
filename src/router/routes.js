@@ -10,6 +10,7 @@ const routes = [
       { path: 'tourism', name: 'tourism', component: () => import('src/pages/Tourism.vue'), meta: { tab: true } },
       { path: 'map', name: 'map', component: () => import('src/pages/MapCity.vue'), meta: { tab: true } },
       { path: 'places', name: 'places', component: () => import('src/pages/Places.vue'), meta: { tab: true } },
+      { path: 'services', name: 'services', component: () => import('src/pages/Services.vue'), meta: { tab: true } },
       { path: 'trips', name: 'trips', component: () => import('src/pages/Trips.vue'), meta: { tab: true } },
       { path: 'radio', name: 'radio', component: () => import('src/pages/Radio.vue'), meta: { tab: true } },
       { path: 'radio-player/:id/:img', name: 'radio-player', component: () => import('src/pages/RadioPlayer.vue'), meta: { tab: true } },

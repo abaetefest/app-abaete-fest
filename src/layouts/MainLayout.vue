@@ -152,6 +152,11 @@ const menusRoute = [
     icon: 'mdi-bus-clock',
     route: 'trips'
   },
+  {
+    title: 'Serviços',
+    icon: 'mdi-card-account-phone-outline',
+    route: 'services'
+  },
   // {
   //   title: 'Mapa',
   //   icon: 'mdi-map',
