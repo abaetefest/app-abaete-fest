@@ -42,6 +42,8 @@
       >
         <q-expansion-item
           class="shadow-1 overflow-hidden"
+          group="services"
+          :key="service.name"
           style="border-radius: 10px"
           :label="service.name"
           header-class="bg-primary text-white text-h6"

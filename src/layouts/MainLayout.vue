@@ -73,11 +73,12 @@
         dense
         no-caps
         indicator-color="white"
+        mobile-arrows
         :class="[
           $q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-weight-thin text-grey-7',
           $q.platform.is.ios ? 'q-pb-md' : ''
         ]"
-        :active-color="$q.dark.isActive ? 'white' : 'primary'"
+        :active-color="$q.dark.isActive ? 'blue-2' : 'primary'"
       >
         <q-route-tab
           v-for="(tab, index) in essentialLinks"
