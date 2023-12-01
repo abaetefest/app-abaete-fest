@@ -44,17 +44,17 @@ export default {
           periodo: 'Segunda a Sábado',
           horarios: [
             {
-              hora: '06:00'
+              hora: '06:10'
             },
             {
-              hora: '07:30',
+              hora: '07:50',
               obs: 'Segunda a Sexta'
             },
             {
-              hora: '09:30'
+              hora: '09:40'
             },
             {
-              hora: '16:00'
+              hora: '16:10'
             }
           ]
         },
@@ -64,7 +64,7 @@ export default {
           periodo: 'Domingos e Feriados',
           horarios: [
             {
-              hora: '07:00'
+              hora: '07:10'
             }
           ]
         }
