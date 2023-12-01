@@ -46,6 +46,7 @@
           :label="service.name"
           header-class="bg-primary text-white text-h6"
           expand-icon-class="text-white"
+          @show="trackEventMixpanel(service)"
         >
           <q-card>
             <q-card-section class="q-pt-sm text-body1">
@@ -55,14 +56,38 @@
               </ul>
 
               <div
+                v-if="service.phone"
+                class="q-pl-xs"
+              >
+                <q-icon name="mdi-phone" class="q-pb-xs" color="grey" size="xs" />
+                Telefone: {{ service.phone }}
+              </div>
+
+              <div
                 v-if="service.wpp"
-                class="q-pl-md">
+                class="q-pl-xs q-mt-sm"
+              >
+                <q-icon name="mdi-whatsapp" class="q-pb-xs" color="positive" size="xs" />
                 WhatsApp: <a
-                  :href="`https://api.whatsapp.com/send?phone=55${service.wpp}&text=Olá, vi vocês no app Abaetéfest.`"
+                  :href="`https://api.whatsapp.com/send?phone=55${service.wpp}&text=Olá, encontrei você pelo app AbaetéFest.`"
                   target="_blank"
                   :class="$q.dark.isActive ? 'text-blue-2 link-custom' : 'text-primary'"
                 >
                   {{ service.wpp }}
+                </a>
+              </div>
+
+              <div
+                v-if="service.instagram"
+                class="q-pl-xs q-mt-sm"
+              >
+                <q-icon name="mdi-instagram" class="q-pb-xs" color="purple-5" size="xs" />
+                Instagram: <a
+                  :href="`https://www.instagram.com/${service.instagram}`"
+                  target="_blank"
+                  :class="$q.dark.isActive ? 'text-blue-2 link-custom' : 'text-primary'"
+                >
+                  @{{ service.instagram }}
                 </a>
               </div>
             </q-card-section>
@@ -81,17 +106,22 @@ export default {
     return {
       services: servicesList,
       ratingModel: 3,
-      categoria: 'agua',
+      categoria: 'arCondicionado',
       options: [
-        {
-          label: 'Água Mineral',
-          value: 'agua',
-          icon: 'flat/water-bottle.png'
-        },
+        // {
+        //   label: 'Água Mineral',
+        //   value: 'agua',
+        //   icon: 'flat/water-bottle.png'
+        // },
         {
           label: 'Ar condicionado e Refrigeração',
           value: 'arCondicionado',
           icon: 'flat/air-conditioner.png'
+        },
+        {
+          label: 'Chaveiro',
+          value: 'chaveiro',
+          icon: 'flat/key-chain.png'
         },
         {
           label: 'DJ para eventos',
@@ -99,7 +129,7 @@ export default {
           icon: 'flat/dj.png'
         },
         {
-          label: 'Gás (botijão)',
+          label: 'Gás de cozinha',
           value: 'gas',
           icon: 'flat/gas.png'
         },
@@ -112,6 +142,11 @@ export default {
           label: 'Maquiagem',
           value: 'maquiagem',
           icon: 'flat/cosmetics.png'
+        },
+        {
+          label: 'Produção Audiovisual/Design',
+          value: 'audioVisual',
+          icon: 'flat/brochure.png'
         }
       ]
     }
@@ -128,7 +163,9 @@ export default {
   mounted () {
   },
   methods: {
-    // this.$mixpanel.track(place.title)
+    trackEventMixpanel (serviceInfo) {
+      this.$mixpanel.track(`service(${serviceInfo.name})`)
+    }
   }
 }
 </script>

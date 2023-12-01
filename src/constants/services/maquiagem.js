@@ -4,6 +4,7 @@ export const maquiagem = [
     category: 'maquiagem',
     phone: '91 99999-9999',
     wpp: '91981224486',
+    instagram: 'ruanny_makeup',
     TypeServices: [
       'Maquiagem social e artística',
       'Penteados',

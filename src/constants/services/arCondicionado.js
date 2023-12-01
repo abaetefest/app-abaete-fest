@@ -1,9 +1,13 @@
 export const arCondicionado = [
-  // {
-  //   name: 'Água de Exemplo',
-  //   category: 'arCondicionado',
-  //   phone: '91 99999-9999',
-  //   wpp: '91 99999-9999',
-  //   TypeServices: []
-  // }
+  {
+    name: 'Tudo Frio',
+    category: 'arCondicionado',
+    phone: '',
+    wpp: '91991257818',
+    TypeServices: [
+      'Manutenção',
+      'Instalação',
+      'Conserto'
+    ]
+  }
 ]

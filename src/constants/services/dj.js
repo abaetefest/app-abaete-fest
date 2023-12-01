@@ -1,9 +1,18 @@
 export const dj = [
-  // {
-  //   name: 'Água de Exemplo',
-  //   category: 'dj',
-  //   phone: '91 99999-9999',
-  //   wpp: '91 99999-9999',
-  //   TypeServices: ['Garrafão de água', 'Água de 2L']
-  // }
+  {
+    name: 'Dj Dinho Mix',
+    category: 'dj',
+    phone: '',
+    wpp: '91992935116',
+    instagram: 'djdinhomix',
+    TypeServices: ['Festas , aniversário, confraternizações, casamento, etc!']
+  },
+  {
+    name: 'Dj Pantera Show',
+    category: 'dj',
+    phone: '',
+    wpp: '91984468996 ',
+    instagram: 'djpantherashow',
+    TypeServices: ['Dj de festas e eventos em geral']
+  }
 ]

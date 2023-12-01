@@ -154,7 +154,7 @@ const menusRoute = [
   },
   {
     title: 'Serviços',
-    icon: 'mdi-card-account-phone-outline',
+    icon: 'mdi-hammer-screwdriver',
     route: 'services'
   },
   // {
