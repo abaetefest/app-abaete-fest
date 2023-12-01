@@ -34,7 +34,9 @@
       </q-select>
     </div>
 
-    <div class="row justify-between q-col-gutter-sm">
+    <div
+      v-if="getPlaces.length"
+      class="row justify-between q-col-gutter-sm">
       <div
         class="col-sm-12 col-xs-12 col-md-6"
         v-for="(service, index) in getPlaces"
@@ -95,6 +97,17 @@
             </q-card-section>
           </q-card>
         </q-expansion-item>
+      </div>
+    </div>
+    <div v-else>
+      <div class="col-sm-10 col-xs-10 col-md-12 text-center text-h6">
+        <q-img
+          src="undraw/not-services.svg"
+          style="max-width: 500px;"
+        />
+      </div>
+      <div class="col-sm-12 col-xs-12 col-md-12 text-center text-h6 q-mt-md">
+        Não há profissionais cadastrados nessa categoria.
       </div>
     </div>
   </q-page>

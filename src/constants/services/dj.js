@@ -5,7 +5,7 @@ export const dj = [
     phone: '',
     wpp: '91992935116',
     instagram: 'djdinhomix',
-    TypeServices: ['Festas , aniversário, confraternizações, casamento, etc!']
+    TypeServices: ['Festas, aniversário, confraternizações, casamento, etc!']
   },
   {
     name: 'Dj Pantera Show',

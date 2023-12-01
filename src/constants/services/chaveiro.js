@@ -7,7 +7,7 @@ export const chaveiro = [
     instagram: '',
     TypeServices: [
       'Cópias, confecções de chaves',
-      'Abertura de residência, cofres, e automóveis',
+      'Abertura de residência, cofres e automóveis',
       'Chaves codificadas e reparo de chave canivete'
     ]
   }
