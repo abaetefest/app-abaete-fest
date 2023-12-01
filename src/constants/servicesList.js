@@ -5,6 +5,8 @@ import { maquiagem } from './services/maquiagem.js'
 import { audioVisual } from './services/audioVisual.js'
 import { chaveiro } from './services/chaveiro.js'
 import { dj } from './services/dj.js'
+import { fotografo } from './services/fotografo.js'
+import { pedreiro } from './services/pedreiro.js'
 
 // Água(Garrafão)
 // Ar condicionado
@@ -30,5 +32,7 @@ export const servicesList = [
   ...chaveiro,
   ...dj,
   ...gas,
-  ...maquiagem
+  ...maquiagem,
+  ...fotografo,
+  ...pedreiro
 ]

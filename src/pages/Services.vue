@@ -123,11 +123,11 @@ export default {
       ratingModel: 3,
       categoria: 'arCondicionado',
       options: [
-        // {
-        //   label: 'Água Mineral',
-        //   value: 'agua',
-        //   icon: 'flat/water-bottle.png'
-        // },
+        {
+          label: 'Água Mineral',
+          value: 'agua',
+          icon: 'flat/water-bottle.png'
+        },
         {
           label: 'Ar condicionado e Refrigeração',
           value: 'arCondicionado',
@@ -144,6 +144,11 @@ export default {
           icon: 'flat/dj.png'
         },
         {
+          label: 'Fotógrafo',
+          value: 'fotografo',
+          icon: 'flat/camera.png'
+        },
+        {
           label: 'Gás de cozinha',
           value: 'gas',
           icon: 'flat/gas.png'
@@ -157,6 +162,11 @@ export default {
           label: 'Maquiagem',
           value: 'maquiagem',
           icon: 'flat/cosmetics.png'
+        },
+        {
+          label: 'Pedreiro',
+          value: 'pedreiro',
+          icon: 'flat/worker.png'
         },
         {
           label: 'Produção Audiovisual/Design',
