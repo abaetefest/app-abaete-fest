@@ -1,9 +1,16 @@
 export const manicure = [
-  // {
-  //   name: 'Água de Exemplo',
-  //   category: 'manicure',
-  //   phone: '91 99999-9999',
-  //   wpp: '91 99999-9999',
-  //   TypeServices: []
-  // }
+  {
+    name: 'Sena Nails',
+    category: 'manicure',
+    phone: '',
+    wpp: '91981476228',
+    instagram: 'sena__nails',
+    TypeServices: [
+      'Alongamento',
+      'Blindagem',
+      'Esmaltação',
+      'Decoração',
+      'Cutilagem'
+    ]
+  }
 ]

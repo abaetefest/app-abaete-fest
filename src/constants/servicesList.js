@@ -7,6 +7,7 @@ import { chaveiro } from './services/chaveiro.js'
 import { dj } from './services/dj.js'
 import { fotografo } from './services/fotografo.js'
 import { pedreiro } from './services/pedreiro.js'
+import { manicure } from './services/manicure.js'
 
 // Água(Garrafão)
 // Ar condicionado
@@ -34,5 +35,6 @@ export const servicesList = [
   ...gas,
   ...maquiagem,
   ...fotografo,
-  ...pedreiro
+  ...pedreiro,
+  ...manicure
 ]
