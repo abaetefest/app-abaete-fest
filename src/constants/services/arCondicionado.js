@@ -3,7 +3,7 @@ export const arCondicionado = [
     name: 'Climatiz',
     category: 'arCondicionado',
     phone: '',
-    wpp: '91981413131',
+    wpp: '91982413131',
     TypeServices: [
       'Manutenções preventivas e corretiva',
       'Instalação',

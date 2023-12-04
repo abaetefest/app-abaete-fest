@@ -154,6 +154,11 @@ export default {
           icon: 'flat/gas.png'
         },
         {
+          label: 'Guincho e Auto Socorro',
+          value: 'guincho',
+          icon: 'flat/tow-truck.png'
+        },
+        {
           label: 'Manicure',
           value: 'manicure',
           icon: 'flat/nail-polish.png'
