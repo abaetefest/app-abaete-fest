@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { radios } from 'src/constants/radios'
+import { radios } from 'src/constants/places/radios'
 export default {
   name: 'PageRadio',
   data () {
@@ -52,3 +52,4 @@ export default {
   }
 }
 </script>
+src/constants/places/radios

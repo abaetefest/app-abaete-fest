@@ -103,7 +103,7 @@
 </template>
 
 <script>
-import { makers } from 'src/constants/makersMap'
+import { makers } from 'src/constants/places/index'
 export default {
   name: 'PlacesPage',
   components: {
@@ -121,9 +121,24 @@ export default {
           icon: 'flat/acai.png'
         },
         {
+          label: 'Artigos de Pesca Esportiva',
+          value: 'Pesca',
+          icon: 'flat/fishing.png'
+        },
+        {
           label: 'Bancos',
           value: 'Bancos',
           icon: 'flat/bank.png'
+        },
+        {
+          label: 'Churrascarias/Espetarias',
+          value: 'Churrascaria&Espetaria',
+          icon: 'categories/churrascaria.png'
+        },
+        {
+          label: 'Farmácias',
+          value: 'Farmácias',
+          icon: 'places/farmacia.png'
         },
         {
           label: 'Hotéis',
@@ -136,14 +151,9 @@ export default {
           icon: 'places/hospital.png'
         },
         {
-          label: 'Farmácias',
-          value: 'Farmácias',
-          icon: 'places/farmacia.png'
-        },
-        {
-          label: 'Churrascarias/Espetarias',
-          value: 'Churrascaria&Espetaria',
-          icon: 'categories/churrascaria.png'
+          label: 'Igrejas',
+          value: 'Igrejas',
+          icon: 'flat/church.png'
         },
         {
           label: 'Pub & Restaurante',
@@ -155,11 +165,7 @@ export default {
           value: 'Sorveterias',
           icon: 'categories/sorveteria.png'
         },
-        {
-          label: 'Artigos de Pesca Esportiva',
-          value: 'Pesca',
-          icon: 'flat/fishing.png'
-        },
+
         {
           label: 'Suplementos e Saúde',
           value: 'Suplemento&Saude',
