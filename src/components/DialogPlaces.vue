@@ -84,12 +84,28 @@
               <p class="text-h6">
               Veja no mapa:
               </p>
-              <map-tourism
-                :latitude="placeData.latitude"
-                :longitude="placeData.longitude"
-                :description="placeData.name"
-                :zoom="16"
-              />
+              <GmapMap
+                :center="{lat: parseFloat(placeData.latitude), lng: parseFloat(placeData.longitude)}"
+                :zoom="15"
+                map-type-id="terrain"
+                style="width: 100%; height: 300px"
+                :options="{
+                  zoomControl: true,
+                  mapTypeControl: false,
+                  scaleControl: false,
+                  streetViewControl: false,
+                  rotateControl: false,
+                  fullscreenControl: true,
+                  disableDefaultUi: false
+                }"
+              >
+                <GmapMarker
+                  :position="{lat: parseFloat(placeData.latitude), lng: parseFloat(placeData.longitude)}"
+                  :clickable="true"
+                  :draggable="true"
+                  @click="center=m.position"
+                />
+              </GmapMap>
             </q-card-section>
           </q-card>
         </q-page>
@@ -112,9 +128,6 @@ export default {
       required: true,
       default: () => {}
     }
-  },
-  components: {
-    MapTourism: () => import('components/MapTourism')
   },
   data () {
     return {
