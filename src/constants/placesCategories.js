@@ -40,6 +40,11 @@ export const placesCategories = [
     icon: 'flat/church.png'
   },
   {
+    label: 'Igrejas Evangélicas',
+    value: 'IgrejasEvangelicas',
+    icon: 'flat/church.png'
+  },
+  {
     label: 'Pub & Restaurante',
     value: 'Pub&Restaurante',
     icon: 'flat/cheers.png'
