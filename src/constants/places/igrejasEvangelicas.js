@@ -117,7 +117,7 @@ export const igrejasEvangelicas = [
     icon: 'flat/church.png',
     title: 'Igreja Betânia',
     category: 'IgrejasEvangelicas',
-    address: 'Av Minas Gerais, 2920 - Aviação'
+    address: 'Av Minas Gerais, 2920 - Francilândia'
   },
   {
     latitude: '-1.71539403',
