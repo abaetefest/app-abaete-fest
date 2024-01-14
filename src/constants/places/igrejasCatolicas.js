@@ -7,14 +7,13 @@ export const igrejasCatolicas = [
     category: 'IgrejasCatolicas',
     address: 'R. Barão do Rio Branco - Centro'
   },
-
   {
     latitude: '-1.7166035',
     longitude: '-48.8890326',
     icon: 'flat/church.png',
     title: 'Igreja de São José',
     category: 'IgrejasCatolicas',
-    address: 'Tv. José Gonçalves Chaves, 2199 - Cafezal'
+    address: 'Tv. José Gonçalves Chaves, 2199 - São Lourenço'
   },
   {
     latitude: '-1.7132735',
@@ -30,7 +29,7 @@ export const igrejasCatolicas = [
     icon: 'flat/church.png',
     title: 'Igreja de Santa Rita de Cássia',
     category: 'IgrejasCatolicas',
-    address: ' Tv. Aristides dos Réis e Silva, 631 - São Lourenço'
+    address: ' Tv. Aristides dos Reis e Silva, 631 - São Lourenço'
   },
   {
     latitude: '-1.718845',
@@ -152,7 +151,6 @@ export const igrejasCatolicas = [
     category: 'IgrejasCatolicas',
     address: 'Tv. Prof. Felipe do Espírito Santo, 203-303 - Santa Rosa'
   },
-
   {
     latitude: '-1.7348492',
     longitude: '-48.8758009',
