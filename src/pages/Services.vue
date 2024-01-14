@@ -114,7 +114,7 @@
 </template>
 
 <script>
-import { servicesList } from 'src/constants/servicesList'
+import { servicesList } from 'src/constants/services/index'
 export default {
   name: 'ServicesPage',
   data () {
@@ -205,3 +205,4 @@ export default {
   color: rgb(180, 196, 242);
 };
 </style>
+src/constants/services/servicesList

@@ -151,7 +151,7 @@
 </template>
 
 <script>
-import { trips } from 'src/constants/trips'
+import { trips } from 'src/constants/trips/index'
 import { openURL } from 'quasar'
 export default {
   name: 'TripsPage',
@@ -196,3 +196,4 @@ export default {
   }
 }
 </script>
+src/constants/trips/trips
