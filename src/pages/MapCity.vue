@@ -88,7 +88,9 @@
 
 <script>
 import L from 'leaflet'
-import { makers } from 'src/constants/makersMap'
+import { makers } from 'src/constants/places/index'
+import { placesCategories } from 'src/constants/placesCategories'
+
 export default {
   name: 'MapPage',
   data () {
@@ -111,56 +113,7 @@ export default {
           value: 'Todas',
           icon: 'flat/all.png'
         },
-        {
-          label: 'Açaí',
-          value: 'Açaí',
-          icon: 'flat/acai.png'
-        },
-        {
-          label: 'Bancos',
-          value: 'Bancos',
-          icon: 'flat/bank.png'
-        },
-        {
-          label: 'Hotéis',
-          value: 'Hotéis',
-          icon: 'places/hotel.png'
-        },
-        {
-          label: 'Hospitais e Postos de Saúde',
-          value: 'Hospital&Posto',
-          icon: 'places/hospital.png'
-        },
-        {
-          label: 'Farmácias',
-          value: 'Farmácias',
-          icon: 'places/farmacia.png'
-        },
-        {
-          label: 'Churrascarias/Espetarias',
-          value: 'Churrascaria&Espetaria',
-          icon: 'categories/churrascaria.png'
-        },
-        {
-          label: 'Pub & Restaurante',
-          value: 'Pub&Restaurante',
-          icon: 'flat/cheers.png'
-        },
-        {
-          label: 'Sorveterias',
-          value: 'Sorveterias',
-          icon: 'categories/sorveteria.png'
-        },
-        {
-          label: 'Artigos de Pesca Esportiva',
-          value: 'Pesca',
-          icon: 'flat/fishing.png'
-        },
-        {
-          label: 'Suplementos e Saúde',
-          value: 'Suplemento&Saude',
-          icon: 'categories/whey.png'
-        }
+        ...placesCategories
       ]
     }
   },
@@ -237,3 +190,6 @@ export default {
   /* min-height: 90vh; */
 }
 </style>
+src/constants/places/makersMap
+src/constants/places
+src/constants/placesCategories
