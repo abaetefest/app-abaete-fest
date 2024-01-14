@@ -104,6 +104,8 @@
 
 <script>
 import { makers } from 'src/constants/places/index'
+import { placesCategories } from 'src/constants/placesCategories'
+
 export default {
   name: 'PlacesPage',
   components: {
@@ -114,64 +116,7 @@ export default {
       places: makers,
       ratingModel: 3,
       categoria: 'Açaí',
-      options: [
-        {
-          label: 'Açaí',
-          value: 'Açaí',
-          icon: 'flat/acai.png'
-        },
-        {
-          label: 'Artigos de Pesca Esportiva',
-          value: 'Pesca',
-          icon: 'flat/fishing.png'
-        },
-        {
-          label: 'Bancos',
-          value: 'Bancos',
-          icon: 'flat/bank.png'
-        },
-        {
-          label: 'Churrascarias/Espetarias',
-          value: 'Churrascaria&Espetaria',
-          icon: 'categories/churrascaria.png'
-        },
-        {
-          label: 'Farmácias',
-          value: 'Farmácias',
-          icon: 'places/farmacia.png'
-        },
-        {
-          label: 'Hotéis',
-          value: 'Hotéis',
-          icon: 'places/hotel.png'
-        },
-        {
-          label: 'Hospitais e Postos de Saúde',
-          value: 'Hospital&Posto',
-          icon: 'places/hospital.png'
-        },
-        {
-          label: 'Igrejas',
-          value: 'Igrejas',
-          icon: 'flat/church.png'
-        },
-        {
-          label: 'Pub & Restaurante',
-          value: 'Pub&Restaurante',
-          icon: 'flat/cheers.png'
-        },
-        {
-          label: 'Sorveterias',
-          value: 'Sorveterias',
-          icon: 'categories/sorveteria.png'
-        },
-
-        {
-          label: 'Suplementos e Saúde',
-          value: 'Suplemento&Saude',
-          icon: 'categories/whey.png'
-        }
-      ],
+      options: [...placesCategories],
       modalPlaces: false,
       placeDetails: {}
     }
@@ -201,3 +146,4 @@ export default {
   }
 }
 </script>
+src/constants/placesCategories

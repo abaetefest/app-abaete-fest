@@ -1,10 +1,10 @@
-export const igrejas = [
+export const igrejasCatolicas = [
   {
     latitude: '-1.7230733',
     longitude: '-48.8881122',
     icon: 'flat/church.png',
     title: 'Catedral Nossa Senhora da Conceição',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'R. Barão do Rio Branco - Centro'
   },
 
@@ -13,7 +13,7 @@ export const igrejas = [
     longitude: '-48.8890326',
     icon: 'flat/church.png',
     title: 'Igreja de São José',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'Tv. José Gonçalves Chaves, 2199 - Cafezal'
   },
   {
@@ -21,7 +21,7 @@ export const igrejas = [
     longitude: '-48.8858892',
     icon: 'flat/church.png',
     title: 'Igreja de São João Batista',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'R. Barão do Rio Branco, 2798-2830 - São João'
   },
   {
@@ -29,7 +29,7 @@ export const igrejas = [
     longitude: '-48.8842651',
     icon: 'flat/church.png',
     title: 'Igreja de Santa Rita de Cássia',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: ' Tv. Aristides dos Réis e Silva, 631 - São Lourenço'
   },
   {
@@ -37,7 +37,7 @@ export const igrejas = [
     longitude: '-48.882486',
     icon: 'flat/church.png',
     title: 'Igreja Nossa Senhora de Nazaré',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'R. Magno de Araújo - São Lourenço'
   },
   {
@@ -45,7 +45,7 @@ export const igrejas = [
     longitude: '-48.8771837',
     icon: 'flat/church.png',
     title: 'Igreja Sagrado Coração de Jesus',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'R. Raimundo Pauxis, 232-342 - São Lourenço'
   },
   {
@@ -53,7 +53,7 @@ export const igrejas = [
     longitude: '-48.8740745',
     icon: 'flat/church.png',
     title: 'Igreja do Divino Espírito Santo',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'R. Nova V, 268-2198 - Aviação'
   },
   {
@@ -61,7 +61,7 @@ export const igrejas = [
     longitude: '-48.8758395',
     icon: 'flat/church.png',
     title: 'Igreja de São Francisco',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'Tv. Paraná, 267-343 - Francilândia'
   },
   {
@@ -69,7 +69,7 @@ export const igrejas = [
     longitude: '-48.8744622',
     icon: 'flat/church.png',
     title: 'Igreja de São Leopoldo Mandic',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'Tv. Rio Grande do Norte, 189 - Francilândia'
   },
   {
@@ -77,7 +77,7 @@ export const igrejas = [
     longitude: '-48.8724868',
     icon: 'flat/church.png',
     title: 'Igreja de Santa Maria',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'R. Nova II, 215-125 - Aviação'
   },
   {
@@ -85,7 +85,7 @@ export const igrejas = [
     longitude: '-48.8791154',
     icon: 'flat/church.png',
     title: 'Igreja de Santa Rita',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'R. Manoel da Silva Raposo, 1086-1346 - São Lourenço'
   },
   {
@@ -93,7 +93,7 @@ export const igrejas = [
     longitude: '-48.8641654',
     icon: 'flat/church.png',
     title: 'Igreja de São Domingos de Gusmão',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'Av. Anchieta, 2232 - São Domingos da Angélica'
   },
   {
@@ -101,7 +101,7 @@ export const igrejas = [
     longitude: '-48.8610978',
     icon: 'flat/church.png',
     title: 'Igreja de Santo Antônio',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'R. Dr. João Novaes, 304 - Mutirão'
   },
   {
@@ -109,7 +109,7 @@ export const igrejas = [
     longitude: '-48.8554763',
     icon: 'flat/church.png',
     title: 'Igreja de Santa Clara de Assis',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'R. Airton Sena, 331 - Santa Clara'
   },
   {
@@ -117,7 +117,7 @@ export const igrejas = [
     longitude: '-48.8709174',
     icon: 'flat/church.png',
     title: 'Igreja do Cristo Redentor',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'Rod. Dr. João Miranda - Cristo Redentor'
   },
   {
@@ -125,7 +125,7 @@ export const igrejas = [
     longitude: '-48.883900',
     icon: 'flat/church.png',
     title: 'Igreja de São Pedro',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'Av. Pedro Rodrigues, 886 - Centro'
   },
   {
@@ -133,7 +133,7 @@ export const igrejas = [
     longitude: '-48.8862556',
     icon: 'flat/church.png',
     title: 'Igreja de São Benedito',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'Tv. Jardim Ataláia, 32-120 - Centro'
   },
   {
@@ -141,7 +141,7 @@ export const igrejas = [
     longitude: '-48.8874000',
     icon: 'flat/church.png',
     title: 'Igreja de Nossa Senhora do Perpétuo Socorro',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'R. Frei José de Manaus, 603 - Algodoal'
   },
   {
@@ -149,7 +149,7 @@ export const igrejas = [
     longitude: '-48.881000',
     icon: 'flat/church.png',
     title: 'Igreja de Santa Rosa',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'Tv. Prof. Felipe do Espírito Santo, 203-303 - Santa Rosa'
   },
 
@@ -158,7 +158,7 @@ export const igrejas = [
     longitude: '-48.8758009',
     icon: 'flat/church.png',
     title: 'Igreja de São Sebastião',
-    category: 'Igrejas',
+    category: 'IgrejasCatolicas',
     address: 'Tv. São Sebastião, 2307 - São Sebastião'
   }
 ]
