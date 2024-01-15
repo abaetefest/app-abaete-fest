@@ -8,7 +8,7 @@ export const igrejasEvangelicas = [
     address: 'Av. Dom Pedro II, 236 - Centro'
   },
   {
-    latitude: '-1.7240742',
+    latitude: '-1.7241542',
     longitude: '-48.8841029',
     icon: 'flat/church.png',
     title: 'Primeira Igreja Crista Evangélica em Abaetetuba',
@@ -40,8 +40,8 @@ export const igrejasEvangelicas = [
     address: 'Tv. Santos Dumont, 579 - Centro'
   },
   {
-    latitude: '-1.7227257',
-    longitude: '-48.8829476',
+    latitude: '-1.72240895',
+    longitude: '-48.8828676',
     icon: 'flat/church.png',
     title: 'Igreja do Evangelho Quadrangular',
     category: 'IgrejasEvangelicas',
@@ -72,24 +72,24 @@ export const igrejasEvangelicas = [
     address: 'R. 7 de Setembro, 1703 - Centro'
   },
   {
-    latitude: '-1.7209378',
-    longitude: '-48.8782359',
+    latitude: '-1.72079036',
+    longitude: '-48.8780715',
     icon: 'flat/church.png',
     title: 'Igreja Cristã Evangélica da Aviação',
     category: 'IgrejasEvangelicas',
     address: 'R. Raimundo Pauxis, 1 - Aviação'
   },
   {
-    latitude: '-1.7214493',
-    longitude: '-48.8762038',
+    latitude: '-1.72144767',
+    longitude: '-48.87613003',
     icon: 'flat/church.png',
     title: 'Igreja Adventista do Sétimo Dia',
     category: 'IgrejasEvangelicas',
     address: 'Tv. Aristides dos Réis e Silva, 1560 - Aviação'
   },
   {
-    latitude: '-1.7206478',
-    longitude: '-48.87612061',
+    latitude: '-1.7206122',
+    longitude: '-48.8760474',
     icon: 'flat/church.png',
     title: 'Mundial Igreja do Poder de Deus',
     category: 'IgrejasEvangelicas',
@@ -121,7 +121,7 @@ export const igrejasEvangelicas = [
   },
   {
     latitude: '-1.71539403',
-    longitude: '-48.87539699',
+    longitude: '-48.87527699',
     icon: 'flat/church.png',
     title: 'Igreja De Deus Pentecostal',
     category: 'IgrejasEvangelicas',
@@ -129,7 +129,7 @@ export const igrejasEvangelicas = [
   },
   {
     latitude: '-1.716419986',
-    longitude: '-48.87601527',
+    longitude: '-48.87610527',
     icon: 'flat/church.png',
     title: 'Igreja Cristã Evangélica em Francilândia',
     category: 'IgrejasEvangelicas',

@@ -1,7 +1,7 @@
 export const igrejasCatolicas = [
   {
     latitude: '-1.7230733',
-    longitude: '-48.8881122',
+    longitude: '-48.88761122',
     icon: 'flat/church.png',
     title: 'Catedral Nossa Senhora da Conceição',
     category: 'IgrejasCatolicas',
@@ -9,11 +9,11 @@ export const igrejasCatolicas = [
   },
   {
     latitude: '-1.7166035',
-    longitude: '-48.8890326',
+    longitude: '-48.88851326',
     icon: 'flat/church.png',
     title: 'Igreja de São José',
     category: 'IgrejasCatolicas',
-    address: 'Tv. José Gonçalves Chaves, 2199 - São Lourenço'
+    address: 'Tv. José Gonçalves Chaves, 2199 - São José'
   },
   {
     latitude: '-1.7132735',
@@ -40,8 +40,8 @@ export const igrejasCatolicas = [
     address: 'R. Magno de Araújo - São Lourenço'
   },
   {
-    latitude: '-1.7190900',
-    longitude: '-48.8771837',
+    latitude: '-1.7190181',
+    longitude: '-48.8772899',
     icon: 'flat/church.png',
     title: 'Igreja Sagrado Coração de Jesus',
     category: 'IgrejasCatolicas',
@@ -121,14 +121,14 @@ export const igrejasCatolicas = [
   },
   {
     latitude: '-1.7258835',
-    longitude: '-48.883900',
+    longitude: '-48.8836900',
     icon: 'flat/church.png',
     title: 'Igreja de São Pedro',
     category: 'IgrejasCatolicas',
     address: 'Av. Pedro Rodrigues, 886 - Centro'
   },
   {
-    latitude: '-1.7266435',
+    latitude: '-1.7268435',
     longitude: '-48.8862556',
     icon: 'flat/church.png',
     title: 'Igreja de São Benedito',
@@ -137,7 +137,7 @@ export const igrejasCatolicas = [
   },
   {
     latitude: '-1.7314725',
-    longitude: '-48.8874000',
+    longitude: '-48.88771000',
     icon: 'flat/church.png',
     title: 'Igreja de Nossa Senhora do Perpétuo Socorro',
     category: 'IgrejasCatolicas',
@@ -152,8 +152,8 @@ export const igrejasCatolicas = [
     address: 'Tv. Prof. Felipe do Espírito Santo, 203-303 - Santa Rosa'
   },
   {
-    latitude: '-1.7348492',
-    longitude: '-48.8758009',
+    latitude: '-1.7350866',
+    longitude: '-48.87469816',
     icon: 'flat/church.png',
     title: 'Igreja de São Sebastião',
     category: 'IgrejasCatolicas',
