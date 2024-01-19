@@ -1,8 +1,1 @@
 /* app global css */
-div[id^='close-'] {
-  color: #fff !important;
-  background: #c10015 !important;
-  border-radius: 10px !important;
-  padding: 1px !important;
-  font-size: 17px !important;
-}
