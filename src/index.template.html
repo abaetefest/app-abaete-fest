@@ -66,19 +66,19 @@
     <div id="q-app"></div>
 
     <script type="text/javascript">
-      aclib.runInPagePush({
+      var ua = navigator.userAgent.toLowerCase();
+      var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+      if(isAndroid) {
+        aclib.runInPagePush({
           zoneId: '7988606',
           refreshRate: 30,
           maxAds: 2,
+        });
+      }
+      aclib.runBanner({
+          zoneId: '7988610',
       });
     </script>
-    <div>
-      <script type="text/javascript">
-          aclib.runBanner({
-              zoneId: '7988610',
-          });
-      </script>
-    </div>
   
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
