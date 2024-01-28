@@ -13,6 +13,9 @@
         <!-- </q-banner> -->
       <!-- </div>
     </div> -->
+    <div class="text-h5 text-bold text-center q-pt-md">
+      <span class="text-red-8">Eventos</span> na cidade
+    </div>
     <div class="row q-pa-sm">
       <q-select
         outlined
@@ -52,7 +55,6 @@
     </div>
     <q-table
       :grid="grid"
-      title="Eventos"
       :data="events"
       :columns="columns"
       row-key="name"
@@ -61,10 +63,20 @@
       :loading="load"
       :pagination="initialPagination"
     >
-      <template v-slot:top-right>
-        <q-input outlined rounded dense debounce="300" v-model="filter" placeholder="Pesquisar">
+      <template v-slot:top>
+        <q-input
+          outlined
+          rounded
+          dense
+          debounce="300"
+          v-model="filter"
+          label="Pesquise"
+          :class="$q.platform.is.mobile ?  'full-width' : ''"
+          class="q-mb-md"
+          :label-color="$q.dark.isActive ? 'blue-3' : 'primary'"
+        >
           <template v-slot:append>
-            <q-icon name="mdi-magnify" />
+            <q-icon name="mdi-magnify" :color="$q.dark.isActive ? 'blue-3' : 'primary'" />
           </template>
         </q-input>
       </template>

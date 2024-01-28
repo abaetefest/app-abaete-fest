@@ -9,20 +9,6 @@
         elevated
         :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-primary'"
       >
-        <q-toolbar>
-          <q-toolbar-title>
-            {{ tourismData.name}}
-          </q-toolbar-title>
-          <q-btn
-            icon="close"
-            class="float-right"
-            :class="$q.dark.isActive ? 'dark' : 'white'"
-            round
-            flat
-            dense
-            @click="$emit('close')"
-          />
-        </q-toolbar>
       </q-header>
 
       <q-footer
@@ -50,23 +36,24 @@
             <q-card-section class="q-pa-none">
               <div
                 v-if="tourismData.image_url"
-                class="text-body2 q-mb-md text-center"
+                class="text-body2 text-center"
                 :class="$q.dark.isActive ? 'text-white' : 'text-grey-9'"
               >
-                <q-img :src="tourismData.image_url" >
+                <q-img
+                  :src="tourismData.image_url"
+                  class="rounded-img"
+                >
                   <template #loading>
                     <q-skeleton class="full-width full-height" square />
                   </template>
-                  <div class="absolute-bottom text-subtitle1 text-center">
-                    {{tourismData.name}}
-                  </div>
                 </q-img>
               </div>
-            </q-card-section>
-            <q-card-section class="q-pb-none">
+              <div class="text-h5 text-center text-bold q-mt-md">
+                {{tourismData.name}}
+              </div>
               <div
                 v-if="tourismData.description"
-                class="text-body1 q-mb-md"
+                class="text-body1 q-pt-sm q-px-md"
                 :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
               >
                 <p v-html="tourismData.description"></p>
@@ -74,7 +61,7 @@
 
               <div
                 v-if="tourismData.address"
-                class="text-body1 q-mb-md"
+                class="text-body1 q-px-md"
                 :class="$q.dark.isActive ? 'text-white' : 'text-grey-9'"
               >
                 <p>
@@ -82,6 +69,9 @@
                 </p>
               </div>
             </q-card-section>
+            <!-- <q-card-section
+            >
+            </q-card-section> -->
 
             <q-card-section class="q-pt-none">
               <p class="text-h6">Veja no mapa:</p>

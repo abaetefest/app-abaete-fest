@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated :class="$q.dark.isActive ? 'bg-dark' : 'bg-primary'">
+    <q-header :class="$q.dark.isActive ? 'bg-dark' : 'bg-primary'">
       <q-toolbar>
         <q-btn
           class="gt-sm"

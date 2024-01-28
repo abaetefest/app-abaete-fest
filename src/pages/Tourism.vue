@@ -1,15 +1,10 @@
 <template>
   <q-page :class="$q.dark.isActive ? 'bg-dark' : 'bg-grey-1'">
-    <div class="">
-      <div class="col-12 text-center">
-        <!-- <q-banner inline-actions class="text-primary bg-secondary">
-          <span class="text-h5"> {{ categoryName }}</span>
-        </q-banner> -->
-      </div>
+    <div class="text-h5 text-bold text-center q-pt-md">
+      Pontos <span class="text-red-8">Turísticos</span>
     </div>
     <q-table
       :grid="grid"
-      title="Pontos Turísticos"
       :data="tourism"
       :columns="columns"
       row-key="name"
@@ -18,7 +13,7 @@
       :loading="load"
       :pagination="initialPagination"
     >
-      <template v-slot:top-right>
+      <template v-slot:top>
         <q-input
           v-model="filter"
           placeholder="Pesquisar"
@@ -26,6 +21,7 @@
           outlined
           rounded
           dense
+          :class="$q.platform.is.mobile ?  'full-width' : ''"
         >
           <template v-slot:append>
             <q-icon name="mdi-magnify" />
@@ -33,7 +29,34 @@
         </q-input>
       </template>
       <template v-slot:item="props">
-        <div class="q-pa-sm col-xs-12 col-sm-6 col-md-3">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <q-list bordered class="q-ma-xs shadow-2 rounded"
+        @click="openDialogCourse(props.row)"
+        >
+          <q-item>
+            <q-item-section top thumbnail class="q-ml-none">
+              <img
+                :src="props.row.image_url"
+                class="rounded q-ml-sm"
+              >
+            </q-item-section>
+
+            <q-item-section>
+              <q-item-label class="text-subtitle1 text-bold">
+                {{ props.row.name }}
+              </q-item-label>
+              <q-item-label caption>
+                {{ props.row.address }}
+              </q-item-label>
+            </q-item-section>
+
+            <!-- <q-item-section side top>
+              <q-item-label caption>meta</q-item-label>
+            </q-item-section> -->
+          </q-item>
+        </q-list>
+      </div>
+        <!-- <div class="q-pa-sm col-xs-12 col-sm-6 col-md-3">
           <q-card
             class="fit cursor-pointer shadow-5"
           >
@@ -53,13 +76,75 @@
               </div>
             </q-card-section>
           </q-card>
-        </div>
+        </div> -->
       </template>
     </q-table>
     <dialog-tourism-details
       :modal-tourism="modalTourism"
       :tourism-data="tourismDetails"
       @close="closeModal" />
+      <q-dialog
+        persistent
+        full-height
+        :maximized="$q.screen.lt.sm"
+        :value="modalWelcomeTourism"
+      >
+        <q-layout
+          view="Lhh lpR fff"
+          container
+          :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
+        >
+          <q-page-container>
+            <q-page>
+              <q-card
+                class="full-width no-shadow"
+              >
+
+                <q-card-section class="q-pa-none">
+                  <div
+                    class="text-body2 text-center"
+                    :class="$q.dark.isActive ? 'text-white' : 'text-grey-9'"
+                  >
+                    <q-img
+                      src="/viajante.jpg"
+                      class="rounded-img"
+                    >
+                      <template #loading>
+                        <q-skeleton class="full-width full-height" square />
+                      </template>
+                    </q-img>
+                  </div>
+                </q-card-section>
+
+                <q-card-section>
+                  <div class="text-h5 text-bold q-mt-lg">
+                    Explore locais incríveis pela região de <span class="text-red-7">Abaetetuba</span>
+                  </div>
+                </q-card-section>
+
+                <q-card-section>
+                  <div class="text-body1">
+                    A região do Baixo Tocantins é repleta de balneários, prais e ilhas.
+                    Além de muita história na cidade de Abaetetuba.
+                  </div>
+                </q-card-section>
+              </q-card>
+
+              <div class="row justify-center absolute-bottom q-mb-xl">
+                <div class="col-xs-10 col-sm-8">
+                  <q-btn
+                    label="Vamos nessa!"
+                    color="primary"
+                    @click="modalWelcomeTourism = false"
+                    class="full-width"
+                    rounded
+                  />
+                </div>
+              </div>
+            </q-page>
+          </q-page-container>
+        </q-layout>
+      </q-dialog>
   </q-page>
 </template>
 
@@ -77,6 +162,7 @@ export default {
   },
   data () {
     return {
+      modalWelcomeTourism: true,
       initialPagination: {
         sortBy: 'desc',
         descending: false,
