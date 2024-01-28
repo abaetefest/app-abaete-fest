@@ -1,6 +1,6 @@
 <template>
   <q-dialog persistent full-height :maximized="$q.screen.lt.sm" :value="modalPlaces">
-    <q-layout view="Lhh lpR fff" container :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'">
+    <q-layout view="Lhh lpR fFf" container :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'">
       <q-header :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-primary'">
         <q-toolbar>
           <q-toolbar-title>
