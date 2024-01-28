@@ -1,7 +1,7 @@
 <template>
   <q-dialog persistent full-height :maximized="$q.screen.lt.sm" :value="modalTourism">
     <q-layout
-      view="Lhh lpR fff"
+      view="Lhh lpR fFf"
       container
       :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
     >
