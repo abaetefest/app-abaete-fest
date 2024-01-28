@@ -1,1 +1,8 @@
 /* app global css */
+.rounded {
+  border-radius: 0.30rem;
+}
+
+.rounded-img {
+  border-bottom-right-radius: 4.5rem;
+}
