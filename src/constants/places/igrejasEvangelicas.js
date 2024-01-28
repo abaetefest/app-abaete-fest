@@ -134,6 +134,135 @@ export const igrejasEvangelicas = [
     title: 'Igreja Cristã Evangélica em Francilândia',
     category: 'IgrejasEvangelicas',
     address: 'Av Rio de Janeiro, 1903 - Francilândia'
+  },
+  // --------------------- A partir daqui, não foi verificada as coordenadas no google maps ---------------------
+  {
+    latitude: '-1.7157981',
+    longitude: '-48.8793436',
+    icon: 'flat/church.png',
+    title: 'Igreja Batista Missionária da Amazônia',
+    category: 'IgrejasEvangelicas',
+    address: 'Tv Acre, 1300 - Francilândia'
+  },
+  {
+    latitude: '-1.7099963',
+    longitude: '-48.875334',
+    icon: 'flat/church.png',
+    title: 'Igreja Evangélica Assembleia de Deus - Brilho Celeste',
+    category: 'IgrejasEvangelicas',
+    address: 'Tv Espírito Santo, 3714 - Francilândia'
+  },
+  {
+    latitude: '-1.7106108',
+    longitude: '-48.8743821',
+    icon: 'flat/church.png',
+    title: 'Igreja Quadrangular Família Global',
+    category: 'IgrejasEvangelicas',
+    address: 'Rua Rio Grande do Sul, 3631 - Francilândia'
+  },
+  {
+    latitude: '-1.7126805',
+    longitude: '-48.8746089',
+    icon: 'flat/church.png',
+    title: 'Igreja Adventista do Sétimo Dia',
+    category: 'IgrejasEvangelicas',
+    address: 'Tv Paraná, 416 - Francilândia'
+  },
+  {
+    latitude: '-1.7186188',
+    longitude: '-48.8676725',
+    icon: 'flat/church.png',
+    title: 'Igreja Evangélica Pentecostal Deus Forte',
+    category: 'IgrejasEvangelicas',
+    address: 'Tv. Manoel do Espírito Santo Ferreira, 2530 - São Domingos da Angélica'
+  },
+  {
+    latitude: '-1.7203708',
+    longitude: '-48.8665139',
+    icon: 'flat/church.png',
+    title: 'Igreja Cristã Evangélica em Angélica',
+    category: 'IgrejasEvangelicas',
+    address: 'Av. Anchieta, 2575 - São Domingos da Angélica'
+  },
+  {
+    latitude: '-1.7233675',
+    longitude: '-48.8704147',
+    icon: 'flat/church.png',
+    title: 'Igreja Cristã Evangélica do Cristo Redentor',
+    category: 'IgrejasEvangelicas',
+    address: 'Tv. Prof. Armando Costa Baía, 2195 - Cristo Redentor'
+  },
+  {
+    latitude: '-1.7269808',
+    longitude: '-48.8680222',
+    icon: 'flat/church.png',
+    title: 'Igreja Pentecostal Deus é Amor',
+    category: 'IgrejasEvangelicas',
+    address: 'R. Dois, 88 - Cristo Redentor'
+  },
+  {
+    latitude: '-1.7278634',
+    longitude: '-48.8675932',
+    icon: 'flat/church.png',
+    title: 'Ministério Pentecostal Casa Do Oleiro - Templo Sede',
+    category: 'IgrejasEvangelicas',
+    address: 'Ramal Manoel de Abreu, 1804 - Cristo Redentor'
+  },
+  {
+    latitude: '-1.728008',
+    longitude: '-48.8629974',
+    icon: 'flat/church.png',
+    title: 'Igreja Quadrangular',
+    category: 'IgrejasEvangelicas',
+    address: 'Tv. Manoel Costa, 669 - Mutirão'
+  },
+  {
+    latitude: '-1.7310571',
+    longitude: '-48.8815196',
+    icon: 'flat/church.png',
+    title: 'Igreja Universal Do Reino De Deus',
+    category: 'IgrejasEvangelicas',
+    address: 'Tv. Bibiano Cardoso dos Santos, 1472 - Santo Rosa'
+  },
+  {
+    latitude: '-1.7360983',
+    longitude: '-48.8768615',
+    icon: 'flat/church.png',
+    title: 'Igreja Cristã Evangélica Betesda',
+    category: 'IgrejasEvangelicas',
+    address: 'R. Manoel Eugênio Cardoso, 357 - São Sebastião'
+  },
+  {
+    latitude: '-1.7365301',
+    longitude: '-48.8786701',
+    icon: 'flat/church.png',
+    title: 'Igreja do Evangelho Quadrangular - Templo do Avivamento',
+    category: 'IgrejasEvangelicas',
+    address: 'R. Manoel Eugênio Cardoso, 664 - São Sebastião'
+  },
+  {
+    latitude: '-1.7283242',
+    longitude: '-48.8847145',
+    icon: 'flat/church.png',
+    title: 'Congregação Atalaia Da Assembleia De Deus',
+    category: 'IgrejasEvangelicas',
+    address: 'Tv. Tiradentes, 1057 - Algodoal'
+  },
+  {
+    latitude: '-1.7267226',
+    longitude: '-48.8894267',
+    icon: 'flat/church.png',
+    title: 'Igreja Internacional da Graça de Deus',
+    category: 'IgrejasEvangelicas',
+    address: 'R. Barão do Rio Branco, 1197 - Centro'
+  },
+  {
+    latitude: '-1.7260101',
+    longitude: '-48.8906043',
+    icon: 'flat/church.png',
+    title: 'Igreja Pentecostal Milagre da Fé',
+    category: 'IgrejasEvangelicas',
+    address: 'Tv. Maj. Frederico da Gama Costa, 219 - Centro'
   }
 
 ]
