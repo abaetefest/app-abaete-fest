@@ -37,7 +37,7 @@ export const pubRestaurante = [
   },
   {
     latitude: -1.7208352,
-    longitude: -48.8835972,
+    longitude: -48.8836972,
     icon: 'map-icon/texas.png',
     title: 'Texas Premium Steakhouse',
     category: 'Pub&Restaurante',
@@ -64,7 +64,7 @@ export const pubRestaurante = [
   },
   {
     latitude: -1.7274963,
-    longitude: -48.876478,
+    longitude: -48.8763478,
     icon: 'map-icon/berrodoboi.png',
     title: 'Churrascaria Berro do Boi',
     category: 'Pub&Restaurante',

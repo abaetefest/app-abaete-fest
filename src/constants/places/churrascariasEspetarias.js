@@ -1,7 +1,7 @@
 export const churrascariasEspetarias = [
   {
     latitude: -1.7274963,
-    longitude: -48.876478,
+    longitude: -48.8763478,
     icon: 'map-icon/berrodoboi.png',
     title: 'Churrascaria Berro do Boi',
     category: 'Churrascaria&Espetaria',
@@ -9,8 +9,8 @@ export const churrascariasEspetarias = [
     address: 'Rod. Dr. João Miranda, 1724 - Santa Rosa'
   },
   {
-    latitude: -1.7258891,
-    longitude: -48.8811354,
+    latitude: -1.7257891,
+    longitude: -48.8810354,
     icon: 'categories/churrascaria.png',
     title: 'Restaurante E Churrascaria Bom Paladar',
     category: 'Churrascaria&Espetaria',
@@ -28,7 +28,7 @@ export const churrascariasEspetarias = [
   },
   {
     latitude: -1.7208352,
-    longitude: -48.8835972,
+    longitude: -48.8836972,
     icon: 'map-icon/texas.png',
     title: 'Texas Premium Steakhouse',
     category: 'Churrascaria&Espetaria',
@@ -54,8 +54,8 @@ export const churrascariasEspetarias = [
     address: 'Tv. Santos Dumont, 377 - Centro'
   },
   {
-    latitude: -1.720609,
-    longitude: -48.8845228,
+    latitude: -1.720709,
+    longitude: -48.8840228,
     icon: 'places/churrascaria/botecodopapai.png',
     title: 'Boteco do Papai - Churrascaria',
     category: 'Churrascaria&Espetaria',
@@ -63,8 +63,8 @@ export const churrascariasEspetarias = [
     address: 'Tv. Emídio Neri da Costa, 703 - São Lourenço'
   },
   {
-    latitude: -1.720341,
-    longitude: -48.8834538,
+    latitude: -1.720441,
+    longitude: -48.8833538,
     icon: 'places/churrascaria/churrascariaprimicias.png',
     title: 'Churrascaria Primícias',
     category: 'Churrascaria&Espetaria',
@@ -81,8 +81,8 @@ export const churrascariasEspetarias = [
     address: 'R. Lauro Sodré, 1878 - Centro'
   },
   {
-    latitude: -1.7243941,
-    longitude: -48.8840516,
+    latitude: -1.7244941,
+    longitude: -48.8838516,
     icon: 'places/churrascaria/churrascariaboigordo.png',
     title: 'Churrascaria Boi Gordo',
     category: 'Churrascaria&Espetaria',
