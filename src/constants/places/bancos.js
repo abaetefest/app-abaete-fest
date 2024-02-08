@@ -51,7 +51,7 @@ export const bancos = [
   },
   {
     latitude: '-1.7239915',
-    longitude: '-48.8887968',
+    longitude: '-48.8886968',
     icon: 'places/itau.png',
     title: 'Itaú',
     category: 'Bancos',

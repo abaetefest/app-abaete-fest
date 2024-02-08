@@ -1,6 +1,6 @@
 export const farmacias = [
   {
-    latitude: '-1.7244925',
+    latitude: '-1.7243925',
     longitude: '-48.8915142',
     icon: 'places/farmacia.png',
     title: 'Farmácia Drogacacia',
@@ -11,7 +11,7 @@ export const farmacias = [
   },
   {
     latitude: '-1.7229941',
-    longitude: '-48.8911971',
+    longitude: '-48.8910871',
     icon: 'places/farmacia.png',
     title: 'Farmácia do Trabalhador',
     category: 'Farmácias',
@@ -20,8 +20,8 @@ export const farmacias = [
     address: 'Av. Dom Pedro II, 24 - Centro'
   },
   {
-    latitude: '-1.724434',
-    longitude: '-48.8907981',
+    latitude: '-1.7243434',
+    longitude: '-48.8907581',
     icon: 'places/farmacia.png',
     title: 'DM FARMA',
     category: 'Farmácias',
@@ -30,8 +30,8 @@ export const farmacias = [
     address: 'Av. Pedro Rodrigues, 80A - Centro'
   },
   {
-    latitude: '-1.7230484',
-    longitude: '-48.8896938',
+    latitude: '-1.7230784',
+    longitude: '-48.8895938',
     icon: 'places/farmacia.png',
     title: 'Farmácia Contente',
     category: 'Farmácias',
@@ -50,7 +50,7 @@ export const farmacias = [
     address: 'Av. Quinze de Agosto, 168'
   },
   {
-    latitude: '-1.7222113',
+    latitude: '-1.7221713',
     longitude: '-48.8890151',
     icon: 'places/farmacia.png',
     title: 'Farma Popular',
@@ -60,8 +60,8 @@ export const farmacias = [
     address: 'Av. Quinze de Agosto, 179'
   },
   {
-    latitude: '-1.7231623',
-    longitude: '-48.8890914',
+    latitude: '-1.7232623',
+    longitude: '-48.8888914',
     icon: 'places/farmacia.png',
     title: 'Extrafarma',
     category: 'Farmácias',
@@ -71,17 +71,17 @@ export const farmacias = [
   },
   {
     latitude: '-1.7241677',
-    longitude: '-48.888802',
+    longitude: '-48.8889802',
     icon: 'places/farmacia.png',
-    title: 'Drogarias Maxi Popular',
+    title: 'Drogarias Maxi Popular 1',
     category: 'Farmácias',
     preco: 2,
     phone: '91 984776315',
     address: 'R. Barão do Rio Branco, 1529 - Centro'
   },
   {
-    latitude: '-1.724378',
-    longitude: '-48.8889739',
+    latitude: '-1.724398',
+    longitude: '-48.8890739',
     icon: 'places/farmacia.png',
     title: 'Drogasil',
     category: 'Farmácias',
@@ -90,7 +90,27 @@ export const farmacias = [
     address: 'Av. Pedro Rodrigues, 273 - Centro'
   },
   {
-    latitude: '-1.7290257',
+    latitude: '-1.7240915',
+    longitude: '-48.8886968',
+    icon: 'places/farmacia.png',
+    title: 'Farmácia Tem Tudo Popular',
+    category: 'Farmácias',
+    preco: 2,
+    phone: '91 985652607',
+    address: 'R. Barão do Rio Branco, 1506 - Centro'
+  },
+  {
+    latitude: '-1.7238915',
+    longitude: '-48.8886568',
+    icon: 'places/farmacia.png',
+    title: 'Farmácia Pague Menos',
+    category: 'Farmácias',
+    preco: 2,
+    phone: '4002-8282',
+    address: 'R. Barão do Rio Branco, 1516 - Centro'
+  },
+  {
+    latitude: '-1.7291757',
     longitude: '-48.8897365',
     icon: 'places/farmacia.png',
     title: 'Casa dos Medicamentos',
@@ -100,8 +120,8 @@ export const farmacias = [
     address: 'R. Barão do Rio Branco, 920 - Algodoal'
   },
   {
-    latitude: '-1.7246439',
-    longitude: '-48.8864614',
+    latitude: '-1.7245439',
+    longitude: '-48.8864114',
     icon: 'places/farmacia.png',
     title: 'Reinafarma',
     category: 'Farmácias',
@@ -111,7 +131,7 @@ export const farmacias = [
   },
   {
     latitude: '-1.7241479',
-    longitude: '-48.8845239',
+    longitude: '-48.8844839',
     icon: 'places/farmacia.png',
     title: 'Farnobre',
     category: 'Farmácias',
@@ -121,7 +141,7 @@ export const farmacias = [
   },
   {
     latitude: '-1.7246451',
-    longitude: '-48.88166',
+    longitude: '-48.881466',
     icon: 'places/farmacia.png',
     title: 'Drogarias Maxi Popular 2',
     category: 'Farmácias',
@@ -130,8 +150,8 @@ export const farmacias = [
     address: 'Av. Dom Pedro II, 1097 - Centro'
   },
   {
-    latitude: '-1.7172451',
-    longitude: '-48.8782555',
+    latitude: '-1.7172251',
+    longitude: '-48.8780155',
     icon: 'places/farmacia.png',
     title: 'Farmácia Santa Rita',
     category: 'Farmácias',
@@ -141,9 +161,9 @@ export const farmacias = [
   },
   {
     latitude: '-1.7324038',
-    longitude: '-48.8701954',
+    longitude: '-48.8699954',
     icon: 'places/farmacia.png',
-    title: 'Farmácia Santa Rita',
+    title: 'Farma Líder',
     category: 'Farmácias',
     preco: 2,
     phone: '91 40081038',
