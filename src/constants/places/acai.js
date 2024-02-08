@@ -57,7 +57,7 @@ export const acai = [
     category: 'Açaí',
     preco: 0,
     phone: '91 9 89892926',
-    address: 'Travessa Rui Barbosa, n⁰ 573, bairro: Algodoal'
+    address: 'Tv. Rui Barbosa, n⁰ 573, bairro: Algodoal'
   },
   {
     latitude: '-1.7239057',

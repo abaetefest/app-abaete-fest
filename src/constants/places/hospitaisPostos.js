@@ -62,6 +62,6 @@ export const hospitaisPostos = [
     icon: 'places/hospital.png',
     title: 'CEMA',
     category: 'Hospital&Posto',
-    address: 'Travessa Pedro Pinheiro Paes, 77 - Centro'
+    address: 'Tv. Pedro Pinheiro Paes, 77 - Centro'
   }
 ]
