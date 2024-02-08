@@ -9,7 +9,7 @@ export const hospitaisPostos = [
   },
   {
     latitude: -1.7279148,
-    longitude: -48.8801879,
+    longitude: -48.8802700,
     icon: 'places/hospital.png',
     title: 'Hospital Júlia Sefer',
     category: 'Hospital&Posto',
@@ -24,7 +24,7 @@ export const hospitaisPostos = [
     address: 'Av. Dom Pedro II, 1538 - Centro'
   },
   {
-    latitude: -1.7229173,
+    latitude: -1.7230173,
     longitude: -48.8789495,
     icon: 'places/hospital.png',
     title: 'UPA Abaetetuba',
@@ -32,7 +32,7 @@ export const hospitaisPostos = [
     address: 'Tv. Santos Dumont, 1314 - Centro'
   },
   {
-    latitude: -1.7229477,
+    latitude: -1.7229200,
     longitude: -48.8796023,
     icon: 'places/hospital.png',
     title: 'Hemopa',
@@ -41,14 +41,14 @@ export const hospitaisPostos = [
   },
   {
     latitude: -1.7224832,
-    longitude: -48.8888308,
+    longitude: -48.8887008,
     icon: 'places/hospital.png',
     title: 'UBS Dr. Roberto Contente (SESPA)',
     category: 'Hospital&Posto',
     address: 'R. Barão do Rio Branco, 1641 - Centro'
   },
   {
-    latitude: -1.722357,
+    latitude: -1.722230,
     longitude: -48.889392,
     icon: 'places/hospital.png',
     title: 'Centro Médico Nossa Senhora da Conceição',
@@ -57,7 +57,7 @@ export const hospitaisPostos = [
   },
   {
     latitude: -1.7252123,
-    longitude: -48.8915774,
+    longitude: -48.8916774,
     phone: '91 9828282',
     icon: 'places/hospital.png',
     title: 'CEMA',
