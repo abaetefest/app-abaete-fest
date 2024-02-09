@@ -6,7 +6,7 @@ export const acai = [
     title: 'Açaiteria IAÇA FROZEN®️',
     category: 'Açaí',
     preco: 0,
-    phone: '91 9321-0974',
+    phone: '919321-0974',
     address: 'Av. Dom Pedro II - Centro'
   },
   {
@@ -16,7 +16,7 @@ export const acai = [
     title: 'Rota 99',
     category: 'Açaí',
     preco: 0,
-    phone: '91 9 9128-7751',
+    phone: '91 99128-7751',
     address: 'Rua Joaquim Mendes Contente 952, Santa rosa'
   },
   {
@@ -26,7 +26,7 @@ export const acai = [
     title: 'Cuia e Açaí',
     category: 'Açaí',
     preco: 0,
-    phone: '91 9 9823-0012',
+    phone: '91 99823-0012',
     address: 'Dom Pedro I 993, Entre Garibaldi e Manoel Raposo, São João'
   },
   {
@@ -59,16 +59,16 @@ export const acai = [
     phone: '91 9 89892926',
     address: 'Tv. Rui Barbosa, n⁰ 573, bairro: Algodoal'
   },
-  // {
-  //   latitude: '-1.7239057',
-  //   longitude: '-48.8875346',
-  //   icon: 'flat/acai.png',
-  //   title: 'Açaí do centro',
-  //   category: 'Açaí',
-  //   preco: 0,
-  //   phone: '91 9 92448077',
-  //   address: 'Av. Dom Pedro II, n⁰ 703- Centro'
-  // },
+  {
+    latitude: '-1.7239045',
+    longitude: '-48.8858251',
+    icon: 'flat/acai.png',
+    title: 'Açaí do centro',
+    category: 'Açaí',
+    preco: 0,
+    phone: '91 992448077',
+    address: 'Av. Dom Pedro II, n⁰ 703- Centro'
+  },
   {
     latitude: '-1.7285304',
     longitude: '-48.8698371',
@@ -76,7 +76,7 @@ export const acai = [
     title: 'Açaí do Vandinho',
     category: 'Açaí',
     preco: 0,
-    phone: '91 9 82643795',
+    phone: '91 982643795',
     address: 'Rua Padre Mário Lanciott, 1178- Cristo Redentor'
   }
 ]
