@@ -47,7 +47,7 @@ export const bancos = [
     category: 'Bancos',
     preco: 0,
     phone: '91 3751-7150',
-    address: 'Rua Siqueira Mendes, 1375 - Centro'
+    address: 'R. Siqueira Mendes, 1375 - Centro'
   },
   {
     latitude: '-1.7239915',
@@ -57,7 +57,7 @@ export const bancos = [
     category: 'Bancos',
     preco: 0,
     phone: '91 4004-4828',
-    address: 'Rua Barão do Rio Branco, 1506 - Centro'
+    address: 'R. Barão do Rio Branco, 1506 - Centro'
   },
   {
     latitude: '-1.7265462',
@@ -67,7 +67,7 @@ export const bancos = [
     category: 'Bancos',
     preco: 0,
     phone: '0800 702 3535',
-    address: 'Rua Siqueira Mendes, 1208 A - Centro'
+    address: 'R. Siqueira Mendes, 1208 A - Centro'
   },
   {
     latitude: '-1.7240100',

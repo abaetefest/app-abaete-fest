@@ -158,7 +158,7 @@ export const igrejasEvangelicas = [
     icon: 'flat/church.png',
     title: 'Igreja Quadrangular Família Global',
     category: 'IgrejasEvangelicas',
-    address: 'Rua Rio Grande do Sul, 3631 - Francilândia'
+    address: 'R. Rio Grande do Sul, 3631 - Francilândia'
   },
   {
     latitude: '-1.7126805',

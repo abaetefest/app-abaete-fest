@@ -33,7 +33,7 @@ export const pubRestaurante = [
     title: 'Texas Pub & Burguer',
     category: 'Pub&Restaurante',
     preco: 3,
-    address: 'Avenida Dom Pedro II'
+    address: 'Av. Dom Pedro II'
   },
   {
     latitude: -1.724292,

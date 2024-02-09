@@ -17,7 +17,7 @@ export const acai = [
     category: 'Açaí',
     preco: 0,
     phone: '91 99128-7751',
-    address: 'Rua Joaquim Mendes Contente 952, Santa rosa'
+    address: 'R. Joaquim Mendes Contente 952, Santa rosa'
   },
   {
     latitude: '-1.7167162',
@@ -47,7 +47,7 @@ export const acai = [
   //   category: 'Açaí',
   //   preco: 0,
   //   phone: '91 9 8306-2026',
-  //   address: 'Avenida São Paulo 1861, Aviação'
+  //   address: 'Av. São Paulo 1861, Aviação'
   // },
   {
     latitude: '-1.7294898',
@@ -77,6 +77,6 @@ export const acai = [
     category: 'Açaí',
     preco: 0,
     phone: '91 982643795',
-    address: 'Rua Padre Mário Lanciott, 1178- Cristo Redentor'
+    address: 'R. Padre Mário Lanciott, 1178- Cristo Redentor'
   }
 ]
