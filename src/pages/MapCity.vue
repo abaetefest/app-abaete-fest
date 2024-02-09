@@ -183,7 +183,7 @@ export default {
         lng: parseFloat(m.longitude)
       }
       console.log(this.infoWindowPos)
-      this.infoOptions.content = `<strong>${m.title}</strong> <br> ${m.address}`
+      this.infoOptions.content = `<strong style="color: black">${m.title}</strong> <br> <span style="color: black">${m.address}</span>`
 
       // check if its the same marker that was selected if yes toggle
       if (this.currentMidx === idx) {
