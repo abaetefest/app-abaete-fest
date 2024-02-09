@@ -67,6 +67,13 @@
         disableDefaultUi: false,
       }"
     >
+      <GmapInfoWindow
+        :options="infoOptions"
+        :position="infoWindowPos"
+        :opened="infoWinOpen"
+        @closeclick="infoWinOpen=false"
+      >
+      </GmapInfoWindow>
       <GmapMarker
         v-for="(maker, index) in makersMap"
         :key="index"
@@ -82,7 +89,7 @@
         :clickable="true"
         :draggable="false"
         :optimized="false"
-        @click="showDialog"
+        @click="showDialog(maker, index)"
       />
     </GmapMap>
 
@@ -121,7 +128,17 @@ export default {
           icon: 'flat/all.png'
         },
         ...placesCategories
-      ]
+      ],
+      infoWindowPos: null,
+      infoWinOpen: false,
+      currentMidx: null,
+      infoOptions: {
+        content: '',
+        pixelOffset: {
+          width: 0,
+          height: -35
+        }
+      }
     }
   },
   mounted () {
@@ -159,8 +176,22 @@ export default {
         message: 'Localização recuperada com sucesso!'
       })
     },
-    showDialog () {
-      console.log('show')
+    showDialog (m, idx) {
+      console.log(m)
+      this.infoWindowPos = {
+        lat: parseFloat(m.latitude),
+        lng: parseFloat(m.longitude)
+      }
+      console.log(this.infoWindowPos)
+      this.infoOptions.content = `<strong>${m.title}</strong> <br> ${m.address}`
+
+      // check if its the same marker that was selected if yes toggle
+      if (this.currentMidx === idx) {
+        this.infoWinOpen = !this.infoWinOpen
+      } else {
+        this.infoWinOpen = true
+        this.currentMidx = idx
+      }
     },
     getIcon (icon) {
       return `${icon}`
@@ -193,6 +224,3 @@ export default {
   /* min-height: 90vh; */
 }
 </style>
-src/constants/places/makersMap
-src/constants/places
-src/constants/placesCategories
