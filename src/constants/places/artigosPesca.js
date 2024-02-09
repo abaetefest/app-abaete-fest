@@ -7,6 +7,6 @@ export const pesca = [
     category: 'Pesca',
     preco: 0,
     phone: '91 992490889',
-    address: 'Rua Maxímiano Silvino Cardoso - Santa Rosa'
+    address: 'R. Maxímiano Silvino Cardoso - Santa Rosa'
   }
 ]

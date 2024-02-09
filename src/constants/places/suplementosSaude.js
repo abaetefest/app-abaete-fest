@@ -1,16 +1,16 @@
 export const suplementosSaude = [
   {
-    latitude: '-1.7237319',
-    longitude: '-48.8860466',
+    latitude: '-1.7236019',
+    longitude: '-48.8862466',
     icon: 'categories/whey.png',
     title: 'Loja Supplement Time',
     category: 'Suplemento&Saude',
     phone: '91 98400-7157',
-    address: 'Av. Dom Pedro II, 591 - Centro'
+    address: 'Anexo Posto Central - R. Lauro Sodré, 533 - Box 04 - Centro'
   },
   {
-    latitude: '-1.7337233',
-    longitude: '-48.8597294',
+    latitude: '-1.7340233',
+    longitude: '-48.8595294',
     icon: 'map-icon/bioflora.png',
     title: 'Bioflora Abaetetuba',
     category: 'Suplemento&Saude',
@@ -28,7 +28,7 @@ export const suplementosSaude = [
   },
   {
     latitude: '-1.7179714',
-    longitude: '-48.8753396',
+    longitude: '-48.8752396',
     icon: 'categories/whey.png',
     title: 'Boa forma Suplementos',
     category: 'Suplemento&Saude',

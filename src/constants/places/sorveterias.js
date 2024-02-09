@@ -1,7 +1,7 @@
 export const sorveterias = [
   {
     latitude: -1.7242434,
-    longitude: -48.886053,
+    longitude: -48.886090,
     icon: 'places/sorveteria/chiquinhosorvetes.png',
     title: 'Chiquinho Sorvetes',
     category: 'Sorveterias',
@@ -10,7 +10,7 @@ export const sorveterias = [
   },
   {
     latitude: -1.7224157,
-    longitude: -48.8878684,
+    longitude: -48.8878984,
     icon: 'categories/sorveteria.png',
     title: 'Sorveteria Iracema',
     category: 'Sorveterias',
@@ -19,7 +19,7 @@ export const sorveterias = [
   },
   {
     latitude: -1.7191682,
-    longitude: -48.8831248,
+    longitude: -48.8831848,
     icon: 'categories/sorveteria.png',
     title: 'Sorveteria Iracema 2',
     category: 'Sorveterias',
@@ -28,21 +28,12 @@ export const sorveterias = [
   },
   {
     latitude: -1.7242825,
-    longitude: -48.8847577,
+    longitude: -48.8848977,
     icon: 'places/sorveteria/spazio_gourmet.png',
     title: 'Spazio Gourmet - Burger & Pizza',
     category: 'Sorveterias',
     preco: 2,
     address: 'Av. Dom Pedro II, 712 - Centro'
-  },
-  {
-    latitude: -1.7245449,
-    longitude: -48.8821067,
-    icon: 'places/sorveteria/iacafrozen.png',
-    title: 'Iaça Frozen',
-    category: 'Sorveterias',
-    preco: 2,
-    address: 'Av. Dom Pedro II - 1041 - 979 - Centro'
   },
   {
     latitude: -1.7252525,
@@ -54,21 +45,12 @@ export const sorveterias = [
     address: 'R. José Pinheiro Baía, 461 - Santa Rosa'
   },
   {
-    latitude: -1.7253768,
+    latitude: -1.7253068,
     longitude: -48.8802539,
     icon: 'places/sorveteria/milkshakeup.png',
     title: 'Sorveteria Milk Shake UP',
     category: 'Sorveterias',
     preco: 2,
     address: 'Av. Dom Pedro II, 1258 - Santa Rosa'
-  },
-  {
-    latitude: -1.7256599,
-    longitude: -48.8796727,
-    icon: 'categories/sorveteria.png',
-    title: 'Mix Açaiteria e Sorveteria',
-    category: 'Sorveterias',
-    preco: 2,
-    address: 'Av. Dom Pedro II, 1368 - Santa Rosa'
   }
 ]

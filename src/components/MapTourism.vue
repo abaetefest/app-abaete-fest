@@ -1,6 +1,6 @@
 <template>
   <div style="min-height: 400px" class="relative">
-    <l-map
+    <!-- <l-map
       v-if="ready"
       style="height: 400px"
       :zoom="zoom"
@@ -19,7 +19,7 @@
           {{ description }}
         </l-popup>
       </l-marker>
-    </l-map>
+    </l-map> -->
     <q-inner-loading :showing="!ready">
       <p>Carregando mapa</p>
       <q-spinner size="50px" color="primary" />

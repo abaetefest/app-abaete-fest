@@ -1,7 +1,7 @@
 export const bancos = [
   {
     latitude: '-1.7236845',
-    longitude: '-48.8879783',
+    longitude: '-48.8876783',
     icon: 'places/bancobrasil.png',
     title: 'Banco do Brasil',
     category: 'Bancos',
@@ -20,8 +20,8 @@ export const bancos = [
     address: 'Av. Dom Pedro II, 1406 - Santa Rosa'
   },
   {
-    latitude: '-1.7233557',
-    longitude: '-48.8889714',
+    latitude: '-1.7234557',
+    longitude: '-48.8888714',
     icon: 'places/basa.png',
     title: 'Basa',
     category: 'Bancos',
@@ -31,7 +31,7 @@ export const bancos = [
   },
   {
     latitude: '-1.7238046',
-    longitude: '-48.8874328',
+    longitude: '-48.8873328',
     icon: 'places/bradesco.png',
     title: 'Bradesco',
     category: 'Bancos',
@@ -47,31 +47,31 @@ export const bancos = [
     category: 'Bancos',
     preco: 0,
     phone: '91 3751-7150',
-    address: 'Rua Siqueira Mendes, 1375 - Centro'
+    address: 'R. Siqueira Mendes, 1375 - Centro'
   },
   {
     latitude: '-1.7239915',
-    longitude: '-48.8887968',
+    longitude: '-48.8886968',
     icon: 'places/itau.png',
     title: 'Itaú',
     category: 'Bancos',
     preco: 0,
     phone: '91 4004-4828',
-    address: 'Rua Barão do Rio Branco, 1506 - Centro'
+    address: 'R. Barão do Rio Branco, 1506 - Centro'
   },
   {
     latitude: '-1.7265462',
-    longitude: '-48.8903371',
+    longitude: '-48.8901371',
     icon: 'places/santander.png',
     title: 'Santander',
     category: 'Bancos',
     preco: 0,
     phone: '0800 702 3535',
-    address: 'Rua Siqueira Mendes, 1208 A - Centro'
+    address: 'R. Siqueira Mendes, 1208 A - Centro'
   },
   {
-    latitude: '-1.7240067',
-    longitude: '-48.8860424',
+    latitude: '-1.7240100',
+    longitude: '-48.8858000',
     icon: 'places/sicoob.png',
     title: 'Sicoob',
     category: 'Bancos',

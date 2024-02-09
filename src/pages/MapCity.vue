@@ -1,18 +1,18 @@
 <template>
-  <q-page :class="$q.dark.isActive ? '': 'bg-grey-1'">
+  <q-page :class="$q.dark.isActive ? '' : 'bg-grey-1'">
     <div class="row q-pb-sm q-pt-sm justify-center">
       <q-btn-group push>
         <q-btn
           push
           label="Lista"
           icon="mdi-format-list-bulleted-square"
-          :to="{ name: 'places'}"
+          :to="{ name: 'places' }"
         />
         <q-btn
           push
           label="Mapa"
           icon="mdi-map-legend"
-          :to="{ name: 'map'}"
+          :to="{ name: 'map' }"
           :class="$q.dark.isActive ? 'text-black' : 'text-white'"
           :color="$q.dark.isActive ? 'white' : 'primary'"
         />
@@ -34,55 +34,69 @@
       >
         <template v-slot:prepend>
           <q-avatar rounded>
-            <img :src="getIconCategory">
+            <img :src="getIconCategory" />
           </q-avatar>
         </template>
         <template v-slot:option="scope">
-            <q-item
-              v-bind="scope.itemProps"
-              v-on="scope.itemEvents"
-            >
-              <q-item-section avatar>
-                <q-avatar rounded>
-                  <img :src="scope.opt.icon">
-                </q-avatar>
-              </q-item-section>
-              <q-item-section>
-                <q-item-label v-html="scope.opt.label" />
-              </q-item-section>
-            </q-item>
-          </template>
+          <q-item v-bind="scope.itemProps" v-on="scope.itemEvents">
+            <q-item-section avatar>
+              <q-avatar rounded>
+                <img :src="scope.opt.icon" />
+              </q-avatar>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label v-html="scope.opt.label" />
+            </q-item-section>
+          </q-item>
+        </template>
       </q-select>
     </div>
-      <l-map
-        v-if="ready"
-        :zoom="zoom"
-        :options="{zoomControl: false}"
-        :center="center"
-         class="map-size"
-      >
-        <l-tile-layer :url="url"></l-tile-layer>
-        <l-marker
-          v-for="(maker, index) in makersMap"
-          :key="index"
-          :lat-lng="[maker.latitude, maker.longitude]"
-          :icon="getIcon(maker.icon)"
-          @click="showDialog"
-        >
-          <l-tooltip class="text-body2 bg-white">
-            <strong>{{ maker.title }} </strong><br>
-            Categoria: <strong>{{ maker.category }} </strong><br>
-            <span>{{ maker.address }}</span><br>
-            <span v-if="maker.phone">{{ maker.phone }}</span>
-          </l-tooltip>
-        </l-marker>
-        <l-control-zoom position="bottomright"  ></l-control-zoom>
-      </l-map>
 
-      <q-inner-loading :showing="!ready">
-        <p>Carregando mapa</p>
-        <q-spinner size="50px" color="primary" />
-      </q-inner-loading>
+    <GmapMap
+      class="map-size"
+      :center="{ lat: -1.7245469, lng: -48.8729189 }"
+      :zoom="zoom"
+      map-type-id="terrain"
+      :options="{
+        zoomControl: false,
+        mapTypeControl: false,
+        scaleControl: true,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: true,
+        disableDefaultUi: false,
+      }"
+    >
+      <GmapInfoWindow
+        :options="infoOptions"
+        :position="infoWindowPos"
+        :opened="infoWinOpen"
+        @closeclick="infoWinOpen=false"
+      >
+      </GmapInfoWindow>
+      <GmapMarker
+        v-for="(maker, index) in makersMap"
+        :key="index"
+        :position="{
+          lat: parseFloat(maker.latitude),
+          lng: parseFloat(maker.longitude),
+        }"
+        :icon="{
+          url: getIcon(maker.icon),
+          size: { width: 50, height: 50 },
+          scaledSize: { width: 50, height: 50 },
+        }"
+        :clickable="true"
+        :draggable="false"
+        :optimized="false"
+        @click="showDialog(maker, index)"
+      />
+    </GmapMap>
+
+    <q-inner-loading :showing="!ready">
+      <p>Carregando mapa</p>
+      <q-spinner size="50px" color="primary" />
+    </q-inner-loading>
   </q-page>
 </template>
 
@@ -96,7 +110,7 @@ export default {
   data () {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      zoom: 15,
+      zoom: 13,
       center: [],
       ready: false,
       makers: makers,
@@ -114,7 +128,17 @@ export default {
           icon: 'flat/all.png'
         },
         ...placesCategories
-      ]
+      ],
+      infoWindowPos: null,
+      infoWinOpen: false,
+      currentMidx: null,
+      infoOptions: {
+        content: '',
+        pixelOffset: {
+          width: 0,
+          height: -35
+        }
+      }
     }
   },
   mounted () {
@@ -122,7 +146,7 @@ export default {
   },
   computed: {
     getIconCategory: function () {
-      const img = this.options.filter(opt => opt.value === this.categoria)
+      const img = this.options.filter((opt) => opt.value === this.categoria)
       return img[0].icon
     }
   },
@@ -152,22 +176,32 @@ export default {
         message: 'Localização recuperada com sucesso!'
       })
     },
-    showDialog () {
-      console.log('show')
+    showDialog (m, idx) {
+      console.log(m)
+      this.infoWindowPos = {
+        lat: parseFloat(m.latitude),
+        lng: parseFloat(m.longitude)
+      }
+      console.log(this.infoWindowPos)
+      this.infoOptions.content = `<strong>${m.title}</strong> <br> ${m.address}`
+
+      // check if its the same marker that was selected if yes toggle
+      if (this.currentMidx === idx) {
+        this.infoWinOpen = !this.infoWinOpen
+      } else {
+        this.infoWinOpen = true
+        this.currentMidx = idx
+      }
     },
     getIcon (icon) {
-      return L.icon({
-        iconUrl: icon,
-        iconSize: [50, 50],
-        iconAnchor: [16, 37]
-      })
+      return `${icon}`
     },
     async setFilterMap () {
       this.ready = false
       if (this.categoria === 'Todas') {
         this.makersMap = makers
       } else {
-        this.makersMap = makers.filter(mk => mk.category === this.categoria)
+        this.makersMap = makers.filter((mk) => mk.category === this.categoria)
       }
       setTimeout(() => {
         this.ready = true
@@ -180,16 +214,13 @@ export default {
 <style scoped>
 .map-size {
   /* Firefox */
-  height: -moz-calc(100vh - 250px);
+  height: -moz-calc(100vh - 250px) !important;
   /* WebKit */
-  height: -webkit-calc(100vh - 250px);
+  height: -webkit-calc(100vh - 250px) !important;
   /* Opera */
-  height: -o-calc(100vh - 250px);
+  height: -o-calc(100vh - 250px) !important;
   /* Standard */
-  height: calc(100vh - 250px);
+  height: calc(100vh - 250px) !important;
   /* min-height: 90vh; */
 }
 </style>
-src/constants/places/makersMap
-src/constants/places
-src/constants/placesCategories

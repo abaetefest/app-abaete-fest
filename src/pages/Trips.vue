@@ -21,7 +21,7 @@
             </span>
             <span class="text-body2 block">
               Sua avaliação ajuda a manter o app gratuito para sempre!
-              Já ajudamos mais de 3000 usuários a viajar com mais tranquilidade.
+              Já ajudamos mais de 4000 usuários a viajar com mais tranquilidade.
             </span>
           </q-card-section>
           <div class="q-pa-xs text-center q-pb-md">

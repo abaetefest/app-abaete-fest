@@ -75,11 +75,42 @@
 
             <q-card-section class="q-pt-none">
               <p class="text-h6">Veja no mapa:</p>
-              <map-tourism
+              <!-- <map-tourism
                 :latitude="tourismData.latitude"
                 :longitude="tourismData.longitude"
                 :description="tourismData.name"
-              />
+              /> -->
+              <GmapMap
+                :center="{lat: parseFloat(tourismData.latitude), lng: parseFloat(tourismData.longitude)}"
+                :zoom="15"
+                map-type-id="terrain"
+                style="width: 100%; height: 300px"
+                :options="{
+                  zoomControl: true,
+                  mapTypeControl: false,
+                  scaleControl: false,
+                  streetViewControl: false,
+                  rotateControl: false,
+                  fullscreenControl: true,
+                  disableDefaultUi: false
+                }"
+              >
+                <gmap-info-window
+                  :options="{ pixelOffset: { width: 0, height: -35} }"
+                  :position="{lat: parseFloat(tourismData.latitude), lng: parseFloat(tourismData.longitude)}"
+                  :opened="true"
+                  @closeclick="infoWinOpen=false"
+                  style="color: black"
+                >
+                  <span class="text-dark">{{ tourismData.name }}</span>
+                </gmap-info-window>
+                <GmapMarker
+                  :position="{lat: parseFloat(tourismData.latitude), lng: parseFloat(tourismData.longitude)}"
+                  :clickable="true"
+                  :draggable="false"
+                  @click="center=m.position"
+                />
+              </GmapMap>
             </q-card-section>
           </q-card>
         </q-page>
@@ -104,7 +135,7 @@ export default {
     }
   },
   components: {
-    MapTourism: () => import('components/MapTourism')
+    // MapTourism: () => import('components/MapTourism')
   },
   data () {
     return {

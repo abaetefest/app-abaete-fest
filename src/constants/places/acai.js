@@ -6,7 +6,7 @@ export const acai = [
     title: 'Açaiteria IAÇA FROZEN®️',
     category: 'Açaí',
     preco: 0,
-    phone: '91 9321-0974',
+    phone: '919321-0974',
     address: 'Av. Dom Pedro II - Centro'
   },
   {
@@ -16,8 +16,8 @@ export const acai = [
     title: 'Rota 99',
     category: 'Açaí',
     preco: 0,
-    phone: '91 9 9128-7751',
-    address: 'Rua Joaquim Mendes Contente 952, Santa rosa'
+    phone: '91 99128-7751',
+    address: 'R. Joaquim Mendes Contente 952, Santa rosa'
   },
   {
     latitude: '-1.7167162',
@@ -26,29 +26,29 @@ export const acai = [
     title: 'Cuia e Açaí',
     category: 'Açaí',
     preco: 0,
-    phone: '91 9 9823-0012',
+    phone: '91 99823-0012',
     address: 'Dom Pedro I 993, Entre Garibaldi e Manoel Raposo, São João'
   },
   {
-    latitude: '-1.7277545',
-    longitude: '-48.8840806',
+    latitude: '-1.7280047',
+    longitude: '-48.8826094',
     icon: 'flat/acai.png',
-    title: 'Açaí do Ambró',
+    title: 'Açaí Abençoado',
     category: 'Açaí',
     preco: 0,
-    phone: '91 9 9319-8970 | 91 9 99367-2338',
-    address: 'Rua Primeiro de Maio 1064, Santa Rosa'
+    phone: '91 98223-2832',
+    address: 'R. Joaquim Mendes Contente 1160, Santa Rosa'
   },
-  {
-    latitude: '-1.7232276',
-    longitude: '-48.8809302',
-    icon: 'flat/acai.png',
-    title: 'Estação do Açaí',
-    category: 'Açaí',
-    preco: 0,
-    phone: '91 9 8306-2026',
-    address: 'Avenida São Paulo 1861, Aviação'
-  },
+  // {
+  //   latitude: '-1.7232276',
+  //   longitude: '-48.8809302',
+  //   icon: 'flat/acai.png',
+  //   title: 'Estação do Açaí',
+  //   category: 'Açaí',
+  //   preco: 0,
+  //   phone: '91 9 8306-2026',
+  //   address: 'Av. São Paulo 1861, Aviação'
+  // },
   {
     latitude: '-1.7294898',
     longitude: '-48.8888465',
@@ -57,16 +57,16 @@ export const acai = [
     category: 'Açaí',
     preco: 0,
     phone: '91 9 89892926',
-    address: 'Travessa Rui Barbosa, n⁰ 573, bairro: Algodoal'
+    address: 'Tv. Rui Barbosa, n⁰ 573, bairro: Algodoal'
   },
   {
-    latitude: '-1.7239057',
-    longitude: '-48.8875346',
+    latitude: '-1.7239045',
+    longitude: '-48.8858251',
     icon: 'flat/acai.png',
-    title: 'Açaí do centro ',
+    title: 'Açaí do centro',
     category: 'Açaí',
     preco: 0,
-    phone: '91 9 92448077',
+    phone: '91 992448077',
     address: 'Av. Dom Pedro II, n⁰ 703- Centro'
   },
   {
@@ -76,7 +76,7 @@ export const acai = [
     title: 'Açaí do Vandinho',
     category: 'Açaí',
     preco: 0,
-    phone: '91 9 82643795',
-    address: 'Rua Padre Mário Lanciott, 1178- Cristo Redentor'
+    phone: '91 982643795',
+    address: 'R. Padre Mário Lanciott, 1178- Cristo Redentor'
   }
 ]
