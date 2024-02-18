@@ -71,6 +71,12 @@ export default {
           description: 'Podcast Online Anfitriãs @raissaquaresmaa e @raphaelamneves quarta-feira 20h',
           image: '/podcast/aquipod.png',
           youtube: '@aquipod7628'
+        },
+        {
+          title: 'PodNerd Podcast',
+          description: 'Apresentado por Alan Negrão e Simon Soares trás uma ampla referência em convidados e conversas com um toque de bom humor.',
+          image: '/podcast/podnerd.png',
+          youtube: '@podnerdpoodcast'
         }
       ]
     }
