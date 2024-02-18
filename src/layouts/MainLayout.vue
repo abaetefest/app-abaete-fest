@@ -178,6 +178,11 @@ const menusRoute = [
     route: 'tourism',
     footer: true
   },
+  {
+    title: 'Podcasts',
+    icon: 'mdi-microphone-variant',
+    route: 'podcast'
+  },
   // {
   //   title: 'Rádios',
   //   icon: 'mdi-radio',
