@@ -3,7 +3,6 @@
     <q-header :class="$q.dark.isActive ? 'bg-dark' : 'bg-primary'">
       <q-toolbar>
         <q-btn
-          class="gt-sm"
           flat
           dense
           round
@@ -82,6 +81,7 @@
       >
         <q-route-tab
           v-for="(tab, index) in essentialLinks"
+          v-show="tab.footer"
           :key="index"
           :icon="tab.icon"
           :label="tab.title"
@@ -141,17 +141,20 @@ const menusRoute = [
   {
     title: 'Eventos',
     icon: 'mdi-calendar',
-    route: 'home'
-  },
-  {
-    title: 'Locais',
-    icon: 'mdi-storefront-outline',
-    route: 'places'
+    route: 'home',
+    footer: true
   },
   {
     title: 'Viagens',
     icon: 'mdi-bus-clock',
-    route: 'trips'
+    route: 'trips',
+    footer: true
+  },
+  {
+    title: 'Locais',
+    icon: 'mdi-storefront-outline',
+    route: 'places',
+    footer: true
   },
   {
     title: 'Serviços',
@@ -172,7 +175,8 @@ const menusRoute = [
   {
     title: 'P. Turísticos',
     icon: 'mdi-map-marker-radius',
-    route: 'tourism'
+    route: 'tourism',
+    footer: true
   },
   // {
   //   title: 'Rádios',
