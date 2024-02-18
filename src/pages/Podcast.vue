@@ -29,9 +29,15 @@
 
           <q-card-section
             class="q-pt-none q-mt-none"
-            @click="openURLYoutube"
+            @click="openURLYoutube(podcast.youtube)"
           >
-            <strong>Youtube:</strong> <span class="text-bold text-red-8"> {{ podcast.youtube }}</span>
+            <strong>Youtube:</strong>
+            <span
+              class="text-bold"
+              :class="$q.dark.isActive ? 'text-blue-2' : 'text-red-8'"
+            >
+              {{ podcast.youtube }}
+            </span>
           </q-card-section>
 
         </q-card>
@@ -59,6 +65,12 @@ export default {
           description: 'Podcast Papo Zero, apresentado pelo comediante Sylvio Romero, vai ao ar nas segundas e quintas as 20:00',
           image: '/podcast/papozero.png',
           youtube: '@Papozerocomsylvioromero'
+        },
+        {
+          title: 'Aquipod',
+          description: 'Podcast Online Anfitriãs @raissaquaresmaa e @raphaelamneves quarta-feira 20h',
+          image: '/podcast/aquipod.png',
+          youtube: '@aquipod7628'
         }
       ]
     }
