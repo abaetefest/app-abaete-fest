@@ -67,6 +67,12 @@ export default {
           youtube: '@Papozerocomsylvioromero'
         },
         {
+          title: 'Pedro Henrique Pode Contar',
+          description: 'Com objetivo de facilitar a vida das pessoas e da sociedade, o Pode Contar com Pedro Henrique está em constante processo de renovação, com conteúdos diretos, rápidos e importantes do dia a dia, com temas relacionados ao direito do consumidor, previdenciário, trabalhista, tributário, contabilidade, entre outros.',
+          image: '/podcast/podecontar.png',
+          youtube: '@PedroHenriquePodeContar'
+        },
+        {
           title: 'Aquipod',
           description: 'Podcast Online Anfitriãs @raissaquaresmaa e @raphaelamneves quarta-feira 20h',
           image: '/podcast/aquipod.png',
