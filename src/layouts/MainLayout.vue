@@ -183,11 +183,11 @@ const menusRoute = [
     icon: 'mdi-microphone-variant',
     route: 'podcast'
   },
-  // {
-  //   title: 'Rádios',
-  //   icon: 'mdi-radio',
-  //   route: 'radio'
-  // },
+  {
+    title: 'Rádios',
+    icon: 'mdi-radio',
+    route: 'radio'
+  },
   {
     title: 'Contato',
     icon: 'mdi-card-account-mail-outline',

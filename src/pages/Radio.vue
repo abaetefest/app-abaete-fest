@@ -7,8 +7,8 @@
         :key="index"
       >
         <q-card
-          class="q-pa-xs cursor-pointer text-white shadow-4"
-          :class="`bg-${radio.color}`"
+          class="q-pa-xs cursor-pointer text-white shadow-4 rounded"
+          :class="$q.dark.isActive ? 'bg-grey-9 text-white' : 'bg-white text-black'"
           v-ripple:primary
           @click="goTo(radio)"
         >
@@ -16,7 +16,7 @@
             NOVO
           </q-badge>
           <q-card-section class="flex justify-between">
-            <div class="flex column justify-center items-start text-black">
+            <div class="flex column justify-center items-start">
               <span class="text-h6">
                 {{radio.title}}
               </span>
@@ -25,9 +25,21 @@
               </span>
             </div>
             <div class="flex column justify-center items-end ">
-              <q-icon :name="`img:radios/${radio.icon}`" size="60px" class="rounded-borders" />
+              <q-icon
+                :name="`img:radios/${radio.icon}`"
+                size="60px"
+                style="border-radius: 2rem;"
+              />
             </div>
           </q-card-section>
+          <div class="text-center">
+            <q-badge
+              outline
+              :color="$q.dark.isActive ? 'white' : 'primary'"
+            >
+              Clique para ouvir
+            </q-badge>
+          </div>
         </q-card>
       </div>
     </div>
@@ -52,4 +64,3 @@ export default {
   }
 }
 </script>
-src/constants/places/radios
