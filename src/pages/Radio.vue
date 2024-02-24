@@ -60,6 +60,7 @@ export default {
   methods: {
     goTo (radio) {
       this.$router.push({ name: 'radio-player', params: { id: radio.id, img: radio.icon } })
+      this.$mixpanel.track(radio.title)
     }
   }
 }
