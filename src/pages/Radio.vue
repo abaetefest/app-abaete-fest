@@ -1,5 +1,8 @@
 <template>
   <q-page padding>
+    <div class="text-h5 text-bold text-center q-py-md">
+      Lista de <span class="text-red-8">Rádios</span>
+    </div>
     <div class="row q-col-gutter-md">
       <div
         class="col-sm-12 col-xs-12 col-md-6"

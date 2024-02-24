@@ -1,5 +1,8 @@
 <template>
   <q-page padding :class="$q.dark.isActive ? '': 'bg-grey-1'">
+    <div class="text-h5 text-bold text-center q-py-md">
+      Lista de <span class="text-red-8">Locais</span>
+    </div>
     <div class="row q-pb-md justify-center">
       <q-btn-group push>
         <q-btn
