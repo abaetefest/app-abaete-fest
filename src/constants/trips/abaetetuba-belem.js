@@ -63,7 +63,7 @@ export default {
               obs: 'Somente Sábado'
             },
             {
-              hora: '08:45',
+              hora: '09:00',
               modalidade: 'Arapari'
             },
             {
@@ -80,7 +80,7 @@ export default {
               obs: 'Somente Domingo'
             },
             {
-              hora: '16:15',
+              hora: '16:30',
               modalidade: 'Arapari'
             }
           ]
