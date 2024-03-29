@@ -105,7 +105,7 @@
           />
         </q-card-actions>
 
-      </q-card>
+    </q-card>
   </q-page>
 </template>
 
