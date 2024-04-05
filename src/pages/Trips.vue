@@ -3,47 +3,47 @@
     <div class="text-h5 text-bold text-center q-py-md">
       <span class="text-red-8">Horários</span> de viagens
     </div>
-    <!-- <div v-if="false" class="row justify-center lt-md">
-      <div class="col-xs-12 col-sm-12 col-md-4">
-        <q-img src="propagandas/machago.png" @click="openLink" />
-      </div>
-    </div> -->
 
-    <!-- <div class="row justify-center lt-md">
-      <div class="col-xs-12 col-sm-12 col-md-4 q-mb-md">
-        <q-card>
-          <q-card-section class="text-center">
-            <span
-              class="text-subtitle1 text-primary text-bold"
-              :class="$q.dark.isActive ? 'text-blue-1' : 'text-primary'"
-            >
-              Avalie o AbaetéFest nas lojas!
-            </span>
-            <span class="text-body2 block">
-              Sua avaliação ajuda a manter o app gratuito para sempre!
-              Já ajudamos mais de 4000 usuários a viajar com mais tranquilidade.
-            </span>
+    <div class="q-mb-md">
+      <q-card flat bordered class="">
+        <q-card-section horizontal>
+          <q-card-section class="q-pt-xs">
+            <div class="text-overline text-red-3">Divulgação</div>
+            <div class="text-subtitle1 text-bold q-mt-sm q-mb-xs">After Juan Pimentel</div>
+            <div class="text-caption text-grey-7">
+              1ª edição<br>
+              Data: 18 Maio<br>
+              Local: Nobre Hall<br>
+              <q-icon name="mdi-instagram" class="q-pr-sm" color="red-6" size="xs" />
+              <a
+                :class="$q.dark.isActive ? 'text-white link-custom' : ''"
+                target="_blank"
+                href="https://www.instagram.com/afterdojuanpimentel/"
+                @click="handleMixPanelEvent('After Juan Pimentel')"
+                >
+                @afterdojuanpimentel
+              </a>
+            </div>
           </q-card-section>
-          <div class="q-pa-xs text-center q-pb-md">
-            <q-btn
-              v-if="$q.platform.is.android"
-              label="Google Play Store"
-              icon="mdi-google-play"
-              color="green-8"
-              @click="androidStore"
-            />
-            <q-btn
-            v-if="$q.platform.is.ios"
-              label="App Store"
-              icon="mdi-apple"
-              :color="$q.dark.isActive ? 'white': 'dark'"
-              :class="$q.dark.isActive ? 'text-black' : 'text-white'"
-              @click="appStore"
-            />
-          </div>
-        </q-card>
-      </div>
-    </div> -->
+
+          <q-card-section class="col-xs-5 col-md-3 col-sm-5 flex flex-center">
+            <a
+              href="https://www.instagram.com/afterdojuanpimentel/"
+              target="_blank"
+              @click="handleMixPanelEvent('After Juan Pimentel')"
+            >
+              <img
+                class="rounded-borders"
+                style="width: 100%;"
+                src="/propagandas/after_juan.jpeg"
+              />
+            </a>
+          </q-card-section>
+        </q-card-section>
+
+        <q-separator />
+      </q-card>
+    </div>
 
     <div v-for="(trip, index) in trips" :key="index" >
       <q-card
@@ -199,4 +199,9 @@ export default {
   }
 }
 </script>
-src/constants/trips/trips
+
+<style>
+ .link-custom {
+  color: rgb(180, 196, 242);
+};
+</style>
