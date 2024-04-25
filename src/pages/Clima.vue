@@ -58,7 +58,7 @@ export default {
     async getWeather () {
       try {
         this.tempResult = false
-        const { data } = await axios.get('https://api.hgbrasil.com/weather?key=3ae5537e&woeid=458294')
+        const { data } = await axios.get('https://api.hgbrasil.com/weather?format=json-cors&key=3ae5537e&woeid=458294')
         this.condition_slug = data.results.condition_slug
         this.temp = data.results.temp
         this.moon = data.results.moon_phase
