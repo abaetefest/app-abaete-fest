@@ -35,7 +35,7 @@
               <img
                 class="rounded-borders"
                 style="width: 100%;"
-                src="/propagandas/after_juan.jpeg"
+                src="/propagandas/after_juan.webp"
               />
             </a>
           </q-card-section>
