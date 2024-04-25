@@ -189,6 +189,11 @@ const menusRoute = [
     route: 'radio'
   },
   {
+    title: 'Clima e Tempo',
+    icon: 'mdi-weather-cloudy',
+    route: 'clima'
+  },
+  {
     title: 'Contato',
     icon: 'mdi-card-account-mail-outline',
     route: 'contact'

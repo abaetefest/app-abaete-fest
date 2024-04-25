@@ -17,7 +17,8 @@ const routes = [
       { path: 'event-details/:id', name: 'eventDetails', component: () => import('src/pages/EventDetails.vue'), meta: { tab: false } },
       { path: 'contact', name: 'contact', component: () => import('pages/Contact.vue'), meta: { tab: true } },
       { path: 'user-informations', name: 'userInformations', component: () => import('pages/UserInformations.vue'), props: true, meta: { tab: true } },
-      { path: 'podcast', name: 'podcast', component: () => import('pages/Podcast.vue'), props: true, meta: { tab: true } }
+      { path: 'podcast', name: 'podcast', component: () => import('pages/Podcast.vue'), props: true, meta: { tab: true } },
+      { path: 'clima', name: 'clima', component: () => import('pages/Clima.vue'), props: true, meta: { tab: true } }
     ],
     meta: {
       requiresAuth: false
