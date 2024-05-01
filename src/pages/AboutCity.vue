@@ -5,7 +5,7 @@
     </div>
     <div class="row justify-between q-col-gutter-sm">
       <div
-        class="col-sm-6 col-xs-6 col-md-6"
+        class="col-sm-12 col-xs-12 col-md-8"
         v-for="(about, index) in aboutCity"
         :key="index"
       >
