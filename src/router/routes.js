@@ -18,7 +18,8 @@ const routes = [
       { path: 'contact', name: 'contact', component: () => import('pages/Contact.vue'), meta: { tab: true } },
       { path: 'user-informations', name: 'userInformations', component: () => import('pages/UserInformations.vue'), props: true, meta: { tab: true } },
       { path: 'podcast', name: 'podcast', component: () => import('pages/Podcast.vue'), props: true, meta: { tab: true } },
-      { path: 'clima', name: 'clima', component: () => import('pages/Clima.vue'), props: true, meta: { tab: true } }
+      { path: 'clima', name: 'clima', component: () => import('pages/Clima.vue'), props: true, meta: { tab: true } },
+      { path: 'about-city', name: 'about-city', component: () => import('pages/AboutCity.vue'), props: true, meta: { tab: true } }
     ],
     meta: {
       requiresAuth: false

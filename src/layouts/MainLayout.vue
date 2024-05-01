@@ -194,6 +194,11 @@ const menusRoute = [
     route: 'clima'
   },
   {
+    title: 'Sobre a Cidade',
+    icon: 'mdi-book-open-variant',
+    route: 'about-city'
+  },
+  {
     title: 'Contato',
     icon: 'mdi-card-account-mail-outline',
     route: 'contact'
