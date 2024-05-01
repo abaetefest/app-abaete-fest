@@ -3,9 +3,9 @@
     <div class="text-h5 text-bold text-center q-pt-md q-pb-sm">
       Sobre a <span class="text-red-8">Cidade</span>
     </div>
-    <div class="row justify-between q-col-gutter-sm">
+    <div class="row justify-center q-col-gutter-sm">
       <div
-        class="col-sm-12 col-xs-12 col-md-8"
+        class="col-sm-12 col-xs-12 col-md-12"
         v-for="(about, index) in aboutCity"
         :key="index"
       >
