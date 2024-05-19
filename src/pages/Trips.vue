@@ -5,7 +5,20 @@
     </div>
 
     <div class="q-mb-md">
-      <q-card flat bordered class="">
+    <q-card class="shadow-5" style="border: white 1px solid">
+      <q-card-section class="q-pt-xs">
+        <div class="text-subtitle1 text-bold text-red-8 text-center">
+          Divulgue seu evento aqui
+        </div>
+        <div
+          class="text-subtitle1 text-primary text-bold q-mt-sm q-mb-xs text-center"
+          :class="$q.dark.isActive ? 'text-white' :  'text-primary shadow-white'"
+        >
+          Mais de 13 mil visualizações por mês !
+        </div>
+      </q-card-section>
+    </q-card>
+      <!-- <q-card flat bordered class="">
         <q-card-section horizontal>
           <q-card-section class="q-pt-xs">
             <div class="text-overline text-red-3">Divulgação</div>
@@ -42,7 +55,7 @@
         </q-card-section>
 
         <q-separator />
-      </q-card>
+      </q-card> -->
     </div>
 
     <div v-for="(trip, index) in trips" :key="index" >
