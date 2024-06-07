@@ -6,5 +6,5 @@
   no-cache,
   must-revalidate'''
 
-images]
+[images]
   remote_images = ["https://abaete-fest.s3.amazonaws.com/*"]
