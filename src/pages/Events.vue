@@ -86,17 +86,25 @@
             class="fit cursor-pointer shadow-5"
             @click="detailsEvent(props.row)"
           >
-            <q-img
-              :src="props.row.image_url"
+            <img
+              :src="`https://app.abaetefest.com.br/.netlify/images?
+              url=${props.row.image_url}
+              &w=330
+              &q=90
+              &fm=webp`"
               class="full-width q-pa-sm q"
               style="position: absolute;filter: blur(1rem); opacity: 0.9"
               :ratio="3/3.9"
               placeholder-src="loadPlaceholder.png"
             >
-          </q-img>
+            <!-- </img> -->
             <div class="q-pa-lg">
               <q-img
-                :src="props.row.image_url"
+                :src="`https://quasar-nasa-photos.netlify.app/.netlify/images?
+                url=${props.row.image_url}
+                &w=330
+                &q=90
+                &fm=webp`"
                 :ratio="3/4"
                 style="border-radius: 8px"
               >

@@ -5,3 +5,6 @@
   max-age=0,
   no-cache,
   must-revalidate'''
+
+images]
+  remote_images = ["https://abaete-fest.s3.amazonaws.com/*"]
