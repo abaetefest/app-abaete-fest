@@ -5,7 +5,7 @@
     </div>
 
     <div class="q-mb-md">
-    <q-card class="shadow-5" style="border: white 1px solid">
+    <!-- <q-card class="shadow-5" style="border: white 1px solid">
       <q-card-section class="q-pt-xs">
         <div class="text-subtitle1 text-bold text-red-8 text-center">
           Divulgue seu evento aqui
@@ -17,7 +17,7 @@
           Mais de 13 mil visualizações por mês !
         </div>
       </q-card-section>
-    </q-card>
+    </q-card> -->
       <!-- <q-card flat bordered class="">
         <q-card-section horizontal>
           <q-card-section class="q-pt-xs">
