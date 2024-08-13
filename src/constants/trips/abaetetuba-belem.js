@@ -42,7 +42,7 @@ export default {
               modalidade: 'Alça Viária'
             },
             {
-              hora: '16:15',
+              hora: '16:30',
               modalidade: 'Arapari'
             }
           ]
