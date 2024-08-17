@@ -1,7 +1,7 @@
 <template>
   <q-page padding :class="$q.dark.isActive ? '': 'bg-grey-1'">
     <div class="text-h5 text-bold text-center q-py-md">
-      Lista de <span class="text-red-8">Serviços</span>
+      Telefones <span class="text-red-8">Úteis</span>
     </div>
     <div class="row q-pb-md">
       <q-select

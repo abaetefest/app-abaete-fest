@@ -10,5 +10,16 @@ export const chaveiro = [
       'Abertura de residência, cofres e automóveis',
       'Chaves codificadas e reparo de chave canivete'
     ]
+  },
+  {
+    name: 'Chaves e Serviços',
+    category: 'chaveiro',
+    phone: '',
+    wpp: '91981843347',
+    instagram: '',
+    TypeServices: [
+      'Cópias, confecções de chaves',
+      'Chaveiro residencial e automotivo'
+    ]
   }
 ]

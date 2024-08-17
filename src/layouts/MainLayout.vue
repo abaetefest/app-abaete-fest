@@ -157,7 +157,7 @@ const menusRoute = [
     footer: true
   },
   {
-    title: 'Serviços',
+    title: 'Telefones Úteis',
     icon: 'mdi-hammer-screwdriver',
     route: 'services'
   },

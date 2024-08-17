@@ -2,7 +2,7 @@ export const maquiagem = [
   {
     name: 'Studio | Ruanny Amorim',
     category: 'maquiagem',
-    phone: '91 99999-9999',
+    phone: '',
     wpp: '91981224486',
     instagram: 'ruanny_makeup',
     TypeServices: [
