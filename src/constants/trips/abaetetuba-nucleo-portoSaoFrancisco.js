@@ -18,7 +18,7 @@ export default {
             },
             {
               hora: '05:50',
-              obs: 'Entra na fábrica'
+              obs: 'Entra na fábrica somente Segunda-feira a Sexta-feira'
             },
             {
               hora: '06:00',
