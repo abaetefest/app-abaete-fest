@@ -39,6 +39,60 @@ export default {
           ]
         },
         {
+          origem: 'Abaetetuba',
+          destino: 'Moju',
+          periodo: 'Sábado e Domingo',
+          horarios: [
+
+            {
+              hora: '07:00'
+            },
+            {
+              hora: '09:00'
+            },
+            {
+              hora: '13:00'
+            },
+            {
+              hora: '15:00'
+            },
+            {
+              hora: '17:00'
+            },
+            {
+              hora: '17:30'
+            }
+          ]
+        },
+        {
+          origem: 'Moju',
+          destino: 'Abaetetuba',
+          periodo: 'Segunda a Sexta',
+          horarios: [
+            {
+              hora: '06:00'
+            },
+            {
+              hora: '08:00'
+            },
+            {
+              hora: '10:00'
+            },
+            {
+              hora: '12:30'
+            },
+            {
+              hora: '14:00'
+            },
+            {
+              hora: '16:00'
+            },
+            {
+              hora: '18:10'
+            }
+          ]
+        },
+        {
           origem: 'Moju',
           destino: 'Abaetetuba',
           periodo: 'Sábado e Domingo',
