@@ -2,6 +2,67 @@ export default {
   cidade1: 'Abaetetuba',
   cidade2: 'Moju',
   empresas: [
+    // Jarumã
+    {
+      nome: 'Jarumã',
+      icon: 'trips/jaruma.png',
+      viagens: [
+        {
+          origem: 'Abaetetuba',
+          destino: 'Moju',
+          periodo: 'Segunda a Sexta',
+          horarios: [
+            {
+              hora: '06:30'
+            },
+            {
+              hora: '07:00'
+            },
+            {
+              hora: '09:00'
+            },
+            {
+              hora: '11:30'
+            },
+            {
+              hora: '13:00'
+            },
+            {
+              hora: '15:00'
+            },
+            {
+              hora: '17:00'
+            },
+            {
+              hora: '17:30'
+            }
+          ]
+        },
+        {
+          origem: 'Moju',
+          destino: 'Abaetetuba',
+          periodo: 'Sábado e Domingo',
+          horarios: [
+
+            {
+              hora: '08:00'
+            },
+            {
+              hora: '10:00'
+            },
+            {
+              hora: '14:00'
+            },
+            {
+              hora: '16:00'
+            },
+            {
+              hora: '18:00'
+            }
+          ]
+        }
+      ]
+    },
     // Cootrampa
     {
       nome: 'Cootrampa',
