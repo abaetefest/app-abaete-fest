@@ -19,7 +19,7 @@ export default {
             {
               hora: '04:30',
               modalidade: 'Alça Viária',
-              obs: 'Somente Segunda-Feira'
+              obs: 'Somente Segunda-feira'
             },
             {
               hora: '06:30',
@@ -34,12 +34,22 @@ export default {
               modalidade: 'Arapari'
             },
             {
+              hora: '10:20',
+              modalidade: 'Alça Viária',
+              obs: 'Somente Segunda-Feira e Sexta-feira'
+            },
+            {
               hora: '13:45',
               modalidade: 'Arapari'
             },
             {
               hora: '14:00',
               modalidade: 'Alça Viária'
+            },
+            {
+              hora: '16:00',
+              modalidade: 'Alça Viária',
+              obs: 'Somente Sexta-feira'
             },
             {
               hora: '16:30',
@@ -53,6 +63,11 @@ export default {
           periodo: 'Sábado e Domingo',
           modalidade: 'Arapari',
           horarios: [
+            {
+              hora: '04:00',
+              modalidade: 'Arapari',
+              obs: 'Somente Sábado'
+            },
             {
               hora: '06:30',
               modalidade: 'Alça Viária'
@@ -75,7 +90,7 @@ export default {
               modalidade: 'Alça Viária'
             },
             {
-              hora: '15:30',
+              hora: '16:00',
               modalidade: 'Alça Viária',
               obs: 'Somente Domingo'
             },
@@ -91,9 +106,14 @@ export default {
           periodo: 'Segunda a Sexta',
           horarios: [
             {
+              hora: '05:30',
+              modalidade: 'Alça Viária',
+              obs: 'Somente Segunda-feira'
+            },
+            {
               hora: '07:30',
               modalidade: 'Alça Viária',
-              obs: 'Somente Segunda-Feira'
+              obs: 'Somente Segunda-feira e Sexta-feira'
             },
             {
               hora: '09:00',
@@ -112,12 +132,17 @@ export default {
               modalidade: 'Arapari'
             },
             {
-              hora: '16:30',
-              modalidade: 'Arapari'
+              hora: '15:00',
+              modalidade: 'Alça Viária',
+              obs: 'Somente Segunda-feira e Sexta-feira'
             },
             {
               hora: '16:30',
               modalidade: 'Alça Viária'
+            },
+            {
+              hora: '16:30',
+              modalidade: 'Arapari'
             }
           ]
         },
@@ -126,6 +151,11 @@ export default {
           destino: 'Abaetetuba',
           periodo: 'Sábado e Domingo',
           horarios: [
+            {
+              hora: '07:30',
+              modalidade: 'Alça Viária',
+              obs: 'Somente Sábado'
+            },
             {
               hora: '09:00',
               modalidade: 'Arapari'
@@ -144,23 +174,12 @@ export default {
               modalidade: 'Arapari'
             },
             {
-              hora: '16:00',
-              modalidade: 'Alça Viária',
-              obs: 'Somente Domingos e Feriados'
+              hora: '16:30',
+              modalidade: 'Alça Viária'
             },
             {
               hora: '16:30',
               modalidade: 'Arapari'
-            },
-            {
-              hora: '16:30',
-              modalidade: 'Alça Viária',
-              obs: 'Somente aos Sábados'
-            },
-            {
-              hora: '18:00',
-              modalidade: 'Alça Viária',
-              obs: 'Somente Domingos e Feriados'
             }
           ]
         }
