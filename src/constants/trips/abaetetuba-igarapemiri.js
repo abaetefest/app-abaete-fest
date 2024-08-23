@@ -2,6 +2,51 @@ export default {
   cidade1: 'Abaetetuba',
   cidade2: 'Igarapé-Miri',
   empresas: [
+    // Jarumã
+    {
+      nome: 'Jarumã',
+      icon: 'trips/jaruma.png',
+      viagens: [
+        {
+          origem: 'Abaetetuba',
+          destino: 'Igarapé-Miri',
+          periodo: 'Segunda a Sábado',
+          horarios: [
+            {
+              hora: '07:00'
+            },
+            {
+              hora: '09:00'
+            },
+            {
+              hora: '11:30'
+            },
+            {
+              hora: '17:00'
+            }
+          ]
+        },
+        {
+          origem: 'Igarapé-Miri',
+          destino: 'Abaetetuba',
+          periodo: 'Segunda a Sábado',
+          horarios: [
+            {
+              hora: '06:00'
+            },
+            {
+              hora: '08:00'
+            },
+            {
+              hora: '10:00'
+            },
+            {
+              hora: '15:00'
+            }
+          ]
+        }
+      ]
+    },
     // Cootrampa
     {
       nome: 'Cootrampa',
