@@ -160,6 +160,16 @@ export const farmacias = [
     address: 'Tv. Dom Pedro I, 1245 - São Lourenço'
   },
   {
+    latitude: '-1.7195153',
+    longitude: '-48.8747582',
+    icon: 'places/farmacia.png',
+    title: 'Drogaria R Farma',
+    category: 'Farmácias',
+    preco: 2,
+    phone: '91 983661332',
+    address: 'Av. Minas Gerais, 2764 - Francilândia'
+  },
+  {
     latitude: '-1.7324038',
     longitude: '-48.8699954',
     icon: 'places/farmacia.png',
