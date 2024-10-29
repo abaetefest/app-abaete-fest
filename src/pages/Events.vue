@@ -81,7 +81,7 @@
         </q-input>
       </template>
       <template v-slot:item="props">
-        <div class="q-pa-sm col-xs-12 col-sm-6 col-md-3">
+        <div class="q-pa-sm col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <q-card
             class="fit cursor-pointer shadow-5"
             @click="detailsEvent(props.row)"
@@ -107,42 +107,26 @@
             </div>
 
             <q-card-section>
-              <div class="text-h6" >
-                {{ props.row.name }}
+              <div class="text-weight-bold row">
+                <div class="col-auto">
+                  <div class="text-center bg-primary rounded text-white q-px-md q-py-xs">
+                    <div>
+                      {{ getDayDate(props.row.start_date) }}
+                    </div>
+                    <div>
+                      {{ getMonthString(props.row.start_date) }}
+                    </div>
+                    <div class="text-caption">
+                      {{ formatHourString(props.row.start_date)}}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col q-px-sm text-subtitle1 text-weight-bold self-center">
+                  {{ props.row.name }}
+                </div>
               </div>
-              <q-item-label class="row justify-between">
-                <span class="text-caption text-grey">
-                  {{ formatDateString(props.row.start_date) }} - {{ formatHourString(props.row.start_date)}}
-                </span>
-                <!-- <q-rating
-                  v-model="props.row.average"
-                  size="1.5em"
-                  color="amber"
-                  icon="mdi-star-outline"
-                  icon-selected="mdi-star"
-                />
-                <span class="text-caption text-grey q-ml-sm">({{props.row.average}})</span>
-                <q-badge
-                  outline
-                  color="primary"
-                  :label="getCategoryName(props.row.categoryId)"
-                  class="float-right"
-                /> -->
-              </q-item-label>
             </q-card-section>
-
-            <!-- <q-card-section class="q-pa-none q-pb-sm">
-              <q-separator />
-            </q-card-section> -->
-
-            <!-- <q-card-actions align="around">
-              <q-btn flat dense size="sm" color="primary" label="Vou nada" icon="mdi-emoticon-cry-outline" />
-              <q-btn flat dense size="sm" color="primary" label="Eu vou" icon="mdi-emoticon-cool-outline" />
-            </q-card-actions> -->
-
-            <!-- <q-card-section class="q-pt-none">
-              {{ props.row.resumo }}
-            </q-card-section> -->
           </q-card>
         </div>
       </template>
@@ -248,6 +232,27 @@ export default {
     },
     formatHourString (dateOriginal) {
       return date.formatDate(dateOriginal, 'HH:mm')
+    },
+    getDayDate (dateOriginal) {
+      return date.formatDate(dateOriginal, 'DD')
+    },
+    getMonthString (dateOriginal) {
+      const month = date.formatDate(dateOriginal, 'MM')
+      const monthString = {
+        '01': 'Jan',
+        '02': 'Fev',
+        '03': 'Mar',
+        '04': 'Abr',
+        '05': 'Mai',
+        '06': 'Jun',
+        '07': 'Jul',
+        '08': 'Ago',
+        '09': 'Set',
+        10: 'Out',
+        11: 'Nov',
+        12: 'Dez'
+      }
+      return monthString[month]
     },
     backToEvents () {
       this.$router.push({ name: 'home' })
