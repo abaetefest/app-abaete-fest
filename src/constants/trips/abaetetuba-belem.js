@@ -69,6 +69,11 @@ export default {
               obs: 'Somente Sábado'
             },
             {
+              hora: '06:30',
+              modalidade: 'Alça Viária',
+              obs: 'Somente Sábado'
+            },
+            {
               hora: '07:00',
               modalidade: 'Alça Viária'
             },
