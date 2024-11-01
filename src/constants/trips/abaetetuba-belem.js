@@ -339,7 +339,7 @@ export default {
             {
               hora: '06:00*',
               modalidade: 'Alça Viária',
-              obs: 'Pode sofrer alterações domingos e Feriados'
+              obs: 'Domingos e Feriados (Pode sofrer alterações)'
             },
             {
               hora: '07:40',
