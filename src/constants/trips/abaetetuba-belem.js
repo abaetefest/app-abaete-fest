@@ -69,13 +69,8 @@ export default {
               obs: 'Somente Sábado'
             },
             {
-              hora: '06:30',
-              modalidade: 'Alça Viária'
-            },
-            {
               hora: '07:00',
-              modalidade: 'Alça Viária',
-              obs: 'Somente Sábado'
+              modalidade: 'Alça Viária'
             },
             {
               hora: '09:00',
@@ -332,7 +327,12 @@ export default {
           // periodo: 'Segunda a Sexta',
           horarios: [
             {
-              hora: '05:30*',
+              hora: '05:00',
+              modalidade: 'Alça Viária',
+              obs: 'Segunda a Sábado'
+            },
+            {
+              hora: '06:00*',
               modalidade: 'Alça Viária',
               obs: 'Pode sofrer alterações domingos e Feriados'
             },

@@ -18,13 +18,13 @@ export const pubRestaurante = [
     address: 'Av. Dom Pedro II, 1079'
   },
   {
-    latitude: -1.724571,
-    longitude: -48.8821012,
+    latitude: -1.7250500,
+    longitude: -48.8862901,
     icon: 'map-icon/simple.png',
     title: 'Simple. Bar & Restaurante',
     category: 'Pub&Restaurante',
     preco: 2,
-    address: 'Av. Dom Pedro II, 1035 - Centro'
+    address: 'Av. Pedro Rodrigues, 595 - Centro'
   },
   {
     latitude: -1.7243967,
