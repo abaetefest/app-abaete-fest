@@ -190,7 +190,7 @@ export default {
       openURL('https://play.google.com/store/apps/details?id=br.com.machago.passenger.drivermachine', '_blank')
     },
     appStore () {
-      this.handleMixPanelEvent('Machago Android')
+      this.handleMixPanelEvent('Machago iOS')
       openURL('https://apps.apple.com/br/app/machago/id6444778780', '_blank')
     },
     handleMixPanelEvent (empresa) {
@@ -198,6 +198,7 @@ export default {
     },
     copyCupom () {
       copyToClipboard('MACHAGOEABAETEFEST').then(() => {
+        this.handleMixPanelEvent('Machago Cupom Copiado - MACHAGOEABAETEFEST ')
         this.$q.notify({
           message: 'Cupom copiado com sucesso! Vá para o app e cole para ganhar o desconto.',
           color: 'positive',
