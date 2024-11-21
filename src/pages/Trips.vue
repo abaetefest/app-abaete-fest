@@ -33,7 +33,7 @@
           <p class="text-body1 text-center text-weight-medium">
             Clique no botão para copiar o cupom de desconto:
             <q-btn
-              :color="$q.dark.isActive ? 'green-5' : 'green-8'"
+              :color="$q.dark.isActive ? 'green-6' : 'green-8'"
               label="MACHAGOEABAETEFEST"
               @click="copyCupom"
               rounded
