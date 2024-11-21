@@ -4,7 +4,7 @@
       <span class="text-red-8">Horários</span> de viagens
     </div>
 
-    <div class="q-mb-md">
+    <div v-if="$q.platform.is.mobile" class="q-mb-md">
       <q-card>
         <q-card-section class="q-pa-xs q-ma-none">
           <q-img
