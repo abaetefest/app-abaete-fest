@@ -11,21 +11,28 @@
             :src="$q.dark.isActive ?  '/propagandas/machago2.png' : '/propagandas/machago1.png'"
           />
         </q-card-section>
-        <q-card-section>
-          <div class="text-center q-gutter-x-md">
+        <q-card-section class="q-gutter-y-md row justify-center">
+          <div class="text-center col-9">
             <q-btn
               :color="$q.dark.isActive ? 'primary' : 'primary'"
-              label="Android"
+              label="Baixar para Android"
               @click="androidStore"
               rounded
               icon="mdi-google-play"
+              class="full-width"
+              push
             />
+          </div>
+
+          <div class="text-center col-9">
             <q-btn
               :color="$q.dark.isActive ? 'primary' : 'primary'"
-              label="iOS"
+              label="Baixar para iOS"
               @click="appStore"
               rounded
               icon="mdi-apple"
+              class="full-width"
+              push
             />
           </div>
         </q-card-section>
