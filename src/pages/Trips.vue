@@ -4,58 +4,39 @@
       <span class="text-red-8">Horários</span> de viagens
     </div>
 
-    <div class="q-mb-md">
-    <!-- <q-card class="shadow-5" style="border: white 1px solid">
-      <q-card-section class="q-pt-xs">
-        <div class="text-subtitle1 text-bold text-red-8 text-center">
-          Divulgue seu evento aqui
-        </div>
-        <div
-          class="text-subtitle1 text-primary text-bold q-mt-sm q-mb-xs text-center"
-          :class="$q.dark.isActive ? 'text-white' :  'text-primary shadow-white'"
-        >
-          Mais de 13 mil visualizações por mês !
-        </div>
-      </q-card-section>
-    </q-card> -->
-      <!-- <q-card flat bordered class="">
-        <q-card-section horizontal>
-          <q-card-section class="q-pt-xs">
-            <div class="text-overline text-red-3">Divulgação</div>
-            <div class="text-subtitle1 text-bold q-mt-sm q-mb-xs">After Juan Pimentel</div>
-            <div class="text-caption text-grey-7">
-              1ª edição<br>
-              Data: 18 Maio<br>
-              Local: Nobre Hall<br>
-              <q-icon name="mdi-instagram" class="q-pr-sm" color="red-6" size="xs" />
-              <a
-                :class="$q.dark.isActive ? 'text-white link-custom' : ''"
-                target="_blank"
-                href="https://www.instagram.com/afterdojuanpimentel/"
-                @click="handleMixPanelEvent('After Juan Pimentel')"
-                >
-                @afterdojuanpimentel
-              </a>
-            </div>
-          </q-card-section>
-
-          <q-card-section class="col-xs-5 col-md-3 col-sm-5 flex flex-center">
-            <a
-              href="https://www.instagram.com/afterdojuanpimentel/"
-              target="_blank"
-              @click="handleMixPanelEvent('After Juan Pimentel')"
-            >
-              <img
-                class="rounded-borders"
-                style="width: 100%;"
-                src="/propagandas/after_juan.webp"
-              />
-            </a>
-          </q-card-section>
+    <div v-if="$q.platform.is.mobile" class="q-mb-md">
+      <q-card>
+        <q-card-section class="q-pa-xs q-ma-none">
+          <q-img
+            :src="$q.dark.isActive ?  '/propagandas/machago2.png' : '/propagandas/machago1.png'"
+          />
         </q-card-section>
+        <q-card-section class="q-gutter-y-md row justify-center">
+          <div class="text-center col-9">
+            <q-btn
+              :color="$q.dark.isActive ? 'primary' : 'primary'"
+              label="Baixar para Android"
+              @click="androidStore"
+              rounded
+              icon="mdi-google-play"
+              class="full-width"
+              push
+            />
+          </div>
 
-        <q-separator />
-      </q-card> -->
+          <div class="text-center col-9">
+            <q-btn
+              :color="$q.dark.isActive ? 'primary' : 'primary'"
+              label="Baixar para iOS"
+              @click="appStore"
+              rounded
+              icon="mdi-apple"
+              class="full-width"
+              push
+            />
+          </div>
+        </q-card-section>
+      </q-card>
     </div>
 
     <div v-for="(trip, index) in trips" :key="index" >
@@ -188,8 +169,6 @@ export default {
     //   return img[0].icon
     // }
   },
-  mounted () {
-  },
   methods: {
     openLink () {
       if (this.$q.platform.is.ios) {
@@ -201,14 +180,35 @@ export default {
       }
     },
     androidStore () {
-      openURL('https://play.google.com/store/apps/details?id=br.com.abaetefest.app.twa', '_blank')
+      this.handleMixPanelEvent('Machago Android')
+      openURL('https://play.google.com/store/apps/details?id=br.com.machago.passenger.drivermachine', '_blank')
     },
     appStore () {
-      openURL('https://apps.apple.com/us/app/abaetefest/id1597584518', '_blank')
+      this.handleMixPanelEvent('Machago iOS')
+      openURL('https://apps.apple.com/br/app/machago/id6444778780', '_blank')
     },
     handleMixPanelEvent (empresa) {
       this.$mixpanel.track(empresa)
     }
+    // copyCupom () {
+    //   copyToClipboard('MACHAGOEABAETEFEST').then(() => {
+    //     this.handleMixPanelEvent('Machago Cupom Copiado - MACHAGOEABAETEFEST ')
+    //     this.$q.notify({
+    //       message: 'Cupom copiado com sucesso! Vá para o app e cole para ganhar o desconto.',
+    //       color: 'positive',
+    //       position: 'top',
+    //       icon: 'mdi-check',
+    //       timeout: 5000,
+    //       progress: true
+    //     })
+    //   }).catch(() => {
+    //     this.$q.notify({
+    //       message: 'Erro ao copiar cupom',
+    //       color: 'negative',
+    //       position: 'top'
+    //     })
+    //   })
+    // }
   }
 }
 </script>
