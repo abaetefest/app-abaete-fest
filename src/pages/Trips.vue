@@ -36,19 +36,6 @@
             />
           </div>
         </q-card-section>
-        <q-card-section>
-          <p class="text-body1 text-center text-weight-medium">
-            Clique no botão para copiar o cupom de desconto:
-            <q-btn
-              :color="$q.dark.isActive ? 'green-6' : 'green-8'"
-              label="MACHAGOEABAETEFEST"
-              @click="copyCupom"
-              rounded
-              push
-              icon="mdi-percent-outline"
-            />
-          </p>
-        </q-card-section>
       </q-card>
     </div>
 
@@ -162,7 +149,7 @@
 
 <script>
 import { trips } from 'src/constants/trips/index'
-import { openURL, copyToClipboard } from 'quasar'
+import { openURL } from 'quasar'
 export default {
   name: 'TripsPage',
   data () {
@@ -202,26 +189,26 @@ export default {
     },
     handleMixPanelEvent (empresa) {
       this.$mixpanel.track(empresa)
-    },
-    copyCupom () {
-      copyToClipboard('MACHAGOEABAETEFEST').then(() => {
-        this.handleMixPanelEvent('Machago Cupom Copiado - MACHAGOEABAETEFEST ')
-        this.$q.notify({
-          message: 'Cupom copiado com sucesso! Vá para o app e cole para ganhar o desconto.',
-          color: 'positive',
-          position: 'top',
-          icon: 'mdi-check',
-          timeout: 5000,
-          progress: true
-        })
-      }).catch(() => {
-        this.$q.notify({
-          message: 'Erro ao copiar cupom',
-          color: 'negative',
-          position: 'top'
-        })
-      })
     }
+    // copyCupom () {
+    //   copyToClipboard('MACHAGOEABAETEFEST').then(() => {
+    //     this.handleMixPanelEvent('Machago Cupom Copiado - MACHAGOEABAETEFEST ')
+    //     this.$q.notify({
+    //       message: 'Cupom copiado com sucesso! Vá para o app e cole para ganhar o desconto.',
+    //       color: 'positive',
+    //       position: 'top',
+    //       icon: 'mdi-check',
+    //       timeout: 5000,
+    //       progress: true
+    //     })
+    //   }).catch(() => {
+    //     this.$q.notify({
+    //       message: 'Erro ao copiar cupom',
+    //       color: 'negative',
+    //       position: 'top'
+    //     })
+    //   })
+    // }
   }
 }
 </script>
