@@ -86,7 +86,7 @@
       });
     </script> -->
   
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
       var OneSignal = window.OneSignal || [];
         var initConfig = {
@@ -101,6 +101,16 @@
             OneSignal.SERVICE_WORKER_UPDATER_PATH = 'push/OneSignalSDKUpdaterWorker.js'
             OneSignal.init(initConfig);
         });
+    </script> -->
+
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "f1a0f014-fca7-46f6-9bc6-fe30b2fd4e0e",
+        });
+      });
     </script>
   </body>
 </html>
