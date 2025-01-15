@@ -23,14 +23,14 @@ export const igrejasCatolicas = [
     category: 'IgrejasCatolicas',
     address: 'R. Barão do Rio Branco, 2798-2830 - São João'
   },
-  {
-    latitude: '-1.71936335',
-    longitude: '-48.8842651',
-    icon: 'flat/church.png',
-    title: 'Igreja de Santa Rita de Cássia',
-    category: 'IgrejasCatolicas',
-    address: ' Tv. Aristides dos Reis e Silva, 631 - São Lourenço'
-  },
+  // {
+  //   latitude: '-1.71936335',
+  //   longitude: '-48.8842651',
+  //   icon: 'flat/church.png',
+  //   title: 'Igreja de Santa Rita de Cássia',
+  //   category: 'IgrejasCatolicas',
+  //   address: ' Tv. Aristides dos Reis e Silva, 631 - São Lourenço'
+  // },
   {
     latitude: '-1.718845',
     longitude: '-48.882486',
@@ -83,7 +83,7 @@ export const igrejasCatolicas = [
     latitude: '-1.7112978',
     longitude: '-48.8791154',
     icon: 'flat/church.png',
-    title: 'Igreja de Santa Rita',
+    title: 'Igreja de Santa Rita de Cássia',
     category: 'IgrejasCatolicas',
     address: 'R. Manoel da Silva Raposo, 1086-1346 - São Lourenço'
   },
