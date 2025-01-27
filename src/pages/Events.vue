@@ -1,5 +1,5 @@
 <template>
-  <q-page :class="$q.dark.isActive ? '': 'bg-grey-1'">
+  <q-page :class="$q.dark.isActive ? 'bg-primary': 'bg-grey-1'">
     <!-- <div class="">
       <div class="col-12 text-center"> -->
         <!-- <q-banner inline-actions class="text-primary bg-secondary"> -->
@@ -14,7 +14,7 @@
       <!-- </div>
     </div> -->
     <div class="text-h5 text-bold text-center q-pt-md">
-      <span class="text-red-8">Eventos</span> na cidade
+      <span class="text-accent">Eventos</span> na cidade
     </div>
     <div class="row q-pa-sm">
       <q-select

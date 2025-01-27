@@ -1,5 +1,5 @@
 <template>
-  <q-page :class="$q.dark.isActive ? 'bg-dark' : 'bg-grey-1'">
+  <q-page :class="$q.dark.isActive ? 'bg-primary' : 'bg-grey-1'">
     <div class="text-h5 text-bold text-center q-pt-md">
       Pontos <span class="text-red-8">Turísticos</span>
     </div>
@@ -92,7 +92,7 @@
         <q-layout
           view="Lhh lpR fff"
           container
-          :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
+          :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
         >
           <q-page-container>
             <q-page>

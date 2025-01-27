@@ -1,5 +1,5 @@
 <template>
-  <q-page padding :class="$q.dark.isActive ? 'bg-dark' :  'bg-grey-1'">
+  <q-page padding :class="$q.dark.isActive ? 'bg-primary' :  'bg-grey-1'">
     <div class="text-h5 text-bold text-center q-py-md">
       <span class="text-red-8">Horários</span> de viagens
     </div>
@@ -14,19 +14,21 @@
         <q-card-section class="q-gutter-y-md row justify-center">
           <div class="text-center col-9">
             <q-btn
-              :color="$q.dark.isActive ? 'primary' : 'primary'"
+              :color="$q.dark.isActive ? 'secondary' : 'primary'"
               label="Baixar para Android"
               @click="androidStore"
               rounded
               icon="mdi-google-play"
               class="full-width"
               push
+              :text-color="$q.dark.isActive ? 'primary' : 'white'"
             />
           </div>
 
           <div class="text-center col-9">
             <q-btn
-              :color="$q.dark.isActive ? 'primary' : 'primary'"
+              :color="$q.dark.isActive ? 'secondary' : 'primary'"
+              :text-color="$q.dark.isActive ? 'primary' : 'white'"
               label="Baixar para iOS"
               @click="appStore"
               rounded
@@ -42,6 +44,7 @@
     <div v-for="(trip, index) in trips" :key="index" >
       <q-card
         class="q-mb-xl"
+        :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
         :style="$q.dark.isActive? 'box-shadow: 0 1px 5px rgba(255, 255, 255, 0.442);': ''"
       >
         <q-card-section class="text-center">
@@ -57,7 +60,7 @@
           padding
           bordered
           class="rounded-borders"
-          :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
+          :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
           v-for="(empresa, index) in trip.empresas"
           :key="index"
         >
@@ -66,6 +69,7 @@
             :label="empresa.nome"
             @click="handleMixPanelEvent(empresa.nome)"
             header-class="text-body1 text-bold"
+            :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
           >
             <template v-slot:header>
               <q-item-section avatar>
@@ -79,7 +83,10 @@
               </q-item-section>
             </template>
             <q-card>
-              <q-card-section class="row q-col-gutter-x-lg">
+              <q-card-section
+                class="row q-col-gutter-x-lg"
+                :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
+              >
                 <div
                   v-for="(viagem, index) in empresa.viagens"
                   :key="index"
@@ -87,9 +94,8 @@
                 >
                   <q-separator class="q-mb-sm" />
                   <div
-                    class="bg-primary"
+                    :class="$q.dark.isActive ? 'bg-secondary text-primary' : 'bg-primary text-secondary'"
                     style="border-radius: 10px;"
-                    :class="$q.dark.isActive ? 'text-white' : 'text-white'"
                   >
                     <p class="text-h6 text-center q-mb-sm">
                       {{ viagem.origem }}

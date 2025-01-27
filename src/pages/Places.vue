@@ -1,5 +1,5 @@
 <template>
-  <q-page padding :class="$q.dark.isActive ? '': 'bg-grey-1'">
+  <q-page padding :class="$q.dark.isActive ? 'bg-primary': 'bg-grey-1'">
     <div class="text-h5 text-bold text-center q-py-md">
       Lista de <span class="text-red-8">Locais</span>
     </div>
@@ -57,10 +57,15 @@
     <div class="row justify-between">
       <div
         class="col-sm-12 col-xs-12 col-md-6"
+        :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
         v-for="(place, index) in getPlaces"
         :key="index"
       >
-        <q-card @click="openDialogCourse(place)" class="q-ma-xs">
+        <q-card
+          @click="openDialogCourse(place)"
+          class="q-ma-xs"
+          :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
+        >
           <q-item>
             <q-item-section>
               <q-item-label

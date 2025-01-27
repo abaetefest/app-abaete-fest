@@ -11,7 +11,7 @@
       </q-header>
 
       <q-footer
-        :class="$q.dark.isActive ? 'bg-grey-9 text-white' : 'bg-grey-2 text-primary'"
+        :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-grey-2 text-primary'"
       >
         <q-toolbar inset>
           <q-toolbar-title>

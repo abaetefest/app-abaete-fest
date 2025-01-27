@@ -3,11 +3,12 @@
     clickable
     exact
     :to="{ name: route }"
-    :active-class="$q.dark.isActive ? 'text-black bg-white': 'bg-grey-3 text-primary'"
+    :active-class="$q.dark.isActive ? 'text-primary bg-white': 'bg-grey-3 text-primary'"
   >
     <q-item-section
       v-if="icon"
       avatar
+      :class="$q.dark.isActive ? 'text-secondary' : 'text-primary'"
     >
       <q-icon :name="icon" />
     </q-item-section>

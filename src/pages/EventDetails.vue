@@ -36,7 +36,7 @@
       </q-card-actions>
     </q-card>
 
-    <q-card v-else class="full-width full-height" :key="event.id">
+    <q-card v-else class="full-width full-height" :key="event.id" :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-grey-2 text-primary'">
       <img
         :src="event.image_url"
         class="full-width"

@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header :class="$q.dark.isActive ? 'bg-dark' : 'bg-primary'">
+    <q-header :class="$q.dark.isActive ? 'bg-primary' : 'bg-primary'">
       <q-toolbar>
         <q-btn
           flat
@@ -64,7 +64,7 @@
       v-if="!!$route.meta.tab" class="lt-md"
       :class="[
         $q.platform.is.ios ? 'q-pb-md' : '',
-        $q.dark.isActive ? 'bg-dark' : 'bg-white'
+        $q.dark.isActive ? 'bg-primary' : 'bg-white'
       ]"
       >
       <q-tabs
@@ -74,10 +74,10 @@
         indicator-color="white"
         mobile-arrows
         :class="[
-          $q.dark.isActive ? 'bg-dark text-white' : 'bg-white text-weight-thin text-grey-7',
+          $q.dark.isActive ? 'bg-primary text-white' : 'bg-white text-weight-thin text-grey-7',
           $q.platform.is.ios ? 'q-pb-md' : ''
         ]"
-        :active-color="$q.dark.isActive ? 'blue-2' : 'primary'"
+        :active-color="$q.dark.isActive ? 'secondary' : 'primary'"
       >
         <q-route-tab
           v-for="(tab, index) in essentialLinks"
@@ -97,7 +97,7 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      :content-class="$q.dark.isActive ? '' : 'bg-grey-1'"
+      :content-class="$q.dark.isActive ? 'bg-primary' : 'bg-grey-1'"
     >
       <q-list>
         <q-item-label
