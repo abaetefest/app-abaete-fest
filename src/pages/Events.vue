@@ -23,7 +23,7 @@
         :options="options"
         label="Selecione uma categoria"
         class="col-sm-12 col-xs-12 col-md-6"
-        :bg-color="$q.dark.isActive ? '' : 'white'"
+        :bg-color="$q.dark.isActive ? 'primary' : 'white'"
         :label-color="$q.dark.isActive ? 'white' : 'primary'"
         :color="$q.dark.isActive ? 'white' : 'primary'"
         map-options
@@ -31,18 +31,24 @@
         @input="listEvents(categoria)"
       >
         <template v-slot:prepend>
-          <q-avatar rounded>
-            <img :src="getIconCategory">
+          <q-avatar
+            rounded
+            :icon="getIconCategory"
+            size="60px"
+            :class="$q.dark.isActive ? 'text-secondary' : 'text-primary'"
+          >
+            <!-- <img :src="getIconCategory"> -->
           </q-avatar>
         </template>
         <template v-slot:option="scope">
             <q-item
               v-bind="scope.itemProps"
               v-on="scope.itemEvents"
+              :class="$q.dark.isActive ? 'bg-primary' : 'white'"
             >
               <q-item-section avatar>
-                <q-avatar rounded>
-                  <img :src="scope.opt.icon">
+                <q-avatar rounded :icon="scope.opt.icon" size="40px">
+                  <!-- <img :src="scope.opt.icon"> -->
                 </q-avatar>
                 <!-- <q-icon :name="scope.opt.icon" /> -->
               </q-item-section>

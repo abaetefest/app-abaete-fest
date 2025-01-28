@@ -12,8 +12,8 @@
         />
 
         <q-toolbar-title>
-          <q-avatar size="sm">
-            <img src="architecture-and-city.png" />
+          <q-avatar size="sm" rounded>
+            <img src="new-abaetefest.png" />
           </q-avatar>
           AbaetéFest
         </q-toolbar-title>

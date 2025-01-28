@@ -1,7 +1,7 @@
 <template>
   <q-page padding :class="$q.dark.isActive ? 'bg-dark' : 'bg-grey-1'">
     <div class="text-h5 text-bold text-center q-pt-md q-pb-sm">
-      Pod<span class="text-red-8">Casts</span>
+      Pod<span class="text-accent">Casts</span>
     </div>
 
     <div class="row q-col-gutter-sm">

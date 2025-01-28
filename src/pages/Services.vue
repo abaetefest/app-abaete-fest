@@ -1,7 +1,7 @@
 <template>
-  <q-page padding :class="$q.dark.isActive ? '': 'bg-grey-1'">
+  <q-page padding :class="$q.dark.isActive ? 'bg-primary': 'bg-grey-1'">
     <div class="text-h5 text-bold text-center q-py-md">
-      Telefones <span class="text-red-8">Úteis</span>
+      Telefones <span class="text-accent">Úteis</span>
     </div>
     <div class="row q-pb-md">
       <q-select
@@ -46,7 +46,7 @@
         :key="index"
       >
         <q-expansion-item
-          class="shadow-1 overflow-hidden"
+          class="shadow-1 overflow-hidden shadow-dark"
           group="services"
           :key="service.name"
           style="border-radius: 10px"
@@ -55,7 +55,7 @@
           expand-icon-class="text-white"
           @show="trackEventMixpanel(service)"
         >
-          <q-card>
+          <q-card :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'">
             <q-card-section class="q-pt-sm text-body1">
 
               <ul v-for="(item, index) in service.TypeServices" :key="index">

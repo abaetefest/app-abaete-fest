@@ -1,7 +1,7 @@
 <template>
   <q-page :class="$q.dark.isActive ? 'bg-primary' : 'bg-grey-1'">
     <div class="text-h5 text-bold text-center q-pt-md">
-      Pontos <span class="text-red-8">Turísticos</span>
+      Pontos <span class="text-accent">Turísticos</span>
     </div>
     <q-table
       :grid="grid"
@@ -82,7 +82,8 @@
     <dialog-tourism-details
       :modal-tourism="modalTourism"
       :tourism-data="tourismDetails"
-      @close="closeModal" />
+      @close="closeModal"
+    />
       <q-dialog
         persistent
         full-height
@@ -100,13 +101,13 @@
                 class="full-width no-shadow"
               >
 
-                <q-card-section class="q-pa-none">
+                <q-card-section class="q-pa-none" :class="$q.dark.isActive ? 'bg-primary' : ''">
                   <div
                     class="text-body2 text-center"
                     :class="$q.dark.isActive ? 'text-white' : 'text-grey-9'"
                   >
                     <q-img
-                      src="/viajante.jpg"
+                      src="/abaetetuba_de_cima.jpg"
                       class="rounded-img"
                     >
                       <template #loading>
@@ -116,13 +117,13 @@
                   </div>
                 </q-card-section>
 
-                <q-card-section>
+                <q-card-section :class="$q.dark.isActive ? 'bg-primary' : ''">
                   <div class="text-h5 text-bold q-mt-lg">
-                    Explore locais incríveis pela região de <span class="text-red-7">Abaetetuba</span>
+                    Explore locais incríveis pela região de <span class="text-accent">Abaetetuba</span>
                   </div>
                 </q-card-section>
 
-                <q-card-section>
+                <q-card-section :class="$q.dark.isActive ? 'bg-primary' : ''">
                   <div class="text-body1">
                     A região do Baixo Tocantins é repleta de balneários, prais e ilhas.
                     Além de muita história na cidade de Abaetetuba.
@@ -134,7 +135,8 @@
                 <div class="col-xs-10 col-sm-8">
                   <q-btn
                     label="Vamos nessa!"
-                    color="primary"
+                    :color="$q.dark.isActive ? 'secondary' : 'primary'"
+                    :text-color="$q.dark.isActive ? 'primary' : 'white'"
                     @click="modalWelcomeTourism = false"
                     class="full-width"
                     rounded

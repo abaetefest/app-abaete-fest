@@ -1,7 +1,7 @@
 <template>
-  <q-page padding :class="$q.dark.isActive ? 'bg-primary' :  'bg-grey-1'">
+  <q-page padding :class="$q.dark.isActive ? '' :  'bg-grey-1'">
     <div class="text-h5 text-bold text-center q-py-md">
-      <span class="text-red-8">Horários</span> de viagens
+      <span class="text-accent">Horários</span> de viagens
     </div>
 
     <div v-if="$q.platform.is.mobile" class="q-mb-md">

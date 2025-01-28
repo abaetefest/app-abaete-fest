@@ -1,7 +1,7 @@
 <template>
   <q-page padding :class="$q.dark.isActive ? 'bg-dark' : 'bg-grey-1'">
     <div class="text-h5 text-bold text-center q-pt-md q-pb-sm">
-      Clima e <span class="text-red-8">Tempo</span>
+      Clima e <span class="text-accent">Tempo</span>
     </div>
 
     <div
