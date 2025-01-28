@@ -20,8 +20,8 @@
             <q-btn
               label="Fechar"
               class="float-right"
-              :color="$q.dark.isActive ? 'white' : 'primary'"
-              flat
+              :color="$q.dark.isActive ? 'secondary' : 'primary'"
+              :text-color="$q.dark.isActive ? 'primary' : 'white'"
               dense
               @click="$emit('close')"
             />

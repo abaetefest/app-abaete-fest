@@ -4,7 +4,7 @@
       Pod<span class="text-accent">Casts</span>
     </div>
 
-    <div class="row q-col-gutter-sm">
+    <div class="row q-col-gutter-md">
       <div
         v-for="(podcast, index) in podcastList"
         class="col-md-6 col-sm-12 col-xs-12"
@@ -12,7 +12,7 @@
       >
         <q-card
           class="rounded"
-          :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-white'"
+          :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
         >
           <q-img
             :src="podcast.image"
@@ -34,7 +34,7 @@
             <strong>Youtube:</strong>
             <span
               class="text-bold"
-              :class="$q.dark.isActive ? 'text-blue-2' : 'text-red-8'"
+              :class="$q.dark.isActive ? 'text-secondary' : 'text-red-8'"
             >
               {{ podcast.youtube }}
             </span>

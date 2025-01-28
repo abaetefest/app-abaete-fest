@@ -1,5 +1,5 @@
 <template>
-  <q-page :class="$q.dark.isActive ? 'bg-primary': 'bg-grey-1'">
+  <q-page :class="$q.dark.isActive ? '': 'bg-grey-1'">
     <!-- <div class="">
       <div class="col-12 text-center"> -->
         <!-- <q-banner inline-actions class="text-primary bg-secondary"> -->
@@ -13,7 +13,7 @@
         <!-- </q-banner> -->
       <!-- </div>
     </div> -->
-    <div class="text-h5 text-bold text-center q-pt-md">
+    <div class="text-h5 text-bold text-center q-pt-md custom-font">
       <span class="text-accent">Eventos</span> na cidade
     </div>
     <div class="row q-pa-sm">
@@ -28,6 +28,7 @@
         :color="$q.dark.isActive ? 'white' : 'primary'"
         map-options
         emit-value
+        dense
         @input="listEvents(categoria)"
       >
         <template v-slot:prepend>
@@ -35,6 +36,7 @@
             rounded
             :icon="getIconCategory"
             size="60px"
+            dense
             :class="$q.dark.isActive ? 'text-secondary' : 'text-primary'"
           >
             <!-- <img :src="getIconCategory"> -->
@@ -45,15 +47,16 @@
               v-bind="scope.itemProps"
               v-on="scope.itemEvents"
               :class="$q.dark.isActive ? 'bg-primary' : 'white'"
+              dense
             >
               <q-item-section avatar>
-                <q-avatar rounded :icon="scope.opt.icon" size="40px">
+                <q-avatar rounded :icon="scope.opt.icon" size="60px">
                   <!-- <img :src="scope.opt.icon"> -->
                 </q-avatar>
                 <!-- <q-icon :name="scope.opt.icon" /> -->
               </q-item-section>
               <q-item-section>
-                <q-item-label v-html="scope.opt.label" />
+                <q-item-label class="text-weight-bold" v-html="scope.opt.label" />
               </q-item-section>
             </q-item>
           </template>
@@ -90,6 +93,7 @@
         <div class="q-pa-sm col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <q-card
             class="fit cursor-pointer shadow-5"
+            :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
             @click="detailsEvent(props.row)"
           >
             <q-img
@@ -115,7 +119,10 @@
             <q-card-section>
               <div class="text-weight-bold row">
                 <div class="col-auto">
-                  <div class="text-center bg-primary rounded text-white q-px-md q-py-xs">
+                  <div
+                    class="text-center rounded q-px-md q-py-xs"
+                    :class="$q.dark.isActive ? 'bg-secondary text-primary' : 'bg-primary text-secondary'"
+                  >
                     <div>
                       {{ getDayDate(props.row.start_date) }}
                     </div>

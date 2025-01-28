@@ -28,9 +28,9 @@
         :options="options"
         label="Selecione uma categoria"
         class="col-sm-12 col-xs-12 col-md-6"
-        :bg-color="$q.dark.isActive ? '' : 'white'"
+        :bg-color="$q.dark.isActive ? 'primary' : 'white'"
         :label-color="$q.dark.isActive ? 'white' : 'primary'"
-        :color="$q.dark.isActive ? 'white' : 'primary'"
+        :color="$q.dark.isActive ? 'secondary' : 'primary'"
         map-options
         emit-value
       >
@@ -40,7 +40,7 @@
           </q-avatar>
         </template>
         <template v-slot:option="scope">
-          <q-item v-bind="scope.itemProps" v-on="scope.itemEvents">
+          <q-item v-bind="scope.itemProps" v-on="scope.itemEvents" :class="$q.dark.isActive ? 'bg-primary' : 'white'">
             <q-item-section avatar>
               <q-avatar rounded>
                 <img :src="scope.opt.icon" />

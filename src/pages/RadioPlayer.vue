@@ -12,7 +12,7 @@
     <div class="col-xs-12 text-center q-mt-sm q-mb-lg">
         <q-spinner-bars
           v-if="playStarted === true"
-          color="primary"
+          :color="$q.dark.isActive ? 'secondary' : 'primary'"
           size="4em"
         />
     </div>

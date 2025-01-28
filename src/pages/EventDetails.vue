@@ -99,7 +99,7 @@
             label="Voltar"
             class="full-width"
             icon="mdi-arrow-left"
-            color="primary"
+            :color="$q.dark.isActive ? 'white' : 'primary'"
             outline
             @click="backToEvents(event.category)"
           />

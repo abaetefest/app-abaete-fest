@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          <q-avatar size="sm" rounded>
+          <q-avatar size="xl" rounded>
             <img src="new-abaetefest.png" />
           </q-avatar>
           AbaetéFest

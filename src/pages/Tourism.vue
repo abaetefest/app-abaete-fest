@@ -30,8 +30,10 @@
       </template>
       <template v-slot:item="props">
       <div class="col-xs-12 col-sm-6 col-md-6">
-        <q-list bordered class="q-ma-xs shadow-2 rounded"
-        @click="openDialogCourse(props.row)"
+        <q-list
+          bordered
+          class="q-ma-xs shadow-2 rounded"
+          @click="openDialogCourse(props.row)"
         >
           <q-item>
             <q-item-section top thumbnail class="q-ml-none">
@@ -49,34 +51,9 @@
                 {{ props.row.address }}
               </q-item-label>
             </q-item-section>
-
-            <!-- <q-item-section side top>
-              <q-item-label caption>meta</q-item-label>
-            </q-item-section> -->
           </q-item>
         </q-list>
       </div>
-        <!-- <div class="q-pa-sm col-xs-12 col-sm-6 col-md-3">
-          <q-card
-            class="fit cursor-pointer shadow-5"
-          >
-            <q-img
-              :src="props.row.image_url"
-              :ratio="4/3"
-              @click="openDialogCourse(props.row)"
-            >
-              <template #loading>
-                <q-skeleton class="full-width full-height" square />
-              </template>
-            </q-img>
-
-            <q-card-section>
-              <div class="text-h6 text-center">
-                {{ props.row.name }}
-              </div>
-            </q-card-section>
-          </q-card>
-        </div> -->
       </template>
     </q-table>
     <dialog-tourism-details
