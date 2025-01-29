@@ -8,7 +8,7 @@
     <q-item-section
       v-if="icon"
       avatar
-      :class="$q.dark.isActive ? 'text-secondary' : 'text-primary'"
+      :class="$q.dark.isActive ? ( isActive ? 'text-primary' : 'text-secondary') : 'text-primary'"
     >
       <q-icon :name="icon" />
     </q-item-section>
@@ -44,6 +44,11 @@ export default {
     icon: {
       type: String,
       default: ''
+    }
+  },
+  computed: {
+    isActive () {
+      return this.$route.name === this.route
     }
   }
 }
