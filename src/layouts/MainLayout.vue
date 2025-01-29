@@ -15,7 +15,6 @@
           <q-avatar size="xl" rounded>
             <img src="new-abaetefest.png" />
           </q-avatar>
-          AbaetéFest
         </q-toolbar-title>
 
         <q-toggle
