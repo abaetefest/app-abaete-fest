@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "generate:favicon": "icongenie generate -m pwa -i new-abaetefest.png --theme-color 161931 --skip-trim"
+    "generate:favicon": "icongenie generate -m pwa -i new-abaetefest.png --theme-color 161931 --skip-trim --splashscreen-color 161931"
   },
   "dependencies": {
     "@quasar/cli": "^2.4.0",
