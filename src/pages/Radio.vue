@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
     <div class="text-h5 text-bold text-center q-py-md">
-      Lista de <span class="text-red-8">Rádios</span>
+      Lista de <span class="text-accent">Rádios</span>
     </div>
     <div class="row q-col-gutter-md">
       <div
@@ -11,11 +11,11 @@
       >
         <q-card
           class="q-pa-xs cursor-pointer text-white shadow-4 rounded"
-          :class="$q.dark.isActive ? 'bg-grey-9 text-white' : 'bg-white text-black'"
+          :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-white text-black'"
           v-ripple:primary
           @click="goTo(radio)"
         >
-          <q-badge v-if="radio.new" color="amber-8" floating >
+          <q-badge v-if="radio.new" color="secondary" text-color="primary" floating >
             NOVO
           </q-badge>
           <q-card-section class="flex justify-between">

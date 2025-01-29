@@ -1,8 +1,40 @@
 /* app global css */
+body {
+  font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.q-layout__shadow:after {
+  webkit-box-shadow: 6px 3px 5px 0px rgba(219,219,219,1);
+  -moz-box-shadow: 6px 3px 5px 0px rgba(219,219,219,1);
+  box-shadow: 6px 3px 5px 0px rgba(219,219,219,1);
+}
+
+/* .my-font {
+  font-family: 'customfont';
+}
+
+.custom-font {
+  font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+} */
+
 .rounded {
   border-radius: 0.30rem;
 }
 
 .rounded-img {
   border-bottom-right-radius: 4.5rem;
+}
+
+.shadow-dark {
+  box-shadow: 1px 2px 3px white;
+}
+
+.border-white {
+  border: 0.5px solid #ffffff5b;
 }

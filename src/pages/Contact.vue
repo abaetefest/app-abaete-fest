@@ -51,7 +51,7 @@
             target="_blank"
             label="abaetetech.com.br"
             flat
-            color="primary"
+            :color="$q.dark.isActive ? 'white' : 'primary'"
             no-caps
             size="lg"
           />

@@ -1,7 +1,7 @@
 <template>
   <q-page padding :class="$q.dark.isActive ? 'bg-dark' : 'bg-grey-1'">
     <div class="text-h5 text-bold text-center q-pt-md q-pb-sm">
-      Sobre a <span class="text-red-8">Cidade</span>
+      Sobre a <span class="text-accent">Cidade</span>
     </div>
     <div class="row justify-center q-col-gutter-sm">
       <div
@@ -10,7 +10,7 @@
         :key="index"
       >
         <q-expansion-item
-          class="shadow-1 overflow-hidden"
+          class="shadow-1 overflow-hidden shadow-dark"
           group="services"
           :key="about.name"
           style="border-radius: 10px"

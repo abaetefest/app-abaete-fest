@@ -3,7 +3,7 @@
     <q-layout
       view="Lhh lpR fFf"
       container
-      :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
+      :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
     >
       <q-header
         elevated
@@ -13,15 +13,15 @@
 
       <q-footer
         elevated
-        :class="$q.dark.isActive ? 'bg-grey-9 text-white' : 'bg-white text-primary'"
+        :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-white text-primary'"
       >
         <q-toolbar inset>
           <q-toolbar-title>
             <q-btn
               label="Fechar"
               class="float-right"
-              :color="$q.dark.isActive ? 'white' : 'primary'"
-              flat
+              :color="$q.dark.isActive ? 'secondary' : 'primary'"
+              :text-color="$q.dark.isActive ? 'primary' : 'white'"
               dense
               @click="$emit('close')"
             />
@@ -31,13 +31,16 @@
 
       <q-page-container>
         <q-page>
-          <q-card class="full-width no-shadow" :key="tourismData.id">
+          <q-card
+            class="full-width no-shadow"
+            :key="tourismData.id"
+          >
 
             <q-card-section class="q-pa-none">
               <div
                 v-if="tourismData.image_url"
                 class="text-body2 text-center"
-                :class="$q.dark.isActive ? 'text-white' : 'text-grey-9'"
+                :class="$q.dark.isActive ? 'text-white bg-primary' : 'text-primary'"
               >
                 <q-img
                   :src="tourismData.image_url"
@@ -48,13 +51,16 @@
                   </template>
                 </q-img>
               </div>
-              <div class="text-h5 text-center text-bold q-mt-md">
+              <div
+                class="text-h5 text-center text-bold"
+                :class="$q.dark.isActive ? 'text-white link-custom bg-primary' : 'text-primary'"
+              >
                 {{tourismData.name}}
               </div>
               <div
                 v-if="tourismData.description"
                 class="text-body1 q-pt-sm q-px-md"
-                :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
+                :class="$q.dark.isActive ? 'text-white link-custom bg-primary' : 'text-primary'"
               >
                 <p v-html="tourismData.description"></p>
               </div>
@@ -62,7 +68,7 @@
               <div
                 v-if="tourismData.address"
                 class="text-body1 q-px-md"
-                :class="$q.dark.isActive ? 'text-white' : 'text-grey-9'"
+                :class="$q.dark.isActive ? 'text-white bg-primary' : 'text-grey-9'"
               >
                 <p>
                   <strong>Endereço:</strong> {{ tourismData.address }}
@@ -73,7 +79,7 @@
             >
             </q-card-section> -->
 
-            <q-card-section class="q-pt-none">
+            <q-card-section class="q-pt-none" :class="$q.dark.isActive ? 'text-white bg-primary' : 'text-grey-9'">
               <p class="text-h6">Veja no mapa:</p>
               <!-- <map-tourism
                 :latitude="tourismData.latitude"

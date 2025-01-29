@@ -105,9 +105,9 @@ module.exports = function (ctx) {
       lang: 'pt-br', // Quasar language pack
       config: {
         brand: {
-          primary: '#204f8f',
-          secondary: '#ededed',
-          accent: '#9C27B0',
+          primary: '#161931',
+          secondary: '#75fbcf',
+          accent: '#5ec4a8',
 
           dark: '#1d1d1d',
 
@@ -168,6 +168,8 @@ module.exports = function (ctx) {
         categories: ['lifestyle', 'news', 'social'],
         id: '/',
         start_url: '/',
+        dir: 'ltr',
+        lang: 'pt-br',
         icons: [
           {
             src: 'icons/icon-128x128.png',
@@ -195,7 +197,7 @@ module.exports = function (ctx) {
             type: 'image/png'
           },
           {
-            src: 'architecture-and-city.png',
+            src: 'maskable_new.png',
             sizes: '196x196',
             type: 'image/png',
             purpose: 'maskable'
@@ -238,7 +240,8 @@ module.exports = function (ctx) {
           { origin: '*.abaetefest.com.br' },
           { origin: '*.app-abaetefest.netlify.app' }
         ],
-        edge_side_panel: {}
+        edge_side_panel: {},
+        scope: 'https://app.abaetefest.com.br'
       }
     },
 

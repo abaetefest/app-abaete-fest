@@ -1,7 +1,7 @@
 <template>
   <q-dialog persistent full-height :maximized="$q.screen.lt.sm" :value="modalPlaces">
-    <q-layout view="Lhh lpR fFf" container :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'">
-      <q-header :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-primary'">
+    <q-layout view="Lhh lpR fFf" container :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'">
+      <q-header :class="$q.dark.isActive ? 'bg-primary' : 'bg-primary'">
         <q-toolbar>
           <q-toolbar-title>
             {{ placeData.title}}
@@ -18,14 +18,14 @@
         </q-toolbar>
       </q-header>
 
-      <q-footer elevated :class="$q.dark.isActive ? 'bg-grey-9 text-white' : 'bg-white text-primary'">
+      <q-footer elevated :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-white text-primary'">
         <q-toolbar inset>
           <q-toolbar-title>
             <q-btn
               label="Fechar"
               class="float-right"
-              :color="$q.dark.isActive ? 'white' : 'primary'"
-              flat
+              :color="$q.dark.isActive ? 'secondary' : 'primary'"
+              :text-color="$q.dark.isActive ? 'primary' : 'white'"
               dense
               @click="$emit('close')"
             />
@@ -35,7 +35,7 @@
 
       <q-page-container>
         <q-page>
-          <q-card class="full-width no-shadow" :key="placeData.id">
+          <q-card class="full-width no-shadow" :key="placeData.id" :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'">
 
             <q-card-section class="q-pa-none">
               <div

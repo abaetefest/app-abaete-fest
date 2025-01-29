@@ -1,5 +1,5 @@
 <template>
-  <q-page :class="$q.dark.isActive ? '' : 'bg-grey-1'">
+  <q-page :class="$q.dark.isActive ? 'bg-primary' : 'bg-grey-1'">
     <div class="row q-pb-sm q-pt-sm justify-center">
       <q-btn-group push>
         <q-btn
