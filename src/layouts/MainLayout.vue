@@ -334,7 +334,7 @@ export default {
         this.darkMode = false
       }
     },
-    verificarPermissaoNotificacoes () {
+    async verificarPermissaoNotificacoes () {
     // Verifica se o navegador tem suporte a notificações
       if ('Notification' in window) {
         // Verifica o status da permissão de notificações
@@ -353,7 +353,7 @@ export default {
               console.log('%c Você recusou recentemente, aguardando 2 dias para solicitar novamente.', this.colorConsole)
             }
           } else {
-            this.solicitarPermissao()
+            console.log('%c Você recusou recentemente, aguardando 2 dias para solicitar novamente.', this.colorConsole)
           }
         } else {
           this.solicitarPermissao()
