@@ -261,7 +261,7 @@ export default {
       canShare: false,
       version_app: process.env.VERSION_APP,
       darkMode: false,
-      notificationModal: true,
+      notificationModal: false,
       colorConsole: 'background: #111; color: #BE1A25'
     }
   },
