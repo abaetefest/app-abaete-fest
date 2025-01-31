@@ -130,6 +130,30 @@
 
     <q-page-container>
       <router-view />
+      <q-dialog v-model="notificationModal" persistent >
+        <q-card class="full-width">
+          <q-card-section class="row items-center">
+            <q-avatar icon="mdi-bell-ring" color="primary" text-color="white" />
+            <span class="q-ml-sm text-body2">Permita nossas notificações <br> e não perca nenhuma novidade!</span>
+          </q-card-section>
+
+          <q-card-actions align="right">
+            <q-btn
+              outline
+              label="Agora não"
+              color="primary"
+              v-close-popup
+              @click="recusaNotificacao()"
+            />
+            <q-btn
+              icon="mdi-check-circle-outline"
+              label="Aceitar notificações"
+              color="primary"
+              v-close-popup
+              @click="confirmarPermissao" />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
     </q-page-container>
   </q-layout>
 </template>
@@ -235,10 +259,12 @@ export default {
       version: process.env.VERSION,
       canShare: false,
       version_app: process.env.VERSION_APP,
-      darkMode: false
+      darkMode: false,
+      notificationModal: false,
+      colorConsole: 'background: #111; color: #BE1A25'
     }
   },
-  mounted () {
+  async mounted () {
     if (JSON.parse(localStorage.getItem('abaete-manage'))) {
       this.isAdmin = true
     }
@@ -256,6 +282,7 @@ export default {
     }, true)
 
     this.verifyDarkMode()
+    this.verificarPermissaoNotificacoes()
   },
   methods: {
     logout (rota = '/') {
@@ -305,6 +332,54 @@ export default {
         this.setDarkMode(false)
         this.darkMode = false
       }
+    },
+    verificarPermissaoNotificacoes () {
+    // Verifica se o navegador tem suporte a notificações
+      if ('Notification' in window) {
+        // Verifica o status da permissão de notificações
+        if (Notification.permission === 'granted') {
+          console.log('%c Notificações já permitidas.', this.colorConsole)
+        } else if (Notification.permission === 'denied') {
+          let dataUltimaRecusa = localStorage.getItem('dataUltimaRecusa')
+          if (dataUltimaRecusa) {
+            // Converte a string para objeto Date
+            dataUltimaRecusa = new Date(dataUltimaRecusa)
+            const diasDepois = (new Date() - dataUltimaRecusa) / (1000 * 3600 * 24)
+            // Se passaram mais de 2 dias desde a recusa, solicita novamente
+            if (diasDepois > 2) {
+              this.solicitarPermissao()
+            } else {
+              console.log('%c Você recusou recentemente, aguardando 2 dias para solicitar novamente.', this.colorConsole)
+            }
+          } else {
+            this.solicitarPermissao()
+          }
+        } else {
+          this.solicitarPermissao()
+        }
+      } else {
+        console.log('%c Este navegador não suporta notificações.', this.colorConsole)
+      }
+    },
+    solicitarPermissao () {
+      this.notificationModal = true
+    },
+    confirmarPermissao () {
+      this.notificationModal = false
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+          console.log('%c Notificações permitidas.', this.colorConsole)
+        } else {
+          console.log('%c Notificações recusadas.', this.colorConsole)
+          // Salva a data da recusa no localStorage
+          localStorage.setItem('dataUltimaRecusa', new Date().toISOString())
+        }
+      })
+    },
+    recusaNotificacao () {
+      this.notificationModal = false
+      // Salva a data da recusa no localStorage
+      localStorage.setItem('dataUltimaRecusa', new Date().toISOString())
     }
   }
 }
