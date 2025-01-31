@@ -141,14 +141,15 @@
             <q-btn
               outline
               label="Agora não"
-              color="primary"
+              :color="$q.dark.isActive ? 'negative' : 'negative'"
               v-close-popup
               @click="recusaNotificacao()"
             />
             <q-btn
               icon="mdi-check-circle-outline"
               label="Aceitar notificações"
-              color="primary"
+              :color="$q.dark.isActive ? 'secondary' : 'primary'"
+              :text-color="$q.dark.isActive ? 'primary' : 'secondary'"
               v-close-popup
               @click="confirmarPermissao" />
           </q-card-actions>
@@ -260,7 +261,7 @@ export default {
       canShare: false,
       version_app: process.env.VERSION_APP,
       darkMode: false,
-      notificationModal: false,
+      notificationModal: true,
       colorConsole: 'background: #111; color: #BE1A25'
     }
   },
