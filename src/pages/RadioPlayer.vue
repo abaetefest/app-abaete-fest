@@ -25,8 +25,8 @@
         loop=""
       >
         <track kind="captions">
-        <source :src="`https://${id}.brasilstream.com.br/stream.m3u`" type="audio/mpeg">
-        <source :src="`https://${id}.brasilstream.com.br/stream`" type="audio/mpeg">
+        <source :src="link1" type="audio/mpeg">
+        <source :src="link2" type="audio/mpeg">
         Seu navegador não suporta o elemento audio
       </audio>
       <p class="text-body1 q-mt-md">
@@ -37,18 +37,22 @@
 </template>
 
 <script>
+import { radios } from 'src/constants/places/radios'
 export default {
   name: 'PageRadioPlayer',
   data () {
     return {
-      id: '',
+      link1: '',
+      link2: '',
       img: '',
       playStarted: false
     }
   },
   mounted () {
-    this.id = this.$route.params.id
-    this.img = this.$route.params.img
+    const radio = radios.find((radio) => radio.id === this.$route.params.id)
+    this.link1 = radio.link1
+    this.link2 = radio.link2
+    this.img = radio.icon
     const player = document.getElementById('radio-player')
     player.addEventListener('canplay', () => {
       this.playStarted = true

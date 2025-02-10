@@ -62,7 +62,14 @@ export default {
   },
   methods: {
     goTo (radio) {
-      this.$router.push({ name: 'radio-player', params: { id: radio.id, img: radio.icon } })
+      this.$router.push({
+        path: `radio-player/${radio.id}`,
+        params: {
+          link1: radio.link1,
+          link2: radio.link2,
+          img: radio.icon
+        }
+      })
       this.$mixpanel.track(radio.title)
     }
   }
