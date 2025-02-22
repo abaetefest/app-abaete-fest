@@ -10,7 +10,7 @@ export default {
         {
           origem: 'Abaetetuba',
           destino: 'Belém',
-          periodo: 'Segunda a Sexta',
+          periodo: 'Segunda a Sábado',
           horarios: [
             {
               hora: '04:00',
@@ -27,16 +27,12 @@ export default {
             },
             {
               hora: '07:00',
-              modalidade: 'Alça Viária'
+              modalidade: 'Alça Viária',
+              obs: 'Somente Segunda-feira'
             },
             {
               hora: '09:00',
               modalidade: 'Arapari'
-            },
-            {
-              hora: '10:20',
-              modalidade: 'Alça Viária',
-              obs: 'Somente Segunda-Feira e Sexta-feira'
             },
             {
               hora: '13:45',
@@ -60,19 +56,9 @@ export default {
         {
           origem: 'Abaetetuba',
           destino: 'Belém',
-          periodo: 'Sábado e Domingo',
+          periodo: 'Domingos e Feriados',
           modalidade: 'Arapari',
           horarios: [
-            {
-              hora: '04:00',
-              modalidade: 'Arapari',
-              obs: 'Somente Sábado'
-            },
-            {
-              hora: '06:30',
-              modalidade: 'Alça Viária',
-              obs: 'Somente Sábado'
-            },
             {
               hora: '07:00',
               modalidade: 'Alça Viária'
@@ -91,8 +77,7 @@ export default {
             },
             {
               hora: '16:00',
-              modalidade: 'Alça Viária',
-              obs: 'Somente Domingo'
+              modalidade: 'Alça Viária'
             },
             {
               hora: '16:30',
@@ -103,7 +88,7 @@ export default {
         {
           origem: 'Belém',
           destino: 'Abaetetuba',
-          periodo: 'Segunda a Sexta',
+          periodo: 'Segunda a Sábado',
           horarios: [
             {
               hora: '05:30',
@@ -113,7 +98,7 @@ export default {
             {
               hora: '07:30',
               modalidade: 'Alça Viária',
-              obs: 'Somente Segunda-feira e Sexta-feira'
+              obs: 'Somente Segunda-feira e Sábado'
             },
             {
               hora: '09:00',
@@ -134,7 +119,7 @@ export default {
             {
               hora: '15:00',
               modalidade: 'Alça Viária',
-              obs: 'Somente Segunda-feira e Sexta-feira'
+              obs: 'Somente Segunda-feira'
             },
             {
               hora: '16:30',
@@ -149,13 +134,8 @@ export default {
         {
           origem: 'Belém',
           destino: 'Abaetetuba',
-          periodo: 'Sábado e Domingo',
+          periodo: 'Domingos e Feriados',
           horarios: [
-            {
-              hora: '07:30',
-              modalidade: 'Alça Viária',
-              obs: 'Somente Sábado'
-            },
             {
               hora: '09:00',
               modalidade: 'Arapari'
@@ -163,11 +143,6 @@ export default {
             {
               hora: '09:30',
               modalidade: 'Alça Viária'
-            },
-            {
-              hora: '12:00',
-              modalidade: 'Alça Viária',
-              obs: 'Somente Sábado'
             },
             {
               hora: '14:00',
@@ -180,6 +155,10 @@ export default {
             {
               hora: '16:30',
               modalidade: 'Arapari'
+            },
+            {
+              hora: '18:00',
+              modalidade: 'Alça Viária'
             }
           ]
         }

@@ -41,7 +41,7 @@ export default {
         {
           origem: 'Abaetetuba',
           destino: 'Moju',
-          periodo: 'Sábado e Domingo',
+          periodo: 'Sábado, Domingo e Feriados',
           horarios: [
 
             {
@@ -79,23 +79,20 @@ export default {
               hora: '10:00'
             },
             {
-              hora: '12:30'
-            },
-            {
               hora: '14:00'
             },
             {
               hora: '16:00'
             },
             {
-              hora: '18:10'
+              hora: '18:00'
             }
           ]
         },
         {
           origem: 'Moju',
           destino: 'Abaetetuba',
-          periodo: 'Sábado e Domingo',
+          periodo: 'Sábado, Domingo e Feriados',
           horarios: [
 
             {
