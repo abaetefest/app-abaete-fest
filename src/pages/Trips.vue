@@ -4,7 +4,7 @@
       <span class="text-accent">Horários</span> de viagens
     </div>
 
-    <div v-if="$q.platform.is.mobile" class="q-mb-md">
+    <!-- <div v-if="$q.platform.is.mobile" class="q-mb-md">
       <q-card>
         <q-card-section class="q-pa-xs q-ma-none">
           <q-img
@@ -39,7 +39,7 @@
           </div>
         </q-card-section>
       </q-card>
-    </div>
+    </div> -->
 
     <div v-for="(trip, index) in trips" :key="index" >
       <q-card
