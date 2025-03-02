@@ -36,65 +36,60 @@
       </q-card-actions>
     </q-card>
 
-    <q-card v-else class="full-width full-height" :key="event.id" :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-grey-2 text-primary'">
-      <img
-        :src="event.image_url"
-        class="full-width"
-        style="max-height: 30rem;width: 400px; position: absolute;filter: blur(1rem); opacity: 0.9"
-        placeholder-src="loadPlaceholder.png"
-      />
-        <!-- <q-card-section class="row q-pb-none">
-        </q-card-section> -->
-
+    <q-card v-else class="full-width full-height no-shadow" :key="event.id" :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-grey-2 text-primary'">
         <q-separator />
 
-        <q-card-section>
-          <div class="text-body2 text-grey-9 q-mb-lg q-pa-sm text-center" style="min-height: 200px;">
+        <q-card-section class="q-gutter-sm">
+          <div class="text-body2 text-grey-9 q-mb-sm q-pa-xs text-center" style="min-height: 200px;">
             <q-img
               :src="event.image_url"
-              style="max-width: 350px; min-width: 300px;border-radius: 10px"
+              style="max-width: 600px;border-radius: 10px"
               placeholder-src="loadPlaceholder.png"
             />
           </div>
 
-          <q-separator />
-
-          <div class="text-h6 text-center q-py-none col-12 q-pt-lg">
-          {{ event.name}}
-          </div>
-
-          <q-card-section class="q-pa-sm">
-              <q-btn
-                v-if="canShare"
-                dense
-                label="Compartilhar"
-                icon="mdi-share-variant-outline"
-                @click="shareApp"
-                class="full-width"
-                color="blue"
-              />
-          </q-card-section>
-
-          <div
-            v-if="event.description"
-            class="text-body1 q-mb-md"
-            :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
-          >
-            <!-- <strong> SOBRE O EVENTO:</strong> -->
-            <p v-html="event.description">
-              {{ event.description }}
-            </p>
+          <div class="text-right q-mb-sm">
+            <q-btn
+              icon="mdi-fullscreen"
+              label="Tela cheia"
+              outline
+              :color="$q.dark.isActive ? 'white' : 'grey-8'"
+              @click="imgFullScreen"
+            />
           </div>
 
           <div
-            class="text-body2"
+            class="text-body1"
             :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
           >
             <strong>DATA:</strong> {{ formatDateString(event.start_date)}} - {{ formatHourString(event.start_date) }}
           </div>
+
+          <div class="text-h6">
+            {{ event.name}}
+          </div>
+
+          <div
+            v-if="event.description"
+            class="text-body1"
+            :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
+          >
+            <div v-html="event.description">
+              {{ event.description }}
+            </div>
+          </div>
         </q-card-section>
 
-        <q-card-actions>
+        <q-card-actions class="q-gutter-y-md">
+          <q-btn
+            v-if="canShare"
+            label="Compartilhar"
+            icon="mdi-share-variant-outline"
+            @click="shareApp"
+            class="full-width"
+            color="blue"
+          />
+
           <q-btn
             label="Voltar"
             class="full-width"
@@ -106,19 +101,40 @@
         </q-card-actions>
 
     </q-card>
+
+    <q-dialog
+      v-model="imgZoom"
+      persistent
+      :maximized="true"
+      transition-show="slide-up"
+      transition-hide="slide-down"
+    >
+      <q-card class="bg-primary text-center">
+        <image-zoom
+          :src="event.image_url"
+          :ratio="1"
+          @close="imgZoom = false"
+        />
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
 <script>
 import { date } from 'quasar'
+import ImageZoom from 'components/ImageZoom.vue'
 export default {
   name: 'PageEventDetails',
+  components: {
+    ImageZoom
+  },
   data () {
     return {
       idEvent: '',
       event: {},
       load: true,
-      canShare: false
+      canShare: false,
+      imgZoom: false
     }
   },
   mounted () {
@@ -167,6 +183,9 @@ export default {
       } catch (err) {
         this.$notifyDanger('Não foi possível compartilharo app!')
       }
+    },
+    imgFullScreen () {
+      this.imgZoom = true
     }
   },
   meta () {
