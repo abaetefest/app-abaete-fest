@@ -4,42 +4,27 @@
       <span class="text-accent">Horários</span> de viagens
     </div>
 
-    <!-- <div v-if="$q.platform.is.mobile" class="q-mb-md">
-      <q-card>
+    <div v-if="$q.platform.is.mobile" class="q-mb-md">
+      <q-card class="animated-border" @click="openLink">
         <q-card-section class="q-pa-xs q-ma-none">
-          <q-img
-            :src="$q.dark.isActive ?  '/propagandas/machago2.png' : '/propagandas/machago1.png'"
-          />
+          <q-img src="/slots/gygbet.png" />
         </q-card-section>
         <q-card-section class="q-gutter-y-md row justify-center">
           <div class="text-center col-9">
             <q-btn
-              :color="$q.dark.isActive ? 'secondary' : 'primary'"
-              label="Baixar para Android"
-              @click="androidStore"
+              :color="$q.dark.isActive ? 'secondary' : 'secondary'"
+              label="Pegar meu bônus"
+              @click="openLink"
               rounded
-              icon="mdi-google-play"
-              class="full-width"
+              icon="mdi-currency-usd"
+              class="full-width text-bold"
               push
-              :text-color="$q.dark.isActive ? 'primary' : 'white'"
-            />
-          </div>
-
-          <div class="text-center col-9">
-            <q-btn
-              :color="$q.dark.isActive ? 'secondary' : 'primary'"
-              :text-color="$q.dark.isActive ? 'primary' : 'white'"
-              label="Baixar para iOS"
-              @click="appStore"
-              rounded
-              icon="mdi-apple"
-              class="full-width"
-              push
+              :text-color="$q.dark.isActive ? 'primary' : 'primary'"
             />
           </div>
         </q-card-section>
       </q-card>
-    </div> -->
+    </div>
 
     <div v-for="(trip, index) in trips" :key="index" >
       <q-card
@@ -177,13 +162,8 @@ export default {
   },
   methods: {
     openLink () {
-      if (this.$q.platform.is.ios) {
-        openURL('https://apps.apple.com/app/machago/id6444778780', '_blank')
-      } else if (this.$q.platform.is.android) {
-        openURL('https://play.google.com/store/apps/details?id=br.com.machago.passenger.drivermachine', '_blank')
-      } else {
-        openURL('https://linkr.bio/machago', '_blank')
-      }
+      this.handleMixPanelEvent('Slot gygbet opened')
+      openURL('https://www.gygmk.com/?id=544909124&currency=BRL&type=2', '_blank')
     },
     androidStore () {
       this.handleMixPanelEvent('Machago Android')
@@ -218,9 +198,34 @@ export default {
   }
 }
 </script>
-
 <style>
- .link-custom {
+
+.link-custom {
   color: rgb(180, 196, 242);
 };
+
+.animated-border {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animated-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid transparent;
+    border-radius: 4px;
+    animation: borderBlink 1.5s infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes borderBlink {
+    0% { border-color: rgba(46, 213, 115, 0.7); box-shadow: 0 0 10px rgba(46, 213, 115, 0.7); }
+    50% { border-color: rgba(46, 213, 115, 0); box-shadow: 0 0 0px rgba(46, 213, 115, 0); }
+    100% { border-color: rgba(46, 213, 115, 0.7); box-shadow: 0 0 10px rgba(46, 213, 115, 0.7); }
+  }
 </style>
