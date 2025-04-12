@@ -1,7 +1,7 @@
 export default {
   cidade1: 'Abaetetuba',
-  cidade2: 'Porto São Francisco',
-  somenteUmaCidade: true,
+  cidade2: 'Terminal Vila dos Cabanos',
+  somenteUmaCidade: false,
   empresas: [
     // Cootransbat-tur
     {
@@ -10,7 +10,7 @@ export default {
       viagens: [
         {
           origem: 'Abaetetuba',
-          destino: 'Porto São Francisco',
+          destino: 'Terminal Vila dos Cabanos',
           periodo: 'Segunda a Sexta',
           horarios: [
             {
@@ -21,7 +21,7 @@ export default {
         },
         {
           origem: 'Abaetetuba',
-          destino: 'Porto São Francisco',
+          destino: 'Terminal Vila dos Cabanos',
           periodo: 'Sábado',
           horarios: [
             {
@@ -32,11 +32,44 @@ export default {
         },
         {
           origem: 'Abaetetuba',
-          destino: 'Porto São Francisco',
+          destino: 'Terminal Vila dos Cabanos',
           periodo: 'Domingos e Feriados',
           horarios: [
             {
               hora: '05:20 | 07:00 | 08:00 | 09:00 | 10:00 | 11:00 | 13:00 | 15:30 | 16:30',
+              modalidade: ''
+            }
+          ]
+        },
+        {
+          origem: 'Terminal Vila dos Cabanos',
+          destino: 'Abaetetuba',
+          periodo: 'Segunda a Sexta',
+          horarios: [
+            {
+              hora: '06:30 | 06:55 | 07:55 | 08:25 | 09:00 | 10:30 | 11:15 | 11:45 | 12:15 | 12:45 | 14:15 | 15:30 | 16:30 | 16:45 | 17:15 | 17:40 | 18:25',
+              modalidade: ''
+            }
+          ]
+        },
+        {
+          origem: 'Terminal Vila dos Cabanos',
+          destino: 'Abaetetuba',
+          periodo: 'Sábado',
+          horarios: [
+            {
+              hora: '06:55 | 08:25 | 09:00 | 10:15 | 11:45 | 12:45 | 14:15 | 15:30 | 17:15 | 18:15',
+              modalidade: ''
+            }
+          ]
+        },
+        {
+          origem: 'Terminal Vila dos Cabanos',
+          destino: 'Abaetetuba',
+          periodo: 'Domingos e Feriados',
+          horarios: [
+            {
+              hora: '07:00 | 09:15 | 10:15 | 11:15 | 12:15 | 13:15 | 15:15 | 17:15 | 18:15',
               modalidade: ''
             }
           ]
