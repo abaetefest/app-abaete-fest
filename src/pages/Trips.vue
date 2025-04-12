@@ -6,13 +6,13 @@
 
     <div v-if="$q.platform.is.mobile" class="q-mb-md">
       <q-card class="animated-border" @click="openLink">
-        <q-card-section class="q-pa-xs q-ma-none">
-          <q-img src="/slots/gygbet.png" />
+        <q-card-section class="q-pa-sm q-ma-none">
+          <q-img src="/slots/xohappy.png" />
         </q-card-section>
         <q-card-section class="q-gutter-y-md row justify-center">
           <div class="text-center col-9">
             <q-btn
-              :color="$q.dark.isActive ? 'secondary' : 'secondary'"
+              :color="$q.dark.isActive ? 'warning' : 'warning'"
               label="Pegar meu bônus"
               @click="openLink"
               rounded
@@ -162,8 +162,8 @@ export default {
   },
   methods: {
     openLink () {
-      this.handleMixPanelEvent('Slot gygbet opened')
-      openURL('https://www.gygmk.com/?id=544909124&currency=BRL&type=2', '_blank')
+      this.handleMixPanelEvent('Slot xohappy opened')
+      openURL('https://xohappy3.com/?id=496450828&currency=BRL&type=2', '_blank')
     },
     androidStore () {
       this.handleMixPanelEvent('Machago Android')
@@ -224,8 +224,8 @@ export default {
   }
 
   @keyframes borderBlink {
-    0% { border-color: rgba(46, 213, 115, 0.7); box-shadow: 0 0 10px rgba(46, 213, 115, 0.7); }
+    0% { border-color: rgba(255, 211, 54, 0.7); box-shadow: 0 0 10px rgba(255, 211, 54, 0.852); }
     50% { border-color: rgba(46, 213, 115, 0); box-shadow: 0 0 0px rgba(46, 213, 115, 0); }
-    100% { border-color: rgba(46, 213, 115, 0.7); box-shadow: 0 0 10px rgba(46, 213, 115, 0.7); }
+    100% { border-color: rgba(255, 211, 54, 0.7); box-shadow: 0 0 10px rgba(255, 211, 54, 0.825); }
   }
 </style>
