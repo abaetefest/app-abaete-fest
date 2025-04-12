@@ -283,7 +283,7 @@ export default {
     }, true)
 
     this.verifyDarkMode()
-    this.verificarPermissaoNotificacoes()
+    // this.verificarPermissaoNotificacoes()
   },
   methods: {
     logout (rota = '/') {
