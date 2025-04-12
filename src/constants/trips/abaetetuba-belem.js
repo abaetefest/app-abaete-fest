@@ -31,7 +31,7 @@ export default {
               obs: 'Somente Segunda-feira'
             },
             {
-              hora: '09:00',
+              hora: '08:45',
               modalidade: 'Arapari'
             },
             {
@@ -64,7 +64,7 @@ export default {
               modalidade: 'Alça Viária'
             },
             {
-              hora: '09:00',
+              hora: '08:45',
               modalidade: 'Arapari'
             },
             {
