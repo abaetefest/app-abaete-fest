@@ -5,9 +5,9 @@ import abaetetubaBelem from './abaetetuba-belem'
 import abaetetubaIgarapemiri from './abaetetuba-igarapemiri'
 import abaetetubaMaedorio from './abaetetuba-maedorio'
 import abaetetubaMoju from './abaetetuba-moju'
-import abaetetubaNucleoPortoSaoFrancisco from './abaetetuba-nucleo-portoSaoFrancisco'
-import abaetetubaPortoSaoFrancisco from './abaetetuba-portoSaoFrancisco'
+import abaetetubaNucleoTerminalVilaDosCabanos from './abaetetuba-nucleo-terminalviladoscabanos'
 import abaetetubaTailandia from './abaetetuba-tailandia'
+import abaetetubaTerminalVilaDosCabanos from './abaetetuba-terminalviladoscabanos'
 import abaetetubaUfpa from './abaetetuba-ufpa'
 import barcarenaBelem from './barcarena-belem'
 
@@ -20,8 +20,8 @@ export const trips = [
   { ...abaetetubaMoju },
   { ...abaetetubaIgarapemiri },
   { ...abaetetubaTailandia },
-  { ...abaetetubaPortoSaoFrancisco },
-  { ...abaetetubaNucleoPortoSaoFrancisco },
+  { ...abaetetubaTerminalVilaDosCabanos },
+  { ...abaetetubaNucleoTerminalVilaDosCabanos },
   { ...abaetetubaMaedorio },
   { ...abaetetuba4bocas }
 ]

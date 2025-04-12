@@ -1,6 +1,6 @@
 export default {
   cidade1: 'Abaetetuba',
-  cidade2: 'Núcleo-Porto de São Francisco',
+  cidade2: 'Núcleo - Terminal Vila dos Cabanos',
   empresas: [
     // Jarumã
     {
@@ -9,7 +9,7 @@ export default {
       viagens: [
         {
           origem: 'Abaetetuba',
-          destino: 'Núcleo-Porto de São Francisco',
+          destino: 'Núcleo - Terminal Vila dos Cabanos',
           periodo: 'Segunda a Sábado',
           horarios: [
             {
@@ -51,7 +51,7 @@ export default {
         },
         {
           origem: 'Abaetetuba',
-          destino: 'Núcleo-Porto de São Francisco',
+          destino: 'Núcleo - Terminal Vila dos Cabanos',
           periodo: 'Domingos e Feriados',
           horarios: [
             {
@@ -66,7 +66,7 @@ export default {
           ]
         },
         {
-          origem: 'Núcleo-Porto de São Francisco',
+          origem: 'Núcleo - Terminal Vila dos Cabanos',
           destino: 'Abaetetuba',
           periodo: 'Segunda a Sábado',
           horarios: [
@@ -119,7 +119,7 @@ export default {
           ]
         },
         {
-          origem: 'Núcleo-Porto de São Francisco',
+          origem: 'Núcleo - Terminal Vila dos Cabanos',
           destino: 'Abaetetuba',
           periodo: 'Domingos e Feriados',
           horarios: [
