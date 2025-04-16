@@ -5,19 +5,19 @@
     </div>
 
     <div v-if="$q.platform.is.mobile" class="q-mb-md">
-      <q-card class="animated-border" @click="openLink">
+      <q-card class="animated-border" @click="openLink" style="border-radius: 15px;">
         <q-card-section class="q-pa-sm q-ma-none">
-          <q-img src="/slots/xohappy.png" />
+          <q-img src="/slots/fortune.jpeg" style="border-radius: 15px" />
         </q-card-section>
         <q-card-section class="q-gutter-y-md row justify-center">
           <div class="text-center col-9">
             <q-btn
-              :color="$q.dark.isActive ? 'warning' : 'warning'"
+              :color="$q.dark.isActive ? 'purple' : 'purple'"
               label="Pegar meu bônus"
               @click="openLink"
               rounded
               icon="mdi-currency-usd"
-              class="full-width text-bold"
+              class="full-width text-bold text-white"
               push
               :text-color="$q.dark.isActive ? 'primary' : 'primary'"
             />
@@ -207,6 +207,7 @@ export default {
 .animated-border {
     position: relative;
     overflow: hidden;
+    border-radius: 15px
   }
 
   .animated-border::before {
@@ -221,11 +222,12 @@ export default {
     animation: borderBlink 1.5s infinite;
     pointer-events: none;
     z-index: 1;
+    border-radius: 15px
   }
 
   @keyframes borderBlink {
-    0% { border-color: rgba(255, 211, 54, 0.7); box-shadow: 0 0 10px rgba(255, 211, 54, 0.852); }
+    0% { border-color: rgba(172, 18, 207, 0.7); box-shadow: 0 0 10px rgba(172, 18, 207, 0.7); }
     50% { border-color: rgba(46, 213, 115, 0); box-shadow: 0 0 0px rgba(46, 213, 115, 0); }
-    100% { border-color: rgba(255, 211, 54, 0.7); box-shadow: 0 0 10px rgba(255, 211, 54, 0.825); }
+    100% { border-color: rgba(172, 18, 207, 0.7); box-shadow: 0 0 10px rgba(172, 18, 207, 0.7); }
   }
 </style>
