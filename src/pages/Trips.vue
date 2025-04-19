@@ -4,7 +4,30 @@
       <span class="text-accent">Horários</span> de viagens
     </div>
 
-    <div v-if="$q.platform.is.mobile" class="q-mb-md">
+    <div class="row q-pa-sm">
+      <div class="col-12 q-mb-sm">
+        <p class="text-subtitle1 text-bold text-center">
+          Entenda as Legendas:
+        </p>
+        <span class="text-body2 py-sm block">
+          <strong>Arapari</strong>: Portos <b>Jarumã</b> e <b>Arapari</b> próximo ao Açaí Biruta - R. Siqueira
+          Mendes 10 - Cidade Velha, Belém - PA, 66020-600
+        </span>
+        <q-separator class="mt-md" />
+        <span class="text-body2 block">
+          <strong>Alça Viária</strong>: Terminal Rodoviário de Belém - São Brás,
+          Belém - PA, 66090-000
+        </span>
+        <q-separator />
+        <span class="text-body2 block">
+          <strong>Balsa</strong>: Terminal Rodofluvial de Belém - Av. Bernardo
+          Sayão, 3786 - Cidade Velha, Belém - PA,
+        </span>
+        <q-separator />
+      </div>
+    </div>
+
+    <!-- <div v-if="$q.platform.is.mobile" class="q-mb-md">
       <q-card class="animated-border" @click="openLink" style="border-radius: 15px;">
         <q-card-section class="q-pa-sm q-ma-none">
           <q-img src="/slots/fortune.jpeg" style="border-radius: 15px" />
@@ -24,7 +47,7 @@
           </div>
         </q-card-section>
       </q-card>
-    </div>
+    </div> -->
 
     <div v-for="(trip, index) in trips" :key="index" >
       <q-card
