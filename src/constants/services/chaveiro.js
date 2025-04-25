@@ -1,5 +1,16 @@
 export const chaveiro = [
   {
+    name: 'Chaveiro Expresso (24h)',
+    category: 'chaveiro',
+    phone: '',
+    wpp: '91984649196',
+    instagram: '',
+    TypeServices: [
+      'Cópias, confecções de chaves',
+      'Chaveiro residencial e automotivo'
+    ]
+  },
+  {
     name: 'Bruce Chaveiro',
     category: 'chaveiro',
     phone: '',
