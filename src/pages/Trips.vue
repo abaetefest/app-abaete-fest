@@ -27,6 +27,20 @@
       </div>
     </div>
 
+    <div class="row q-pa-sm">
+      <p
+        class="text-bold text-center text-body1"
+        :class="$q.dark.isActive ? 'text-secondary' :  'text-primary'"
+      >
+        Confira as promoções da Amazon Brasil com nossa parceria oficial:
+      </p>
+        <q-img src="propagandas/amazon.png"
+          class="animated-border"
+          style="border-radius: 10px"
+          @click="openLink"
+        />
+    </div>
+
     <!-- <div v-if="$q.platform.is.mobile" class="q-mb-md">
       <q-card class="animated-border" @click="openLink" style="border-radius: 15px;">
         <q-card-section class="q-pa-sm q-ma-none">
@@ -185,8 +199,8 @@ export default {
   },
   methods: {
     openLink () {
-      this.handleMixPanelEvent('Slot xohappy opened')
-      openURL('https://xohappy3.com/?id=496450828&currency=BRL&type=2', '_blank')
+      this.handleMixPanelEvent('Amazon Afializado')
+      openURL('https://amzn.to/44JIvff', '_blank')
     },
     androidStore () {
       this.handleMixPanelEvent('Machago Android')
