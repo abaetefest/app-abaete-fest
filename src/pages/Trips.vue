@@ -27,18 +27,66 @@
       </div>
     </div>
 
-    <div class="row q-pa-sm">
-      <p
-        class="text-bold text-center text-body1"
-        :class="$q.dark.isActive ? 'text-secondary' :  'text-primary'"
+    <div class="">
+      <span
+        class="text-bold text-center text-body1 block rounded-borders"
+        :class="$q.dark.isActive ? 'text-primary bg-amber-7' :  'text-primary bg-secondary'"
       >
-        Confira as promoções da Amazon Brasil com nossa parceria oficial:
-      </p>
-        <q-img src="propagandas/amazon.png"
+        Confira as promoções da Amazon Brasil com nossa parceria oficial
+      </span>
+      <span
+        class="text-center text-body2 block rounded-borders"
+        :class="$q.dark.isActive ? 'text-grey-4' :  'text-grey-8'"
+      >
+        Acesse clicando na imagem abaixo
+      </span>
+        <!-- <q-img src="propagandas/amazon.png"
           class="animated-border"
           style="border-radius: 10px"
           @click="openLink"
-        />
+        /> -->
+
+          <q-carousel
+            animated
+            v-model="slide"
+            arrows
+            navigation
+            infinite
+            :autoplay="true"
+          >
+            <q-carousel-slide :name="1">
+              <q-img
+                src="propagandas/amazon.png"
+                class="animated-border"
+                style="border-radius: 10px"
+                @click="openLink"
+              />
+            </q-carousel-slide>
+            <q-carousel-slide :name="2">
+              <q-img
+                src="propagandas/amazon2.png"
+                class="animated-border"
+                style="border-radius: 10px"
+                @click="openLink"
+              />
+            </q-carousel-slide>
+            <q-carousel-slide :name="3">
+              <q-img
+                src="propagandas/amazon3.png"
+                class="animated-border"
+                style="border-radius: 10px"
+                @click="openLink"
+              />
+            </q-carousel-slide>
+            <q-carousel-slide :name="4">
+              <q-img
+                src="propagandas/amazon4.png"
+                class="animated-border"
+                style="border-radius: 10px"
+                @click="openLink"
+              />
+            </q-carousel-slide>
+          </q-carousel>
     </div>
 
     <!-- <div v-if="$q.platform.is.mobile" class="q-mb-md">
@@ -185,7 +233,8 @@ export default {
       trips: trips,
       ratingModel: 3,
       modalPlaces: false,
-      placeDetails: {}
+      placeDetails: {},
+      slide: 1
     }
   },
   computed: {
@@ -266,5 +315,9 @@ export default {
     0% { border-color: rgba(172, 18, 207, 0.7); box-shadow: 0 0 10px rgba(172, 18, 207, 0.7); }
     50% { border-color: rgba(46, 213, 115, 0); box-shadow: 0 0 0px rgba(46, 213, 115, 0); }
     100% { border-color: rgba(172, 18, 207, 0.7); box-shadow: 0 0 10px rgba(172, 18, 207, 0.7); }
+  }
+
+  .q-carousel {
+    height: 100% !important;
   }
 </style>
