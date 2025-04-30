@@ -13,6 +13,8 @@
   "dependencies": {
     "@quasar/cli": "^2.4.0",
     "@quasar/extras": "^1.16.5",
+    "amazon-paapi": "^1.0.7",
+    "amazon-paapi5": "^0.0.0-alpha.4",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dotenv": "^16.3.1",

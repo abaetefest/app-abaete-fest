@@ -29,7 +29,8 @@ module.exports = function (ctx) {
       'notify',
       'auth-router',
       'mixpanel',
-      'google-maps'
+      'google-maps',
+      'amazon-affiliate'
     ],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
