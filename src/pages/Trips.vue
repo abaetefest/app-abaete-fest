@@ -27,89 +27,12 @@
       </div>
     </div>
 
-    <div class="">
-      <span
-        class="text-bold text-center text-body1 block rounded-borders"
-        :class="$q.dark.isActive ? 'text-primary bg-amber-7' :  'text-primary bg-secondary'"
-      >
-        Confira as promoções da Amazon Brasil com nossa parceria oficial
-      </span>
-      <span
-        class="text-center text-body2 block rounded-borders"
-        :class="$q.dark.isActive ? 'text-grey-4' :  'text-grey-8'"
-      >
-        Acesse clicando na imagem abaixo
-      </span>
-        <!-- <q-img src="propagandas/amazon.png"
-          class="animated-border"
-          style="border-radius: 10px"
-          @click="openLink"
-        /> -->
-
-          <q-carousel
-            animated
-            v-model="slide"
-            arrows
-            navigation
-            infinite
-            :autoplay="true"
-          >
-            <q-carousel-slide :name="1">
-              <q-img
-                src="propagandas/amazon.png"
-                class="animated-border"
-                style="border-radius: 10px"
-                @click="openLink"
-              />
-            </q-carousel-slide>
-            <q-carousel-slide :name="2">
-              <q-img
-                src="propagandas/amazon2.png"
-                class="animated-border"
-                style="border-radius: 10px"
-                @click="openLink"
-              />
-            </q-carousel-slide>
-            <q-carousel-slide :name="3">
-              <q-img
-                src="propagandas/amazon3.png"
-                class="animated-border"
-                style="border-radius: 10px"
-                @click="openLink"
-              />
-            </q-carousel-slide>
-            <q-carousel-slide :name="4">
-              <q-img
-                src="propagandas/amazon4.png"
-                class="animated-border"
-                style="border-radius: 10px"
-                @click="openLink"
-              />
-            </q-carousel-slide>
-          </q-carousel>
-    </div>
-
-    <!-- <div v-if="$q.platform.is.mobile" class="q-mb-md">
-      <q-card class="animated-border" @click="openLink" style="border-radius: 15px;">
-        <q-card-section class="q-pa-sm q-ma-none">
-          <q-img src="/slots/fortune.jpeg" style="border-radius: 15px" />
-        </q-card-section>
-        <q-card-section class="q-gutter-y-md row justify-center">
-          <div class="text-center col-9">
-            <q-btn
-              :color="$q.dark.isActive ? 'purple' : 'purple'"
-              label="Pegar meu bônus"
-              @click="openLink"
-              rounded
-              icon="mdi-currency-usd"
-              class="full-width text-bold text-white"
-              push
-              :text-color="$q.dark.isActive ? 'primary' : 'primary'"
-            />
-          </div>
-        </q-card-section>
-      </q-card>
-    </div> -->
+    <q-img
+      src="propagandas/genio.png"
+      class="animated-border"
+      style="border-radius: 10px"
+      @click="openLink"
+    />
 
     <div v-for="(trip, index) in trips" :key="index" >
       <q-card
@@ -248,8 +171,8 @@ export default {
   },
   methods: {
     openLink () {
-      this.handleMixPanelEvent('Amazon Afializado')
-      openURL('https://amzn.to/44JIvff', '_blank')
+      this.handleMixPanelEvent('Canal Genio whatsapp')
+      openURL('https://whatsapp.com/channel/0029Vb6Yxo4DjiOj0JZdJ71h', '_blank')
     },
     androidStore () {
       this.handleMixPanelEvent('Machago Android')
@@ -312,9 +235,9 @@ export default {
   }
 
   @keyframes borderBlink {
-    0% { border-color: rgba(172, 18, 207, 0.7); box-shadow: 0 0 10px rgba(172, 18, 207, 0.7); }
+    0% { border-color: rgba(255, 234, 0, 0.7); box-shadow: 0 0 10px rgba(255, 234, 0, 0.7); }
     50% { border-color: rgba(46, 213, 115, 0); box-shadow: 0 0 0px rgba(46, 213, 115, 0); }
-    100% { border-color: rgba(172, 18, 207, 0.7); box-shadow: 0 0 10px rgba(172, 18, 207, 0.7); }
+    100% { border-color: rgba(255, 234, 0, 0.7); box-shadow: 0 0 10px rgba(255, 234, 0, 0.7); }
   }
 
   .q-carousel {
