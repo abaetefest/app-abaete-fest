@@ -27,12 +27,16 @@
       </div>
     </div>
 
-    <q-img
-      src="propagandas/genio.png"
-      class="animated-border"
-      style="border-radius: 10px"
-      @click="openLink"
-    />
+    <div class="row justify-center">
+       <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <q-img
+          src="propagandas/genio.png"
+          class="animated-border cursor-pointer"
+          style="border-radius: 10px"
+          @click="openLink"
+        />
+      </div>
+    </div>
 
     <div v-for="(trip, index) in trips" :key="index" >
       <q-card
