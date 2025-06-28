@@ -14,7 +14,8 @@
     "serve:ssr": "quasar serve dist/ssr --port 3000",
     "netlify:build": "quasar build -m ssr",
     "netlify:dev": "quasar dev -m ssr --port 8888",
-    "generate:favicon": "icongenie generate -m pwa -i new-abaetefest.png --theme-color 161931 --skip-trim --background splash-bg.png  --splashscreen-color 161931"
+    "generate:favicon": "icongenie generate -m pwa -i new-abaetefest.png --theme-color 161931 --skip-trim --background splash-bg.png  --splashscreen-color 161931",
+    "lint:fix": "eslint --ext .js,.vue ./ --fix"
   },
   "dependencies": {
     "@quasar/cli": "^2.4.0",

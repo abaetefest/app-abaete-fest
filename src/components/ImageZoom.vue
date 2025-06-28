@@ -43,7 +43,7 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       zoom: 1,
       originX: 0,
@@ -55,25 +55,25 @@ export default {
   },
 
   methods: {
-    zoomIn () {
+    zoomIn() {
       if (this.zoom < this.maxZoom) {
         this.zoom = Math.min(this.zoom + this.zoomStep, this.maxZoom)
       }
     },
 
-    zoomOut () {
+    zoomOut() {
       if (this.zoom > this.minZoom) {
         this.zoom = Math.max(this.zoom - this.zoomStep, this.minZoom)
       }
     },
 
-    resetZoom () {
+    resetZoom() {
       this.zoom = 1
       this.originX = 0
       this.originY = 0
     },
 
-    handleWheel (event) {
+    handleWheel(event) {
       const rect = this.$refs.container.getBoundingClientRect()
       const x = event.clientX - rect.left
       const y = event.clientY - rect.top
@@ -90,13 +90,13 @@ export default {
       }
     },
 
-    handleMouseDown (event) {
+    handleMouseDown(event) {
       this.isDragging = true
       this.lastMouseX = event.clientX
       this.lastMouseY = event.clientY
     },
 
-    handleMouseMove (event) {
+    handleMouseMove(event) {
       if (this.isDragging && this.zoom > 1) {
         const deltaX = event.clientX - this.lastMouseX
         const deltaY = event.clientY - this.lastMouseY

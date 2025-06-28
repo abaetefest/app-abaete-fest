@@ -2,13 +2,13 @@ import Rest from 'src/services/rest'
 // const axios = require('axios')
 
 export default class UsersService extends Rest {
-  constructor (http) {
+  constructor(http) {
     super('/users', http)
     this.http = http
     this.url = '/users'
   }
 
-  async login ($dados) {
+  async login($dados) {
     try {
       return await this.http.post(this.url + '/signin', $dados)
     } catch (error) {
@@ -16,7 +16,7 @@ export default class UsersService extends Rest {
     }
   }
 
-  async register ($dados) {
+  async register($dados) {
     try {
       return await this.http.post(this.url + '/signup', $dados)
     } catch (error) {

@@ -120,7 +120,7 @@
 import { servicesList } from 'src/constants/services/index'
 export default {
   name: 'ServicesPage',
-  data () {
+  data() {
     return {
       services: servicesList,
       ratingModel: 3,
@@ -193,10 +193,10 @@ export default {
       return img[0].icon
     }
   },
-  mounted () {
+  mounted() {
   },
   methods: {
-    trackEventMixpanel (serviceInfo) {
+    trackEventMixpanel(serviceInfo) {
       this.$mixpanel.track(`service(${serviceInfo.name})`)
     }
   }

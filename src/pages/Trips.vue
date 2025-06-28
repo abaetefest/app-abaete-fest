@@ -155,7 +155,7 @@ import { trips } from 'src/constants/trips/index'
 import { openURL } from 'quasar'
 export default {
   name: 'TripsPage',
-  data () {
+  data() {
     return {
       trips: trips,
       ratingModel: 3,
@@ -174,19 +174,19 @@ export default {
     // }
   },
   methods: {
-    openLink () {
+    openLink() {
       this.handleMixPanelEvent('Canal Genio whatsapp')
       openURL('https://whatsapp.com/channel/0029Vb6Yxo4DjiOj0JZdJ71h', '_blank')
     },
-    androidStore () {
+    androidStore() {
       this.handleMixPanelEvent('Machago Android')
       openURL('https://play.google.com/store/apps/details?id=br.com.machago.passenger.drivermachine', '_blank')
     },
-    appStore () {
+    appStore() {
       this.handleMixPanelEvent('Machago iOS')
       openURL('https://apps.apple.com/br/app/machago/id6444778780', '_blank')
     },
-    handleMixPanelEvent (empresa) {
+    handleMixPanelEvent(empresa) {
       this.$mixpanel.track(empresa)
     }
     // copyCupom () {

@@ -49,7 +49,7 @@ export default {
       default: 12
     }
   },
-  data () {
+  data() {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       center: [],
@@ -58,12 +58,12 @@ export default {
       ready: false
     }
   },
-  mounted () {
+  mounted() {
     // this.getGeolocation()
     this.setStaticPosition()
   },
   methods: {
-    getGeolocation () {
+    getGeolocation() {
       if (navigator.geolocation) {
         // this.$q.loading.show()
         navigator.geolocation.getCurrentPosition(this.setPosition, this.errorPosition)
@@ -71,7 +71,7 @@ export default {
         this.errorPosition()
       }
     },
-    setPosition (position) {
+    setPosition(position) {
       const coords = position.coords
       this.center = [this.latitude, this.longitude]
       this.markerLatLng = [coords.latitude, coords.longitude]
@@ -79,14 +79,14 @@ export default {
       // this.successNotify()
       this.ready = true
     },
-    setStaticPosition () {
+    setStaticPosition() {
       this.center = [this.latitude, this.longitude]
       // this.markerLatLng = [coords.latitude, coords.longitude]
       // this.$q.loading.hide()
       // this.successNotify()
       this.ready = true
     },
-    errorPosition () {
+    errorPosition() {
       this.$q.notify({
         position: 'bottom',
         timeout: 3000,
@@ -100,7 +100,7 @@ export default {
       this.$q.loading.hide()
       this.ready = true
     },
-    successNotify () {
+    successNotify() {
       this.$q.notify({
         position: 'bottom',
         timeout: 3000,

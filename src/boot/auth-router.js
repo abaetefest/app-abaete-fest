@@ -1,5 +1,5 @@
 import { Notify } from 'quasar'
-function userExist () {
+function userExist() {
   return !!localStorage.getItem('abaete-fest-token')
 }
 

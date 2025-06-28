@@ -53,15 +53,15 @@
 import { radios } from 'src/constants/places/radios'
 export default {
   name: 'PageRadio',
-  data () {
+  data() {
     return {
       opcoes: radios
     }
   },
-  mounted () {
+  mounted() {
   },
   methods: {
-    goTo (radio) {
+    goTo(radio) {
       this.$router.push({
         path: `radio-player/${radio.id}`,
         params: {

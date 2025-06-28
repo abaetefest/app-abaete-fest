@@ -3,13 +3,13 @@ import { getFormData } from 'src/utils/convert'
 // const axios = require('axios')
 
 export default class TourismService extends Rest {
-  constructor (http) {
+  constructor(http) {
     super('/attractions', http)
     this.http = http
     this.url = '/attractions'
   }
 
-  async register ($form) {
+  async register($form) {
     const formData = getFormData($form)
     console.log('formData', formData)
     try {
@@ -19,7 +19,7 @@ export default class TourismService extends Rest {
     }
   }
 
-  async updateTourism ($id, $form) {
+  async updateTourism($id, $form) {
     const formData = getFormData($form)
     console.log('formData', $form)
     try {
@@ -29,7 +29,7 @@ export default class TourismService extends Rest {
     }
   }
 
-  async listByCategory ($category) {
+  async listByCategory($category) {
     try {
       return await this.http.get(`${this.url}?category=${$category}`)
     } catch (error) {

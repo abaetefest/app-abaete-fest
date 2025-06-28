@@ -27,17 +27,17 @@
 <script>
 export default {
   name: 'PageUserInformations',
-  data () {
+  data() {
     return {
       notify: false,
       email: ''
     }
   },
-  mounted () {
+  mounted() {
     this.getEmail()
   },
   methods: {
-    getEmail () {
+    getEmail() {
       const email = localStorage.getItem('abaete-email')
       if (email) {
         this.email = email

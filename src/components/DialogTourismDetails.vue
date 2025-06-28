@@ -143,13 +143,13 @@ export default {
   components: {
     // MapTourism: () => import('components/MapTourism')
   },
-  data () {
+  data() {
     return {
       course: {},
       category: []
     }
   },
-  async mounted () {
+  async mounted() {
   },
   methods: {
   }

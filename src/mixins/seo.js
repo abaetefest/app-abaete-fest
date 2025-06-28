@@ -1,7 +1,7 @@
 export default {
   methods: {
     // Método para configurar meta tags dinâmicas
-    setSEO ({
+    setSEO({
       title = 'AbaetéFest - Eventos e Experiências em Abaeteba',
       description = 'Descubra os melhores eventos, horários de viagem e experiências únicas em Abaeteba. Sua fonte completa de entretenimento e informação.',
       keywords = 'eventos, abaeteba, festas, shows, horários, viagem, entretenimento',
@@ -72,7 +72,7 @@ export default {
     },
 
     // Método específico para eventos
-    setEventSEO (event) {
+    setEventSEO(event) {
       const eventDate = new Date(event.data_inicio).toLocaleDateString('pt-BR')
 
       this.setSEO({
@@ -86,7 +86,7 @@ export default {
     },
 
     // Método para páginas de categoria
-    setCategorySEO (categoria) {
+    setCategorySEO(categoria) {
       this.setSEO({
         title: `Eventos de ${categoria} em Abaeteba`,
         description: `Descubra todos os eventos de ${categoria} acontecendo em Abaeteba. Encontre os melhores ${categoria.toLowerCase()} da região.`,

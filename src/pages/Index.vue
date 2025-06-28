@@ -45,7 +45,7 @@ export default {
   components: {
     publicity: () => import('components/Publicity')
   },
-  data () {
+  data() {
     return {
       opcoes: menus
     }
@@ -54,10 +54,10 @@ export default {
     // goToLink (link) {
     //   openURL(link)
     // },
-    goTo (menu) {
+    goTo(menu) {
       this.$router.push({ name: menu.route, params: { type: menu.type } })
     },
-    hideDialog () {
+    hideDialog() {
       this.dialog = false
     }
   }

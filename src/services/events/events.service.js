@@ -3,13 +3,13 @@ import { getFormData } from 'src/utils/convert'
 // const axios = require('axios')
 
 export default class EventsService extends Rest {
-  constructor (http) {
+  constructor(http) {
     super('/events', http)
     this.http = http
     this.url = '/events'
   }
 
-  async register ($form) {
+  async register($form) {
     const formData = getFormData($form)
     console.log('formData', formData)
     try {
@@ -19,7 +19,7 @@ export default class EventsService extends Rest {
     }
   }
 
-  async updateEvent ($id, $form) {
+  async updateEvent($id, $form) {
     const formData = getFormData($form)
     console.log('formData', $form)
     try {
@@ -29,7 +29,7 @@ export default class EventsService extends Rest {
     }
   }
 
-  async login ($dados) {
+  async login($dados) {
     try {
       return await this.http.post(this.url + '/auth', $dados)
     } catch (error) {
@@ -37,7 +37,7 @@ export default class EventsService extends Rest {
     }
   }
 
-  async listByCategory ($category = '') {
+  async listByCategory($category = '') {
     try {
       if ($category && $category !== 'all') {
         return await this.http.get(`${this.url}?category=${$category}`)

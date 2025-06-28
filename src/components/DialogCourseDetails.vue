@@ -95,14 +95,14 @@ export default {
       default: () => {}
     }
   },
-  data () {
+  data() {
     return {
       course: {},
       category: [],
       canShare: false
     }
   },
-  async mounted () {
+  async mounted() {
     if (!navigator.canShare) {
       this.canShare = false
     } else {
@@ -110,13 +110,13 @@ export default {
     }
   },
   methods: {
-    formatDateString (dateOriginal) {
+    formatDateString(dateOriginal) {
       return date.formatDate(dateOriginal, 'DD/MM/YYYY')
     },
-    formatHourString (dateOriginal) {
+    formatHourString(dateOriginal) {
       return date.formatDate(dateOriginal, 'HH:mm')
     },
-    async shareApp () {
+    async shareApp() {
       const shareData = {
         title: 'Veja esse Evento no AbaetéFest',
         text: this.courseData.name,

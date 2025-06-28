@@ -118,7 +118,7 @@
 import { date } from 'quasar'
 export default {
   name: 'PageRegister',
-  data () {
+  data() {
     return {
       loading1: false,
       form: {
@@ -137,10 +137,10 @@ export default {
       isPwd2: true
     }
   },
-  mounted () {
+  mounted() {
   },
   methods: {
-    async onSubmit () {
+    async onSubmit() {
       this.loading1 = true
       const birthday = date.extractDate(this.form.birth_date, 'DD/MM/YYYY')
       const formattedString = date.formatDate(birthday, 'YYYY-MM-DD')
@@ -162,7 +162,7 @@ export default {
         this.$setNotifyDanger('Erro ao realizar cadastro! Se o celular for sansumg tente mudar o navegador padrão')
       }
     },
-    backToLogin () {
+    backToLogin() {
       this.$router.push({ name: 'login' })
     }
   }

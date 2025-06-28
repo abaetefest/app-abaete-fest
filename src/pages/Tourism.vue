@@ -139,7 +139,7 @@ export default {
   components: {
     DialogTourismDetails: () => import('components/DialogTourismDetails')
   },
-  data () {
+  data() {
     return {
       modalWelcomeTourism: true,
       initialPagination: {
@@ -170,11 +170,11 @@ export default {
       tourismDetails: {}
     }
   },
-  async mounted () {
+  async mounted() {
     await this.listEvents()
   },
   methods: {
-    async listEvents () {
+    async listEvents() {
       this.load = true
       try {
         const { data } = await this.$services.tourism().list()
@@ -185,15 +185,15 @@ export default {
         console.log(error)
       }
     },
-    openDialogCourse (place) {
+    openDialogCourse(place) {
       this.modalTourism = true
       this.tourismDetails = place
       this.$mixpanel.track(place.name)
     },
-    detailsEvent (course) {
+    detailsEvent(course) {
       this.$router.push({ name: 'eventDetails', params: { id: course.id } })
     },
-    closeModal () {
+    closeModal() {
       this.modalTourism = false
       this.tourismDetails = {}
     }
