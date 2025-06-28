@@ -231,7 +231,7 @@ export default {
         },
         keywords: {
           name: 'keywords',
-          content: `eventos abaeteba, festas abaeteba, shows abaeteba, ${categoryFilter.toLowerCase()}, eventos bahia, agenda cultural, entretenimento, ${currentYear}`
+          content: `eventos abaetetuba, festas abaetetuba, shows abaetetuba, ${categoryFilter.toLowerCase()}, eventos pará, agenda cultural, entretenimento, ${currentYear}`
         },
         author: {
           name: 'author',
@@ -253,7 +253,7 @@ export default {
         },
         ogImage: {
           property: 'og:image',
-          content: 'https://app.abaetefest.com.br/og-events.jpg'
+          content: 'https://app.abaetefest.com.br/og-default-event-list.png'
         },
         ogUrl: {
           property: 'og:url',
@@ -287,25 +287,25 @@ export default {
         },
         twitterImage: {
           name: 'twitter:image',
-          content: 'https://app.abaetefest.com.br/og-events.jpg'
+          content: 'https://app.abaetefest.com.br/og-default-event-list.png'
         },
 
         // Meta para geolocalização
         geoRegion: {
           name: 'geo.region',
-          content: 'BR-BA'
+          content: 'BR-PA'
         },
         geoPlacename: {
           name: 'geo.placename',
-          content: 'Abaeteba, Bahia, Brasil'
+          content: 'Abaeteba, Pará, Brasil'
         },
         geoPosition: {
           name: 'geo.position',
-          content: '-12.1397;-38.2925'
+          content: ' -1.7292277;-48.9145819'
         },
         icbm: {
           name: 'ICBM',
-          content: '-12.1397, -38.2925'
+          content: ' -1.7292277, -48.9145819'
         }
       },
 
