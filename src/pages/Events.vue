@@ -1,28 +1,19 @@
 <template>
   <q-page :class="$q.dark.isActive ? '': 'bg-grey-1'">
-    <!-- <div class="">
-      <div class="col-12 text-center"> -->
-        <!-- <q-banner inline-actions class="text-primary bg-secondary"> -->
-          <!-- <q-icon
-            name="mdi-arrow-left"
-            size="2em"
-            class="float-left"
-            @click="backToEvents"
-          /> -->
-          <!-- <span class="text-h5"> {{ categoryName }}</span> -->
-        <!-- </q-banner> -->
-      <!-- </div>
-    </div> -->
-    <div class="text-h5 text-bold text-center q-pt-md custom-font">
-      <span class="text-accent">Eventos</span> na cidade
-    </div>
-    <div class="row q-pa-sm">
+    <!-- Header com título -->
+    <div class="q-pa-md">
+      <div class="text-h4 text-bold text-center custom-font q-mb-md">
+        <span class="text-accent">Eventos</span> na cidade
+      </div>
+
+      <!-- Filtro de categoria -->
       <q-select
         outlined
+        rounded
         v-model="categoria"
         :options="options"
         label="Selecione uma categoria"
-        class="col-sm-12 col-xs-12 col-md-6"
+        class="q-mb-md"
         :bg-color="$q.dark.isActive ? 'primary' : 'white'"
         :label-color="$q.dark.isActive ? 'white' : 'primary'"
         :color="$q.dark.isActive ? 'white' : 'primary'"
@@ -30,227 +21,436 @@
         emit-value
         dense
         @input="listEvents(categoria)"
+        style="max-width: 400px;"
       >
         <template v-slot:prepend>
           <q-avatar
             rounded
             :icon="getIconCategory"
-            size="60px"
-            dense
+            size="40px"
             :class="$q.dark.isActive ? 'text-secondary' : 'text-primary'"
-          >
-            <!-- <img :src="getIconCategory"> -->
-          </q-avatar>
+          />
         </template>
         <template v-slot:option="scope">
-            <q-item
-              v-bind="scope.itemProps"
-              v-on="scope.itemEvents"
-              :class="$q.dark.isActive ? 'bg-primary' : 'white'"
-              dense
-            >
-              <q-item-section avatar>
-                <q-avatar rounded :icon="scope.opt.icon" size="60px">
-                  <!-- <img :src="scope.opt.icon"> -->
-                </q-avatar>
-                <!-- <q-icon :name="scope.opt.icon" /> -->
-              </q-item-section>
-              <q-item-section>
-                <q-item-label class="text-weight-bold" v-html="scope.opt.label" />
-              </q-item-section>
-            </q-item>
-          </template>
-      </q-select>
-    </div>
-    <q-table
-      :grid="grid"
-      :data="events"
-      :columns="columns"
-      row-key="name"
-      :filter="filter"
-      hide-header
-      :loading="load"
-      :pagination="initialPagination"
-    >
-      <template v-slot:top>
-        <q-input
-          outlined
-          rounded
-          dense
-          debounce="300"
-          v-model="filter"
-          label="Pesquise"
-          :class="$q.platform.is.mobile ?  'full-width' : ''"
-          class="q-mb-md"
-          :label-color="$q.dark.isActive ? 'blue-3' : 'primary'"
-        >
-          <template v-slot:append>
-            <q-icon name="mdi-magnify" :color="$q.dark.isActive ? 'blue-3' : 'primary'" />
-          </template>
-        </q-input>
-      </template>
-
-      <template v-slot:item="props">
-        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 q-pa-xs">
-          <q-card
-            class="fit cursor-pointer shadow-5"
-            :class="$q.dark.isActive ? 'bg-primary border-white' : 'bg-white'"
-            @click="detailsEvent(props.row)"
+          <q-item
+            v-bind="scope.itemProps"
+            v-on="scope.itemEvents"
+            :class="$q.dark.isActive ? 'bg-primary' : 'white'"
+            dense
           >
-            <!-- <q-img
-              :src="props.row.image_url"
-              class="full-width"
-              style="position: absolute;filter: blur(1rem); opacity: 0.9"
-              :ratio="3/3.9"
-              placeholder-src="loadPlaceholder.png"
-            >
-            </q-img> -->
-            <div class="q-p-sm">
+            <q-item-section avatar>
+              <q-avatar rounded :icon="scope.opt.icon" size="40px" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label class="text-weight-bold" v-html="scope.opt.label" />
+            </q-item-section>
+          </q-item>
+        </template>
+      </q-select>
+
+      <!-- Campo de busca -->
+      <q-input
+        outlined
+        rounded
+        dense
+        debounce="300"
+        v-model="filter"
+        label="Pesquisar eventos..."
+        class="q-mb-md"
+        style="max-width: 400px; margin: 0 auto;"
+        :label-color="$q.dark.isActive ? 'blue-3' : 'primary'"
+      >
+        <template v-slot:append>
+          <q-icon name="mdi-magnify" :color="$q.dark.isActive ? 'blue-3' : 'primary'" />
+        </template>
+      </q-input>
+    </div>
+
+    <!-- Loading skeleton -->
+    <div v-if="load" class="q-pa-md">
+      <div class="row q-gutter-md justify-center">
+        <div v-for="n in 6" :key="n" class="col-12 col-sm-6 col-md-4" style="max-width: 350px;">
+          <q-card class="event-card-skeleton">
+            <q-skeleton height="200px" square />
+            <q-card-section>
+              <q-skeleton type="text" class="text-h6" />
+              <q-skeleton type="text" width="60%" />
+              <q-skeleton type="text" width="40%" />
+            </q-card-section>
+          </q-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista de eventos -->
+    <div v-else class="q-pa-md">
+      <!-- Botão Novo Evento (se aplicável) -->
+      <div class="text-center q-mb-lg" v-if="canCreateEvent">
+        <q-btn
+          rounded
+          size="lg"
+          color="accent"
+          icon="mdi-calendar-plus"
+          label="NOVO EVENTO"
+          class="q-px-xl q-py-sm text-weight-bold"
+          @click="createNewEvent"
+        />
+      </div>
+
+      <!-- Grid de eventos -->
+      <div class="row q-gutter-md justify-center">
+        <div
+          v-for="event in filteredEvents"
+          :key="event.id"
+          class="col-12 col-sm-6 col-md-4"
+          style="max-width: 350px;"
+        >
+          <q-card
+            class="event-card cursor-pointer"
+            :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
+            @click="detailsEvent(event)"
+          >
+            <!-- Imagem do evento -->
+            <div class="event-image-container">
               <q-img
-                :src="props.row.image_url"
-                :ratio="3/4"
-                style="border-radius: 8px"
+                :src="event.image_url"
+                :alt="`Imagem do evento ${event.name}`"
+                class="event-image"
+                :ratio="16/9"
+                placeholder-src="loadPlaceholder.png"
               >
                 <template #loading>
                   <q-skeleton class="full-width full-height" square />
                 </template>
               </q-img>
+
+              <!-- Badge de categoria -->
+              <div class="event-category-badge">
+                <q-chip
+                  :color="getCategoryColor(event.category)"
+                  text-color="white"
+                  :icon="getCategoryIcon(event.category)"
+                  dense
+                  class="text-weight-bold text-caption q-pa-md"
+                >
+                  {{ getCategoryLabel(event.category) }}
+                </q-chip>
+              </div>
             </div>
 
-            <q-card-section class="q-pa-xs">
-              <div class="text-weight-bold row">
-                <div class="col-12">
-                  <div
-                    class="text-center rounded q-pa-sm"
-                    :class="$q.dark.isActive ? 'bg-secondary text-primary' : 'bg-primary text-secondary'"
-                  >
-                    <div>
-                      {{ getDayDate(props.row.start_date) }} - {{ getMonthString(props.row.start_date) }} - {{ formatHourString(props.row.start_date)}}
-                    </div>
-                    <!-- <div>
-                      {{ getMonthString(props.row.start_date) }}
-                    </div>
-                    <div class="text-caption">
-                      {{ formatHourString(props.row.start_date)}}
-                    </div> -->
+            <!-- Conteúdo do card -->
+            <q-card-section class="q-pa-md">
+              <!-- Data e hora -->
+              <div class="event-date-container q-mb-md">
+                <div class="event-date-badge">
+                  <div class="event-day">{{ getDayDate(event.start_date) }}</div>
+                  <div class="event-month">{{ getMonthString(event.start_date) }}</div>
+                </div>
+                <div class="event-time">
+                  <div class="text-body2 text-weight-medium">
+                    <q-icon name="mdi-clock-outline" size="16px" class="q-mr-xs" />
+                    {{ formatHourString(event.start_date) }}
+                  </div>
+                  <div class="text-caption text-grey-6" v-if="event.location">
+                    <q-icon name="mdi-map-marker-outline" size="14px" class="q-mr-xs" />
+                    {{ event.location }}
                   </div>
                 </div>
+              </div>
 
-                <div class="col q-pa-xs q-mt-sm text-body1 text-center text-weight-bold self-center">
-                  {{ props.row.name }}
+              <!-- Título do evento -->
+              <div class="event-title q-mb-sm">
+                {{ event.name }}
+              </div>
+
+              <!-- Descrição resumida -->
+              <div class="event-description" v-if="event.description">
+                {{ getShortDescription(event.description) }}
+              </div>
+
+              <!-- Footer com estatísticas -->
+              <div class="event-footer q-mt-md" v-if="event.attendees_count || event.interested_count">
+                <div class="event-stats">
+                  <span v-if="event.attendees_count" class="text-caption text-grey-6">
+                    <q-icon name="mdi-account-group" size="14px" class="q-mr-xs" />
+                    {{ event.attendees_count }} participantes
+                  </span>
+                  <span v-if="event.interested_count" class="text-caption text-grey-6 q-ml-md">
+                    <q-icon name="mdi-heart" size="14px" class="q-mr-xs" />
+                    {{ event.interested_count }} interessados
+                  </span>
                 </div>
               </div>
             </q-card-section>
           </q-card>
         </div>
-      </template>
-    </q-table>
+      </div>
+
+      <!-- Mensagem quando não há eventos -->
+      <div v-if="filteredEvents.length === 0" class="text-center q-pa-xl">
+        <q-icon name="mdi-calendar-remove" size="80px" class="text-grey-5 q-mb-md" />
+        <div class="text-h6 text-grey-6 q-mb-sm">Nenhum evento encontrado</div>
+        <div class="text-body2 text-grey-5">
+          Tente ajustar os filtros ou volte mais tarde para ver novos eventos.
+        </div>
+      </div>
+    </div>
+
+    <!-- Dialog de detalhes (se necessário) -->
     <dialog-course-details
       :modal-course="modalCourse"
       :course-data="courseDetails"
-      @close="closeModal" />
+      @close="closeModal"
+    />
   </q-page>
 </template>
 
 <script>
 import { date } from 'quasar'
 import { category } from 'src/constants/category'
+
 export default {
   name: 'PageEvents',
+
+  // Meta tags para SEO
+  meta() {
+    const categoryFilter = this.categoria && this.categoria !== 'all'
+      ? this.getCategoryLabel(this.categoria)
+      : 'Todos os tipos'
+
+    const eventCount = this.events.length
+    const currentYear = new Date().getFullYear()
+
+    return {
+      title: `Eventos ${categoryFilter} em Abaeteba ${currentYear} | AbaetéFest`,
+
+      meta: {
+        description: {
+          name: 'description',
+          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaeteba. ${eventCount} eventos disponíveis. Shows, festas, cultura e muito mais no AbaetéFest!`
+        },
+        keywords: {
+          name: 'keywords',
+          content: `eventos abaeteba, festas abaeteba, shows abaeteba, ${categoryFilter.toLowerCase()}, eventos bahia, agenda cultural, entretenimento, ${currentYear}`
+        },
+        author: {
+          name: 'author',
+          content: 'AbaetéFest'
+        },
+        robots: {
+          name: 'robots',
+          content: 'index, follow'
+        },
+
+        // Open Graph
+        ogTitle: {
+          property: 'og:title',
+          content: `Eventos ${categoryFilter} em Abaeteba | AbaetéFest`
+        },
+        ogDescription: {
+          property: 'og:description',
+          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaeteba. ${eventCount} eventos disponíveis no AbaetéFest!`
+        },
+        ogImage: {
+          property: 'og:image',
+          content: 'https://app.abaetefest.com.br/og-events.jpg'
+        },
+        ogUrl: {
+          property: 'og:url',
+          content: `https://app.abaetefest.com.br/events${this.categoria !== 'all' ? `?categoria=${this.categoria}` : ''}`
+        },
+        ogType: {
+          property: 'og:type',
+          content: 'website'
+        },
+        ogSiteName: {
+          property: 'og:site_name',
+          content: 'AbaetéFest'
+        },
+        ogLocale: {
+          property: 'og:locale',
+          content: 'pt_BR'
+        },
+
+        // Twitter Card
+        twitterCard: {
+          name: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        twitterTitle: {
+          name: 'twitter:title',
+          content: `Eventos ${categoryFilter} em Abaeteba | AbaetéFest`
+        },
+        twitterDescription: {
+          name: 'twitter:description',
+          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaeteba. ${eventCount} eventos disponíveis!`
+        },
+        twitterImage: {
+          name: 'twitter:image',
+          content: 'https://app.abaetefest.com.br/og-events.jpg'
+        },
+
+        // Meta para geolocalização
+        geoRegion: {
+          name: 'geo.region',
+          content: 'BR-BA'
+        },
+        geoPlacename: {
+          name: 'geo.placename',
+          content: 'Abaeteba, Bahia, Brasil'
+        },
+        geoPosition: {
+          name: 'geo.position',
+          content: '-12.1397;-38.2925'
+        },
+        icbm: {
+          name: 'ICBM',
+          content: '-12.1397, -38.2925'
+        }
+      },
+
+      link: {
+        canonical: {
+          rel: 'canonical',
+          href: `https://app.abaetefest.com.br/events${this.categoria !== 'all' ? `?categoria=${this.categoria}` : ''}`
+        }
+      }
+    }
+  },
+
   props: {
     grid: {
       type: Boolean,
       default: true
     }
   },
+
   components: {
     DialogCourseDetails: () => import('components/DialogCourseDetails')
   },
+
   data() {
     return {
-      initialPagination: {
-        sortBy: 'desc',
-        descending: false,
-        page: 1,
-        rowsPerPage: 50
-      },
       filter: '',
-      filtro: 'TODAS',
-      // category: [],
       categoria: 'all',
       options: category,
-      columns: [
-        {
-          name: 'name',
-          required: true,
-          label: 'Título',
-          field: 'name',
-          format: val => `${val}`,
-          sortable: true
-        },
-        { name: 'categoria', label: 'Categoria', field: 'categoria', sortable: true },
-        { name: 'resumo', label: 'Resumo', field: 'resumo', sortable: true },
-        { name: 'avaliacao', label: 'Avaliação', field: 'avaliacao' },
-        { name: 'start_date', label: 'Data', field: 'start_date', align: 'left', format: (data) => this.formatDateString(data) }
-      ],
       events: [],
       load: true,
       modalCourse: false,
-      courseDetails: {}
+      courseDetails: {},
+      canCreateEvent: false // Definir baseado nas permissões do usuário
     }
   },
+
   computed: {
     getIconCategory: function () {
       const img = this.options.filter(opt => opt.value === this.categoria)
-      return img[0].icon
+      return img[0] ? img[0].icon : 'mdi-calendar'
+    },
+
+    filteredEvents: function () {
+      if (!this.filter) return this.events
+
+      return this.events.filter(event => {
+        const name = event.name ? event.name.toLowerCase() : ''
+        const description = event.description ? event.description.toLowerCase() : ''
+        const location = event.location ? event.location.toLowerCase() : ''
+        const searchTerm = this.filter.toLowerCase()
+
+        return name.includes(searchTerm) ||
+               description.includes(searchTerm) ||
+               location.includes(searchTerm)
+      })
     }
-  //   categoryName () {
-  //     const categorySearch = category.find((cat) => cat.value === this.$route.params.type)
-  //     return categorySearch.label
-  //   }
   },
+
   async mounted() {
+    // Verifica parâmetros da URL
     if (this.$route.params.type) {
-      await this.listEvents(this.$route.params.type)
-    } else {
-      await this.listEvents()
+      this.categoria = this.$route.params.type
+    }
+
+    // Verifica query params
+    if (this.$route.query.categoria) {
+      this.categoria = this.$route.query.categoria
+    }
+
+    await this.listEvents(this.categoria)
+  },
+
+  watch: {
+    categoria: function (newVal) {
+      // Atualiza URL sem recarregar a página
+      if (newVal !== 'all') {
+        this.$router.replace({ query: { categoria: newVal } }).catch(err => {
+          console.error(err)
+        })
+      } else {
+        this.$router.replace({ query: {} }).catch(err => {
+          console.error(err)
+        })
+      }
     }
   },
+
   methods: {
     async listEvents(category = '') {
       this.load = true
       try {
         const { data } = await this.$services.events().listByCategory(category)
-        this.events = data.data
+        this.events = data.data || []
         this.load = false
       } catch (error) {
         this.load = false
-        console.log(error)
+        console.error('Erro ao carregar eventos:', error)
+        this.$q.notify({
+          message: 'Erro ao carregar eventos. Tente novamente.',
+          color: 'negative',
+          position: 'top'
+        })
       }
     },
-    openDialogCourse(event) {
-      this.modalCourse = true
-      this.courseDetails = event
-      this.$mixpanel.track(event.name)
+
+    detailsEvent: function (event) {
+      this.$router.push({ name: 'eventDetails', params: { id: event.id } })
+
+      // Analytics
+      if (this.$mixpanel) {
+        this.$mixpanel.track('Event Card Clicked', {
+          event_id: event.id,
+          event_name: event.name,
+          category: event.category
+        })
+      }
     },
-    detailsEvent(course) {
-      this.$router.push({ name: 'eventDetails', params: { id: course.id } })
-      // this.$router.push({ name: menu.route, params: { type: menu.type } })
+
+    createNewEvent: function () {
+      this.$router.push({ name: 'createEvent' })
     },
-    closeModal() {
+
+    closeModal: function () {
       this.modalCourse = false
       this.courseDetails = {}
     },
-    formatDateString(dateOriginal) {
+
+    // Formatação de dados
+    formatDateString: function (dateOriginal) {
+      if (!dateOriginal) return ''
       return date.formatDate(dateOriginal, 'DD/MM/YYYY')
     },
-    formatHourString(dateOriginal) {
+
+    formatHourString: function (dateOriginal) {
+      if (!dateOriginal) return ''
       return date.formatDate(dateOriginal, 'HH:mm')
     },
-    getDayDate(dateOriginal) {
+
+    getDayDate: function (dateOriginal) {
+      if (!dateOriginal) return ''
       return date.formatDate(dateOriginal, 'DD')
     },
-    getMonthString(dateOriginal) {
+
+    getMonthString: function (dateOriginal) {
+      if (!dateOriginal) return ''
       const month = date.formatDate(dateOriginal, 'MM')
       const monthString = {
         '01': 'Jan',
@@ -266,17 +466,210 @@ export default {
         11: 'Nov',
         12: 'Dez'
       }
-      return monthString[month]
+      return monthString[month] || ''
     },
-    backToEvents() {
+
+    formatPrice: function (price) {
+      if (!price) return '0,00'
+      return parseFloat(price).toFixed(2).replace('.', ',')
+    },
+
+    getShortDescription: function (description) {
+      if (!description) return ''
+      const cleanText = description.replace(/<[^>]*>/g, '')
+      return cleanText.length > 100 ? cleanText.substring(0, 100) + '...' : cleanText
+    },
+
+    // Funções para categorias
+    getCategoryColor: function (category) {
+      const colors = {
+        music: 'purple',
+        party: 'pink',
+        culture: 'teal',
+        sport: 'orange',
+        food: 'red',
+        business: 'blue',
+        education: 'green',
+        default: 'primary'
+      }
+      return colors[category] || colors.default
+    },
+
+    getCategoryIcon: function (category) {
+      const icons = {
+        music: 'mdi-music',
+        party: 'mdi-party-popper',
+        culture: 'mdi-palette',
+        sport: 'mdi-soccer',
+        food: 'mdi-food',
+        business: 'mdi-briefcase',
+        education: 'mdi-school',
+        default: 'mdi-calendar'
+      }
+      return icons[category] || icons.default
+    },
+
+    getCategoryLabel: function (category) {
+      const categoryObj = this.options.find(function (opt) {
+        return opt.value === category
+      })
+      return categoryObj ? categoryObj.label : 'Evento'
+    },
+
+    backToEvents: function () {
       this.$router.push({ name: 'home' })
     }
   }
 }
 </script>
 
-<style>
-.card-cursos:hover {
-  background: #e3f2fd;
+<style scoped>
+.custom-font {
+  font-family: 'Roboto', sans-serif;
+}
+
+.event-card {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.event-image-container {
+  position: relative;
+}
+
+.event-image {
+  border-radius: 0;
+}
+
+.event-category-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+}
+
+.event-price-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+}
+
+.event-date-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.event-date-badge {
+  background: var(--q-primary);
+  border-radius: 12px;
+  padding: 8px 12px;
+  text-align: center;
+  min-width: 60px;
+}
+
+.event-day {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.event-month {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.event-time {
+  flex: 1;
+}
+
+.event-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--q-dark);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.event-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.event-footer {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 12px;
+}
+
+.event-stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.event-card-skeleton {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Dark mode adjustments */
+.q-dark .event-card {
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+.q-dark .event-card:hover {
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+}
+
+.q-dark .event-title {
+  color: white;
+}
+
+.q-dark .event-description {
+  color: #ccc;
+}
+
+.q-dark .event-footer {
+  border-top-color: #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .event-date-container {
+    gap: 12px;
+  }
+
+  .event-date-badge {
+    min-width: 50px;
+    padding: 6px 10px;
+  }
+
+  .event-day {
+    font-size: 18px;
+  }
+
+  .event-title {
+    font-size: 16px;
+  }
 }
 </style>
