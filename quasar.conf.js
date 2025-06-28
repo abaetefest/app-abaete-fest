@@ -121,11 +121,79 @@ module.exports = function (ctx) {
     },
 
     // PWA config - versão básica
+    // SUBSTITUA APENAS A SEÇÃO PWA no seu quasar.config.js
+
+    // PWA config - VERSÃO CORRIGIDA
+    // SUBSTITUA APENAS A SEÇÃO PWA no seu quasar.config.js
+
+    // PWA config - VERSÃO CORRIGIDA (parâmetros válidos para GenerateSW)
     pwa: {
       workboxPluginMode: 'GenerateSW',
       workboxOptions: {
         skipWaiting: true,
-        clientsClaim: true
+        clientsClaim: true,
+        cleanupOutdatedCaches: true,
+
+        // CORREÇÃO: usar exclude (válido para GenerateSW)
+        exclude: [
+          /\.map$/,
+          /manifest$/,
+          /\.htaccess$/,
+          /service-worker\.js$/,
+          /sw\.js$/,
+          /netlify\.toml$/, // PRINCIPAL: Ignora netlify.toml
+          /_redirects$/,
+          /\.DS_Store$/,
+          /Thumbs\.db$/
+        ],
+
+        // Estratégias de cache - estas são válidas para GenerateSW
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/polished-snowflake-9723\.fly\.dev\/api\//,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'api-cache',
+              networkTimeoutSeconds: 5,
+              cacheableResponse: {
+                statuses: [0, 200]
+              },
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 // 24 horas
+              }
+            }
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'images-cache',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 dias
+              }
+            }
+          },
+          {
+            urlPattern: /\.(?:woff|woff2|ttf|eot)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 ano
+              }
+            }
+          }
+        ],
+
+        // Configurações adicionais válidas para GenerateSW
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB
+
+        // Navegação offline
+        navigateFallback: '/index.html',
+        navigateFallbackDenylist: [/^\/_/, /\/[^/?]+\.[^/]+$/]
       },
 
       manifest: {
@@ -198,7 +266,7 @@ module.exports = function (ctx) {
         appId: 'app-abaete-fest'
       },
       nodeIntegration: true,
-      extendWebpack(/* cfg */) {}
+      extendWebpack(/* cfg */) { }
     }
   }
 }

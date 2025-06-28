@@ -25,6 +25,17 @@ export default boot(({ Vue }) => {
     // Sistema de migração automática
     Vue.prototype.$autoMigrate = async function () {
       try {
+        if ('serviceWorker' in navigator) {
+          const registrations = await navigator.serviceWorker.getRegistrations()
+          const hasActiveWorker = registrations.some(reg => reg.active)
+
+          if (hasActiveWorker) {
+            console.log('✅ Service Worker ativo encontrado, pulando migração')
+            localStorage.setItem('app-version', '2.0.0')
+            localStorage.setItem('ssr-migration-completed', 'true')
+            return true
+          }
+        }
         console.log('🔄 Iniciando migração automática...')
 
         // Step 1: Verificar se está em hash mode

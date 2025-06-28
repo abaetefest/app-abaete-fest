@@ -1,8 +1,6 @@
 import { boot } from 'quasar/wrappers'
 
 export default boot(({ Vue, router, ssrContext }) => {
-  // Configurações básicas de meta tags que serão aplicadas globalmente
-
   // Structured data global para o site
   const globalStructuredData = {
     '@context': 'https://schema.org',
@@ -53,7 +51,7 @@ export default boot(({ Vue, router, ssrContext }) => {
     return optimized
   }
 
-  // Helper para criar meta tags de eventos
+  // Helper para criar meta tags de eventos - VERSÃO CORRIGIDA
   Vue.prototype.$createEventMeta = function (event) {
     if (!event || !event.id) return {}
 
@@ -73,26 +71,26 @@ export default boot(({ Vue, router, ssrContext }) => {
           content: `${event.name}, evento, ${event.category || 'festa'}, abaeteba, ${eventDate}`
         },
 
-        // Open Graph
-        'og:title': { property: 'og:title', content: `${event.name} - ${eventDate}` },
-        'og:description': { property: 'og:description', content: cleanDescription },
-        'og:image': {
+        // Open Graph - ESTRUTURA CORRIGIDA para Quasar v1
+        ogTitle: { property: 'og:title', content: `${event.name} - ${eventDate}` },
+        ogDescription: { property: 'og:description', content: cleanDescription },
+        ogImage: {
           property: 'og:image',
           content: event.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg'
         },
-        'og:url': {
+        ogUrl: {
           property: 'og:url',
           content: `https://app.abaetefest.com.br/event-details/${event.id}`
         },
-        'og:type': { property: 'og:type', content: 'article' },
-        'og:site_name': { property: 'og:site_name', content: 'AbaetéFest' },
-        'og:locale': { property: 'og:locale', content: 'pt_BR' },
+        ogType: { property: 'og:type', content: 'article' },
+        ogSiteName: { property: 'og:site_name', content: 'AbaetéFest' },
+        ogLocale: { property: 'og:locale', content: 'pt_BR' },
 
-        // Twitter Cards
-        'twitter:card': { name: 'twitter:card', content: 'summary_large_image' },
-        'twitter:title': { name: 'twitter:title', content: `${event.name} - ${eventDate}` },
-        'twitter:description': { name: 'twitter:description', content: cleanDescription },
-        'twitter:image': {
+        // Twitter Cards - ESTRUTURA CORRIGIDA
+        twitterCard: { name: 'twitter:card', content: 'summary_large_image' },
+        twitterTitle: { name: 'twitter:title', content: `${event.name} - ${eventDate}` },
+        twitterDescription: { name: 'twitter:description', content: cleanDescription },
+        twitterImage: {
           name: 'twitter:image',
           content: event.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg'
         }
@@ -103,35 +101,27 @@ export default boot(({ Vue, router, ssrContext }) => {
           rel: 'canonical',
           href: `https://app.abaetefest.com.br/event-details/${event.id}`
         }
-      },
-
-      script: {
-        'structured-data': JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'Event',
-          name: event.name,
-          description: cleanDescription,
-          startDate: event.start_date,
-          endDate: event.end_date || event.start_date,
-          image: event.image_url,
-          url: `https://app.abaetefest.com.br/event-details/${event.id}`,
-          location: {
-            '@type': 'Place',
-            name: event.location || 'Abaeteba',
-            address: {
-              '@type': 'PostalAddress',
-              addressLocality: 'Abaeteba',
-              addressRegion: 'BA',
-              addressCountry: 'BR'
-            }
-          },
-          organizer: {
-            '@type': 'Organization',
-            name: 'AbaetéFest',
-            url: 'https://app.abaetefest.com.br'
-          }
-        })
       }
+    }
+  }
+
+  // Helper para adicionar structured data de forma segura
+  Vue.prototype.$addStructuredData = function (data, id = 'structured-data') {
+    if (process.env.CLIENT) {
+      Vue.nextTick(() => {
+        // Remove script existente se houver
+        const existing = document.getElementById(id)
+        if (existing) {
+          existing.remove()
+        }
+
+        // Adiciona o novo script
+        const script = document.createElement('script')
+        script.type = 'application/ld+json'
+        script.id = id
+        script.innerHTML = JSON.stringify(data)
+        document.head.appendChild(script)
+      })
     }
   }
 
@@ -140,28 +130,15 @@ export default boot(({ Vue, router, ssrContext }) => {
     ssrContext.globalStructuredData = globalStructuredData
   }
 
-  // Router guard para adicionar structured data global apenas na home
-  router.beforeEach((to, from, next) => {
-    // Esta lógica será executada no cliente
-    if (process.env.CLIENT && to.path === '/') {
-      // Usar setTimeout para não bloquear a navegação
-      setTimeout(() => {
-        // Adicionar structured data global à página inicial
-        const script = document.createElement('script')
-        script.type = 'application/ld+json'
-        script.id = 'global-structured-data'
-        script.innerHTML = JSON.stringify(globalStructuredData)
-
-        // Remove script existente se houver
-        const existing = document.getElementById('global-structured-data')
-        if (existing) {
-          existing.remove()
-        }
-
-        // Adiciona o novo script
-        document.head.appendChild(script)
-      }, 100)
-    }
-    next()
-  })
+  // Router guard para adicionar structured data global - VERSÃO CORRIGIDA
+  if (process.env.CLIENT) {
+    router.afterEach((to) => {
+      // Adicionar structured data global apenas na home
+      if (to.path === '/') {
+        setTimeout(() => {
+          Vue.prototype.$addStructuredData(globalStructuredData, 'global-structured-data')
+        }, 200)
+      }
+    })
+  }
 })

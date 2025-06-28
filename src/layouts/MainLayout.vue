@@ -275,12 +275,12 @@ export default {
       this.canShare = true
     }
     // Solução para recarregar Safari quando não encontrar arquivos JS
-    window.addEventListener('error', (e) => {
-      const srcError = e.target.src
-      if (srcError.includes('/js/')) {
-        window.location.reload()
-      }
-    }, true)
+    // window.addEventListener('error', (e) => {
+    //   const srcError = e.target.src
+    //   if (srcError.includes('/js/')) {
+    //     window.location.reload()
+    //   }
+    // }, true)
 
     this.verifyDarkMode()
     // this.verificarPermissaoNotificacoes()

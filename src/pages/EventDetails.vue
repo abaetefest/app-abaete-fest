@@ -126,7 +126,7 @@ export default {
     }
   },
 
-  // Função meta para Quasar v1 - a forma CORRETA
+  // Função meta para Quasar v1 - VERSÃO CORRIGIDA
   meta() {
     if (!this.event || !this.event.id) {
       return {
@@ -143,7 +143,7 @@ export default {
       // Title dinâmico
       title: `${this.event.name} - ${eventDate} | AbaetéFest`,
 
-      // Meta tags
+      // Meta tags - ESTRUTURA CORRIGIDA para Quasar v1
       meta: {
         description: {
           name: 'description',
@@ -154,60 +154,60 @@ export default {
           content: `${this.event.name}, evento, ${this.event.category || 'festa'}, abaeteba, ${eventDate}, ${this.event.location || ''}`
         },
 
-        // Open Graph
-        'og:title': {
+        // Open Graph - CHAVES CORRIGIDAS (sem hífens)
+        ogTitle: {
           property: 'og:title',
           content: `${this.event.name} - ${eventDate}`
         },
-        'og:description': {
+        ogDescription: {
           property: 'og:description',
           content: cleanDescription
         },
-        'og:image': {
+        ogImage: {
           property: 'og:image',
           content: this.event.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg'
         },
-        'og:url': {
+        ogUrl: {
           property: 'og:url',
           content: `https://app.abaetefest.com.br/event-details/${this.event.id}`
         },
-        'og:type': {
+        ogType: {
           property: 'og:type',
           content: 'article'
         },
-        'og:site_name': {
+        ogSiteName: {
           property: 'og:site_name',
           content: 'AbaetéFest'
         },
-        'og:locale': {
+        ogLocale: {
           property: 'og:locale',
           content: 'pt_BR'
         },
 
-        // Twitter Cards
-        'twitter:card': {
+        // Twitter Cards - CHAVES CORRIGIDAS
+        twitterCard: {
           name: 'twitter:card',
           content: 'summary_large_image'
         },
-        'twitter:title': {
+        twitterTitle: {
           name: 'twitter:title',
           content: `${this.event.name} - ${eventDate}`
         },
-        'twitter:description': {
+        twitterDescription: {
           name: 'twitter:description',
           content: cleanDescription
         },
-        'twitter:image': {
+        twitterImage: {
           name: 'twitter:image',
           content: this.event.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg'
         },
 
         // Meta específicas para eventos
-        'event:start_time': {
+        eventStartTime: {
           property: 'event:start_time',
           content: this.event.start_date
         },
-        'event:location': {
+        eventLocation: {
           property: 'event:location',
           content: this.event.location || 'Abaeteba, BA'
         }
@@ -219,43 +219,6 @@ export default {
           rel: 'canonical',
           href: `https://app.abaetefest.com.br/event-details/${this.event.id}`
         }
-      },
-
-      // Structured data (Schema.org)
-      script: {
-        'structured-data': JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'Event',
-          name: this.event.name,
-          description: cleanDescription,
-          startDate: this.event.start_date,
-          endDate: this.event.end_date || this.event.start_date,
-          image: this.event.image_url,
-          url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
-          location: {
-            '@type': 'Place',
-            name: this.event.location || 'Abaeteba',
-            address: {
-              '@type': 'PostalAddress',
-              addressLocality: 'Abaeteba',
-              addressRegion: 'BA',
-              addressCountry: 'BR'
-            }
-          },
-          organizer: {
-            '@type': 'Organization',
-            name: 'AbaetéFest',
-            url: 'https://app.abaetefest.com.br'
-          },
-          offers: this.event.price
-            ? {
-                '@type': 'Offer',
-                price: this.event.price,
-                priceCurrency: 'BRL',
-                availability: 'https://schema.org/InStock'
-              }
-            : undefined
-        })
       }
     }
   },
@@ -280,6 +243,22 @@ export default {
       } else {
         this.$router.push('/')
       }
+    } else {
+      // Se já temos dados, adiciona structured data
+      this.addStructuredData()
+    }
+  },
+
+  watch: {
+    // Observa mudanças no evento para atualizar structured data
+    'event.id': {
+      handler(newId) {
+        if (newId) {
+          this.$nextTick(() => {
+            this.addStructuredData()
+          })
+        }
+      }
     }
   },
 
@@ -297,12 +276,65 @@ export default {
         this.event = data.data || {}
         this.load = false
 
-        // As meta tags vão ser atualizadas automaticamente
-        // pela função meta() quando this.event mudar
+        // Adiciona structured data após carregar o evento
+        this.$nextTick(() => {
+          this.addStructuredData()
+        })
       } catch (error) {
         this.load = false
         console.error('Erro ao carregar evento:', error)
         this.$router.push('/404')
+      }
+    },
+
+    // NOVO MÉTODO - Adiciona structured data de forma segura
+    addStructuredData() {
+      if (!this.event.id || !process.env.CLIENT) return
+
+      const eventDate = this.formatDateString(this.event.start_date)
+      const cleanDescription = this.event.description
+        ? this.event.description.replace(/<[^>]*>/g, '').substring(0, 160)
+        : `Evento ${this.event.name} em Abaeteba no dia ${eventDate}`
+
+      const structuredData = {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: this.event.name,
+        description: cleanDescription,
+        startDate: this.event.start_date,
+        endDate: this.event.end_date || this.event.start_date,
+        image: this.event.image_url,
+        url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
+        location: {
+          '@type': 'Place',
+          name: this.event.location || 'Abaeteba',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Abaeteba',
+            addressRegion: 'BA',
+            addressCountry: 'BR'
+          }
+        },
+        organizer: {
+          '@type': 'Organization',
+          name: 'AbaetéFest',
+          url: 'https://app.abaetefest.com.br'
+        }
+      }
+
+      // Adiciona preço se existir
+      if (this.event.price) {
+        structuredData.offers = {
+          '@type': 'Offer',
+          price: this.event.price,
+          priceCurrency: 'BRL',
+          availability: 'https://schema.org/InStock'
+        }
+      }
+
+      // Usa o helper do global-meta para adicionar de forma segura
+      if (this.$addStructuredData) {
+        this.$addStructuredData(structuredData, 'event-structured-data')
       }
     },
 
