@@ -1,0 +1,228 @@
+/* CSS otimizado para performance e Core Web Vitals */
+
+/* Prevenção de layout shift */
+img, video, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Otimizações para lazy loading */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* Font display otimizado */
+@font-face {
+  font-family: 'Roboto';
+  font-display: swap; /* Evita layout shift com fontes */
+}
+
+/* Contenha layout shifts */
+.image-placeholder {
+  background-color: #f5f5f5;
+  background-image: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.5) 50%, transparent 60%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  min-height: 200px; /* Altura mínima para evitar shifts */
+}
+
+/* Otimizações para scrolling */
+.scroll-container {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Reduce motion para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .image-placeholder {
+    animation: none;
+  }
+}
+
+/* Otimizações para touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .q-btn {
+    min-height: 44px; /* iOS touch target size */
+    min-width: 44px;
+  }
+}
+
+/* Critical CSS para Above the Fold */
+.above-fold {
+  contain: layout style paint; /* CSS containment para performance */
+}
+
+/* Lazy loading transitions */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Prevent layout shift durante carregamento */
+.skeleton-box {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Otimizações para imagens responsivas */
+.responsive-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.responsive-image-container::before {
+  content: '';
+  display: block;
+  padding-top: 66.67%; /* Aspect ratio 3:2 */
+}
+
+.responsive-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Otimizações para Core Web Vitals */
+.critical-resource {
+  /* Para recursos críticos que afetam LCP */
+  content-visibility: visible;
+  contain-intrinsic-size: 600px; /* Tamanho estimado */
+}
+
+.non-critical {
+  /* Para recursos não críticos */
+  content-visibility: auto;
+  contain-intrinsic-size: 200px;
+}
+
+/* Otimizações para CLS (Cumulative Layout Shift) */
+.event-card {
+  min-height: 300px; /* Altura mínima para evitar shifts */
+  contain: layout; /* Containment para performance */
+}
+
+.event-image {
+  aspect-ratio: 16/9; /* Mantém proporção consistente */
+  object-fit: cover;
+  background-color: #f5f5f5; /* Fallback color */
+}
+
+/* Otimizações para FID (First Input Delay) */
+.interactive-element {
+  touch-action: manipulation; /* Otimiza toques em mobile */
+  user-select: none; /* Previne seleção acidental */
+}
+
+/* Will-change para animações */
+.animated-element {
+  will-change: transform, opacity;
+}
+
+.animated-element.animation-complete {
+  will-change: auto; /* Remove após animação */
+}
+
+/* Otimizações para PWA */
+.pwa-install-banner {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #161931, #75fbcf);
+  color: white;
+  padding: 12px;
+  text-align: center;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.pwa-install-banner.show {
+  transform: translateY(0);
+}
+
+/* Utilities para performance */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+.contain-layout {
+  contain: layout;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+.contain-strict {
+  contain: strict;
+}
+
+/* Media queries para otimização */
+@media (max-width: 599px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 600px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Preload de recursos críticos */
+.preload-background {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciPjxzdG9wIHN0b3AtY29sb3I9IiNmNWY1ZjUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNlNWU1ZTUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNnKSIvPjwvc3ZnPg==');
+}
+
+/* Otimizações específicas para o Quasar */
+.q-page-container {
+  contain: layout style;
+}
+
+.q-page {
+  contain: layout;
+  min-height: 100vh;
+}
+
+/* Avoid layout shift for loading states */
+.q-skeleton {
+  contain: strict;
+  content-visibility: auto;
+}
