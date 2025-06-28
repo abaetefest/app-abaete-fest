@@ -61,27 +61,32 @@ export default {
   },
 
   mounted() {
-    // Inicializa sistema de migração e atualização
-    this.initMigrationSystem()
+    // Inicializa sistema de migração automática
+    this.initFullMigrationSystem()
   },
 
   methods: {
-    async initMigrationSystem() {
+    async initFullMigrationSystem() {
       // Só executa no cliente
       if (typeof window === 'undefined') return
 
       try {
-        // Aguarda um pouco para não interferir no carregamento inicial
-        await new Promise(resolve => setTimeout(resolve, 1000))
+        // 1. PRIMEIRA PRIORIDADE: Sistema de migração automática
+        if (this.$initMigrationSystem) {
+          await this.$initMigrationSystem()
+        }
+
+        // 2. Monitora links com hash
+        if (this.$monitorHashLinks) {
+          this.$monitorHashLinks()
+        }
+
+        // 3. Sistema de atualização contínua (original)
+        await new Promise(resolve => setTimeout(resolve, 2000))
 
         // Detecta se é primeira visita após atualização do app
         if (this.$isFirstVisitAfterUpdate && this.$isFirstVisitAfterUpdate()) {
           console.log('Primeira visita após atualização detectada')
-
-          // Força migração do Service Worker
-          if (this.$migrateServiceWorker) {
-            await this.$migrateServiceWorker()
-          }
 
           // Mostra notificação de atualização
           if (this.$showChangelogIfNeeded) {
@@ -100,7 +105,7 @@ export default {
         // Monitora mudanças de conectividade
         this.setupConnectivityMonitoring()
       } catch (error) {
-        console.error('Erro na inicialização do sistema de migração:', error)
+        console.error('Erro na inicialização do sistema completo:', error)
       }
     },
 
