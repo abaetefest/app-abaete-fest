@@ -36,38 +36,22 @@
       </q-card-actions>
     </q-card>
 
-    <q-card
-      v-else
-      class="full-width full-height no-shadow"
-      :key="event.id"
-      :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-grey-2 text-primary'"
-    >
+    <q-card v-else class="full-width full-height no-shadow" :key="event.id"
+      :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-grey-2 text-primary'">
       <q-separator />
 
       <q-card-section class="q-gutter-sm">
         <div class="text-body2 text-grey-9 q-mb-sm q-pa-xs text-center" style="min-height: 200px;">
-          <q-img
-            :src="event.image_url"
-            style="max-width: 600px;border-radius: 10px"
-            placeholder-src="loadPlaceholder.png"
-            :alt="`Imagem do evento ${event.name}`"
-          />
+          <q-img :src="event.image_url" style="max-width: 600px;border-radius: 10px"
+            placeholder-src="loadPlaceholder.png" :alt="`Imagem do evento ${event.name}`" />
         </div>
 
         <div class="text-right q-mb-sm">
-          <q-btn
-            icon="mdi-fullscreen"
-            label="Tela cheia"
-            outline
-            :color="$q.dark.isActive ? 'white' : 'grey-8'"
-            @click="imgFullScreen"
-          />
+          <q-btn icon="mdi-fullscreen" label="Tela cheia" outline :color="$q.dark.isActive ? 'white' : 'grey-8'"
+            @click="imgFullScreen" />
         </div>
 
-        <div
-          class="text-body1"
-          :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
-        >
+        <div class="text-body1" :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'">
           <strong>DATA:</strong> {{ formatDateString(event.start_date) }} - {{ formatHourString(event.start_date) }}
         </div>
 
@@ -75,49 +59,24 @@
           {{ event.name }}
         </div>
 
-        <div
-          v-if="event.description"
-          class="text-body1"
-          :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
-        >
+        <div v-if="event.description" class="text-body1"
+          :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'">
           <div v-html="event.description"></div>
         </div>
       </q-card-section>
 
       <q-card-actions class="q-gutter-y-md">
-        <q-btn
-          v-if="canShare"
-          label="Compartilhar"
-          icon="mdi-share-variant-outline"
-          @click="shareApp"
-          class="full-width"
-          color="blue"
-        />
+        <q-btn v-if="canShare" label="Compartilhar" icon="mdi-share-variant-outline" @click="shareApp"
+          class="full-width" color="blue" />
 
-        <q-btn
-          label="Voltar"
-          class="full-width"
-          icon="mdi-arrow-left"
-          :color="$q.dark.isActive ? 'white' : 'primary'"
-          outline
-          @click="backToEvents(event.category)"
-        />
+        <q-btn label="Voltar" class="full-width" icon="mdi-arrow-left" :color="$q.dark.isActive ? 'white' : 'primary'"
+          outline @click="backToEvents(event.category)" />
       </q-card-actions>
     </q-card>
 
-    <q-dialog
-      v-model="imgZoom"
-      persistent
-      :maximized="true"
-      transition-show="slide-up"
-      transition-hide="slide-down"
-    >
+    <q-dialog v-model="imgZoom" persistent :maximized="true" transition-show="slide-up" transition-hide="slide-down">
       <q-card class="bg-primary text-center">
-        <image-zoom
-          :src="event.image_url"
-          :ratio="1"
-          @close="imgZoom = false"
-        />
+        <image-zoom :src="event.image_url" :ratio="1" @close="imgZoom = false" />
       </q-card>
     </q-dialog>
   </q-page>
@@ -134,7 +93,7 @@ export default {
   },
 
   // preFetch para SSR - carrega dados no servidor
-  async preFetch({ currentRoute, redirect, ssrContext }) {
+  async preFetch({ currentRoute, redirect }) {
     const id = currentRoute.params.id
 
     if (!id) {
@@ -159,91 +118,145 @@ export default {
         return
       }
 
-      // No servidor, configura as meta tags diretamente no HTML
-      if (ssrContext && ssrContext.Q) {
-        const eventDate = new Date(eventData.start_date).toLocaleDateString('pt-BR')
-        const cleanDescription = eventData.description
-          ? eventData.description.replace(/<[^>]*>/g, '').substring(0, 160)
-          : `Evento ${eventData.name} em Abaeteba no dia ${eventDate}`
-
-        // Usa o plugin Meta do Quasar no servidor
-        ssrContext.Q.meta.set({
-          title: `${eventData.name} - ${eventDate}`,
-          titleTemplate: title => `${title} | AbaetéFest`,
-
-          meta: {
-            description: { name: 'description', content: cleanDescription },
-            keywords: { name: 'keywords', content: `${eventData.name}, evento, abaeteba, ${eventDate}` },
-
-            // Open Graph
-            'og:title': { property: 'og:title', content: `${eventData.name} - ${eventDate}` },
-            'og:description': { property: 'og:description', content: cleanDescription },
-            'og:image': { property: 'og:image', content: eventData.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg' },
-            'og:url': { property: 'og:url', content: `https://app.abaetefest.com.br/event-details/${eventData.id}` },
-            'og:type': { property: 'og:type', content: 'article' },
-            'og:site_name': { property: 'og:site_name', content: 'AbaetéFest' },
-            'og:locale': { property: 'og:locale', content: 'pt_BR' },
-
-            // Twitter Cards
-            'twitter:card': { name: 'twitter:card', content: 'summary_large_image' },
-            'twitter:title': { name: 'twitter:title', content: `${eventData.name} - ${eventDate}` },
-            'twitter:description': { name: 'twitter:description', content: cleanDescription },
-            'twitter:image': { name: 'twitter:image', content: eventData.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg' },
-
-            // Meta específicas para eventos
-            'event:start_time': { property: 'event:start_time', content: eventData.start_date },
-            'event:location': { property: 'event:location', content: eventData.location || 'Abaeteba, BA' }
-          },
-
-          link: {
-            canonical: { rel: 'canonical', href: `https://app.abaetefest.com.br/event-details/${eventData.id}` }
-          },
-
-          script: {
-            'structured-data': {
-              type: 'application/ld+json',
-              innerHTML: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'Event',
-                name: eventData.name,
-                description: cleanDescription,
-                startDate: eventData.start_date,
-                endDate: eventData.end_date || eventData.start_date,
-                image: eventData.image_url,
-                url: `https://app.abaetefest.com.br/event-details/${eventData.id}`,
-                location: {
-                  '@type': 'Place',
-                  name: eventData.location || 'Abaeteba',
-                  address: {
-                    '@type': 'PostalAddress',
-                    addressLocality: 'Abaeteba',
-                    addressRegion: 'BA',
-                    addressCountry: 'BR'
-                  }
-                },
-                organizer: {
-                  '@type': 'Organization',
-                  name: 'AbaetéFest',
-                  url: 'https://app.abaetefest.com.br'
-                },
-                offers: eventData.price
-                  ? {
-                      '@type': 'Offer',
-                      price: eventData.price,
-                      priceCurrency: 'BRL',
-                      availability: 'https://schema.org/InStock'
-                    }
-                  : undefined
-              })
-            }
-          }
-        })
-      }
-
+      // Retorna os dados para uso no componente
       return eventData
     } catch (error) {
       console.error('Erro no preFetch:', error)
       redirect('/404')
+    }
+  },
+
+  // Função meta para Quasar v1 - a forma CORRETA
+  meta() {
+    if (!this.event || !this.event.id) {
+      return {
+        title: 'Carregando evento... | AbaetéFest'
+      }
+    }
+
+    const eventDate = this.formatDateString(this.event.start_date)
+    const cleanDescription = this.event.description
+      ? this.event.description.replace(/<[^>]*>/g, '').substring(0, 160)
+      : `Evento ${this.event.name} em Abaeteba no dia ${eventDate}`
+
+    return {
+      // Title dinâmico
+      title: `${this.event.name} - ${eventDate} | AbaetéFest`,
+
+      // Meta tags
+      meta: {
+        description: {
+          name: 'description',
+          content: cleanDescription
+        },
+        keywords: {
+          name: 'keywords',
+          content: `${this.event.name}, evento, ${this.event.category || 'festa'}, abaeteba, ${eventDate}, ${this.event.location || ''}`
+        },
+
+        // Open Graph
+        'og:title': {
+          property: 'og:title',
+          content: `${this.event.name} - ${eventDate}`
+        },
+        'og:description': {
+          property: 'og:description',
+          content: cleanDescription
+        },
+        'og:image': {
+          property: 'og:image',
+          content: this.event.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg'
+        },
+        'og:url': {
+          property: 'og:url',
+          content: `https://app.abaetefest.com.br/event-details/${this.event.id}`
+        },
+        'og:type': {
+          property: 'og:type',
+          content: 'article'
+        },
+        'og:site_name': {
+          property: 'og:site_name',
+          content: 'AbaetéFest'
+        },
+        'og:locale': {
+          property: 'og:locale',
+          content: 'pt_BR'
+        },
+
+        // Twitter Cards
+        'twitter:card': {
+          name: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        'twitter:title': {
+          name: 'twitter:title',
+          content: `${this.event.name} - ${eventDate}`
+        },
+        'twitter:description': {
+          name: 'twitter:description',
+          content: cleanDescription
+        },
+        'twitter:image': {
+          name: 'twitter:image',
+          content: this.event.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg'
+        },
+
+        // Meta específicas para eventos
+        'event:start_time': {
+          property: 'event:start_time',
+          content: this.event.start_date
+        },
+        'event:location': {
+          property: 'event:location',
+          content: this.event.location || 'Abaeteba, BA'
+        }
+      },
+
+      // Link canônico
+      link: {
+        canonical: {
+          rel: 'canonical',
+          href: `https://app.abaetefest.com.br/event-details/${this.event.id}`
+        }
+      },
+
+      // Structured data (Schema.org)
+      script: {
+        'structured-data': JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Event',
+          name: this.event.name,
+          description: cleanDescription,
+          startDate: this.event.start_date,
+          endDate: this.event.end_date || this.event.start_date,
+          image: this.event.image_url,
+          url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
+          location: {
+            '@type': 'Place',
+            name: this.event.location || 'Abaeteba',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Abaeteba',
+              addressRegion: 'BA',
+              addressCountry: 'BR'
+            }
+          },
+          organizer: {
+            '@type': 'Organization',
+            name: 'AbaetéFest',
+            url: 'https://app.abaetefest.com.br'
+          },
+          offers: this.event.price
+            ? {
+                '@type': 'Offer',
+                price: this.event.price,
+                priceCurrency: 'BRL',
+                availability: 'https://schema.org/InStock'
+              }
+            : undefined
+        })
+      }
     }
   },
 
@@ -256,12 +269,10 @@ export default {
     }
   },
 
-  created() {
-    // Define meta tags padrão enquanto carrega
-    this.setDefaultMeta()
-  },
-
   mounted() {
+    // Configurações que só funcionam no cliente
+    this.setupClientFeatures()
+
     // Se não temos dados do evento, busca da API
     if (!this.event.id) {
       if (this.$route.params.id) {
@@ -270,122 +281,9 @@ export default {
         this.$router.push('/')
       }
     }
-
-    // Configurações que só funcionam no cliente
-    this.setupClientFeatures()
-  },
-
-  watch: {
-    // Atualiza meta tags quando o evento muda
-    event: {
-      handler(newEvent) {
-        if (newEvent && newEvent.id) {
-          this.setEventMeta(newEvent)
-        }
-      },
-      deep: true
-    }
   },
 
   methods: {
-    // Define meta tags padrão
-    setDefaultMeta() {
-      this.$q.meta.set({
-        title: 'Carregando evento...',
-        titleTemplate: title => `${title} | AbaetéFest`,
-        meta: {
-          description: { name: 'description', content: 'Descubra eventos incríveis em Abaeteba' }
-        }
-      })
-    },
-
-    // Define meta tags específicas do evento
-    setEventMeta(event) {
-      if (!event || !event.id) return
-
-      const eventDate = this.formatDateString(event.start_date)
-      const eventTime = this.formatHourString(event.start_date)
-      const cleanDescription = event.description
-        ? event.description.replace(/<[^>]*>/g, '').substring(0, 160)
-        : `Evento ${event.name} em Abaeteba no dia ${eventDate} às ${eventTime}`
-
-      // Usa o plugin Meta do Quasar
-      this.$q.meta.set({
-        title: `${event.name} - ${eventDate}`,
-        titleTemplate: title => `${title} | AbaetéFest`,
-
-        meta: {
-          description: { name: 'description', content: cleanDescription },
-          keywords: {
-            name: 'keywords',
-            content: `${event.name}, evento, ${event.category || 'festa'}, abaeteba, ${eventDate}, ${event.location || ''}`
-          },
-
-          // Open Graph
-          'og:title': { property: 'og:title', content: `${event.name} - ${eventDate}` },
-          'og:description': { property: 'og:description', content: cleanDescription },
-          'og:image': { property: 'og:image', content: event.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg' },
-          'og:url': { property: 'og:url', content: `https://app.abaetefest.com.br/event-details/${event.id}` },
-          'og:type': { property: 'og:type', content: 'article' },
-          'og:site_name': { property: 'og:site_name', content: 'AbaetéFest' },
-          'og:locale': { property: 'og:locale', content: 'pt_BR' },
-
-          // Twitter Cards
-          'twitter:card': { name: 'twitter:card', content: 'summary_large_image' },
-          'twitter:title': { name: 'twitter:title', content: `${event.name} - ${eventDate}` },
-          'twitter:description': { name: 'twitter:description', content: cleanDescription },
-          'twitter:image': { name: 'twitter:image', content: event.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg' },
-
-          // Meta específicas para eventos
-          'event:start_time': { property: 'event:start_time', content: event.start_date },
-          'event:location': { property: 'event:location', content: event.location || 'Abaeteba, BA' }
-        },
-
-        link: {
-          canonical: { rel: 'canonical', href: `https://app.abaetefest.com.br/event-details/${event.id}` }
-        },
-
-        script: {
-          'structured-data': {
-            type: 'application/ld+json',
-            innerHTML: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Event',
-              name: event.name,
-              description: cleanDescription,
-              startDate: event.start_date,
-              endDate: event.end_date || event.start_date,
-              image: event.image_url,
-              url: `https://app.abaetefest.com.br/event-details/${event.id}`,
-              location: {
-                '@type': 'Place',
-                name: event.location || 'Abaeteba',
-                address: {
-                  '@type': 'PostalAddress',
-                  addressLocality: 'Abaeteba',
-                  addressRegion: 'BA',
-                  addressCountry: 'BR'
-                }
-              },
-              organizer: {
-                '@type': 'Organization',
-                name: 'AbaetéFest',
-                url: 'https://app.abaetefest.com.br'
-              },
-              offers: event.price
-                ? {
-                    '@type': 'Offer',
-                    price: event.price,
-                    priceCurrency: 'BRL',
-                    availability: 'https://schema.org/InStock'
-                  }
-                : undefined
-            })
-          }
-        }
-      })
-    },
-
     setupClientFeatures() {
       if (typeof navigator !== 'undefined' && navigator.canShare) {
         this.canShare = true
@@ -399,8 +297,8 @@ export default {
         this.event = data.data || {}
         this.load = false
 
-        // Atualiza meta tags após carregar
-        this.setEventMeta(this.event)
+        // As meta tags vão ser atualizadas automaticamente
+        // pela função meta() quando this.event mudar
       } catch (error) {
         this.load = false
         console.error('Erro ao carregar evento:', error)
