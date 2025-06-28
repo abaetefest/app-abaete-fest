@@ -60,9 +60,7 @@
                 class="text-body1"
                 :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
               >
-                <p v-html="courseData.description">
-                  {{ courseData.description }}
-                </p>
+                <p v-html="courseData.description"></p>
               </div>
 
               <div

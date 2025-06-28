@@ -62,7 +62,7 @@ export default boot(({ Vue }) => {
 
           const cacheNames = await caches.keys()
           const oldCachePatterns = [
-            /workbox-precache/,
+            // /workbox-precache/,
             /workbox-runtime/,
             /quasar-/,
             /-v1$/,

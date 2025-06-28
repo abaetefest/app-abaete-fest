@@ -36,38 +36,22 @@
       </q-card-actions>
     </q-card>
 
-    <q-card
-      v-else
-      class="full-width full-height no-shadow"
-      :key="event.id"
-      :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-grey-2 text-primary'"
-    >
+    <q-card v-else class="full-width full-height no-shadow" :key="event.id"
+      :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-grey-2 text-primary'">
       <q-separator />
 
       <q-card-section class="q-gutter-sm">
         <div class="text-body2 text-grey-9 q-mb-sm q-pa-xs text-center" style="min-height: 200px;">
-          <q-img
-            :src="event.image_url"
-            style="max-width: 600px;border-radius: 10px"
-            placeholder-src="loadPlaceholder.png"
-            :alt="`Imagem do evento ${event.name}`"
-          />
+          <q-img :src="event.image_url" style="max-width: 600px;border-radius: 10px"
+            placeholder-src="loadPlaceholder.png" :alt="`Imagem do evento ${event.name}`" />
         </div>
 
         <div class="text-right q-mb-sm">
-          <q-btn
-            icon="mdi-fullscreen"
-            label="Tela cheia"
-            outline
-            :color="$q.dark.isActive ? 'white' : 'grey-8'"
-            @click="imgFullScreen"
-          />
+          <q-btn icon="mdi-fullscreen" label="Tela cheia" outline :color="$q.dark.isActive ? 'white' : 'grey-8'"
+            @click="imgFullScreen" />
         </div>
 
-        <div
-          class="text-body1"
-          :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
-        >
+        <div class="text-body1" :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'">
           <strong>DATA:</strong> {{ formatDateString(event.start_date) }} - {{ formatHourString(event.start_date) }}
         </div>
 
@@ -75,49 +59,24 @@
           {{ event.name }}
         </div>
 
-        <div
-          v-if="event.description"
-          class="text-body1"
-          :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
-        >
+        <div v-if="event.description" class="text-body1"
+          :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'">
           <div v-html="event.description"></div>
         </div>
       </q-card-section>
 
       <q-card-actions class="q-gutter-y-md">
-        <q-btn
-          v-if="canShare"
-          label="Compartilhar"
-          icon="mdi-share-variant-outline"
-          @click="shareApp"
-          class="full-width"
-          color="blue"
-        />
+        <q-btn v-if="canShare" label="Compartilhar" icon="mdi-share-variant-outline" @click="shareApp"
+          class="full-width" color="blue" />
 
-        <q-btn
-          label="Voltar"
-          class="full-width"
-          icon="mdi-arrow-left"
-          :color="$q.dark.isActive ? 'white' : 'primary'"
-          outline
-          @click="backToEvents(event.category)"
-        />
+        <q-btn label="Voltar" class="full-width" icon="mdi-arrow-left" :color="$q.dark.isActive ? 'white' : 'primary'"
+          outline @click="backToEvents(event.category)" />
       </q-card-actions>
     </q-card>
 
-    <q-dialog
-      v-model="imgZoom"
-      persistent
-      :maximized="true"
-      transition-show="slide-up"
-      transition-hide="slide-down"
-    >
+    <q-dialog v-model="imgZoom" persistent :maximized="true" transition-show="slide-up" transition-hide="slide-down">
       <q-card class="bg-primary text-center">
-        <image-zoom
-          :src="event.image_url"
-          :ratio="1"
-          @close="imgZoom = false"
-        />
+        <image-zoom :src="event.image_url" :ratio="1" @close="imgZoom = false" />
       </q-card>
     </q-dialog>
   </q-page>
@@ -364,10 +323,13 @@ export default {
     async shareApp() {
       if (typeof window === 'undefined' || typeof navigator === 'undefined') return
 
+      // Constrói URL limpa sem hashtag ou query params
+      const baseUrl = `${window.location.protocol}//${window.location.host}`
+
       const shareData = {
         title: 'Veja esse Evento no AbaetéFest',
         text: this.event.name,
-        url: `${window.location.origin}/event-details/${this.event.id}`
+        url: `${baseUrl}/event-details/${this.event.id}`
       }
 
       try {
