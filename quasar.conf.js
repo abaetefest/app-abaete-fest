@@ -26,6 +26,7 @@ module.exports = function (ctx) {
       // Client-only boots (só executam no cliente)
       { path: 'auth-router', server: false },
       { path: 'mixpanel', server: false },
+      { path: 'sw-migration', server: false }, // Migração de Service Worker
 
       // Boots condicionais para SSR
       ...(ctx.mode.ssr ? [] : ['leaflet']),
