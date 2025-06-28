@@ -47,7 +47,7 @@ export default {
     }
   },
   computed: {
-    isActive () {
+    isActive() {
       return this.$route.name === this.route
     }
   }

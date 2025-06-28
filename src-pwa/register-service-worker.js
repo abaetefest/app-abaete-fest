@@ -11,19 +11,19 @@ register(process.env.SERVICE_WORKER_FILE, {
   // https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register#Parameter
 
   // registrationOptions: { scope: './' },
-  ready (registration) {
+  ready(registration) {
     console.log('Service worker is active.', registration)
   },
 
-  registered (registration) {
+  registered(registration) {
     console.log('Service worker has been registered.', registration)
   },
 
-  cached (/* registration */) {
+  cached(/* registration */) {
     console.log('Content has been cached for offline use.')
   },
 
-  updatefound (/* registration */) {
+  updatefound(/* registration */) {
     // Notify.create({
     //   message: 'Nova Atualização Disponível!',
     //   icon: 'mdi-cellphone-arrow-down',
@@ -38,7 +38,7 @@ register(process.env.SERVICE_WORKER_FILE, {
     console.log('New content is downloading.')
   },
 
-  updated () {
+  updated() {
     console.log('New content updated')
     // Notify.create({
     //   message: 'Nova Atualização Disponível! ',
@@ -68,11 +68,11 @@ register(process.env.SERVICE_WORKER_FILE, {
     }, 3000)
   },
 
-  offline () {
+  offline() {
     console.log('No internet connection found. App is running in offline mode.')
   },
 
-  error (err) {
+  error(err) {
     console.error('Error during service worker registration:', err)
   }
 })

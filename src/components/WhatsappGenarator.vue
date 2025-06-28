@@ -40,14 +40,14 @@ export default {
       default: () => false
     }
   },
-  data () {
+  data() {
     return {
       phone: '',
       msg: 'Olá, encontrei vocês através do aplicativo AbaetéFest - https://abaetefest.com.br/. Gostaria de mais informações. '
     }
   },
   methods: {
-    copyLinkWpp () {
+    copyLinkWpp() {
       const link = encodeURI(`https://api.whatsapp.com/send?phone=55${this.phone}&text=${this.msg}`)
       copyToClipboard(link)
         .then(() => {

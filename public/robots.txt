@@ -1,0 +1,36 @@
+User-agent: *
+Allow: /
+
+# Páginas importantes para SEO
+Allow: /event-details/
+Allow: /events/
+Allow: /
+
+# Arquivos estáticos
+Allow: /icons/
+Allow: /js/
+Allow: /css/
+Allow: /fonts/
+
+# Service Worker
+Allow: /service-worker.js
+Allow: /manifest.json
+
+# Imagens
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.webp
+Allow: /*.svg
+
+# Bloquear arquivos sensíveis
+Disallow: /admin/
+Disallow: /.env
+Disallow: /api/
+Disallow: /*.map
+
+# Sitemap (criar depois)
+Sitemap: https://app.abaetefest.com.br/sitemap.xml
+
+# Crawl-delay para não sobrecarregar
+Crawl-delay: 1

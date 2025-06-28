@@ -51,7 +51,7 @@ import { openURL } from 'quasar'
 
 export default {
   name: 'PagePodcast',
-  data () {
+  data() {
     return {
       podcastList: [
         {
@@ -87,10 +87,10 @@ export default {
       ]
     }
   },
-  async mounted () {
+  async mounted() {
   },
   methods: {
-    openURLYoutube (youtubeChannel) {
+    openURLYoutube(youtubeChannel) {
       openURL(`https://www.youtube.com/${youtubeChannel}`, '_blank')
     }
   }

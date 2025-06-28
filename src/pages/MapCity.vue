@@ -107,7 +107,7 @@ import { placesCategories } from 'src/constants/placesCategories'
 
 export default {
   name: 'MapPage',
-  data () {
+  data() {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       zoom: 13,
@@ -141,7 +141,7 @@ export default {
       }
     }
   },
-  mounted () {
+  mounted() {
     this.setPosition()
   },
   computed: {
@@ -151,11 +151,11 @@ export default {
     }
   },
   methods: {
-    async setPosition (position) {
+    async setPosition(position) {
       this.center = [-1.7282768, -48.8749289]
       this.ready = true
     },
-    errorPosition () {
+    errorPosition() {
       this.$q.notify({
         position: 'bottom',
         timeout: 3000,
@@ -166,7 +166,7 @@ export default {
       })
       this.$q.loading.hide()
     },
-    successNotify () {
+    successNotify() {
       this.$q.notify({
         position: 'bottom',
         timeout: 3000,
@@ -176,7 +176,7 @@ export default {
         message: 'Localização recuperada com sucesso!'
       })
     },
-    showDialog (m, idx) {
+    showDialog(m, idx) {
       console.log(m)
       this.infoWindowPos = {
         lat: parseFloat(m.latitude),
@@ -199,10 +199,10 @@ export default {
         this.currentMidx = idx
       }
     },
-    getIcon (icon) {
+    getIcon(icon) {
       return `${icon}`
     },
-    async setFilterMap () {
+    async setFilterMap() {
       this.ready = false
       if (this.categoria === 'Todas') {
         this.makersMap = makers

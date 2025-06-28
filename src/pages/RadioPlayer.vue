@@ -40,7 +40,7 @@
 import { radios } from 'src/constants/places/radios'
 export default {
   name: 'PageRadioPlayer',
-  data () {
+  data() {
     return {
       link1: '',
       link2: '',
@@ -48,7 +48,7 @@ export default {
       playStarted: false
     }
   },
-  mounted () {
+  mounted() {
     const radio = radios.find((radio) => radio.id === this.$route.params.id)
     this.link1 = radio.link1
     this.link2 = radio.link2

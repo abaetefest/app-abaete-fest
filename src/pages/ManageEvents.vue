@@ -107,7 +107,7 @@ export default {
   components: {
     DialogCourseDetails: () => import('components/DialogCourseDetails')
   },
-  data () {
+  data() {
     return {
       filter: '',
       options: ['TODAS', 'Tecnologia', 'Mercado e Vendas', 'Moda', 'Administração'],
@@ -133,11 +133,11 @@ export default {
       eventDetails: {}
     }
   },
-  mounted () {
+  mounted() {
     this.listEvents()
   },
   methods: {
-    async listEvents () {
+    async listEvents() {
       try {
         const { data } = await this.$services.events().list()
         this.events = data.data
@@ -145,7 +145,7 @@ export default {
         console.log(error)
       }
     },
-    confirmDelete (event) {
+    confirmDelete(event) {
       this.$q.dialog({
         title: 'Deleter Evento',
         message: `Tem certeza que deseja deletar o evento <b>${event.name}</b> ?`,
@@ -156,7 +156,7 @@ export default {
         this.deleteCourse(event)
       })
     },
-    async deleteCourse (event) {
+    async deleteCourse(event) {
       try {
         await this.$services.events().delete(event.id)
         this.$notifySuccess('Evento excluído com Sucesso!')
@@ -166,23 +166,23 @@ export default {
         this.$q.notify('Erro ao excluir curso')
       }
     },
-    editCourse (event) {
+    editCourse(event) {
       this.$router.push({ name: 'formEvents', params: { event: event } })
     },
-    formatDateString (dateOriginal) {
+    formatDateString(dateOriginal) {
       return date.formatDate(dateOriginal, 'DD/MM/YYYY HH:mm')
     },
-    formatCategoryString (categoryName) {
+    formatCategoryString(categoryName) {
       const category = this.category.find(item => item.value === categoryName)
       return category.label
     },
-    viewEvent (event) {
+    viewEvent(event) {
     },
-    openDialogEvents (event) {
+    openDialogEvents(event) {
       this.modalEvents = true
       this.eventDetails = event
     },
-    closeModal () {
+    closeModal() {
       this.modalEvents = false
       this.eventDetails = {}
     }

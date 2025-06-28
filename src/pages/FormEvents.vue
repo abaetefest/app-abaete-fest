@@ -162,7 +162,7 @@ export default {
   components: {
     WhatsappGenarator: () => import('components/WhatsappGenarator')
   },
-  data () {
+  data() {
     return {
       form: {
         name: '',
@@ -243,7 +243,7 @@ export default {
       ]
     }
   },
-  mounted () {
+  mounted() {
     const timeStamp = Date.now()
     const formattedString = date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm:ss')
     this.form.start_date = formattedString
@@ -260,14 +260,14 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
+    onSubmit() {
       if (this.form.id) {
         this.updateEvent()
       } else {
         this.registerEvent()
       }
     },
-    toBase64 (file) {
+    toBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader()
         reader.readAsDataURL(file)
@@ -275,14 +275,14 @@ export default {
         reader.onerror = error => reject(error)
       })
     },
-    async setFile (file) {
+    async setFile(file) {
       this.preview = await this.toBase64(file)
     },
-    updateImg () {
+    updateImg() {
       this.preview = ''
       this.form.image_url = []
     },
-    async registerEvent () {
+    async registerEvent() {
       try {
         // if (this.image) {
         //   await this.registerImage()
@@ -299,7 +299,7 @@ export default {
         this.$q.notify('Erro ao cadastrar Evento')
       }
     },
-    async updateEvent () {
+    async updateEvent() {
       try {
         await this.$services.events().updateEvent(this.form.id, {
           ...this.form
@@ -311,7 +311,7 @@ export default {
         this.$q.notify('Erro ao cadastrar categoria')
       }
     },
-    async listCategory () {
+    async listCategory() {
       try {
         const category = await this.$services.category().list()
         this.category = category.data
@@ -319,14 +319,14 @@ export default {
         console.log(error)
       }
     },
-    optionsFn (dateCalendar) {
+    optionsFn(dateCalendar) {
       const formattedString = date.formatDate(this.date, 'YYYY/MM/DD')
       return dateCalendar >= formattedString
     },
-    showDialogWpp () {
+    showDialogWpp() {
       this.dialogWpp = true
     },
-    closeDialogWpp () {
+    closeDialogWpp() {
       this.dialogWpp = false
     }
   }

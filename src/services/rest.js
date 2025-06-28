@@ -1,10 +1,10 @@
 export default class Rest {
-  constructor (url, http) {
+  constructor(url, http) {
     this.url = url
     this.http = http
   }
 
-  async list () {
+  async list() {
     try {
       return await this.http.get(this.url)
     } catch (error) {
@@ -12,7 +12,7 @@ export default class Rest {
     }
   }
 
-  async show ($id) {
+  async show($id) {
     try {
       return await this.http.get(this.url, {
         params: $id
@@ -22,7 +22,7 @@ export default class Rest {
     }
   }
 
-  async get ($id) {
+  async get($id) {
     try {
       return await this.http.get(`${this.url}/${$id}`)
     } catch (error) {
@@ -30,7 +30,7 @@ export default class Rest {
     }
   }
 
-  async store ($data, $captchaResponse = '') {
+  async store($data, $captchaResponse = '') {
     if ($captchaResponse) {
       try {
         return await this.http.post(this.url, $data, {
@@ -49,7 +49,7 @@ export default class Rest {
     }
   }
 
-  async update ($id, $data) {
+  async update($id, $data) {
     try {
       return await this.http.put(`${this.url}/${$id}`, $data)
     } catch (error) {
@@ -57,7 +57,7 @@ export default class Rest {
     }
   }
 
-  async patch ($id, $data) {
+  async patch($id, $data) {
     try {
       return await this.http.patch(`${this.url}/${$id}`, $data)
     } catch (error) {
@@ -65,7 +65,7 @@ export default class Rest {
     }
   }
 
-  async delete ($id) {
+  async delete($id) {
     try {
       return await this.http.delete(`${this.url}/${$id}`)
     } catch (error) {

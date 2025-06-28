@@ -25,13 +25,13 @@
 import { openURL } from 'quasar'
 export default {
   name: 'Publicity',
-  data () {
+  data() {
     return {
       slide: 1
     }
   },
   methods: {
-    goTo (url) {
+    goTo(url) {
       openURL(url)
     }
   }

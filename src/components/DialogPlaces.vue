@@ -129,13 +129,13 @@ export default {
       default: () => {}
     }
   },
-  data () {
+  data() {
     return {
       course: {},
       category: []
     }
   },
-  async mounted () {
+  async mounted() {
   },
   methods: {
   }

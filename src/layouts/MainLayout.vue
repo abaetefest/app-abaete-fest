@@ -14,7 +14,7 @@
 
         <q-toolbar-title>
           <q-avatar size="xl" rounded>
-            <img src="new-abaetefest.png" />
+            <img src="new-abaetefest.png" alt="logo abaetéfest" />
           </q-avatar>
         </q-toolbar-title>
 
@@ -251,7 +251,7 @@ const adminRoute = [
 export default {
   name: 'MainLayout',
   components: { EssentialLink },
-  data () {
+  data() {
     return {
       leftDrawerOpen: false,
       essentialLinks: menusRoute,
@@ -265,7 +265,7 @@ export default {
       colorConsole: 'background: #111; color: #BE1A25'
     }
   },
-  async mounted () {
+  async mounted() {
     if (JSON.parse(localStorage.getItem('abaete-manage'))) {
       this.isAdmin = true
     }
@@ -286,16 +286,16 @@ export default {
     // this.verificarPermissaoNotificacoes()
   },
   methods: {
-    logout (rota = '/') {
+    logout(rota = '/') {
       localStorage.removeItem('abaete-fest-token')
       localStorage.removeItem('abaete-manage')
       localStorage.removeItem('abaete-email')
       this.$router.push(rota)
     },
-    goTo (routeName) {
+    goTo(routeName) {
       this.$router.push({ name: routeName })
     },
-    confirmLogout () {
+    confirmLogout() {
       this.$q.dialog({
         title: 'Sair da Sessão ?',
         message: 'Tem certeza que deseja fazer o logout ?',
@@ -306,7 +306,7 @@ export default {
         this.logout()
       })
     },
-    async shareApp () {
+    async shareApp() {
       const shareData = {
         title: 'AbaetéFest',
         text: 'Conheça o app da cidade de Abaetetuba!',
@@ -319,12 +319,12 @@ export default {
         this.$notifyDanger('Não foi possível compartilharo app!')
       }
     },
-    setDarkMode (darkValue) {
+    setDarkMode(darkValue) {
       this.$mixpanel.track('darkMode', { darkModeValue: darkValue })
       this.$q.dark.set(darkValue)
       this.$q.localStorage.set('dark-mode-abaetefest', darkValue)
     },
-    verifyDarkMode () {
+    verifyDarkMode() {
       const darkModeLocalStorage = this.$q.localStorage.getItem('dark-mode-abaetefest')
       if (darkModeLocalStorage) {
         this.setDarkMode(true)
@@ -334,7 +334,7 @@ export default {
         this.darkMode = false
       }
     },
-    async verificarPermissaoNotificacoes () {
+    async verificarPermissaoNotificacoes() {
     // Verifica se o navegador tem suporte a notificações
       if ('Notification' in window) {
         // Verifica o status da permissão de notificações
@@ -362,10 +362,10 @@ export default {
         console.log('%c Este navegador não suporta notificações.', this.colorConsole)
       }
     },
-    solicitarPermissao () {
+    solicitarPermissao() {
       this.notificationModal = true
     },
-    confirmarPermissao () {
+    confirmarPermissao() {
       this.notificationModal = false
       Notification.requestPermission().then(permission => {
         if (permission === 'granted') {
@@ -377,7 +377,7 @@ export default {
         }
       })
     },
-    recusaNotificacao () {
+    recusaNotificacao() {
       this.notificationModal = false
       // Salva a data da recusa no localStorage
       localStorage.setItem('dataUltimaRecusa', new Date().toISOString())

@@ -110,7 +110,7 @@ export default {
   // components: {
   //   DialogCourseDetails: () => import('components/DialogCourseDetails')
   // },
-  data () {
+  data() {
     return {
       filter: '',
       options: ['TODAS', 'Tecnologia', 'Mercado e Vendas', 'Moda', 'Administração'],
@@ -137,11 +137,11 @@ export default {
       eventDetails: {}
     }
   },
-  mounted () {
+  mounted() {
     this.listTourism()
   },
   methods: {
-    async listTourism () {
+    async listTourism() {
       try {
         const { data } = await this.$services.tourism().list()
         this.events = data.data
@@ -149,7 +149,7 @@ export default {
         console.log(error)
       }
     },
-    confirmDelete (event) {
+    confirmDelete(event) {
       this.$q.dialog({
         title: 'Deleter Evento',
         message: `Tem certeza que deseja deletar o evento <b>${event.name}</b> ?`,
@@ -160,7 +160,7 @@ export default {
         this.deleteCourse(event)
       })
     },
-    async deleteCourse (tourism) {
+    async deleteCourse(tourism) {
       try {
         await this.$services.events().delete(tourism.id)
         this.$notifySuccess('Evento excluído com Sucesso!')
@@ -170,23 +170,23 @@ export default {
         this.$q.notify('Erro ao excluir curso')
       }
     },
-    editCourse (tourism) {
+    editCourse(tourism) {
       this.$router.push({ name: 'formTourism', params: { tourism: tourism } })
     },
-    formatDateString (dateOriginal) {
+    formatDateString(dateOriginal) {
       return date.formatDate(dateOriginal, 'DD/MM/YYYY HH:mm')
     },
-    formatCategoryString (categoryName) {
+    formatCategoryString(categoryName) {
       const category = this.category.find(item => item.value === categoryName)
       return category.label
     },
-    viewEvent (event) {
+    viewEvent(event) {
     },
-    openDialogEvents (tourism) {
+    openDialogEvents(tourism) {
       this.modalEvents = true
       this.eventDetails = tourism
     },
-    closeModal () {
+    closeModal() {
       this.modalEvents = false
       this.eventDetails = {}
     }

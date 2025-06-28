@@ -138,7 +138,7 @@
 import axios from 'axios'
 export default {
   name: 'PageWeather',
-  data () {
+  data() {
     return {
       location: 'Abaetetuba, BR',
       condition_slug: '',
@@ -153,11 +153,11 @@ export default {
       moonPhaseText: ''
     }
   },
-  async mounted () {
+  async mounted() {
     this.getWeather()
   },
   methods: {
-    async getWeather () {
+    async getWeather() {
       try {
         this.tempResult = false
         const { data } = await axios.get('https://api.hgbrasil.com/weather?format=json-cors&key=3ae5537e&woeid=458294')
@@ -175,11 +175,11 @@ export default {
         console.log('Não foi possível recuperar tempo e clima', error)
       }
     },
-    getCurrentDate () {
+    getCurrentDate() {
       const options = { weekday: 'long', day: 'numeric', month: 'long' }
       return new Date().toLocaleDateString('pt-BR', options)
     },
-    getMoonPhaseText (phase) {
+    getMoonPhaseText(phase) {
       // eslint-disable-next-line no-unused-vars
       const phases = {
         new: 'Lua Nova',

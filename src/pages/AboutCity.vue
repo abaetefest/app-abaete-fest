@@ -47,7 +47,7 @@
 <script>
 export default {
   name: 'PageAboutCity',
-  data () {
+  data() {
     return {
       aboutCity: [
         {

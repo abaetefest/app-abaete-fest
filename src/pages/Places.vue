@@ -119,7 +119,7 @@ export default {
   components: {
     DialogPlaces: () => import('components/DialogPlaces')
   },
-  data () {
+  data() {
     return {
       places: makers,
       ratingModel: 3,
@@ -138,16 +138,16 @@ export default {
       return img[0].icon
     }
   },
-  mounted () {
+  mounted() {
     console.log(this.categoria)
   },
   methods: {
-    openDialogCourse (place) {
+    openDialogCourse(place) {
       this.modalPlaces = true
       this.placeDetails = place
       this.$mixpanel.track(place.title)
     },
-    closeModal () {
+    closeModal() {
       this.modalPlaces = false
       this.placeDetails = {}
     }

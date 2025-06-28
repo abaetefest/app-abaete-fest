@@ -114,10 +114,10 @@
 export default {
   name: 'PageContact',
   methods: {
-    handleInstagram () {
+    handleInstagram() {
       this.$mixpanel.track('contact-instagram')
     },
-    handleWhatsapp () {
+    handleWhatsapp() {
       this.$mixpanel.track('contact-whatsapp')
     }
   }

@@ -166,7 +166,7 @@ export default {
   components: {
     DialogCourseDetails: () => import('components/DialogCourseDetails')
   },
-  data () {
+  data() {
     return {
       initialPagination: {
         sortBy: 'desc',
@@ -209,7 +209,7 @@ export default {
   //     return categorySearch.label
   //   }
   },
-  async mounted () {
+  async mounted() {
     if (this.$route.params.type) {
       await this.listEvents(this.$route.params.type)
     } else {
@@ -217,7 +217,7 @@ export default {
     }
   },
   methods: {
-    async listEvents (category = '') {
+    async listEvents(category = '') {
       this.load = true
       try {
         const { data } = await this.$services.events().listByCategory(category)
@@ -228,29 +228,29 @@ export default {
         console.log(error)
       }
     },
-    openDialogCourse (event) {
+    openDialogCourse(event) {
       this.modalCourse = true
       this.courseDetails = event
       this.$mixpanel.track(event.name)
     },
-    detailsEvent (course) {
+    detailsEvent(course) {
       this.$router.push({ name: 'eventDetails', params: { id: course.id } })
       // this.$router.push({ name: menu.route, params: { type: menu.type } })
     },
-    closeModal () {
+    closeModal() {
       this.modalCourse = false
       this.courseDetails = {}
     },
-    formatDateString (dateOriginal) {
+    formatDateString(dateOriginal) {
       return date.formatDate(dateOriginal, 'DD/MM/YYYY')
     },
-    formatHourString (dateOriginal) {
+    formatHourString(dateOriginal) {
       return date.formatDate(dateOriginal, 'HH:mm')
     },
-    getDayDate (dateOriginal) {
+    getDayDate(dateOriginal) {
       return date.formatDate(dateOriginal, 'DD')
     },
-    getMonthString (dateOriginal) {
+    getMonthString(dateOriginal) {
       const month = date.formatDate(dateOriginal, 'MM')
       const monthString = {
         '01': 'Jan',
@@ -268,7 +268,7 @@ export default {
       }
       return monthString[month]
     },
-    backToEvents () {
+    backToEvents() {
       this.$router.push({ name: 'home' })
     }
   }

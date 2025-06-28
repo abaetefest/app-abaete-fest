@@ -120,7 +120,7 @@ export default {
   },
   components: {
   },
-  data () {
+  data() {
     return {
       form: {
         name: '',
@@ -201,7 +201,7 @@ export default {
       ]
     }
   },
-  mounted () {
+  mounted() {
     if (this.tourism && this.tourism.id) {
       // this.$refs.imgFileInput.value = this.form.image_url
       if (this.tourism.image_url) {
@@ -214,14 +214,14 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
+    onSubmit() {
       if (this.form.id) {
         this.updateTourism()
       } else {
         this.registerTourism()
       }
     },
-    toBase64 (file) {
+    toBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader()
         reader.readAsDataURL(file)
@@ -229,14 +229,14 @@ export default {
         reader.onerror = error => reject(error)
       })
     },
-    async setFile (file) {
+    async setFile(file) {
       this.preview = await this.toBase64(file)
     },
-    updateImg () {
+    updateImg() {
       this.preview = ''
       this.form.image_url = []
     },
-    async registerTourism () {
+    async registerTourism() {
       try {
         await this.$services.tourism().register({
           ...this.form
@@ -248,7 +248,7 @@ export default {
         this.$q.notify('Erro ao cadastrar Ponto Turístico')
       }
     },
-    async updateTourism () {
+    async updateTourism() {
       try {
         await this.$services.tourism().updateTourism(this.form.id, {
           ...this.form
@@ -260,10 +260,10 @@ export default {
         this.$q.notify('Erro ao cadastrar Ponto Turístico')
       }
     },
-    showDialogWpp () {
+    showDialogWpp() {
       this.dialogWpp = true
     },
-    closeDialogWpp () {
+    closeDialogWpp() {
       this.dialogWpp = false
     }
   }

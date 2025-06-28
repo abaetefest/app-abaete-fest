@@ -133,7 +133,7 @@
 <script>
 export default {
   name: 'PageLogin',
-  data () {
+  data() {
     return {
       loading1: false,
       form: {
@@ -154,7 +154,7 @@ export default {
     //     this.$router.push({ name: 'home' })
     //   }, 1000)
     // },
-    async onSubmit () {
+    async onSubmit() {
       this.loading1 = true
       try {
         const response = await this.$services.users().login({
@@ -171,7 +171,7 @@ export default {
         this.$q.notify('Usuário ou senha incorreto.')
       }
     },
-    goToRegister () {
+    goToRegister() {
       this.$router.push({ name: 'cadastro' })
     }
   }
