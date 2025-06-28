@@ -74,9 +74,7 @@
             class="text-body1"
             :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'"
           >
-            <div v-html="event.description">
-              {{ event.description }}
-            </div>
+            <div v-html="event.description"></div>
           </div>
         </q-card-section>
 
@@ -123,8 +121,10 @@
 <script>
 import { date } from 'quasar'
 import ImageZoom from 'components/ImageZoom.vue'
+import SEOMixin from 'src/mixins/seo'
 export default {
   name: 'PageEventDetails',
+  mixins: [SEOMixin],
   components: {
     ImageZoom
   },
@@ -156,6 +156,7 @@ export default {
       try {
         const { data } = await this.$services.events().get(id)
         this.event = data.data
+        this.setEventSEO(data.data)
         this.load = false
       } catch (error) {
         this.load = false
@@ -188,33 +189,14 @@ export default {
       this.imgZoom = true
     }
   },
-  meta () {
-    return {
-      title: this.event.name,
-      meta: {
-        // description: { name: 'description', content: this.event.description },
-        keywords: { name: 'keywords', content: 'AbaetéFest, festas, abaetetuba, eventos' },
-        title: {
-          name: 'title',
-          content: this.event.name
-        },
-        ogTitle: {
-          name: 'og:title',
-          content: this.event.name
-        },
-        description: {
-          name: 'description',
-          content: this.event.description
-        },
-        ogDesc: {
-          name: 'og:description',
-          content: this.event.description
-        },
-        ogImage: {
-          name: 'og:image',
-          content: this.event.image_url
-        }
-      }
+  async preFetch ({ store, currentRoute }) {
+    try {
+      const id = currentRoute.params.id
+      const { data } = await this.$services.events().get(id)
+      return data.data
+    } catch (error) {
+      console.error('Erro no preFetch:', error)
+      return null
     }
   }
 }

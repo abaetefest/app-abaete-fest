@@ -1,10 +1,60 @@
-[[headers]]
-  for = "/service-worker.js"
-  [headers.values]
-  cache-control = '''
-  max-age=0,
-  no-cache,
-  must-revalidate'''
+[build]
+  command = "quasar build -m ssr"
+  functions = "dist/ssr"
+  publish = "dist/ssr/www"
+
+[build.environment]
+  NODE_VERSION = "18"
 
 [images]
   remote_images = ["https://abaete-fest.s3.amazonaws.com/*"]
+
+[[functions]]
+  function = "dist/ssr/render/*"
+  included_files = ["dist/ssr/**"]
+
+# Redirects para SPA fallback
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/render"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/render"
+  status = 200
+
+# Headers para melhor SEO e performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/icons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Configurações para PWA
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/service-worker.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
