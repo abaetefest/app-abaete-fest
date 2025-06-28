@@ -222,12 +222,12 @@ export default {
     const currentYear = new Date().getFullYear()
 
     return {
-      title: `Eventos ${categoryFilter} em Abaeteba ${currentYear} | AbaetéFest`,
+      title: `Eventos ${categoryFilter} em Abaetetuba ${currentYear} | AbaetéFest`,
 
       meta: {
         description: {
           name: 'description',
-          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaeteba. ${eventCount} eventos disponíveis. Shows, festas, cultura e muito mais no AbaetéFest!`
+          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaetetuba. ${eventCount} eventos disponíveis. Shows, festas, cultura e muito mais no AbaetéFest!`
         },
         keywords: {
           name: 'keywords',
@@ -245,11 +245,11 @@ export default {
         // Open Graph
         ogTitle: {
           property: 'og:title',
-          content: `Eventos ${categoryFilter} em Abaeteba | AbaetéFest`
+          content: `Eventos ${categoryFilter} em Abaetetuba | AbaetéFest`
         },
         ogDescription: {
           property: 'og:description',
-          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaeteba. ${eventCount} eventos disponíveis no AbaetéFest!`
+          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaetetuba. ${eventCount} eventos disponíveis no AbaetéFest!`
         },
         ogImage: {
           property: 'og:image',
@@ -279,11 +279,11 @@ export default {
         },
         twitterTitle: {
           name: 'twitter:title',
-          content: `Eventos ${categoryFilter} em Abaeteba | AbaetéFest`
+          content: `Eventos ${categoryFilter} em Abaetetuba | AbaetéFest`
         },
         twitterDescription: {
           name: 'twitter:description',
-          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaeteba. ${eventCount} eventos disponíveis!`
+          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaetetuba. ${eventCount} eventos disponíveis!`
         },
         twitterImage: {
           name: 'twitter:image',
@@ -297,7 +297,7 @@ export default {
         },
         geoPlacename: {
           name: 'geo.placename',
-          content: 'Abaeteba, Pará, Brasil'
+          content: 'Abaetetuba, Pará, Brasil'
         },
         geoPosition: {
           name: 'geo.position',
