@@ -6,22 +6,54 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Configuração de imagens - MANTIDA
 [images]
   remote_images = ["https://abaete-fest.s3.amazonaws.com/*"]
 
+# Função para SSR
 [[functions]]
   function = "dist/ssr/render/*"
   included_files = ["dist/ssr/**"]
 
-# Redirects para SPA fallback
+# Redirects otimizados para SSR
+# Assets estáticos primeiro (não passam pelo SSR)
+[[redirects]]
+  from = "/icons/*"
+  to = "/icons/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/js/*"
+  to = "/js/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/css/*"
+  to = "/css/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/fonts/*"
+  to = "/fonts/:splat"
+  status = 200
+
+# API calls podem passar pelo SSR se necessário
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/render"
   status = 200
 
+# Todas as outras rotas passam pelo SSR (para HTML pages)
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/render"
+  status = 200
+  conditions = {headers = {accept = "text/html"}}
+
+# Fallback para SPAs se o SSR falhar
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200
 
 # Headers para melhor SEO e performance
@@ -58,3 +90,19 @@
   for = "/service-worker.js"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Headers específicos para imagens do S3
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
