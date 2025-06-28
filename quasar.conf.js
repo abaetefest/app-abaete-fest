@@ -21,14 +21,14 @@ module.exports = function (ctx) {
       'i18n',
       'axios',
       'notify',
-      
+
       // Client-only boots (só executam no cliente)
       { path: 'auth-router', server: false },
       { path: 'mixpanel', server: false },
-      
+
       // Boots condicionais para SSR
       ...(ctx.mode.ssr ? [] : ['leaflet']),
-      ...(ctx.mode.ssr ? [] : [{ path: 'google-maps', server: false }]),
+      ...(ctx.mode.ssr ? [] : [{ path: 'google-maps', server: false }])
     ],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -46,7 +46,7 @@ module.exports = function (ctx) {
     // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
       vueRouterMode: 'history', // Para SEO
-      
+
       env: ctx.dev
         ? {
             VERSION: require('./package.json').version,
@@ -62,7 +62,7 @@ module.exports = function (ctx) {
           },
 
       // Webpack config simples
-      chainWebpack (chain) {
+      chainWebpack(chain) {
         chain.plugin('eslint-webpack-plugin')
           .use(ESLintPlugin, [{ extensions: ['js', 'vue'] }])
       }
@@ -108,7 +108,6 @@ module.exports = function (ctx) {
       pwa: true,
       prodPort: 3000,
       maxAge: 1000 * 60 * 60 * 24 * 30,
-      
       middlewares: [
         ...(ctx.prod ? ['compression'] : []),
         'render'
@@ -128,7 +127,7 @@ module.exports = function (ctx) {
         clientsClaim: true,
         exclude: [/netlify\.toml$/, /\.htaccess$/, /\.map$/]
       },
-      
+
       manifest: {
         name: 'App AbaetéFest',
         short_name: 'AbaetéFest',
@@ -143,7 +142,7 @@ module.exports = function (ctx) {
         scope: '/',
         dir: 'ltr',
         lang: 'pt-br',
-        
+
         icons: [
           {
             src: 'icons/icon-128x128.png',
@@ -177,7 +176,7 @@ module.exports = function (ctx) {
             purpose: 'maskable'
           }
         ],
-        
+
         related_applications: [
           {
             platform: 'play',
@@ -199,7 +198,7 @@ module.exports = function (ctx) {
         appId: 'app-abaete-fest'
       },
       nodeIntegration: true,
-      extendWebpack (/* cfg */) {}
+      extendWebpack(/* cfg */) {}
     }
   }
 }
