@@ -495,10 +495,13 @@ export default {
     shareSchedules: async function () {
       if (typeof window === 'undefined' || typeof navigator === 'undefined') return
 
+      const baseUrl = `${window.location.protocol}//${window.location.host}`
+      const timestamp = new Date().getTime()
+
       const shareData = {
         title: 'Horários de Viagem Belém ↔ Abaetetuba | AbaetéFest',
         text: 'Consulte os horários atualizados de ônibus e embarcações entre Belém e Abaetetuba. Todos os terminais e empresas de transporte.',
-        url: window.location.href
+        url: `${baseUrl}/trips?t=${timestamp}`
       }
 
       try {
