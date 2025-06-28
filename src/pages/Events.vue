@@ -1,5 +1,5 @@
 <template>
-  <q-page :class="$q.dark.isActive ? '': 'bg-grey-1'">
+  <q-page :class="$q.dark.isActive ? '' : 'bg-grey-1'">
     <!-- Header com título -->
     <div class="q-pa-md">
       <div class="text-h4 text-bold text-center custom-font q-mb-md">
@@ -21,7 +21,7 @@
         emit-value
         dense
         @input="listEvents(categoria)"
-        style="max-width: 400px;"
+        style="max-width: 400px"
       >
         <template v-slot:prepend>
           <q-avatar
@@ -57,11 +57,14 @@
         v-model="filter"
         label="Pesquisar eventos..."
         class="q-mb-md"
-        style="max-width: 400px; margin: 0 auto;"
+        style="max-width: 400px; margin: 0 auto"
         :label-color="$q.dark.isActive ? 'blue-3' : 'primary'"
       >
         <template v-slot:append>
-          <q-icon name="mdi-magnify" :color="$q.dark.isActive ? 'blue-3' : 'primary'" />
+          <q-icon
+            name="mdi-magnify"
+            :color="$q.dark.isActive ? 'blue-3' : 'primary'"
+          />
         </template>
       </q-input>
     </div>
@@ -69,7 +72,12 @@
     <!-- Loading skeleton -->
     <div v-if="load" class="q-pa-md">
       <div class="row q-gutter-md justify-center">
-        <div v-for="n in 6" :key="n" class="col-12 col-sm-6 col-md-4" style="max-width: 350px;">
+        <div
+          v-for="n in 6"
+          :key="n"
+          class="col-12 col-sm-6 col-md-4"
+          style="max-width: 350px"
+        >
           <q-card class="event-card-skeleton">
             <q-skeleton height="200px" square />
             <q-card-section>
@@ -98,68 +106,68 @@
       </div>
 
       <!-- Grid de eventos -->
-      <div class="row q-gutter-md justify-center">
+      <div class="row q-gutter-md justify-center ">
         <div
           v-for="event in filteredEvents"
           :key="event.id"
           class="col-12 col-sm-6 col-md-4"
-          style="max-width: 350px;"
         >
           <q-card
-            class="event-card cursor-pointer"
+            class="row event-card cursor-pointer"
             :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
             @click="detailsEvent(event)"
           >
-            <!-- Imagem do evento -->
-            <div class="event-image-container">
+
+          <div class="event-category-badge">
+              <q-chip
+                :color="getCategoryColor(event.category)"
+                text-color="white"
+                :icon="getCategoryIcon(event.category)"
+                dense
+                class="text-weight-bold q-pa-sm"
+              >
+                {{ getCategoryLabel(event.category) }}
+              </q-chip>
+            </div>
+
+            <div class="col-3">
               <q-img
                 :src="event.image_url"
                 :alt="`Imagem do evento ${event.name}`"
-                class="event-image"
-                :ratio="16/9"
+                class="full-height event-image"
+                :ratio="3 / 3"
                 placeholder-src="loadPlaceholder.png"
               >
                 <template #loading>
                   <q-skeleton class="full-width full-height" square />
                 </template>
               </q-img>
-
-              <!-- Badge de categoria -->
-              <div class="event-category-badge">
-                <q-chip
-                  :color="getCategoryColor(event.category)"
-                  text-color="white"
-                  :icon="getCategoryIcon(event.category)"
-                  dense
-                  class="text-weight-bold text-caption q-pa-md"
-                >
-                  {{ getCategoryLabel(event.category) }}
-                </q-chip>
-              </div>
             </div>
 
             <!-- Conteúdo do card -->
-            <q-card-section class="q-pa-md">
+            <q-card-section class="q-pa-sm col-9">
               <!-- Data e hora -->
-              <div class="event-date-container q-mb-md">
+              <div class="event-date-container">
                 <div class="event-date-badge">
-                  <div class="event-day">{{ getDayDate(event.start_date) }}</div>
-                  <div class="event-month">{{ getMonthString(event.start_date) }}</div>
+                  <div class="event-day">
+                    {{ getDayDate(event.start_date) }}
+                    {{ getMonthString(event.start_date) }}
+                  </div>
                 </div>
                 <div class="event-time">
-                  <div class="text-body2 text-weight-medium">
-                    <q-icon name="mdi-clock-outline" size="16px" class="q-mr-xs" />
+                  <div class="text-body3 text-weight-medium">
+                    <q-icon
+                      name="mdi-clock-outline"
+                      size="16px"
+                      class="q-mr-xs"
+                    />
                     {{ formatHourString(event.start_date) }}
-                  </div>
-                  <div class="text-caption text-grey-6" v-if="event.location">
-                    <q-icon name="mdi-map-marker-outline" size="14px" class="q-mr-xs" />
-                    {{ event.location }}
                   </div>
                 </div>
               </div>
 
               <!-- Título do evento -->
-              <div class="event-title q-mb-sm">
+              <div class="event-title q-mb-xs">
                 {{ event.name }}
               </div>
 
@@ -168,14 +176,36 @@
                 {{ getShortDescription(event.description) }}
               </div>
 
+              <div class="text-caption text-grey-6">
+                <q-icon
+                  name="mdi-map-marker-outline"
+                  size="14px"
+                  class="q-mr-xs"
+                />
+                Travessa Barão do tio peida
+              </div>
+
               <!-- Footer com estatísticas -->
-              <div class="event-footer q-mt-md" v-if="event.attendees_count || event.interested_count">
+              <div
+                class="event-footer q-mt-md"
+                v-if="event.attendees_count || event.interested_count"
+              >
                 <div class="event-stats">
-                  <span v-if="event.attendees_count" class="text-caption text-grey-6">
-                    <q-icon name="mdi-account-group" size="14px" class="q-mr-xs" />
+                  <span
+                    v-if="event.attendees_count"
+                    class="text-caption text-grey-6"
+                  >
+                    <q-icon
+                      name="mdi-account-group"
+                      size="14px"
+                      class="q-mr-xs"
+                    />
                     {{ event.attendees_count }} participantes
                   </span>
-                  <span v-if="event.interested_count" class="text-caption text-grey-6 q-ml-md">
+                  <span
+                    v-if="event.interested_count"
+                    class="text-caption text-grey-6 q-ml-md"
+                  >
                     <q-icon name="mdi-heart" size="14px" class="q-mr-xs" />
                     {{ event.interested_count }} interessados
                   </span>
@@ -188,7 +218,11 @@
 
       <!-- Mensagem quando não há eventos -->
       <div v-if="filteredEvents.length === 0" class="text-center q-pa-xl">
-        <q-icon name="mdi-calendar-remove" size="80px" class="text-grey-5 q-mb-md" />
+        <q-icon
+          name="mdi-calendar-remove"
+          size="80px"
+          class="text-grey-5 q-mb-md"
+        />
         <div class="text-h6 text-grey-6 q-mb-sm">Nenhum evento encontrado</div>
         <div class="text-body2 text-grey-5">
           Tente ajustar os filtros ou volte mais tarde para ver novos eventos.
@@ -214,9 +248,10 @@ export default {
 
   // Meta tags para SEO
   meta() {
-    const categoryFilter = this.categoria && this.categoria !== 'all'
-      ? this.getCategoryLabel(this.categoria)
-      : 'Todos os tipos'
+    const categoryFilter =
+      this.categoria && this.categoria !== 'all'
+        ? this.getCategoryLabel(this.categoria)
+        : 'Todos os tipos'
 
     const eventCount = this.events.length
     const currentYear = new Date().getFullYear()
@@ -257,7 +292,9 @@ export default {
         },
         ogUrl: {
           property: 'og:url',
-          content: `https://app.abaetefest.com.br/events${this.categoria !== 'all' ? `?categoria=${this.categoria}` : ''}`
+          content: `https://app.abaetefest.com.br/events${
+            this.categoria !== 'all' ? `?categoria=${this.categoria}` : ''
+          }`
         },
         ogType: {
           property: 'og:type',
@@ -312,7 +349,9 @@ export default {
       link: {
         canonical: {
           rel: 'canonical',
-          href: `https://app.abaetefest.com.br/events${this.categoria !== 'all' ? `?categoria=${this.categoria}` : ''}`
+          href: `https://app.abaetefest.com.br/events${
+            this.categoria !== 'all' ? `?categoria=${this.categoria}` : ''
+          }`
         }
       }
     }
@@ -344,22 +383,26 @@ export default {
 
   computed: {
     getIconCategory: function () {
-      const img = this.options.filter(opt => opt.value === this.categoria)
+      const img = this.options.filter((opt) => opt.value === this.categoria)
       return img[0] ? img[0].icon : 'mdi-calendar'
     },
 
     filteredEvents: function () {
       if (!this.filter) return this.events
 
-      return this.events.filter(event => {
+      return this.events.filter((event) => {
         const name = event.name ? event.name.toLowerCase() : ''
-        const description = event.description ? event.description.toLowerCase() : ''
+        const description = event.description
+          ? event.description.toLowerCase()
+          : ''
         const location = event.location ? event.location.toLowerCase() : ''
         const searchTerm = this.filter.toLowerCase()
 
-        return name.includes(searchTerm) ||
-               description.includes(searchTerm) ||
-               location.includes(searchTerm)
+        return (
+          name.includes(searchTerm) ||
+          description.includes(searchTerm) ||
+          location.includes(searchTerm)
+        )
       })
     }
   },
@@ -382,11 +425,11 @@ export default {
     categoria: function (newVal) {
       // Atualiza URL sem recarregar a página
       if (newVal !== 'all') {
-        this.$router.replace({ query: { categoria: newVal } }).catch(err => {
+        this.$router.replace({ query: { categoria: newVal } }).catch((err) => {
           console.error(err)
         })
       } else {
-        this.$router.replace({ query: {} }).catch(err => {
+        this.$router.replace({ query: {} }).catch((err) => {
           console.error(err)
         })
       }
@@ -477,7 +520,9 @@ export default {
     getShortDescription: function (description) {
       if (!description) return ''
       const cleanText = description.replace(/<[^>]*>/g, '')
-      return cleanText.length > 100 ? cleanText.substring(0, 100) + '...' : cleanText
+      return cleanText.length > 100
+        ? cleanText.substring(0, 100) + '...'
+        : cleanText
     },
 
     // Funções para categorias
@@ -525,14 +570,15 @@ export default {
 
 <style scoped>
 .custom-font {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .event-card {
   border-radius: 16px;
-  overflow: hidden;
+  overflow: visible;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .event-card:hover {
@@ -545,14 +591,25 @@ export default {
 }
 
 .event-image {
-  border-radius: 0;
+  border-radius: 16px 0 0 16px;
 }
 
 .event-category-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 2;
+  top: -12px;
+  right: -8px;
+  z-index: 10;
+}
+
+.event-category-badge .q-chip {
+  font-size: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.event-category-badge .q-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 .event-price-badge {
@@ -578,17 +635,9 @@ export default {
 }
 
 .event-day {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   line-height: 1;
-}
-
-.event-month {
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  line-height: 1;
-  margin-top: 2px;
 }
 
 .event-time {
@@ -596,7 +645,7 @@ export default {
 }
 
 .event-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.3;
   color: var(--q-dark);
@@ -604,10 +653,11 @@ export default {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-transform: lowercase;
 }
 
 .event-description {
-  font-size: 14px;
+  font-size: 12px;
   color: #666;
   line-height: 1.4;
   display: -webkit-box;
@@ -665,11 +715,15 @@ export default {
   }
 
   .event-day {
-    font-size: 18px;
+    font-size: 12px;
   }
 
   .event-title {
-    font-size: 16px;
+    font-size: 14px;
+  }
+
+  .event-description {
+    font-size: 11px;
   }
 }
 </style>
