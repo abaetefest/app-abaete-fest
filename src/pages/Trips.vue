@@ -10,6 +10,35 @@
       <p class="text-subtitle1 text-grey-7">
         Consulte os horários atualizados de ônibus e embarcações de Belém para Abaetetuba e vice-versa
       </p>
+
+      <!-- Botão de compartilhar no topo -->
+      <div class="q-mt-md">
+        <q-btn
+          unelevated
+          rounded
+          color="primary"
+          icon-right="mdi-share-variant"
+          label="Compartilhar Horários"
+          @click="shareSchedules"
+          no-caps
+          class="text-weight-bold"
+          v-if="canShare"
+        />
+
+        <!-- Fallback para dispositivos sem Web Share API -->
+        <q-btn
+          unelevated
+          rounded
+          outline
+          color="primary"
+          icon-right="mdi-content-copy"
+          label="Copiar Link dos Horários"
+          @click="copyScheduleLink"
+          no-caps
+          class="text-weight-bold"
+          v-else
+        />
+      </div>
     </div>
 
     <!-- Seção de legendas otimizada -->
@@ -65,7 +94,7 @@
     </div>
 
     <!-- Banner promocional -->
-    <!-- <div class="row justify-center q-mb-xl">
+    <div class="row justify-center q-mb-xl">
       <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
         <q-img
           src="propagandas/genio.png"
@@ -75,7 +104,7 @@
           @click="openLink"
         />
       </div>
-    </div> -->
+    </div>
 
     <!-- Seção principal de horários -->
     <div class="horarios-viagem">
@@ -392,7 +421,7 @@ export default {
         },
         ogImage: {
           property: 'og:image',
-          content: 'https://app.abaetefest.com.br/og-horarios-viagem.jpg'
+          content: 'https://app.abaetefest.com.br/og-horarios-viagem.png'
         },
         ogUrl: {
           property: 'og:url',
@@ -426,7 +455,7 @@ export default {
         },
         twitterImage: {
           name: 'twitter:image',
-          content: 'https://app.abaetefest.com.br/og-horarios-viagem.jpg'
+          content: 'https://app.abaetefest.com.br/og-horarios-viagem.png'
         },
 
         // Meta específicas para transporte
@@ -459,15 +488,72 @@ export default {
       ratingModel: 3,
       modalPlaces: false,
       placeDetails: {},
-      slide: 1
+      slide: 1,
+      canShare: false
     }
   },
 
   mounted: function () {
+    this.setupClientFeatures()
     this.addStructuredData()
   },
 
   methods: {
+    setupClientFeatures: function () {
+      if (typeof navigator !== 'undefined' && navigator.canShare) {
+        this.canShare = true
+      }
+    },
+
+    shareSchedules: async function () {
+      if (typeof window === 'undefined' || typeof navigator === 'undefined') return
+
+      const shareData = {
+        title: 'Horários de Viagem Belém ↔ Abaetetuba | AbaetéFest',
+        text: 'Consulte os horários atualizados de ônibus e embarcações entre Belém e Abaetetuba. Todos os terminais e empresas de transporte.',
+        url: window.location.href
+      }
+
+      try {
+        if (navigator.canShare && navigator.canShare(shareData)) {
+          await navigator.share(shareData)
+          this.handleMixPanelEvent('Horários Compartilhados via Web Share')
+        }
+      } catch (err) {
+        console.error('Erro ao compartilhar:', err)
+        this.$q.notify({
+          message: 'Erro ao compartilhar horários!',
+          color: 'negative',
+          position: 'top',
+          icon: 'mdi-alert'
+        })
+      }
+    },
+
+    copyScheduleLink: async function () {
+      if (typeof window === 'undefined' || typeof navigator === 'undefined') return
+
+      try {
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(window.location.href)
+          this.$q.notify({
+            message: 'Link dos horários copiado!',
+            color: 'positive',
+            position: 'top',
+            icon: 'mdi-check',
+            caption: 'Compartilhe com seus amigos'
+          })
+          this.handleMixPanelEvent('Link dos Horários Copiado')
+        }
+      } catch (err) {
+        console.error('Erro ao copiar link:', err)
+        this.$q.notify({
+          message: 'Erro ao copiar link!',
+          color: 'negative',
+          position: 'top'
+        })
+      }
+    },
     addStructuredData: function () {
       if (typeof process !== 'undefined' && !process.env.CLIENT) return
 
