@@ -120,7 +120,7 @@ export default {
       const shareData = {
         title: 'Veja esse Evento no AbaetéFest',
         text: this.courseData.name,
-        url: window.location.origin + '/#/event-details/' + this.courseData.id
+        url: window.location.origin + '/event-details/' + this.courseData.id
       }
 
       try {
