@@ -93,19 +93,6 @@
       </div>
     </div>
 
-    <!-- Banner promocional -->
-    <div class="row justify-center q-mb-xl">
-      <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-        <q-img
-          src="propagandas/genio.png"
-          class="animated-border cursor-pointer"
-          style="border-radius: 10px"
-          alt="Canal Genio - Informações sobre Abaetetuba"
-          @click="openLink"
-        />
-      </div>
-    </div>
-
     <!-- Seção principal de horários -->
     <div class="horarios-viagem">
       <div v-for="(trip, tripIndex) in trips" :key="tripIndex">
