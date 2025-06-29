@@ -2,7 +2,8 @@
   <q-page padding :class="$q.dark.isActive ? 'bg-dark' : ''">
     <!-- Loading skeleton -->
     <div v-if="load" class="q-pa-md" style="padding-top: 10px;">
-      <div class="bg-white rounded-borders shadow-2 overflow-hidden" :class="$q.dark.isActive ? 'bg-dark' : ''" style="max-width: 600px; margin: 0 auto;">
+      <div class="bg-white rounded-borders shadow-2 overflow-hidden" :class="$q.dark.isActive ? 'bg-dark' : ''"
+        style="max-width: 600px; margin: 0 auto;">
         <q-skeleton height="280px" />
         <div class="q-pa-lg">
           <q-skeleton type="text" class="text-h5" />
@@ -19,17 +20,13 @@
 
     <!-- Conteúdo do evento -->
     <div v-else style="padding-top: 10px;">
-      <div class="bg-white rounded-borders shadow-2 overflow-hidden q-ma-md" :class="$q.dark.isActive ? 'bg-dark' : ''" style="max-width: 600px; margin: 0 auto !important;">
+      <div class="bg-white rounded-borders shadow-2 overflow-hidden q-ma-md" :class="$q.dark.isActive ? 'bg-dark' : ''"
+        style="max-width: 600px; margin: 0 auto !important;">
 
         <!-- Imagem principal -->
         <div class="relative-position">
-          <q-img
-            :src="event.image_url"
-            :alt="`Imagem do evento ${event.name}`"
-            fit="cover"
-            placeholder-src="loadPlaceholder.png"
-            style="border-radius: 10px;"
-          >
+          <q-img :src="event.image_url" :alt="`Imagem do evento ${event.name}`" fit="cover"
+            placeholder-src="loadPlaceholder.png" style="border-radius: 10px;">
             <template #loading>
               <q-skeleton class="full-width full-height" />
             </template>
@@ -90,11 +87,8 @@
           <!-- Descrição -->
           <div v-if="event.description" class="q-mb-lg">
             <div class="text-h6 text-primary q-mb-md">Sobre o evento</div>
-            <div
-              class="text-body2 line-height-md text-grey-8"
-              :class="$q.dark.isActive ? 'text-grey-3' : ''"
-              v-html="event.description"
-            ></div>
+            <div class="text-body2 line-height-md text-grey-8" :class="$q.dark.isActive ? 'text-grey-3' : ''"
+              v-html="event.description"></div>
           </div>
 
           <!-- Informações adicionais -->
@@ -124,42 +118,18 @@
           <div class="q-gutter-y-sm">
             <div class="row q-gutter-sm">
               <div class="col-12 col-sm">
-                <q-btn
-                  v-if="canShare"
-                  unelevated
-                  rounded
-                  color="primary"
-                  icon-right="mdi-share-variant"
-                  label="Compartilhar"
-                  class="full-width"
-                  @click="shareApp"
-                  no-caps
-                />
+                <q-btn v-if="canShare" unelevated rounded color="primary" icon-right="mdi-share-variant"
+                  label="Compartilhar" class="full-width" @click="shareApp" no-caps />
               </div>
 
               <div class="col-12 col-sm">
-                <q-btn
-                  rounded
-                  color="grey-7"
-                  icon="mdi-calendar-plus"
-                  label="Adicionar ao calendário"
-                  @click="addToCalendar"
-                  no-caps
-                  class="full-width"
-                />
+                <q-btn rounded color="grey-7" icon="mdi-calendar-plus" label="Adicionar ao calendário"
+                  @click="addToCalendar" no-caps class="full-width" />
               </div>
 
               <div class="col-12 col-sm">
-                <q-btn
-                  outline
-                  rounded
-                  color="primary"
-                  icon-right="mdi-arrow-left"
-                  label="Voltar"
-                  class="full-width"
-                  no-caps
-                  @click="backToEvents"
-                />
+                <q-btn outline rounded color="primary" icon-right="mdi-arrow-left" label="Voltar" class="full-width"
+                  no-caps @click="backToEvents" />
               </div>
 
             </div>
@@ -210,7 +180,7 @@ export default {
     }
   },
 
-  // Meta tags otimizadas para SEO
+  // Meta tags otimizadas para SEO e redes sociais
   meta: function () {
     if (!this.event || !this.event.id) {
       return {
@@ -219,21 +189,53 @@ export default {
     }
 
     const eventDate = this.formatDateString(this.event.start_date)
+    const eventTime = this.formatHourString(this.event.start_date)
+
+    // Limpa e otimiza a descrição
     const cleanDescription = this.event.description
-      ? this.event.description.replace(/<[^>]*>/g, '').substring(0, 160)
-      : `Evento ${this.event.name} em Abaeteba no dia ${eventDate}`
+      ? this.event.description
+        .replace(/<[^>]*>/g, '') // Remove HTML
+        .replace(/\s+/g, ' ') // Remove espaços extras
+        .trim()
+        .substring(0, 155) + (this.event.description.length > 155 ? '...' : '')
+      : `Participe do evento ${this.event.name} em ${this.event.location || 'Abaetetuba'} no dia ${eventDate} às ${eventTime}. Não perca!`
+
+    // Título otimizado para SEO e compartilhamento
+    const pageTitle = `${this.event.name} - ${eventDate} | AbaetéFest`
+    const shareTitle = `${this.event.name} - ${eventDate}`
+
+    // Imagem otimizada para compartilhamento
+    const shareImage = this.event.image_url || 'https://app.abaetefest.com.br/images/og-default-event.jpg'
+    const canonicalUrl = `https://app.abaetefest.com.br/event-details/${this.event.id}`
+
+    // Keywords otimizadas
+    const keywords = [
+      this.event.name,
+      'eventos abaetetuba',
+      'abaetetuba eventos',
+      'cop 30',
+      'festas abaetetuba',
+      'turismo abaetetuba',
+      this.event.category ? this.getCategoryLabel(this.event.category).toLowerCase() : 'festa',
+      this.event.location || 'abaetetuba',
+      eventDate.replace(/\//g, ' '),
+      'pará eventos',
+      'amazônia eventos'
+    ].filter(Boolean).join(', ')
 
     return {
-      title: `${this.event.name} - ${eventDate} | AbaetéFest`,
+      title: pageTitle,
+      titleTemplate: title => title,
 
       meta: {
+        // Meta tags básicas
         description: {
           name: 'description',
           content: cleanDescription
         },
         keywords: {
           name: 'keywords',
-          content: `${this.event.name}, eventos abaetetuba,cop 30, ${this.event.category || 'festa'}, abaetetuba, festas abaetetuba, turismo abaetetuba, ${eventDate}, ${this.event.location || ''}`
+          content: keywords
         },
         author: {
           name: 'author',
@@ -241,13 +243,35 @@ export default {
         },
         robots: {
           name: 'robots',
-          content: 'index, follow'
+          content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'
+        },
+        viewport: {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1'
         },
 
-        // Open Graph
+        // Meta tags para SEO local
+        'geo.region': {
+          name: 'geo.region',
+          content: 'BR-PA'
+        },
+        'geo.placename': {
+          name: 'geo.placename',
+          content: 'Abaetetuba'
+        },
+        'geo.position': {
+          name: 'geo.position',
+          content: '-1.721247;-48.878883' // Coordenadas de Abaetetuba
+        },
+        ICBM: {
+          name: 'ICBM',
+          content: '-1.721247, -48.878883'
+        },
+
+        // Open Graph para Facebook
         ogTitle: {
           property: 'og:title',
-          content: `${this.event.name} - ${eventDate}`
+          content: shareTitle
         },
         ogDescription: {
           property: 'og:description',
@@ -255,11 +279,23 @@ export default {
         },
         ogImage: {
           property: 'og:image',
-          content: this.event.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg'
+          content: shareImage
+        },
+        ogImageAlt: {
+          property: 'og:image:alt',
+          content: `Imagem do evento ${this.event.name}`
+        },
+        ogImageWidth: {
+          property: 'og:image:width',
+          content: '1200'
+        },
+        ogImageHeight: {
+          property: 'og:image:height',
+          content: '630'
         },
         ogUrl: {
           property: 'og:url',
-          content: `https://app.abaetefest.com.br/event-details/${this.event.id}`
+          content: canonicalUrl
         },
         ogType: {
           property: 'og:type',
@@ -274,14 +310,36 @@ export default {
           content: 'pt_BR'
         },
 
+        // Open Graph para eventos
+        ogEventStartTime: {
+          property: 'event:start_time',
+          content: this.event.start_date
+        },
+        ogEventEndTime: {
+          property: 'event:end_time',
+          content: this.event.end_date || this.event.start_date
+        },
+        ogEventLocation: {
+          property: 'event:location',
+          content: this.event.location || 'Abaetetuba, PA'
+        },
+
         // Twitter Cards
         twitterCard: {
           name: 'twitter:card',
           content: 'summary_large_image'
         },
+        twitterSite: {
+          name: 'twitter:site',
+          content: '@abaetefest' // Substitua pelo seu handle
+        },
+        twitterCreator: {
+          name: 'twitter:creator',
+          content: '@abaetefest'
+        },
         twitterTitle: {
           name: 'twitter:title',
-          content: `${this.event.name} - ${eventDate}`
+          content: shareTitle
         },
         twitterDescription: {
           name: 'twitter:description',
@@ -289,27 +347,257 @@ export default {
         },
         twitterImage: {
           name: 'twitter:image',
-          content: this.event.image_url || 'https://app.abaetefest.com.br/og-default-event.png'
+          content: shareImage
+        },
+        twitterImageAlt: {
+          name: 'twitter:image:alt',
+          content: `Imagem do evento ${this.event.name}`
         },
 
-        // Meta específicas para eventos
-        eventStartTime: {
-          property: 'event:start_time',
-          content: this.event.start_date
+        // WhatsApp (usa Open Graph)
+        // WhatsApp lê og:title, og:description, og:image
+
+        // Telegram (usa Open Graph)
+        // Telegram lê og:title, og:description, og:image
+
+        // LinkedIn (Open Graph + extras)
+        linkedinTitle: {
+          property: 'linkedin:title',
+          content: shareTitle
         },
-        eventLocation: {
-          property: 'event:location',
-          content: this.event.location || 'Abaeteba, PA'
+        linkedinDescription: {
+          property: 'linkedin:description',
+          content: cleanDescription
+        },
+        linkedinImage: {
+          property: 'linkedin:image',
+          content: shareImage
+        },
+
+        // Article meta tags
+        articleAuthor: {
+          property: 'article:author',
+          content: 'AbaetéFest'
+        },
+        articlePublishedTime: {
+          property: 'article:published_time',
+          content: new Date(this.event.created_at || Date.now()).toISOString()
+        },
+        articleModifiedTime: {
+          property: 'article:modified_time',
+          content: new Date(this.event.updated_at || Date.now()).toISOString()
+        },
+        articleSection: {
+          property: 'article:section',
+          content: this.getCategoryLabel(this.event.category || 'event')
+        },
+        articleTag: {
+          property: 'article:tag',
+          content: keywords.split(', ').slice(0, 5).join(',')
+        },
+
+        // Meta específicas para o Brasil
+        'DC.language': {
+          name: 'DC.language',
+          content: 'pt-BR'
+        },
+        'DC.title': {
+          name: 'DC.title',
+          content: shareTitle
+        },
+        'DC.description': {
+          name: 'DC.description',
+          content: cleanDescription
+        },
+        'DC.creator': {
+          name: 'DC.creator',
+          content: 'AbaetéFest'
+        },
+
+        // Meta para rich snippets
+        'event-name': {
+          name: 'event-name',
+          content: this.event.name
+        },
+        'event-date': {
+          name: 'event-date',
+          content: eventDate
+        },
+        'event-location': {
+          name: 'event-location',
+          content: this.event.location || 'Abaetetuba, PA'
         }
       },
 
       link: {
         canonical: {
           rel: 'canonical',
-          href: `https://app.abaetefest.com.br/event-details/${this.event.id}`
+          href: canonicalUrl
+        },
+        alternate: {
+          rel: 'alternate',
+          type: 'application/rss+xml',
+          href: 'https://app.abaetefest.com.br/feed.xml',
+          title: 'AbaetéFest - Eventos RSS'
+        },
+        // Preconnect para performance
+        preconnectGoogle: {
+          rel: 'preconnect',
+          href: 'https://fonts.googleapis.com'
+        },
+        preconnectCDN: {
+          rel: 'preconnect',
+          href: 'https://cdn.jsdelivr.net'
         }
       }
     }
+  },
+
+  // Método para structured data otimizado
+  addStructuredData: function () {
+    if (!this.event.id || (typeof process !== 'undefined' && !process.env.CLIENT)) return
+
+    const eventDate = this.formatDateString(this.event.start_date)
+    const cleanDescription = this.event.description
+      ? this.event.description.replace(/<[^>]*>/g, '').substring(0, 200)
+      : `Evento ${this.event.name} em ${this.event.location || 'Abaetetuba'} no dia ${eventDate}`
+
+    // Structured Data principal para eventos
+    const eventStructuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'Event',
+      name: this.event.name,
+      description: cleanDescription,
+      startDate: this.event.start_date,
+      endDate: this.event.end_date || this.event.start_date,
+      eventStatus: 'https://schema.org/EventScheduled',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      image: {
+        '@type': 'ImageObject',
+        url: this.event.image_url,
+        width: 1200,
+        height: 630
+      },
+      url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
+      location: {
+        '@type': 'Place',
+        name: this.event.location || 'Abaetetuba',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: this.event.address || '',
+          addressLocality: 'Abaetetuba',
+          addressRegion: 'Pará',
+          postalCode: '68440-000',
+          addressCountry: 'BR'
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: -1.721247,
+          longitude: -48.878883
+        }
+      },
+      organizer: {
+        '@type': 'Organization',
+        name: this.event.organizer || 'AbaetéFest',
+        url: 'https://app.abaetefest.com.br',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://app.abaetefest.com.br/logo.png'
+        },
+        sameAs: [
+          'https://www.facebook.com/abaetefest',
+          'https://www.instagram.com/abaetefest',
+          'https://twitter.com/abaetefest'
+        ]
+      },
+      performer: this.event.performer
+        ? {
+            '@type': 'Person',
+            name: this.event.performer
+          }
+        : undefined
+    }
+
+    // Adiciona preço se disponível
+    if (this.event.price !== undefined) {
+      eventStructuredData.offers = {
+        '@type': 'Offer',
+        price: this.event.price,
+        priceCurrency: 'BRL',
+        availability: this.event.tickets_available ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut',
+        url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
+        validFrom: new Date().toISOString()
+      }
+    }
+
+    // Breadcrumbs estruturados
+    const breadcrumbStructuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Início',
+          item: 'https://app.abaetefest.com.br'
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Eventos',
+          item: 'https://app.abaetefest.com.br/events'
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: this.event.name,
+          item: `https://app.abaetefest.com.br/event-details/${this.event.id}`
+        }
+      ]
+    }
+
+    // Organização estruturada
+    const organizationStructuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'AbaetéFest',
+      url: 'https://app.abaetefest.com.br',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://app.abaetefest.com.br/logo.png'
+      },
+      description: 'Plataforma de eventos de Abaetetuba e região amazônica',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Abaetetuba',
+        addressRegion: 'Pará',
+        addressCountry: 'BR'
+      },
+      sameAs: [
+        'https://www.facebook.com/abaetefest',
+        'https://www.instagram.com/abaetefest',
+        'https://twitter.com/abaetefest'
+      ]
+    }
+
+    // Remove structured data anterior
+    const existingScripts = document.querySelectorAll('[id^="structured-data-"]')
+    existingScripts.forEach(script => script.remove())
+
+    // Adiciona os structured data
+    const structuredDataSets = [
+      { id: 'structured-data-event', data: eventStructuredData },
+      { id: 'structured-data-breadcrumb', data: breadcrumbStructuredData },
+      { id: 'structured-data-organization', data: organizationStructuredData }
+    ]
+
+    structuredDataSets.forEach(({ id, data }) => {
+      const script = document.createElement('script')
+      script.id = id
+      script.type = 'application/ld+json'
+      script.textContent = JSON.stringify(data)
+      document.head.appendChild(script)
+    })
   },
 
   data: function () {
@@ -368,63 +656,6 @@ export default {
         console.error('Erro ao carregar evento:', error)
         this.$router.push('/404')
       }
-    },
-
-    addStructuredData: function () {
-      if (!this.event.id || (typeof process !== 'undefined' && !process.env.CLIENT)) return
-
-      const eventDate = this.formatDateString(this.event.start_date)
-      const cleanDescription = this.event.description
-        ? this.event.description.replace(/<[^>]*>/g, '').substring(0, 160)
-        : `Evento ${this.event.name} em Abaeteba no dia ${eventDate}`
-
-      const structuredData = {
-        '@context': 'https://schema.org',
-        '@type': 'Event',
-        name: this.event.name,
-        description: cleanDescription,
-        startDate: this.event.start_date,
-        endDate: this.event.end_date || this.event.start_date,
-        image: this.event.image_url,
-        url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
-        location: {
-          '@type': 'Place',
-          name: this.event.location || 'Abaetetuba',
-          address: {
-            '@type': 'PostalAddress',
-            addressLocality: 'Abaetetuba',
-            addressRegion: 'PA',
-            addressCountry: 'BR'
-          }
-        },
-        organizer: {
-          '@type': 'Organization',
-          name: 'AbaetéFest',
-          url: 'https://app.abaetefest.com.br'
-        }
-      }
-
-      if (this.event.price) {
-        structuredData.offers = {
-          '@type': 'Offer',
-          price: this.event.price,
-          priceCurrency: 'BRL',
-          availability: 'https://schema.org/InStock'
-        }
-      }
-
-      // Remove structured data anterior
-      const existingScript = document.getElementById('event-structured-data')
-      if (existingScript) {
-        existingScript.remove()
-      }
-
-      // Adiciona novo structured data
-      const script = document.createElement('script')
-      script.id = 'event-structured-data'
-      script.type = 'application/ld+json'
-      script.textContent = JSON.stringify(structuredData)
-      document.head.appendChild(script)
     },
 
     // Formatação
@@ -924,21 +1155,21 @@ export default {
     grid-template-columns: 1fr;
   }
 
-  }
+}
 
-  .stats-row {
-    gap: 16px;
-    flex-wrap: wrap;
-  }
+.stats-row {
+  gap: 16px;
+  flex-wrap: wrap;
+}
 
-  .page-header {
-    top: 12px;
-    left: 12px;
-  }
+.page-header {
+  top: 12px;
+  left: 12px;
+}
 
-  .event-main-image {
-    height: 240px;
-  }
+.event-main-image {
+  height: 240px;
+}
 }
 
 @media (min-width: 640px) {
@@ -961,6 +1192,7 @@ export default {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1006,6 +1238,7 @@ export default {
 
 /* Otimizações para impressão */
 @media print {
+
   .page-header,
   .action-section,
   .related-section {
