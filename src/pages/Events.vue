@@ -257,16 +257,16 @@ export default {
     const currentYear = new Date().getFullYear()
 
     return {
-      title: `Eventos ${categoryFilter} em Abaeteba ${currentYear} | AbaetéFest`,
+      title: `Eventos ${categoryFilter} em Abaetetuba ${currentYear} | AbaetéFest`,
 
       meta: {
         description: {
           name: 'description',
-          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaeteba. ${eventCount} eventos disponíveis. Shows, festas, cultura e muito mais no AbaetéFest!`
+          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaetetuba. ${eventCount} eventos disponíveis. Shows, festas, cultura e muito mais no AbaetéFest!`
         },
         keywords: {
           name: 'keywords',
-          content: `eventos abaeteba, festas abaeteba, shows abaeteba, ${categoryFilter.toLowerCase()}, eventos bahia, agenda cultural, entretenimento, ${currentYear}`
+          content: `eventos abaetetuba, festas abaetetuba, shows abaetetuba, ${categoryFilter.toLowerCase()}, eventos pará, agenda cultural, entretenimento, ${currentYear}`
         },
         author: {
           name: 'author',
@@ -280,15 +280,15 @@ export default {
         // Open Graph
         ogTitle: {
           property: 'og:title',
-          content: `Eventos ${categoryFilter} em Abaeteba | AbaetéFest`
+          content: `Eventos ${categoryFilter} em Abaetetuba | AbaetéFest`
         },
         ogDescription: {
           property: 'og:description',
-          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaeteba. ${eventCount} eventos disponíveis no AbaetéFest!`
+          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaetetuba. ${eventCount} eventos disponíveis no AbaetéFest!`
         },
         ogImage: {
           property: 'og:image',
-          content: 'https://app.abaetefest.com.br/og-events.jpg'
+          content: 'https://app.abaetefest.com.br/og-default-event-list.png'
         },
         ogUrl: {
           property: 'og:url',
@@ -316,33 +316,33 @@ export default {
         },
         twitterTitle: {
           name: 'twitter:title',
-          content: `Eventos ${categoryFilter} em Abaeteba | AbaetéFest`
+          content: `Eventos ${categoryFilter} em Abaetetuba | AbaetéFest`
         },
         twitterDescription: {
           name: 'twitter:description',
-          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaeteba. ${eventCount} eventos disponíveis!`
+          content: `Descubra os melhores eventos de ${categoryFilter.toLowerCase()} em Abaetetuba. ${eventCount} eventos disponíveis!`
         },
         twitterImage: {
           name: 'twitter:image',
-          content: 'https://app.abaetefest.com.br/og-events.jpg'
+          content: 'https://app.abaetefest.com.br/og-default-event-list.png'
         },
 
         // Meta para geolocalização
         geoRegion: {
           name: 'geo.region',
-          content: 'BR-BA'
+          content: 'BR-PA'
         },
         geoPlacename: {
           name: 'geo.placename',
-          content: 'Abaeteba, Bahia, Brasil'
+          content: 'Abaetetuba, Pará, Brasil'
         },
         geoPosition: {
           name: 'geo.position',
-          content: '-12.1397;-38.2925'
+          content: ' -1.7292277;-48.9145819'
         },
         icbm: {
           name: 'ICBM',
-          content: '-12.1397, -38.2925'
+          content: ' -1.7292277, -48.9145819'
         }
       },
 

@@ -233,7 +233,7 @@ export default {
         },
         keywords: {
           name: 'keywords',
-          content: `${this.event.name}, evento, ${this.event.category || 'festa'}, abaeteba, ${eventDate}, ${this.event.location || ''}`
+          content: `${this.event.name}, eventos abaetetuba,cop 30, ${this.event.category || 'festa'}, abaetetuba, festas abaetetuba, turismo abaetetuba, ${eventDate}, ${this.event.location || ''}`
         },
         author: {
           name: 'author',
@@ -289,7 +289,7 @@ export default {
         },
         twitterImage: {
           name: 'twitter:image',
-          content: this.event.image_url || 'https://app.abaetefest.com.br/og-default-event.jpg'
+          content: this.event.image_url || 'https://app.abaetefest.com.br/og-default-event.png'
         },
 
         // Meta específicas para eventos
@@ -299,7 +299,7 @@ export default {
         },
         eventLocation: {
           property: 'event:location',
-          content: this.event.location || 'Abaeteba, BA'
+          content: this.event.location || 'Abaeteba, PA'
         }
       },
 
@@ -389,11 +389,11 @@ export default {
         url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
         location: {
           '@type': 'Place',
-          name: this.event.location || 'Abaeteba',
+          name: this.event.location || 'Abaetetuba',
           address: {
             '@type': 'PostalAddress',
-            addressLocality: 'Abaeteba',
-            addressRegion: 'BA',
+            addressLocality: 'Abaetetuba',
+            addressRegion: 'PA',
             addressCountry: 'BR'
           }
         },
@@ -496,10 +496,12 @@ export default {
       if (typeof window === 'undefined' || typeof navigator === 'undefined') return
 
       const baseUrl = `${window.location.protocol}//${window.location.host}`
+      const timestamp = new Date().getTime()
+
       const shareData = {
-        title: 'Veja esse Evento no AbaetéFest',
+        title: 'Veja esse Evento no App AbaetéFest',
         text: this.event.name,
-        url: `${baseUrl}/event-details/${this.event.id}`
+        url: `${baseUrl}/event-details/${this.event.id}?t=${timestamp}`
       }
 
       try {
