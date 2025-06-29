@@ -5,8 +5,8 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       // { path: '', name: 'home', component: () => import('src/pages/Index.vue'), meta: { tab: true } },
-      { path: '', name: 'home', component: () => import('src/pages/Events.vue'), meta: { tab: true } },
-      { path: 'events/:type?', name: 'events', component: () => import('src/pages/Events.vue'), meta: { tab: true } },
+      { path: '', name: 'home', component: () => import('src/pages/events/Events.vue'), meta: { tab: true } },
+      { path: 'events/:type?', name: 'events', component: () => import('src/pages/events/Events.vue'), meta: { tab: true } },
       { path: 'tourism', name: 'tourism', component: () => import('src/pages/Tourism.vue'), meta: { tab: true } },
       { path: 'map', name: 'map', component: () => import('src/pages/MapCity.vue'), meta: { tab: true } },
       { path: 'places', name: 'places', component: () => import('src/pages/Places.vue'), meta: { tab: true } },
