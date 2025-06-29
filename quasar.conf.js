@@ -1,55 +1,44 @@
 /*
- * This file runs in a Node context (it's NOT transpiled by Babel), so use only
- * the ES6 features that are supported by your Node version. https://node.green/
+ * Configuração mínima e funcional para SSR + PWA no Quasar v1
+ * Sem plugins problemáticos - foco na otimização essencial
  */
 
-// Configuration for your app
-// https://v1.quasar.dev/quasar-cli/quasar-conf-js
-/* eslint-env node */
 const ESLintPlugin = require('eslint-webpack-plugin')
 const dotenv = require('dotenv')
 
 module.exports = function (ctx) {
   return {
-    // https://v1.quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
 
-    // app boot file (/src/boot)
     boot: [
-      // Universal boots (executam no servidor e cliente)
-      'global-meta', // Meta tags globais - agora compatível com v1
+      'global-meta',
       'services',
       'i18n',
       'axios',
       'notify',
-
-      // Client-only boots (só executam no cliente)
       { path: 'auth-router', server: false },
       { path: 'mixpanel', server: false },
-      { path: 'auto-migration', server: false }, // Sistema de migração automática
-      { path: 'sw-migration', server: false }, // Migração de Service Worker
-
-      // Boots condicionais para SSR
+      { path: 'auto-migration', server: false },
+      { path: 'sw-migration', server: false },
       ...(ctx.mode.ssr ? [] : ['leaflet']),
       ...(ctx.mode.ssr ? [] : [{ path: 'google-maps', server: false }])
     ],
 
-    // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
-    css: [
-      'app.css'
-      // Comentado temporariamente: 'performance.css'
-    ],
+    css: ['app.css'],
 
-    // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       'roboto-font',
       'material-icons',
       'mdi-v5'
     ],
 
-    // Full list of options: https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
-      vueRouterMode: 'history', // Importante para SEO
+      vueRouterMode: 'history',
+
+      // Configurações básicas que sempre funcionam
+      minify: ctx.prod,
+      sourceMap: ctx.dev,
+      extractCSS: ctx.prod,
 
       env: ctx.dev
         ? {
@@ -65,21 +54,47 @@ module.exports = function (ctx) {
             GOOGLE_API_KEY: dotenv?.config('.env')?.parsed?.GOOGLE_API_KEY || process.env.GOOGLE_API_KEY
           },
 
-      // Webpack config simplificado
+      // Webpack config mínimo e estável
       chainWebpack(chain) {
+        // ESLint apenas
         chain.plugin('eslint-webpack-plugin')
           .use(ESLintPlugin, [{ extensions: ['js', 'vue'] }])
+
+        // Split chunks essencial para otimização
+        if (ctx.prod) {
+          chain.optimization.splitChunks({
+            chunks: 'all',
+            cacheGroups: {
+              vendor: {
+                test: /[\\/]node_modules[\\/]/,
+                name: 'vendor',
+                chunks: 'all',
+                priority: 10,
+                reuseExistingChunk: true
+              },
+              common: {
+                name: 'common',
+                minChunks: 2,
+                chunks: 'all',
+                priority: 5,
+                reuseExistingChunk: true
+              }
+            }
+          })
+
+          // Tree shaking básico
+          chain.optimization.usedExports = true
+          chain.optimization.sideEffects = false
+        }
       }
     },
 
-    // devServer config
     devServer: {
       https: true,
       port: 8080,
       open: true
     },
 
-    // framework config
     framework: {
       iconSet: 'mdi-v5',
       lang: 'pt-br',
@@ -107,26 +122,16 @@ module.exports = function (ctx) {
 
     animations: [],
 
-    // SSR config - versão simplificada
     ssr: {
       pwa: true,
       prodPort: 3000,
-      middlewares: [
-        'render'
-      ],
+      middlewares: ['render'],
       serverOptions: {
         hostname: '0.0.0.0',
         port: process.env.PORT || 3000
       }
     },
 
-    // PWA config - versão básica
-    // SUBSTITUA APENAS A SEÇÃO PWA no seu quasar.config.js
-
-    // PWA config - VERSÃO CORRIGIDA
-    // SUBSTITUA APENAS A SEÇÃO PWA no seu quasar.config.js
-
-    // PWA config - VERSÃO CORRIGIDA (parâmetros válidos para GenerateSW)
     pwa: {
       workboxPluginMode: 'GenerateSW',
       workboxOptions: {
@@ -134,20 +139,18 @@ module.exports = function (ctx) {
         clientsClaim: true,
         cleanupOutdatedCaches: true,
 
-        // CORREÇÃO: usar exclude (válido para GenerateSW)
         exclude: [
           /\.map$/,
           /manifest$/,
           /\.htaccess$/,
           /service-worker\.js$/,
           /sw\.js$/,
-          /netlify\.toml$/, // PRINCIPAL: Ignora netlify.toml
+          /netlify\.toml$/,
           /_redirects$/,
           /\.DS_Store$/,
           /Thumbs\.db$/
         ],
 
-        // Estratégias de cache - estas são válidas para GenerateSW
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/polished-snowflake-9723\.fly\.dev\/api\//,
@@ -160,7 +163,7 @@ module.exports = function (ctx) {
               },
               expiration: {
                 maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 // 24 horas
+                maxAgeSeconds: 60 * 60 * 24
               }
             }
           },
@@ -171,7 +174,7 @@ module.exports = function (ctx) {
               cacheName: 'images-cache',
               expiration: {
                 maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24 * 30 // 30 dias
+                maxAgeSeconds: 60 * 60 * 24 * 30
               }
             }
           },
@@ -182,18 +185,15 @@ module.exports = function (ctx) {
               cacheName: 'fonts-cache',
               expiration: {
                 maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 ano
+                maxAgeSeconds: 60 * 60 * 24 * 365
               }
             }
           }
         ],
 
-        // Configurações adicionais válidas para GenerateSW
-        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB
-
-        // Navegação offline
-        navigateFallback: '/index.html',
-        navigateFallbackDenylist: [/^\/_/, /\/[^/?]+\.[^/]+$/]
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+        navigateFallback: '/offline.html',
+        navigateFallbackDenylist: [/^\/_/, /\/[^/?]+\.[^/]+$/, /\/api\//, /\/admin\//]
       },
 
       manifest: {
@@ -243,14 +243,6 @@ module.exports = function (ctx) {
             type: 'image/png',
             purpose: 'maskable'
           }
-        ],
-
-        related_applications: [
-          {
-            platform: 'play',
-            url: 'https://play.google.com/store/apps/details?id=br.com.abaetefest.app.twa',
-            id: 'br.com.abaetefest.app.twa'
-          }
         ]
       }
     },
@@ -266,7 +258,7 @@ module.exports = function (ctx) {
         appId: 'app-abaete-fest'
       },
       nodeIntegration: true,
-      extendWebpack(/* cfg */) { }
+      extendWebpack() { }
     }
   }
 }
