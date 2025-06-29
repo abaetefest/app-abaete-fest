@@ -132,6 +132,8 @@ module.exports = function (ctx) {
       }
     },
 
+    // CORREÇÃO MÍNIMA - Substitua apenas a seção pwa no seu quasar.conf.js
+
     pwa: {
       workboxPluginMode: 'GenerateSW',
       workboxOptions: {
@@ -192,8 +194,25 @@ module.exports = function (ctx) {
         ],
 
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
-        navigateFallback: '/offline.html',
-        navigateFallbackDenylist: [/^\/_/, /\/[^/?]+\.[^/]+$/, /\/api\//, /\/admin\//]
+
+        // === CORREÇÃO PRINCIPAL ===
+        // navigateFallback: '/offline.html', // ❌ REMOVE ESTA LINHA
+        navigateFallback: '/index.html', // ✅ OU use index.html em vez de offline.html
+
+        // === DENYLIST EXPANDIDA PARA PROTEGER LINKS EXTERNOS ===
+        navigateFallbackDenylist: [
+          /^\/_/,
+          /\/[^/?]+\.[^/]+$/,
+          /\/api\//,
+          /\/admin\//,
+          // === NOVOS: Proteção contra links externos ===
+          /\?t=\d+/, // ✅ Links com timestamp (WhatsApp, Telegram, etc.)
+          /\?utm_/, // ✅ Links com UTM parameters
+          /\?ref=/, // ✅ Links com referrer
+          /\?source=/, // ✅ Links com source tracking
+          /event-details\/\d+\?/, // ✅ Event details com query params
+          /offline\.html$/ // ✅ Não interceptar página offline
+        ]
       },
 
       manifest: {

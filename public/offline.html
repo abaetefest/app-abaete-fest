@@ -224,12 +224,13 @@
         Tentar novamente
       </button>
       
-      <button class="btn btn-secondary" onclick="goOfflineMode()">
+      <!-- CORRIGIDO: Mudança no botão secondary -->
+      <a href="/" class="btn btn-secondary">
         <svg width="16" height="16" viewBox="0 0 24 24">
-          <path fill="currentColor" d="M12,3C7.03,3 3,7.03 3,12C3,16.97 7.03,21 12,21C16.97,21 21,16.97 21,12C21,7.03 16.97,3 12,3M16.5,16.25L11.5,11.25V7H13V10.25L17,14.25L16.5,16.25Z"/>
+          <path fill="currentColor" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
         </svg>
-        Ver eventos salvos
-      </button>
+        Ir para página inicial
+      </a>
     </div>
     
     <!-- Status da conexão -->
@@ -250,17 +251,46 @@
   </div>
 
   <script>
+    // === DETECÇÃO INTELIGENTE DE ORIGEM ===
+    function detectNavigationSource() {
+      const urlParams = new URLSearchParams(window.location.search)
+      const hasTimestamp = urlParams.has('t')
+      const referrer = document.referrer
+      
+      // Se tem timestamp (links externos) e está offline, pode ser problema do SW
+      if (hasTimestamp && !navigator.onLine) {
+        console.log('[Offline] External link detected while offline')
+        return 'external'
+      }
+      
+      // Se não tem referrer, veio de link direto
+      if (!referrer || !referrer.includes('abaetefest.com.br')) {
+        console.log('[Offline] Direct navigation detected')
+        return 'direct'
+      }
+      
+      return 'internal'
+    }
+    
     // === MONITORAMENTO DE CONEXÃO ===
     const connectionStatus = document.getElementById('connectionStatus')
     const statusText = document.getElementById('statusText')
     
     function updateConnectionStatus() {
       const isOnline = navigator.onLine
+      const source = detectNavigationSource()
       
       if (isOnline) {
         connectionStatus.className = 'connection-status online'
         connectionStatus.style.display = 'block'
         statusText.textContent = '✓ Conexão restaurada! Clique em "Tentar novamente"'
+        
+        // Auto-redirect se veio de link externo e conexão voltou
+        if (source === 'external' || source === 'direct') {
+          setTimeout(() => {
+            tryReconnect()
+          }, 1500)
+        }
       } else {
         connectionStatus.className = 'connection-status offline'
         connectionStatus.style.display = 'block'
@@ -275,53 +305,81 @@
     // Verifica status inicial
     updateConnectionStatus()
     
-    // === FUNCÕES DE INTERAÇÃO ===
+    // === FUNÇÃO DE RECONEXÃO MELHORADA ===
     function tryReconnect() {
-      // Mostra loading
-      const btn = event.target
+      const btn = event?.target || document.querySelector('.btn-primary')
       const originalText = btn.innerHTML
+      
+      // Mostra loading
       btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" style="animation: spin 1s linear infinite;"><path fill="currentColor" d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/></svg> Conectando...'
       btn.disabled = true
       
-      // Tenta recarregar a página
-      setTimeout(() => {
-        window.location.reload()
-      }, 1000)
-    }
-    
-    function goOfflineMode() {
-      // Tenta abrir dados cached ou página principal
-      if ('serviceWorker' in navigator) {
-        // Envia mensagem para o SW buscar dados cached
-        navigator.serviceWorker.ready.then(registration => {
-          if (registration.active) {
-            registration.active.postMessage({
-              action: 'GET_CACHED_EVENTS'
-            })
-          }
-        })
+      // Estratégia baseada na origem
+      const source = detectNavigationSource()
+      
+      if (source === 'external' || source === 'direct') {
+        // Para links externos, tenta a URL original
+        const originalUrl = window.location.href.replace('/offline.html', '')
+        console.log('[Offline] Trying to navigate back to:', originalUrl)
         
-        // Aguarda resposta por 2 segundos, depois redireciona
         setTimeout(() => {
-          window.location.href = '/?offline=true'
-        }, 2000)
+          if (navigator.onLine) {
+            window.location.href = originalUrl
+          } else {
+            window.location.reload()
+          }
+        }, 1000)
       } else {
-        // Fallback - vai para página principal
-        window.location.href = '/'
+        // Para navegação interna, só recarrega
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
       }
     }
     
-    // === SERVICE WORKER COMMUNICATION ===
+    // === FALLBACK PARA NAVEGAÇÃO ===
+    function goHome() {
+      console.log('[Offline] Navigating to home')
+      
+      // Tenta limpar qualquer estado problemático do SW
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          registrations.forEach(registration => {
+            if (registration.active) {
+              registration.active.postMessage({ 
+                action: 'CLEAR_CACHE',
+                type: 'navigation' 
+              })
+            }
+          })
+        })
+      }
+      
+      // Navega para home depois de um delay
+      setTimeout(() => {
+        window.location.href = '/'
+      }, 500)
+    }
+    
+    // === COMUNICAÇÃO COM SERVICE WORKER ===
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.addEventListener('message', event => {
         const { action, data } = event.data
         
-        if (action === 'CACHED_EVENTS_FOUND') {
-          // Redireciona para página com dados cached
-          window.location.href = `/?cached=true&events=${data.length}`
-        } else if (action === 'NO_CACHED_DATA') {
-          // Informa que não há dados cached
-          alert('Nenhum evento foi salvo para visualização offline.')
+        if (action === 'CACHE_CLEARED') {
+          console.log('[Offline] SW cache cleared')
+        }
+      })
+      
+      // Envia informação sobre a navegação problemática
+      navigator.serviceWorker.ready.then(registration => {
+        if (registration.active) {
+          registration.active.postMessage({
+            action: 'REPORT_OFFLINE_NAVIGATION',
+            url: window.location.href,
+            source: detectNavigationSource(),
+            timestamp: Date.now()
+          })
         }
       })
     }
@@ -339,19 +397,26 @@
     // === ATALHOS DE TECLADO ===
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
         tryReconnect()
       } else if (e.key === 'Escape') {
-        goOfflineMode()
+        e.preventDefault()
+        goHome()
       }
     })
     
-    // === AUTO RETRY ===
+    // === AUTO RETRY INTELIGENTE ===
     let retryCount = 0
     const maxRetries = 3
     
     function autoRetry() {
-      if (navigator.onLine && retryCount < maxRetries) {
+      const source = detectNavigationSource()
+      
+      // Só faz auto-retry para navegação externa/direta
+      if ((source === 'external' || source === 'direct') && navigator.onLine && retryCount < maxRetries) {
         retryCount++
+        console.log(`[Offline] Auto-retry ${retryCount}/${maxRetries}`)
+        
         setTimeout(() => {
           tryReconnect()
         }, 1000 * retryCount) // Delay progressivo
@@ -362,6 +427,12 @@
     window.addEventListener('online', () => {
       setTimeout(autoRetry, 500)
     })
+    
+    // === DEBUG INFO ===
+    console.log('[Offline Page] Navigation source:', detectNavigationSource())
+    console.log('[Offline Page] Current URL:', window.location.href)
+    console.log('[Offline Page] Referrer:', document.referrer)
+    console.log('[Offline Page] Online status:', navigator.onLine)
   </script>
 </body>
 </html>
