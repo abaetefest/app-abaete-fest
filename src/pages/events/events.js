@@ -125,6 +125,7 @@ export default {
     DialogCourseDetails: () => import('components/DialogCourseDetails'),
     EventFilters: () => import('./components/EventFilters'),
     EventCard: () => import('./components/EventCard'),
+    EventCardLarge: () => import('./components/EventCardLarge'),
     EventSkeleton: () => import('./components/EventSkeleton'),
     EmptyState: () => import('./components/EmptyState')
   },
@@ -133,6 +134,7 @@ export default {
     return {
       filter: '',
       categoria: 'all',
+      viewMode: 'compact', // 'compact' ou 'large'
       options: category,
       events: [],
       allEvents: [], // Armazena todos os eventos
@@ -173,6 +175,12 @@ export default {
   },
 
   async mounted() {
+    // Carrega preferência de visualização do localStorage
+    const savedViewMode = localStorage.getItem('events-view-mode')
+    if (savedViewMode && ['compact', 'large'].includes(savedViewMode)) {
+      this.viewMode = savedViewMode
+    }
+
     // Verifica parâmetros da URL
     if (this.$route.params.type) {
       this.categoria = this.$route.params.type
@@ -198,6 +206,12 @@ export default {
           console.error(err)
         })
       }
+    },
+
+    viewMode(newVal) {
+      // Salva a preferência de visualização no localStorage
+      localStorage.setItem('events-view-mode', newVal)
+      console.log('👁️ Modo de visualização alterado para:', newVal)
     }
   },
 

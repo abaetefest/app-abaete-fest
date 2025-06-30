@@ -293,3 +293,53 @@
     background: var(--q-dark);
   }
 }
+
+/* Estilos para o botão de alternância de visualização */
+.view-toggle {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.view-toggle:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.view-toggle .q-btn {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.view-toggle .q-btn:first-child {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+
+.view-toggle .q-btn:last-child {
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.view-toggle .q-btn.q-btn--active {
+  background: var(--q-primary) !important;
+  color: white !important;
+  transform: scale(1.02);
+}
+
+/* Responsividade para o botão de visualização */
+@media (max-width: 600px) {
+  .view-toggle {
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .view-toggle .q-btn {
+    flex: 1;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
