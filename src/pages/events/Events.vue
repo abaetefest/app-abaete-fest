@@ -1,5 +1,5 @@
 <template>
-  <q-page :class="[$q.dark.isActive ? '' : 'bg-grey-1', 'events-page']">
+  <q-page :class="[$q.dark.isActive ? '' : 'bg-grey-1', 'events-page', 'q-px-sm']">
     <!-- Filtros -->
     <EventFilters
       :selected-category="categoria"
@@ -11,27 +11,21 @@
     />
 
     <!-- Loading skeleton -->
-    <div v-if="load" class="q-pa-md">
+    <div v-if="load && viewMode === 'compact'">
       <EventSkeleton :skeleton-count="6" />
     </div>
 
+    <div v-if="load && viewMode === 'large'">
+      <EventCardSkeleton :skeleton-count="6" />
+    </div>
+
     <!-- Lista de eventos -->
-    <div v-else class="q-px-md">
+    <div v-else class="">
       <!-- Contador de eventos e botão de visualização -->
-      <div class="row items-center justify-between q-mb-md" v-if="allEvents.length > 0">
-        <div class="col-auto">
-          <q-chip
-            color="primary"
-            text-color="white"
-            icon="mdi-calendar-multiple"
-            class="text-weight-medium"
-          >
-            {{ filteredEvents.length }} de {{ allEvents.length }} eventos
-          </q-chip>
-        </div>
+      <div class="row items-center justify-center" v-if="allEvents.length > 0">
 
         <!-- Botão de alternância de visualização -->
-        <div class="col-12">
+        <div class="col-12 q-mb-md">
           <q-btn-toggle
             v-model="viewMode"
             spread
@@ -48,10 +42,21 @@
             class="view-toggle"
           />
         </div>
+
+        <div class="col-auto q-mb-sm">
+          <q-chip
+            color="primary"
+            text-color="white"
+            icon="mdi-calendar-multiple"
+            class="text-weight-medium"
+          >
+            {{ filteredEvents.length }} de {{ allEvents.length }} eventos
+          </q-chip>
+        </div>
       </div>
 
       <!-- Botão Novo Evento (se aplicável) -->
-      <div class="text-center q-mb-lg" v-if="canCreateEvent">
+      <div class="text-center" v-if="canCreateEvent">
         <q-btn
           rounded
           size="lg"
@@ -64,22 +69,26 @@
       </div>
 
       <!-- Grid de eventos - Visualização Compacta -->
-      <div v-if="viewMode === 'compact'" class="event-list">
-        <EventCard
-          v-for="event in filteredEvents"
-          :key="event.id"
-          :event="event"
-          :category-options="options"
-          @click="detailsEvent"
-        />
-      </div>
-
-      <!-- Grid de eventos - Visualização Grande -->
-      <div v-else class="event-list">
+      <div v-if="viewMode === 'compact'" class="row">
         <div
           v-for="event in filteredEvents"
           :key="event.id"
-          class="col-12 col-sm-6 col-md-4"
+          class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
+        >
+          <EventCard
+            :event="event"
+            :category-options="options"
+            @click="detailsEvent"
+          />
+        </div>
+      </div>
+
+      <!-- Grid de eventos - Visualização Grande -->
+      <div v-else class="row">
+        <div
+          v-for="event in filteredEvents"
+          :key="event.id"
+          class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
         >
           <EventCardLarge
             :event="event"

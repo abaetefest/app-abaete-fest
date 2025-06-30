@@ -1,6 +1,6 @@
 <template>
-  <div class="q-px-md q-pt-md">
-    <div class="text-h4 text-bold text-center custom-font q-mb-md">
+  <div class="q-pt-md row">
+    <div class="col-12 text-h4 text-bold text-center custom-font q-mb-md">
       <span class="text-accent">Eventos</span> na cidade
     </div>
 
@@ -11,7 +11,7 @@
       v-model="categoryModel"
       :options="options"
       label="Selecione uma categoria"
-      class="q-mb-md"
+      class="q-mb-md col-12 col-sm-6"
       :bg-color="$q.dark.isActive ? 'primary' : 'white'"
       :label-color="$q.dark.isActive ? 'white' : 'primary'"
       :color="$q.dark.isActive ? 'white' : 'primary'"
@@ -46,7 +46,7 @@
     </q-select>
 
     <!-- Campo de busca -->
-    <div class="">
+    <div class="col-12 col-sm-6">
       <q-input
         outlined
         rounded

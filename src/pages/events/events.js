@@ -127,6 +127,7 @@ export default {
     EventCard: () => import('./components/EventCard'),
     EventCardLarge: () => import('./components/EventCardLarge'),
     EventSkeleton: () => import('./components/EventSkeleton'),
+    EventCardSkeleton: () => import('./components/EventCardSkeleton'),
     EmptyState: () => import('./components/EmptyState')
   },
 

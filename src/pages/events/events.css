@@ -334,12 +334,10 @@
 @media (max-width: 600px) {
   .view-toggle {
     width: 100%;
-    margin-top: 12px;
   }
-
   .view-toggle .q-btn {
     flex: 1;
     font-size: 12px;
-    padding: 6px 12px;
+    padding: 5px 5px;
   }
 }

@@ -1,17 +1,14 @@
 <template>
-  <div class="row q-gutter-md justify-center">
-    <div
-      v-for="n in skeletonCount"
-      :key="n"
-      class="col-12 col-sm-6 col-md-4"
-      style="max-width: 350px"
-    >
+  <div class="row">
+    <div v-for="n in skeletonCount" :key="n" class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm">
       <q-card class="event-card-skeleton">
-        <q-skeleton height="200px" square />
+        <q-skeleton square height="200px" />
         <q-card-section>
           <q-skeleton type="text" class="text-h6" />
           <q-skeleton type="text" width="60%" />
           <q-skeleton type="text" width="40%" />
+          <q-skeleton type="text" width="80%" />
+          <q-skeleton type="text" width="30%" />
         </q-card-section>
       </q-card>
     </div>
@@ -20,7 +17,7 @@
 
 <script>
 export default {
-  name: 'EventSkeleton',
+  name: 'EventCardSkeleton',
 
   props: {
     skeletonCount: {

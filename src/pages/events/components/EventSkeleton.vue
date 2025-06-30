@@ -1,11 +1,14 @@
 <template>
-  <div class="event-list">
-    <q-card
+  <div class="row">
+    <div
       v-for="n in skeletonCount"
       :key="n"
-      class="row event-card-skeleton"
-      :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
+      class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
     >
+      <q-card
+        class="row event-card-skeleton"
+        :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
+      >
       <!-- Badge da categoria (skeleton) -->
       <div class="event-category-badge-skeleton">
         <q-skeleton type="QChip" />
@@ -54,7 +57,8 @@
           <q-skeleton type="text" height="11px" width="45%" />
         </div>
       </q-card-section>
-    </q-card>
+      </q-card>
+    </div>
   </div>
 </template>
 
@@ -77,7 +81,6 @@ export default {
   overflow: visible;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  margin-bottom: 18px;
   animation: skeleton-pulse 1.5s ease-in-out infinite alternate;
 }
 
@@ -134,10 +137,6 @@ export default {
 
 /* Responsividade para mobile */
 @media (max-width: 600px) {
-  .event-card-skeleton {
-    margin-bottom: 14px;
-  }
-
   .event-date-container {
     gap: 10px;
   }
