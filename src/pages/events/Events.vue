@@ -31,7 +31,7 @@
         </div>
 
         <!-- Botão de alternância de visualização -->
-        <div class="col-auto">
+        <div class="col-12">
           <q-btn-toggle
             v-model="viewMode"
             spread
@@ -75,7 +75,7 @@
       </div>
 
       <!-- Grid de eventos - Visualização Grande -->
-      <div v-else class="row q-gutter-md justify-center">
+      <div v-else class="event-list">
         <div
           v-for="event in filteredEvents"
           :key="event.id"
