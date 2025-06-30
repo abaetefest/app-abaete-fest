@@ -732,7 +732,7 @@ export default {
       const shareData = {
         title: 'Veja esse Evento no App AbaetéFest',
         text: this.event.name,
-        url: `${baseUrl}/event-details/${this.event.id}?t=${timestamp}`
+        url: `${baseUrl}/event-details/${this.event.id}?t=${timestamp} `
       }
 
       try {

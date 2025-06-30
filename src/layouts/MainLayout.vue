@@ -27,14 +27,14 @@
           @input="setDarkMode"
         />
 
-        <q-btn
+        <!-- <q-btn
           v-if="canShare"
           flat
           round
           dense
           icon="mdi-share-variant-outline"
           @click="shareApp"
-        />
+        /> -->
 
         <!-- <div>Quasar v{{ version_app }}</div> -->
         <!-- <q-btn-dropdown color="white" size="lg" label="" flat rounded>
