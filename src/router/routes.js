@@ -29,7 +29,7 @@ const routes = [
         component: () => import(
           /* webpackChunkName: "events" */
           /* webpackPrefetch: true */
-          'src/pages/Events.vue'
+          'src/pages/events/Events.vue'
         ),
         meta: {
           tab: true,
