@@ -6,18 +6,18 @@
       class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
     >
       <q-card
-        class="row event-card-skeleton"
-        :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
+        class="row rounded-borders overflow-visible relative-position event-card-skeleton"
+        :class="$q.dark.isActive ? 'bg-primary shadow-2' : 'bg-white shadow-2'"
       >
       <!-- Badge da categoria (skeleton) -->
-      <div class="event-category-badge-skeleton">
+      <div class="absolute-top-right q-mt-sm q-mr-sm" style="top: -12px; right: -8px; z-index: 10;">
         <q-skeleton type="QChip" />
       </div>
 
       <!-- Imagem (col-3) -->
       <div class="col-3">
         <q-skeleton
-          class="full-height event-image-skeleton"
+          class="full-height rounded-borders-left"
           square
           :ratio="3/3"
         />
@@ -26,11 +26,11 @@
       <!-- Conteúdo do card (col-9) -->
       <q-card-section class="q-pa-xs col-9">
         <!-- Data e hora -->
-        <div class="event-date-container q-mb-xs">
-          <div class="event-date-badge-skeleton">
+        <div class="row items-center q-mb-xs q-gutter-md">
+          <div class="rounded-borders q-pa-xs" style="background: rgba(0, 0, 0, 0.05);">
             <q-skeleton type="rect" width="45px" height="24px" />
           </div>
-          <div class="event-time">
+          <div>
             <q-skeleton type="text" width="55px" height="14px" />
           </div>
         </div>
@@ -53,7 +53,7 @@
         </div>
 
         <!-- Footer com estatísticas (opcional) -->
-        <div class="event-footer-skeleton">
+        <div class="border-top q-pt-xs q-mt-xs" style="border-top: 1px solid #f0f0f0;">
           <q-skeleton type="text" height="11px" width="45%" />
         </div>
       </q-card-section>
@@ -77,10 +77,6 @@ export default {
 
 <style scoped>
 .event-card-skeleton {
-  border-radius: 16px;
-  overflow: visible;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
   animation: skeleton-pulse 1.5s ease-in-out infinite alternate;
 }
 
@@ -93,52 +89,19 @@ export default {
   }
 }
 
-.q-dark .event-card-skeleton {
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-}
-
-.event-image-skeleton {
+.rounded-borders-left {
   border-radius: 16px 0 0 16px;
 }
 
-.event-category-badge-skeleton {
-  position: absolute;
-  top: -12px;
-  right: -8px;
-  z-index: 10;
-}
-
-.event-date-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 16px;
-}
-
-.event-date-badge-skeleton {
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.05);
-  padding: 4px;
-}
-
-.q-dark .event-date-badge-skeleton {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.event-footer-skeleton {
-  border-top: 1px solid #f0f0f0;
-  padding-top: 6px;
-  margin-top: 6px;
-}
-
-.q-dark .event-footer-skeleton {
-  border-top-color: #444;
+/* Dark mode adjustments */
+.q-dark .border-top {
+  border-top-color: #444 !important;
 }
 
 /* Responsividade para mobile */
 @media (max-width: 600px) {
-  .event-date-container {
-    gap: 10px;
+  .q-gutter-md {
+    gap: 10px !important;
   }
 }
 </style>

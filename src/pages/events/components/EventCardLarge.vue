@@ -1,6 +1,6 @@
 <template>
   <q-card
-    class="event-card-large cursor-pointer"
+    class="event-card-large cursor-pointer shadow-2"
     :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
     @click="$emit('click', event)"
   >
@@ -33,19 +33,22 @@
     </div>
 
     <!-- Conteúdo do card -->
-    <q-card-section class="q-pa-md">
+    <q-card-section class="">
       <!-- Data e hora -->
-      <div class="event-date-container q-mb-md">
-        <div class="event-date-badge">
-          <div class="event-day">{{ getDayDate(event.start_date) }}</div>
-          <div class="event-month">{{ getMonthString(event.start_date) }}</div>
+      <div class="row items-center justify-between q-gutter-md q-mb-md">
+        <div class="event-date-badge ">
+          <div class="event-day">
+            <q-icon name="mdi-calendar" size="16px" class="q-mr-xs" />
+            {{ getDayDate(event.start_date) }}
+            {{ getMonthString(event.start_date) }}
+          </div>
         </div>
-        <div class="event-time">
+        <div class="col">
           <div class="text-body2 text-weight-medium">
             <q-icon name="mdi-clock-outline" size="16px" class="q-mr-xs" />
             {{ formatHourString(event.start_date) }}
           </div>
-          <div class="text-caption text-grey-6" v-if="event.location">
+          <div v-if="event.location" class="text-caption text-grey-6">
             <q-icon name="mdi-map-marker-outline" size="14px" class="q-mr-xs" />
             {{ event.location }}
           </div>
@@ -63,13 +66,13 @@
       </div>
 
       <!-- Footer com estatísticas -->
-      <div class="event-footer q-mt-md" v-if="event.attendees_count || event.interested_count">
-        <div class="event-stats">
+      <div class="border-top q-pt-sm q-mt-md" style="border-top: 1px solid #f0f0f0;" v-if="event.attendees_count || event.interested_count">
+        <div class="row items-center q-gutter-md">
           <span v-if="event.attendees_count" class="text-caption text-grey-6">
             <q-icon name="mdi-account-group" size="14px" class="q-mr-xs" />
             {{ event.attendees_count }} participantes
           </span>
-          <span v-if="event.interested_count" class="text-caption text-grey-6 q-ml-md">
+          <span v-if="event.interested_count" class="text-caption text-grey-6">
             <q-icon name="mdi-heart" size="14px" class="q-mr-xs" />
             {{ event.interested_count }} interessados
           </span>
@@ -178,14 +181,11 @@ export default {
   border-radius: 16px;
   overflow: hidden;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
   width: 100%;
 }
 
 .event-card-large:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .event-image-container {
@@ -203,23 +203,25 @@ export default {
   z-index: 2;
 }
 
-.event-date-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+.event-category-badge .q-chip {
+  font-size: 12px;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0.75rem; /* equivalente ao q-pa-sm */
+}
+
+.event-category-badge .q-chip:hover {
+  transform: translateY(-2px);
 }
 
 .event-date-badge {
   background: var(--q-primary);
   border-radius: 12px;
-  padding: 8px 12px;
   text-align: center;
   min-width: 60px;
 }
 
 .event-day {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   line-height: 1;
 }
@@ -232,12 +234,8 @@ export default {
   margin-top: 2px;
 }
 
-.event-time {
-  flex: 1;
-}
-
 .event-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.3;
   color: var(--q-dark);
@@ -245,10 +243,11 @@ export default {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-transform: lowercase;
 }
 
 .event-description {
-  font-size: 14px;
+  font-size: 12px;
   color: #666;
   line-height: 1.4;
   display: -webkit-box;
@@ -257,26 +256,7 @@ export default {
   overflow: hidden;
 }
 
-.event-footer {
-  border-top: 1px solid #f0f0f0;
-  padding-top: 12px;
-}
-
-.event-stats {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
 /* Dark mode adjustments */
-.q-dark .event-card-large {
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-}
-
-.q-dark .event-card-large:hover {
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
-}
-
 .q-dark .event-title {
   color: white;
 }
@@ -285,27 +265,22 @@ export default {
   color: #ccc;
 }
 
-.q-dark .event-footer {
-  border-top-color: #444;
-}
-
 /* Responsive adjustments */
 @media (max-width: 600px) {
-  .event-date-container {
-    gap: 12px;
-  }
-
   .event-date-badge {
     min-width: 50px;
-    padding: 6px 10px;
   }
 
   .event-day {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .event-title {
-    font-size: 16px;
+    font-size: 14px;
+  }
+
+  .event-description {
+    font-size: 11px;
   }
 }
 </style>

@@ -287,6 +287,13 @@ export default {
     getCategoryLabel(category) {
       const categoryObj = this.options.find(opt => opt.value === category)
       return categoryObj ? categoryObj.label : 'Evento'
+    },
+
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     }
   }
 }

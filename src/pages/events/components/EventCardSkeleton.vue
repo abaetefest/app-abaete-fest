@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div v-for="n in skeletonCount" :key="n" class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm">
-      <q-card class="event-card-skeleton">
+      <q-card class="rounded-borders overflow-hidden shadow-2">
         <q-skeleton square height="200px" />
         <q-card-section>
           <q-skeleton type="text" class="text-h6" />
@@ -29,8 +29,5 @@ export default {
 </script>
 
 <style scoped>
-.event-card-skeleton {
-  border-radius: 16px;
-  overflow: hidden;
-}
+/* Usando apenas classes Quasar */
 </style>

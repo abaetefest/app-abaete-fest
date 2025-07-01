@@ -1,6 +1,6 @@
 <template>
   <q-card
-    class="row event-card cursor-pointer"
+    class="row event-card cursor-pointer shadow-2"
     :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
     @click="$emit('click', event)"
   >
@@ -33,14 +33,15 @@
     <!-- Conteúdo do card -->
     <q-card-section class="q-pa-sm col-9">
       <!-- Data e hora -->
-      <div class="event-date-container">
+      <div class="row items-center justify-between q-gutter-md q-mb-sm">
         <div class="event-date-badge">
           <div class="event-day">
+            <q-icon name="mdi-calendar" size="16px" class="q-mr-xs" />
             {{ getDayDate(event.start_date) }}
             {{ getMonthString(event.start_date) }}
           </div>
         </div>
-        <div class="event-time">
+        <div class="col">
           <div class="text-body3 text-weight-medium">
             <q-icon
               name="mdi-clock-outline"
@@ -62,7 +63,7 @@
         {{ getShortDescription(event.description) }}
       </div>
 
-      <div class="text-caption text-grey-6">
+      <div v-if="event.location" class="text-caption text-grey-6">
         <q-icon
           name="mdi-map-marker-outline"
           size="14px"
@@ -73,10 +74,11 @@
 
       <!-- Footer com estatísticas -->
       <div
-        class="event-footer q-mt-md"
+        class="border-top q-pt-sm q-mt-md"
+        style="border-top: 1px solid #f0f0f0;"
         v-if="event.attendees_count || event.interested_count"
       >
-        <div class="event-stats">
+        <div class="row items-center q-gutter-md">
           <span
             v-if="event.attendees_count"
             class="text-caption text-grey-6"
@@ -90,7 +92,7 @@
           </span>
           <span
             v-if="event.interested_count"
-            class="text-caption text-grey-6 q-ml-md"
+            class="text-caption text-grey-6"
           >
             <q-icon name="mdi-heart" size="14px" class="q-mr-xs" />
             {{ event.interested_count }} interessados
@@ -202,13 +204,11 @@ export default {
   border-radius: 16px;
   overflow: visible;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
 }
 
 .event-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .event-image {
@@ -224,13 +224,11 @@ export default {
 
 .event-category-badge .q-chip {
   font-size: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
 
 .event-category-badge .q-chip:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
 .event-date-container {
@@ -243,7 +241,7 @@ export default {
 .event-date-badge {
   background: var(--q-primary);
   border-radius: 12px;
-  padding: 8px 12px;
+
   text-align: center;
   min-width: 60px;
 }
@@ -292,24 +290,12 @@ export default {
 }
 
 /* Dark mode adjustments */
-.q-dark .event-card {
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-}
-
-.q-dark .event-card:hover {
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
-}
-
 .q-dark .event-title {
   color: white;
 }
 
 .q-dark .event-description {
   color: #ccc;
-}
-
-.q-dark .event-footer {
-  border-top-color: #444;
 }
 
 /* Responsive adjustments */
@@ -320,7 +306,7 @@ export default {
 
   .event-date-badge {
     min-width: 50px;
-    padding: 6px 10px;
+
   }
 
   .event-day {

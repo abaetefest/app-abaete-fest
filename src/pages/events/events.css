@@ -1,300 +1,12 @@
-/* Estilos da página Events */
+/* Estilos essenciais da página Events - Classes customizadas mínimas */
 
-/* Previne scroll horizontal global */
-* {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* Botão para novo evento */
-.new-event-btn {
-  border-radius: 16px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 14px;
-  font-weight: 700;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
+/* Botão para novo evento - efeitos específicos */
 .new-event-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Layout do grid de eventos */
-.events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 24px;
-  padding: 24px;
-}
-
-/* Responsividade do grid */
-@media (max-width: 768px) {
-  .events-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 16px;
-  }
-}
-
-/* Estilo do container principal */
-.events-page {
-  min-height: 100vh;
-  background: var(--q-grey-1);
-  width: 100%;
-  overflow-x: hidden;
-}
-
-.q-dark .events-page {
-  background: var(--q-dark);
-}
-
-/* Estilos para o container de filtros */
-.filters-container {
-  background: white;
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.q-dark .filters-container {
-  background: var(--q-primary);
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-}
-
-/* Estilos para o cabeçalho */
-.events-header {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.events-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  line-height: 1.2;
-}
-
-.events-subtitle {
-  font-size: 1.1rem;
-  color: var(--q-grey-6);
-  margin-bottom: 0;
-}
-
-.q-dark .events-subtitle {
-  color: var(--q-grey-4);
-}
-
-/* Estilos para os filtros */
-.filter-row {
-  display: flex;
-  gap: 16px;
-  align-items: flex-end;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.filter-item {
-  min-width: 250px;
-  max-width: 400px;
-  flex: 1;
-}
-
-/* Estilos para o contador de eventos */
-.events-counter {
-  text-align: center;
-  padding: 16px;
-  background: var(--q-accent);
-  color: white;
-  border-radius: 8px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-/* Estilos para os cards de eventos */
-.event-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 24px;
-  margin-bottom: 40px;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* Responsividade para tablets */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .event-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Responsividade para mobile */
-@media (max-width: 768px) {
-  .event-list {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 0;
-    margin: 0 auto;
-  }
-
-  .events-title {
-    font-size: 2rem;
-  }
-
-  .filter-row {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .filter-item {
-    min-width: auto;
-    max-width: none;
-  }
-
-  .filters-container {
-    padding: 16px;
-  }
-
-  .q-pa-md {
-    padding: 12px !important;
-  }
-}
-
-/* Estilos para o loading */
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 200px;
-}
-
-.loading-spinner {
-  font-size: 48px;
-  color: var(--q-primary);
-}
-
-/* Estilos para o estado vazio */
-.empty-state {
-  text-align: center;
-  padding: 60px 20px;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-.empty-state-icon {
-  font-size: 80px;
-  color: var(--q-grey-5);
-  margin-bottom: 24px;
-}
-
-.empty-state-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--q-grey-6);
-  margin-bottom: 12px;
-}
-
-.empty-state-description {
-  font-size: 1rem;
-  color: var(--q-grey-5);
-  line-height: 1.5;
-}
-
-.q-dark .empty-state-title {
-  color: var(--q-grey-4);
-}
-
-.q-dark .empty-state-description {
-  color: var(--q-grey-5);
-}
-
-/* Estilos para a paginação */
-.pagination-container {
-  display: flex;
-  justify-content: center;
-  padding: 32px 0;
-}
-
-/* Estilos para o botão de voltar ao topo */
-.back-to-top {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1000;
-  border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.back-to-top:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Animações */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.slide-up-enter-active,
-.slide-up-leave-active {
-  transition: all 0.3s ease;
-}
-
-.slide-up-enter-from {
-  transform: translateY(20px);
-  opacity: 0;
-}
-
-.slide-up-leave-to {
-  transform: translateY(-20px);
-  opacity: 0;
-}
-
-/* Melhorias para acessibilidade */
-.events-page *:focus {
-  outline: 2px solid var(--q-primary);
-  outline-offset: 2px;
-}
-
-/* Estilos para impressão */
-@media print {
-  .events-page {
-    background: white !important;
-  }
-
-  .filters-container,
-  .new-event-btn,
-  .back-to-top {
-    display: none !important;
-  }
-
-  .event-list {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-}
-
-/* Estilos para modo escuro */
-@media (prefers-color-scheme: dark) {
-  .events-page {
-    background: var(--q-dark);
-  }
-}
-
-/* Estilos para o botão de alternância de visualização */
+/* Estilo do botão de alternância de visualização */
 .view-toggle {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
@@ -330,6 +42,38 @@
   transform: scale(1.02);
 }
 
+/* Botão de voltar ao topo */
+.back-to-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Animações */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-up-enter-from {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.slide-up-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
 /* Responsividade para o botão de visualização */
 @media (max-width: 600px) {
   .view-toggle {
@@ -339,5 +83,14 @@
     flex: 1;
     font-size: 12px;
     padding: 5px 5px;
+  }
+}
+
+/* Estilos para impressão */
+@media print {
+  .new-event-btn,
+  .back-to-top,
+  .view-toggle {
+    display: none !important;
   }
 }
