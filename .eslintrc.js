@@ -71,7 +71,11 @@ module.exports = {
     }],
 
 
-    // allow debugger during development only
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+        // allow debugger during development only
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+
+    // Desabilita regras que estão causando bugs no ESLint 7.x com template literals
+    'template-curly-spacing': 'off',
+    'indent': 'off'
   }
 }
