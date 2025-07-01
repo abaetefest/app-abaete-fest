@@ -1,7 +1,7 @@
 // Estratégia 1: Componentes Síncronos vs Assíncronos
 // Componentes críticos (primeira visualização) - carregamento síncrono
-import Events from 'src/pages/Events.vue'
 import MainLayout from 'layouts/MainLayout.vue'
+import Events from 'src/pages/events/Events.vue'
 
 const routes = [
   {
@@ -29,7 +29,7 @@ const routes = [
         component: () => import(
           /* webpackChunkName: "events" */
           /* webpackPrefetch: true */
-          'src/pages/Events.vue'
+          'src/pages/events/Events.vue'
         ),
         meta: {
           tab: true,

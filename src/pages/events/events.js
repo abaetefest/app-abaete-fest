@@ -1,212 +1,3 @@
-<template>
-  <q-page :class="$q.dark.isActive ? '': 'bg-grey-1'">
-    <!-- Header com título -->
-    <div class="q-pa-md">
-      <div class="text-h4 text-bold text-center custom-font q-mb-md">
-        <span class="text-accent">Eventos</span> na cidade
-      </div>
-
-      <!-- Filtro de categoria -->
-      <q-select
-        outlined
-        rounded
-        v-model="categoria"
-        :options="options"
-        label="Selecione uma categoria"
-        class="q-mb-md"
-        :bg-color="$q.dark.isActive ? 'primary' : 'white'"
-        :label-color="$q.dark.isActive ? 'white' : 'primary'"
-        :color="$q.dark.isActive ? 'white' : 'primary'"
-        map-options
-        emit-value
-        dense
-        @input="listEvents(categoria)"
-        style="max-width: 400px;"
-      >
-        <template v-slot:prepend>
-          <q-avatar
-            rounded
-            :icon="getIconCategory"
-            size="40px"
-            :class="$q.dark.isActive ? 'text-secondary' : 'text-primary'"
-          />
-        </template>
-        <template v-slot:option="scope">
-          <q-item
-            v-bind="scope.itemProps"
-            v-on="scope.itemEvents"
-            :class="$q.dark.isActive ? 'bg-primary' : 'white'"
-            dense
-          >
-            <q-item-section avatar>
-              <q-avatar rounded :icon="scope.opt.icon" size="40px" />
-            </q-item-section>
-            <q-item-section>
-              <q-item-label class="text-weight-bold" v-html="scope.opt.label" />
-            </q-item-section>
-          </q-item>
-        </template>
-      </q-select>
-
-      <!-- Campo de busca -->
-      <q-input
-        outlined
-        rounded
-        dense
-        debounce="300"
-        v-model="filter"
-        label="Pesquisar eventos..."
-        class="q-mb-md"
-        style="max-width: 400px; margin: 0 auto;"
-        :label-color="$q.dark.isActive ? 'blue-3' : 'primary'"
-      >
-        <template v-slot:append>
-          <q-icon name="mdi-magnify" :color="$q.dark.isActive ? 'blue-3' : 'primary'" />
-        </template>
-      </q-input>
-    </div>
-
-    <!-- Loading skeleton -->
-    <div v-if="load" class="q-pa-md">
-      <div class="row q-gutter-md justify-center">
-        <div v-for="n in 6" :key="n" class="col-12 col-sm-6 col-md-4" style="max-width: 350px;">
-          <q-card class="event-card-skeleton">
-            <q-skeleton height="200px" square />
-            <q-card-section>
-              <q-skeleton type="text" class="text-h6" />
-              <q-skeleton type="text" width="60%" />
-              <q-skeleton type="text" width="40%" />
-            </q-card-section>
-          </q-card>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lista de eventos -->
-    <div v-else class="q-pa-md">
-      <!-- Botão Novo Evento (se aplicável) -->
-      <div class="text-center q-mb-lg" v-if="canCreateEvent">
-        <q-btn
-          rounded
-          size="lg"
-          color="accent"
-          icon="mdi-calendar-plus"
-          label="NOVO EVENTO"
-          class="q-px-xl q-py-sm text-weight-bold"
-          @click="createNewEvent"
-        />
-      </div>
-
-      <!-- Grid de eventos -->
-      <div class="row q-gutter-md justify-center">
-        <div
-          v-for="event in filteredEvents"
-          :key="event.id"
-          class="col-12 col-sm-6 col-md-4"
-          style="max-width: 350px;"
-        >
-          <q-card
-            class="event-card cursor-pointer"
-            :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
-            @click="detailsEvent(event)"
-          >
-            <!-- Imagem do evento -->
-            <div class="event-image-container">
-              <q-img
-                :src="event.image_url"
-                :alt="`Imagem do evento ${event.name}`"
-                class="event-image"
-                :ratio="16/9"
-                placeholder-src="loadPlaceholder.png"
-              >
-                <template #loading>
-                  <q-skeleton class="full-width full-height" square />
-                </template>
-              </q-img>
-
-              <!-- Badge de categoria -->
-              <div class="event-category-badge">
-                <q-chip
-                  :color="getCategoryColor(event.category)"
-                  text-color="white"
-                  :icon="getCategoryIcon(event.category)"
-                  dense
-                  class="text-weight-bold text-caption q-pa-md"
-                >
-                  {{ getCategoryLabel(event.category) }}
-                </q-chip>
-              </div>
-            </div>
-
-            <!-- Conteúdo do card -->
-            <q-card-section class="q-pa-md">
-              <!-- Data e hora -->
-              <div class="event-date-container q-mb-md">
-                <div class="event-date-badge">
-                  <div class="event-day">{{ getDayDate(event.start_date) }}</div>
-                  <div class="event-month">{{ getMonthString(event.start_date) }}</div>
-                </div>
-                <div class="event-time">
-                  <div class="text-body2 text-weight-medium">
-                    <q-icon name="mdi-clock-outline" size="16px" class="q-mr-xs" />
-                    {{ formatHourString(event.start_date) }}
-                  </div>
-                  <div class="text-caption text-grey-6" v-if="event.location">
-                    <q-icon name="mdi-map-marker-outline" size="14px" class="q-mr-xs" />
-                    {{ event.location }}
-                  </div>
-                </div>
-              </div>
-
-              <!-- Título do evento -->
-              <div class="event-title q-mb-sm">
-                {{ event.name }}
-              </div>
-
-              <!-- Descrição resumida -->
-              <div class="event-description" v-if="event.description">
-                {{ getShortDescription(event.description) }}
-              </div>
-
-              <!-- Footer com estatísticas -->
-              <div class="event-footer q-mt-md" v-if="event.attendees_count || event.interested_count">
-                <div class="event-stats">
-                  <span v-if="event.attendees_count" class="text-caption text-grey-6">
-                    <q-icon name="mdi-account-group" size="14px" class="q-mr-xs" />
-                    {{ event.attendees_count }} participantes
-                  </span>
-                  <span v-if="event.interested_count" class="text-caption text-grey-6 q-ml-md">
-                    <q-icon name="mdi-heart" size="14px" class="q-mr-xs" />
-                    {{ event.interested_count }} interessados
-                  </span>
-                </div>
-              </div>
-            </q-card-section>
-          </q-card>
-        </div>
-      </div>
-
-      <!-- Mensagem quando não há eventos -->
-      <div v-if="filteredEvents.length === 0" class="text-center q-pa-xl">
-        <q-icon name="mdi-calendar-remove" size="80px" class="text-grey-5 q-mb-md" />
-        <div class="text-h6 text-grey-6 q-mb-sm">Nenhum evento encontrado</div>
-        <div class="text-body2 text-grey-5">
-          Tente ajustar os filtros ou volte mais tarde para ver novos eventos.
-        </div>
-      </div>
-    </div>
-
-    <!-- Dialog de detalhes (se necessário) -->
-    <dialog-course-details
-      :modal-course="modalCourse"
-      :course-data="courseDetails"
-      @close="closeModal"
-    />
-  </q-page>
-</template>
-
-<script>
-import { date } from 'quasar'
 import { category } from 'src/constants/category'
 
 export default {
@@ -215,9 +6,10 @@ export default {
   // Meta tags para SEO
   // Meta tags otimizadas para página de listagem de eventos
   meta() {
-    const categoryFilter = this.categoria && this.categoria !== 'all'
-      ? this.getCategoryLabel(this.categoria)
-      : 'Todos os tipos'
+    const categoryFilter =
+      this.categoria && this.categoria !== 'all'
+        ? this.getCategoryLabel(this.categoria)
+        : 'Todos os tipos'
 
     const eventCount = this.events.length
     const currentYear = new Date().getFullYear()
@@ -731,7 +523,6 @@ export default {
       document.head.appendChild(script)
     })
   },
-
   props: {
     grid: {
       type: Boolean,
@@ -740,15 +531,23 @@ export default {
   },
 
   components: {
-    DialogCourseDetails: () => import('components/DialogCourseDetails')
+    DialogCourseDetails: () => import('components/DialogCourseDetails'),
+    EventFilters: () => import('./components/EventFilters'),
+    EventCard: () => import('./components/EventCard'),
+    EventCardLarge: () => import('./components/EventCardLarge'),
+    EventSkeleton: () => import('./components/EventSkeleton'),
+    EventCardSkeleton: () => import('./components/EventCardSkeleton'),
+    EmptyState: () => import('./components/EmptyState')
   },
 
   data() {
     return {
       filter: '',
       categoria: 'all',
+      viewMode: 'compact', // 'compact' ou 'large'
       options: category,
       events: [],
+      allEvents: [], // Armazena todos os eventos
       load: true,
       modalCourse: false,
       courseDetails: {},
@@ -757,28 +556,41 @@ export default {
   },
 
   computed: {
-    getIconCategory: function () {
-      const img = this.options.filter(opt => opt.value === this.categoria)
-      return img[0] ? img[0].icon : 'mdi-calendar'
-    },
+    filteredEvents() {
+      if (!this.events || this.events.length === 0) {
+        console.log('⚠️ Nenhum evento carregado ainda')
+        return []
+      }
 
-    filteredEvents: function () {
-      if (!this.filter) return this.events
+      // Categoria já vem filtrada do backend
+      let filtered = [...this.events]
 
-      return this.events.filter(event => {
-        const name = event.name ? event.name.toLowerCase() : ''
-        const description = event.description ? event.description.toLowerCase() : ''
-        const location = event.location ? event.location.toLowerCase() : ''
-        const searchTerm = this.filter.toLowerCase()
+      // Filtro por texto de busca (frontend)
+      if (this.filter && this.filter.trim()) {
+        const searchTerm = this.filter.toLowerCase().trim()
+        filtered = filtered.filter((event) => {
+          const name = (event.name || event.title || event.nome || '').toLowerCase()
+          const description = (event.description || event.descricao || event.desc || '').toLowerCase()
+          const location = (event.location || event.local || event.endereco || '').toLowerCase()
 
-        return name.includes(searchTerm) ||
-               description.includes(searchTerm) ||
-               location.includes(searchTerm)
-      })
+          return name.includes(searchTerm) ||
+                   description.includes(searchTerm) ||
+                   location.includes(searchTerm)
+        })
+        console.log(`🔎 Busca aplicada: "${searchTerm}" → ${filtered.length} resultados`)
+      }
+      return filtered
     }
+
   },
 
   async mounted() {
+    // Carrega preferência de visualização do localStorage
+    const savedViewMode = localStorage.getItem('events-view-mode')
+    if (savedViewMode && ['compact', 'large'].includes(savedViewMode)) {
+      this.viewMode = savedViewMode
+    }
+
     // Verifica parâmetros da URL
     if (this.$route.params.type) {
       this.categoria = this.$route.params.type
@@ -789,21 +601,27 @@ export default {
       this.categoria = this.$route.query.categoria
     }
 
-    await this.listEvents(this.categoria)
+    await this.listEvents(this.categoria !== 'all' ? this.categoria : '')
   },
 
   watch: {
-    categoria: function (newVal) {
+    categoria(newVal) {
       // Atualiza URL sem recarregar a página
       if (newVal !== 'all') {
-        this.$router.replace({ query: { categoria: newVal } }).catch(err => {
+        this.$router.replace({ query: { categoria: newVal } }).catch((err) => {
           console.error(err)
         })
       } else {
-        this.$router.replace({ query: {} }).catch(err => {
+        this.$router.replace({ query: {} }).catch((err) => {
           console.error(err)
         })
       }
+    },
+
+    viewMode(newVal) {
+      // Salva a preferência de visualização no localStorage
+      localStorage.setItem('events-view-mode', newVal)
+      console.log('👁️ Modo de visualização alterado para:', newVal)
     }
   },
 
@@ -811,12 +629,23 @@ export default {
     async listEvents(category = '') {
       this.load = true
       try {
+        console.log('📡 Carregando eventos por categoria:', category || 'todas')
         const { data } = await this.$services.events().listByCategory(category)
         this.events = data.data || []
+
+        // Carrega todos os eventos para contador se for primeira vez
+        if (!this.allEvents.length) {
+          console.log('📊 Carregando total de eventos para contador...')
+          const { data: allData } = await this.$services.events().listByCategory('')
+          this.allEvents = allData.data || []
+        }
+
+        console.log('📊 Eventos carregados:', this.events.length)
+        console.log('📊 Total de eventos:', this.allEvents.length)
         this.load = false
       } catch (error) {
         this.load = false
-        console.error('Erro ao carregar eventos:', error)
+        console.error('❌ Erro ao carregar eventos:', error)
         this.$q.notify({
           message: 'Erro ao carregar eventos. Tente novamente.',
           color: 'negative',
@@ -825,7 +654,7 @@ export default {
       }
     },
 
-    detailsEvent: function (event) {
+    detailsEvent(event) {
       this.$router.push({ name: 'eventDetails', params: { id: event.id } })
 
       // Analytics
@@ -838,252 +667,42 @@ export default {
       }
     },
 
-    createNewEvent: function () {
+    createNewEvent() {
       this.$router.push({ name: 'createEvent' })
     },
 
-    closeModal: function () {
+    closeModal() {
       this.modalCourse = false
       this.courseDetails = {}
     },
 
-    // Formatação de dados
-    formatDateString: function (dateOriginal) {
-      if (!dateOriginal) return ''
-      return date.formatDate(dateOriginal, 'DD/MM/YYYY')
+    // Handlers para componentes filhos
+    async onCategoryChange(newCategory) {
+      console.log('📂 Alterando categoria para:', newCategory)
+      this.categoria = newCategory
+      // Faz nova requisição para filtrar no backend
+      await this.listEvents(newCategory !== 'all' ? newCategory : '')
     },
 
-    formatHourString: function (dateOriginal) {
-      if (!dateOriginal) return ''
-      return date.formatDate(dateOriginal, 'HH:mm')
+    onFilterChange(newFilter) {
+      this.filter = newFilter
     },
 
-    getDayDate: function (dateOriginal) {
-      if (!dateOriginal) return ''
-      return date.formatDate(dateOriginal, 'DD')
+    clearFilters() {
+      this.filter = ''
+      this.categoria = 'all'
     },
 
-    getMonthString: function (dateOriginal) {
-      if (!dateOriginal) return ''
-      const month = date.formatDate(dateOriginal, 'MM')
-      const monthString = {
-        '01': 'Jan',
-        '02': 'Fev',
-        '03': 'Mar',
-        '04': 'Abr',
-        '05': 'Mai',
-        '06': 'Jun',
-        '07': 'Jul',
-        '08': 'Ago',
-        '09': 'Set',
-        10: 'Out',
-        11: 'Nov',
-        12: 'Dez'
-      }
-      return monthString[month] || ''
-    },
-
-    formatPrice: function (price) {
-      if (!price) return '0,00'
-      return parseFloat(price).toFixed(2).replace('.', ',')
-    },
-
-    getShortDescription: function (description) {
-      if (!description) return ''
-      const cleanText = description.replace(/<[^>]*>/g, '')
-      return cleanText.length > 100 ? cleanText.substring(0, 100) + '...' : cleanText
-    },
-
-    // Funções para categorias
-    getCategoryColor: function (category) {
-      const colors = {
-        music: 'purple',
-        party: 'pink',
-        culture: 'teal',
-        sport: 'orange',
-        food: 'red',
-        business: 'blue',
-        education: 'green',
-        default: 'primary'
-      }
-      return colors[category] || colors.default
-    },
-
-    getCategoryIcon: function (category) {
-      const icons = {
-        music: 'mdi-music',
-        party: 'mdi-party-popper',
-        culture: 'mdi-palette',
-        sport: 'mdi-soccer',
-        food: 'mdi-food',
-        business: 'mdi-briefcase',
-        education: 'mdi-school',
-        default: 'mdi-calendar'
-      }
-      return icons[category] || icons.default
-    },
-
-    getCategoryLabel: function (category) {
-      const categoryObj = this.options.find(function (opt) {
-        return opt.value === category
-      })
+    getCategoryLabel(category) {
+      const categoryObj = this.options.find(opt => opt.value === category)
       return categoryObj ? categoryObj.label : 'Evento'
     },
 
-    backToEvents: function () {
-      this.$router.push({ name: 'home' })
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     }
   }
 }
-</script>
-
-<style scoped>
-.custom-font {
-  font-family: 'Roboto', sans-serif;
-}
-
-.event-card {
-  border-radius: 16px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.event-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.event-image-container {
-  position: relative;
-}
-
-.event-image {
-  border-radius: 0;
-}
-
-.event-category-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  z-index: 2;
-}
-
-.event-price-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 2;
-}
-
-.event-date-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.event-date-badge {
-  background: var(--q-primary);
-  border-radius: 12px;
-  padding: 8px 12px;
-  text-align: center;
-  min-width: 60px;
-}
-
-.event-day {
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 1;
-}
-
-.event-month {
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  line-height: 1;
-  margin-top: 2px;
-}
-
-.event-time {
-  flex: 1;
-}
-
-.event-title {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--q-dark);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.event-description {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.event-footer {
-  border-top: 1px solid #f0f0f0;
-  padding-top: 12px;
-}
-
-.event-stats {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.event-card-skeleton {
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-/* Dark mode adjustments */
-.q-dark .event-card {
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
-}
-
-.q-dark .event-card:hover {
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
-}
-
-.q-dark .event-title {
-  color: white;
-}
-
-.q-dark .event-description {
-  color: #ccc;
-}
-
-.q-dark .event-footer {
-  border-top-color: #444;
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .event-date-container {
-    gap: 12px;
-  }
-
-  .event-date-badge {
-    min-width: 50px;
-    padding: 6px 10px;
-  }
-
-  .event-day {
-    font-size: 18px;
-  }
-
-  .event-title {
-    font-size: 16px;
-  }
-}
-</style>
