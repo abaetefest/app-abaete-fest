@@ -5,4 +5,3 @@ export { default as EventCardLarge } from './EventCardLarge.vue'
 export { default as EventCardSkeleton } from './EventCardSkeleton.vue'
 export { default as EventFilters } from './EventFilters.vue'
 export { default as EventSkeleton } from './EventSkeleton.vue'
-
