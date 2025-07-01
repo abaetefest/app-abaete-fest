@@ -1,59 +1,339 @@
+// Estratégia 1: Componentes Síncronos vs Assíncronos
+// Componentes críticos (primeira visualização) - carregamento síncrono
+import MainLayout from 'layouts/MainLayout.vue'
+import Events from 'src/pages/events/Events.vue'
 
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: MainLayout, // Síncrono - sempre necessário
     children: [
-      // { path: '', name: 'home', component: () => import('src/pages/Index.vue'), meta: { tab: true } },
-      { path: '', name: 'home', component: () => import('src/pages/events/Events.vue'), meta: { tab: true } },
-      { path: 'events/:type?', name: 'events', component: () => import('src/pages/events/Events.vue'), meta: { tab: true } },
-      { path: 'tourism', name: 'tourism', component: () => import('src/pages/Tourism.vue'), meta: { tab: true } },
-      { path: 'map', name: 'map', component: () => import('src/pages/MapCity.vue'), meta: { tab: true } },
-      { path: 'places', name: 'places', component: () => import('src/pages/Places.vue'), meta: { tab: true } },
-      { path: 'services', name: 'services', component: () => import('src/pages/Services.vue'), meta: { tab: true } },
-      { path: 'trips', name: 'trips', component: () => import('src/pages/Trips.vue'), meta: { tab: true } },
-      { path: 'radio', name: 'radio', component: () => import('src/pages/Radio.vue'), meta: { tab: true } },
-      { path: 'radio-player/:id', name: 'radio-player', component: () => import('src/pages/RadioPlayer.vue'), meta: { tab: true } },
-      { path: 'event-details/:id', name: 'eventDetails', component: () => import('src/pages/EventDetails.vue'), meta: { tab: false } },
-      { path: 'contact', name: 'contact', component: () => import('pages/Contact.vue'), meta: { tab: true } },
-      { path: 'user-informations', name: 'userInformations', component: () => import('pages/UserInformations.vue'), props: true, meta: { tab: true } },
-      { path: 'podcast', name: 'podcast', component: () => import('pages/Podcast.vue'), props: true, meta: { tab: true } },
-      { path: 'clima', name: 'clima', component: () => import('pages/Clima.vue'), props: true, meta: { tab: true } },
-      { path: 'about-city', name: 'about-city', component: () => import('pages/AboutCity.vue'), props: true, meta: { tab: true } }
+      // === ROTAS CRÍTICAS (Bundle Principal) ===
+      // Página inicial - sempre carregada primeiro
+      {
+        path: '',
+        name: 'home',
+        component: Events, // Síncrono - página inicial
+        meta: {
+          tab: true,
+          priority: 'high',
+          preload: true
+        }
+      },
+
+      // === ROTAS SECUNDÁRIAS (Lazy Loading) ===
+      // Páginas acessadas após navegação inicial
+      {
+        path: 'events/:type?',
+        name: 'events',
+        component: () => import(
+          /* webpackChunkName: "events" */
+          /* webpackPrefetch: true */
+          'src/pages/Events.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'high',
+          preload: true
+        }
+      },
+
+      // === CHUNK: TOURISM ===
+      {
+        path: 'tourism',
+        name: 'tourism',
+        component: () => import(
+          /* webpackChunkName: "tourism" */
+          /* webpackPrefetch: true */
+          'src/pages/Tourism.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+      {
+        path: 'places',
+        name: 'places',
+        component: () => import(
+          /* webpackChunkName: "tourism" */
+          'src/pages/Places.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+      {
+        path: 'trips',
+        name: 'trips',
+        component: () => import(
+          /* webpackChunkName: "tourism" */
+          'src/pages/Trips.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'low'
+        }
+      },
+
+      // === CHUNK: MAP ===
+      {
+        path: 'map',
+        name: 'map',
+        component: () => import(
+          /* webpackChunkName: "map" */
+          /* webpackPreload: true */
+          'src/pages/MapCity.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+
+      // === CHUNK: MEDIA ===
+      {
+        path: 'radio',
+        name: 'radio',
+        component: () => import(
+          /* webpackChunkName: "media" */
+          'src/pages/Radio.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'low'
+        }
+      },
+      {
+        path: 'radio-player/:id',
+        name: 'radio-player',
+        component: () => import(
+          /* webpackChunkName: "media" */
+          'src/pages/RadioPlayer.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'low'
+        }
+      },
+      {
+        path: 'podcast',
+        name: 'podcast',
+        component: () => import(
+          /* webpackChunkName: "media" */
+          'pages/Podcast.vue'
+        ),
+        props: true,
+        meta: {
+          tab: true,
+          priority: 'low'
+        }
+      },
+
+      // === CHUNK: UTILITIES ===
+      {
+        path: 'services',
+        name: 'services',
+        component: () => import(
+          /* webpackChunkName: "utilities" */
+          'src/pages/Services.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'low'
+        }
+      },
+      {
+        path: 'clima',
+        name: 'clima',
+        component: () => import(
+          /* webpackChunkName: "utilities" */
+          'pages/Clima.vue'
+        ),
+        props: true,
+        meta: {
+          tab: true,
+          priority: 'low'
+        }
+      },
+
+      // === CHUNK: INFO ===
+      {
+        path: 'contact',
+        name: 'contact',
+        component: () => import(
+          /* webpackChunkName: "info" */
+          'pages/Contact.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'low'
+        }
+      },
+      {
+        path: 'about-city',
+        name: 'about-city',
+        component: () => import(
+          /* webpackChunkName: "info" */
+          'pages/AboutCity.vue'
+        ),
+        props: true,
+        meta: {
+          tab: true,
+          priority: 'low'
+        }
+      },
+
+      // === CHUNK: USER ===
+      {
+        path: 'user-informations',
+        name: 'userInformations',
+        component: () => import(
+          /* webpackChunkName: "user" */
+          'pages/UserInformations.vue'
+        ),
+        props: true,
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+
+      // === ROTAS DETALHADAS (Carregamento sob demanda) ===
+      {
+        path: 'event-details/:id',
+        name: 'eventDetails',
+        component: () => import(
+          /* webpackChunkName: "event-details" */
+          'src/pages/EventDetails.vue'
+        ),
+        meta: {
+          tab: false,
+          priority: 'high'
+        }
+      }
     ],
     meta: {
       requiresAuth: false
     }
   },
+
+  // === CHUNK: ADMIN (Separado completamente) ===
   {
-    path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    path: '/admin',
+    component: () => import(
+      /* webpackChunkName: "admin-layout" */
+      'layouts/MainLayout.vue'
+    ),
     children: [
-      { path: 'manage-events', name: 'manageEvents', component: () => import('src/pages/ManageEvents.vue'), meta: { admin: true } },
-      { path: 'manage-tourism', name: 'manageTourism', component: () => import('src/pages/ManageTourism.vue'), meta: { admin: true } },
-      { path: 'manage-users', name: 'manageUsers', component: () => import('src/pages/ManageUsers.vue'), meta: { admin: true } },
-      { path: 'form-events/:id?', name: 'formEvents', component: () => import('pages/FormEvents.vue'), props: true },
-      { path: 'form-tourism/:id?', name: 'formTourism', component: () => import('pages/FormTourism.vue'), props: true }
-      // { path: 'user-informations', name: 'userInformations', component: () => import('pages/UserInformations.vue'), props: true, meta: { tab: true } }
+      {
+        path: 'manage-events',
+        name: 'manageEvents',
+        component: () => import(
+          /* webpackChunkName: "admin" */
+          'src/pages/ManageEvents.vue'
+        ),
+        meta: {
+          admin: true,
+          priority: 'low'
+        }
+      },
+      {
+        path: 'manage-tourism',
+        name: 'manageTourism',
+        component: () => import(
+          /* webpackChunkName: "admin" */
+          'src/pages/ManageTourism.vue'
+        ),
+        meta: {
+          admin: true,
+          priority: 'low'
+        }
+      },
+      {
+        path: 'manage-users',
+        name: 'manageUsers',
+        component: () => import(
+          /* webpackChunkName: "admin" */
+          'src/pages/ManageUsers.vue'
+        ),
+        meta: {
+          admin: true,
+          priority: 'low'
+        }
+      },
+      {
+        path: 'form-events/:id?',
+        name: 'formEvents',
+        component: () => import(
+          /* webpackChunkName: "admin" */
+          'pages/FormEvents.vue'
+        ),
+        props: true,
+        meta: {
+          priority: 'low'
+        }
+      },
+      {
+        path: 'form-tourism/:id?',
+        name: 'formTourism',
+        component: () => import(
+          /* webpackChunkName: "admin" */
+          'pages/FormTourism.vue'
+        ),
+        props: true,
+        meta: {
+          priority: 'low'
+        }
+      }
     ],
     meta: {
       requiresAuth: true
     }
   },
+
+  // === CHUNK: AUTH (Separado) ===
   {
-    path: '/',
-    component: () => import('layouts/Login.vue'),
+    path: '/auth',
+    component: () => import(
+      /* webpackChunkName: "auth-layout" */
+      'layouts/Login.vue'
+    ),
     children: [
-      { path: 'login', name: 'login', component: () => import('src/pages/Login.vue') },
-      { path: 'cadastro', name: 'cadastro', component: () => import('src/pages/Cadastro.vue') }
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import(
+          /* webpackChunkName: "auth" */
+          'src/pages/Login.vue'
+        )
+      },
+      {
+        path: 'cadastro',
+        name: 'cadastro',
+        component: () => import(
+          /* webpackChunkName: "auth" */
+          'src/pages/Cadastro.vue'
+        )
+      }
     ]
   },
 
-  // Always leave this as last one,
-  // but you can also remove it
+  // === REDIRECT ROUTES ===
+  { path: '/login', redirect: '/auth/login' },
+  { path: '/cadastro', redirect: '/auth/cadastro' },
+  { path: '/manage-events', redirect: '/admin/manage-events' },
+  { path: '/manage-tourism', redirect: '/admin/manage-tourism' },
+  { path: '/manage-users', redirect: '/admin/manage-users' },
+
+  // === 404 ===
   {
     path: '*',
-    component: () => import('pages/Error404.vue')
+    component: () => import(
+      /* webpackChunkName: "error" */
+      'pages/Error404.vue'
+    )
   }
 ]
 

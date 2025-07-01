@@ -501,7 +501,7 @@ export default {
       const shareData = {
         title: 'Horários de Viagem Belém ↔ Abaetetuba | AbaetéFest',
         text: 'Consulte os horários atualizados de ônibus e embarcações entre Belém e Abaetetuba. Todos os terminais e empresas de transporte.',
-        url: `${baseUrl}/trips?t=${timestamp}`
+        url: `${baseUrl}/trips?t=${timestamp} `
       }
 
       try {

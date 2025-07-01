@@ -1,22 +1,16 @@
 [build]
   command = "quasar build -m ssr"
-  functions = "dist/ssr"
   publish = "dist/ssr/www"
 
 [build.environment]
   NODE_VERSION = "18"
 
-# Configuração de imagens - MANTIDA
-[images]
-  remote_images = ["https://abaete-fest.s3.amazonaws.com/*"]
+# === PROBLEMA IDENTIFICADO: Functions config incorreta ===
+# O problema está na configuração de functions que está conflitando
 
-# Função para SSR
-[[functions]]
-  function = "dist/ssr/render/*"
-  included_files = ["dist/ssr/**"]
+# === REDIRECTS CORRIGIDOS PARA SSR + PWA ===
 
-# Redirects otimizados para SSR
-# Assets estáticos primeiro (não passam pelo SSR)
+# 1. Assets estáticos PRIMEIRO (alta prioridade)
 [[redirects]]
   from = "/icons/*"
   to = "/icons/:splat"
@@ -37,50 +31,86 @@
   to = "/fonts/:splat"
   status = 200
 
-# API calls podem passar pelo SSR se necessário
+[[redirects]]
+  from = "/statics/*"
+  to = "/statics/:splat"
+  status = 200
+
+# 2. PWA files (crítico para funcionamento)
+[[redirects]]
+  from = "/manifest.json"
+  to = "/manifest.json"
+  status = 200
+
+[[redirects]]
+  from = "/service-worker.js"
+  to = "/service-worker.js"
+  status = 200
+
+[[redirects]]
+  from = "/sw.js"
+  to = "/sw.js"
+  status = 200
+
+# 3. Página offline (deve ser servida diretamente)
+[[redirects]]
+  from = "/offline.html"
+  to = "/offline.html"
+  status = 200
+
+# 4. API externa (não deve passar pelo SSR)
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/render"
+  to = "https://polished-snowflake-9723.fly.dev/api/:splat"
   status = 200
 
-# Todas as outras rotas passam pelo SSR (para HTML pages)
+# 5. Health check
 [[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/render"
+  from = "/health"
+  to = "/health"
   status = 200
-  conditions = {headers = {accept = "text/html"}}
 
-# Fallback para SPAs se o SSR falhar
+# === CORREÇÃO PRINCIPAL: SPA Fallback para todas as rotas ===
+# Em vez de functions render, usa fallback SPA padrão
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Headers para melhor SEO e performance
+# === HEADERS OTIMIZADOS ===
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Cache para JS (longo)
 [[headers]]
-  for = "/*.js"
+  for = "/js/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Cache para CSS (longo)
 [[headers]]
-  for = "/*.css"
+  for = "/css/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Cache para fontes (longo)
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache para ícones (médio)
 [[headers]]
   for = "/icons/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
 
-# Configurações para PWA
+# PWA files (sem cache para updates)
 [[headers]]
   for = "/manifest.json"
   [headers.values]
@@ -91,7 +121,12 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Headers específicos para imagens do S3
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Cache para imagens (médio)
 [[headers]]
   for = "/*.jpg"
   [headers.values]
@@ -106,3 +141,13 @@
   for = "/*.webp"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+
+# HTML pages (cache curto para updates frequentes)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=300, s-maxage=600"
+
+# === CONFIGURAÇÃO DE IMAGENS EXTERNA ===
+[images]
+  remote_images = ["https://abaete-fest.s3.amazonaws.com/*"]

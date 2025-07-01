@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Você está offline - AbaetéFest</title>
+  
+  <!-- Meta tags essenciais -->
+  <meta name="description" content="Você está sem conexão. Verifique sua internet e tente novamente.">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- PWA Meta tags -->
+  <meta name="theme-color" content="#151933">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="128x128" href="/icons/icon-128x128.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+  
+  <!-- CSS inline para garantir que funcione offline -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #151933 0%, #1e2147 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .offline-container {
+      max-width: 400px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .offline-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 30px;
+      background: #75fbcf;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 2s infinite;
+    }
+    
+    .offline-icon svg {
+      width: 40px;
+      height: 40px;
+      fill: #151933;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .offline-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+    
+    .offline-description {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .offline-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: #75fbcf;
+      color: #151933;
+    }
+    
+    .btn-primary:hover {
+      background: #5ec4a8;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .offline-tips {
+      margin-top: 30px;
+      text-align: left;
+    }
+    
+    .offline-tips h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #75fbcf;
+    }
+    
+    .offline-tips ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .offline-tips li {
+      padding: 8px 0;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .offline-tips li::before {
+      content: '•';
+      color: #75fbcf;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .connection-status {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: none;
+    }
+    
+    .connection-status.online {
+      background: rgba(33, 186, 69, 0.2);
+      color: #21BA45;
+      border: 1px solid rgba(33, 186, 69, 0.3);
+    }
+    
+    .connection-status.offline {
+      background: rgba(193, 0, 21, 0.2);
+      color: #C10015;
+      border: 1px solid rgba(193, 0, 21, 0.3);
+    }
+    
+    @media (max-width: 480px) {
+      .offline-container {
+        padding: 30px 20px;
+        margin: 20px;
+      }
+      
+      .offline-title {
+        font-size: 20px;
+      }
+      
+      .offline-description {
+        font-size: 14px;
+      }
+      
+      .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-container">
+    <!-- Ícone WiFi off -->
+    <div class="offline-icon">
+      <svg viewBox="0 0 24 24">
+        <path d="M21,9L22.5,7.5C21.75,6.75 15.54,1.88 12,1.88S2.25,6.75 1.5,7.5L3,9C3.75,8.25 8.46,4.62 12,4.62S20.25,8.25 21,9M19.5,10.5L21,12C20.25,12.75 16.54,15.38 12,15.38C10.81,15.38 9.56,15.1 8.37,14.63L9.8,13.2C10.5,13.32 11.22,13.38 12,13.38C14.46,13.38 17.25,11.75 19.5,10.5M3,12L1.5,10.5C2.25,9.75 4.46,8.12 7.37,7.37L8.8,8.8C6.22,9.32 4.5,10.5 3,12M12,20.5A1.5,1.5 0 0,1 10.5,19A1.5,1.5 0 0,1 12,17.5A1.5,1.5 0 0,1 13.5,19A1.5,1.5 0 0,1 12,20.5Z"/>
+      </svg>
+    </div>
+    
+    <h1 class="offline-title">Você está offline</h1>
+    <p class="offline-description">
+      Não foi possível conectar com o AbaetéFest. Verifique sua conexão com a internet e tente novamente.
+    </p>
+    
+    <div class="offline-actions">
+      <button class="btn btn-primary" onclick="tryReconnect()">
+        <svg width="16" height="16" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z"/>
+        </svg>
+        Tentar novamente
+      </button>
+      
+      <!-- CORRIGIDO: Mudança no botão secondary -->
+      <a href="/" class="btn btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
+        </svg>
+        Ir para página inicial
+      </a>
+    </div>
+    
+    <!-- Status da conexão -->
+    <div id="connectionStatus" class="connection-status">
+      <span id="statusText"></span>
+    </div>
+    
+    <!-- Dicas -->
+    <div class="offline-tips">
+      <h3>Dicas para reconectar:</h3>
+      <ul>
+        <li>Verifique se o WiFi está ligado</li>
+        <li>Teste sua conexão de dados móveis</li>
+        <li>Tente se aproximar do roteador</li>
+        <li>Reinicie seu roteador se necessário</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // === DETECÇÃO INTELIGENTE DE ORIGEM ===
+    function detectNavigationSource() {
+      const urlParams = new URLSearchParams(window.location.search)
+      const hasTimestamp = urlParams.has('t')
+      const referrer = document.referrer
+      
+      // Se tem timestamp (links externos) e está offline, pode ser problema do SW
+      if (hasTimestamp && !navigator.onLine) {
+        console.log('[Offline] External link detected while offline')
+        return 'external'
+      }
+      
+      // Se não tem referrer, veio de link direto
+      if (!referrer || !referrer.includes('abaetefest.com.br')) {
+        console.log('[Offline] Direct navigation detected')
+        return 'direct'
+      }
+      
+      return 'internal'
+    }
+    
+    // === MONITORAMENTO DE CONEXÃO ===
+    const connectionStatus = document.getElementById('connectionStatus')
+    const statusText = document.getElementById('statusText')
+    
+    function updateConnectionStatus() {
+      const isOnline = navigator.onLine
+      const source = detectNavigationSource()
+      
+      if (isOnline) {
+        connectionStatus.className = 'connection-status online'
+        connectionStatus.style.display = 'block'
+        statusText.textContent = '✓ Conexão restaurada! Clique em "Tentar novamente"'
+        
+        // Auto-redirect se veio de link externo e conexão voltou
+        if (source === 'external' || source === 'direct') {
+          setTimeout(() => {
+            tryReconnect()
+          }, 1500)
+        }
+      } else {
+        connectionStatus.className = 'connection-status offline'
+        connectionStatus.style.display = 'block'
+        statusText.textContent = '✗ Ainda sem conexão'
+      }
+    }
+    
+    // Monitora mudanças na conexão
+    window.addEventListener('online', updateConnectionStatus)
+    window.addEventListener('offline', updateConnectionStatus)
+    
+    // Verifica status inicial
+    updateConnectionStatus()
+    
+    // === FUNÇÃO DE RECONEXÃO MELHORADA ===
+    function tryReconnect() {
+      const btn = event?.target || document.querySelector('.btn-primary')
+      const originalText = btn.innerHTML
+      
+      // Mostra loading
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" style="animation: spin 1s linear infinite;"><path fill="currentColor" d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/></svg> Conectando...'
+      btn.disabled = true
+      
+      // Estratégia baseada na origem
+      const source = detectNavigationSource()
+      
+      if (source === 'external' || source === 'direct') {
+        // Para links externos, tenta a URL original
+        const originalUrl = window.location.href.replace('/offline.html', '')
+        console.log('[Offline] Trying to navigate back to:', originalUrl)
+        
+        setTimeout(() => {
+          if (navigator.onLine) {
+            window.location.href = originalUrl
+          } else {
+            window.location.reload()
+          }
+        }, 1000)
+      } else {
+        // Para navegação interna, só recarrega
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000)
+      }
+    }
+    
+    // === FALLBACK PARA NAVEGAÇÃO ===
+    function goHome() {
+      console.log('[Offline] Navigating to home')
+      
+      // Tenta limpar qualquer estado problemático do SW
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          registrations.forEach(registration => {
+            if (registration.active) {
+              registration.active.postMessage({ 
+                action: 'CLEAR_CACHE',
+                type: 'navigation' 
+              })
+            }
+          })
+        })
+      }
+      
+      // Navega para home depois de um delay
+      setTimeout(() => {
+        window.location.href = '/'
+      }, 500)
+    }
+    
+    // === COMUNICAÇÃO COM SERVICE WORKER ===
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.addEventListener('message', event => {
+        const { action, data } = event.data
+        
+        if (action === 'CACHE_CLEARED') {
+          console.log('[Offline] SW cache cleared')
+        }
+      })
+      
+      // Envia informação sobre a navegação problemática
+      navigator.serviceWorker.ready.then(registration => {
+        if (registration.active) {
+          registration.active.postMessage({
+            action: 'REPORT_OFFLINE_NAVIGATION',
+            url: window.location.href,
+            source: detectNavigationSource(),
+            timestamp: Date.now()
+          })
+        }
+      })
+    }
+    
+    // === ANIMAÇÃO DE SPIN ===
+    const style = document.createElement('style')
+    style.textContent = `
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+    `
+    document.head.appendChild(style)
+    
+    // === ATALHOS DE TECLADO ===
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+        tryReconnect()
+      } else if (e.key === 'Escape') {
+        e.preventDefault()
+        goHome()
+      }
+    })
+    
+    // === AUTO RETRY INTELIGENTE ===
+    let retryCount = 0
+    const maxRetries = 3
+    
+    function autoRetry() {
+      const source = detectNavigationSource()
+      
+      // Só faz auto-retry para navegação externa/direta
+      if ((source === 'external' || source === 'direct') && navigator.onLine && retryCount < maxRetries) {
+        retryCount++
+        console.log(`[Offline] Auto-retry ${retryCount}/${maxRetries}`)
+        
+        setTimeout(() => {
+          tryReconnect()
+        }, 1000 * retryCount) // Delay progressivo
+      }
+    }
+    
+    // Tenta reconectar automaticamente quando volta online
+    window.addEventListener('online', () => {
+      setTimeout(autoRetry, 500)
+    })
+    
+    // === DEBUG INFO ===
+    console.log('[Offline Page] Navigation source:', detectNavigationSource())
+    console.log('[Offline Page] Current URL:', window.location.href)
+    console.log('[Offline Page] Referrer:', document.referrer)
+    console.log('[Offline Page] Online status:', navigator.onLine)
+  </script>
+</body>
+</html>
