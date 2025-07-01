@@ -25,3 +25,6 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
+
+---
+**Nota de teste:** Linha adicionada para validar token GitHub - pode ser removida após teste ✅
