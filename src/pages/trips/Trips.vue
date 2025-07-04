@@ -1,5 +1,6 @@
 <template>
   <q-page padding :class="$q.dark.isActive ? '' : 'bg-grey-1'">
+    <BejaVerao2025 />
     <!-- Título principal otimizado para SEO -->
     <div class="text-h4 text-bold text-center q-py-md">
       <span class="text-accent">Horários</span> de viagens para Abaetetuba
@@ -8,7 +9,8 @@
     <!-- Subtítulo com keywords relevantes -->
     <div class="text-center q-mb-lg">
       <p class="text-subtitle1 text-grey-7">
-        Consulte os horários atualizados de ônibus e embarcações de Belém para Abaetetuba e vice-versa
+        Consulte os horários atualizados de ônibus e embarcações de Belém para
+        Abaetetuba e vice-versa
       </p>
 
       <!-- Botão de compartilhar no topo -->
@@ -55,10 +57,13 @@
                 <q-icon name="mdi-ferry" color="primary" size="md" />
               </q-item-section>
               <q-item-section>
-                <q-item-label class="text-weight-bold">Porto Arapari</q-item-label>
+                <q-item-label class="text-weight-bold"
+                  >Porto Arapari</q-item-label
+                >
                 <q-item-label caption class="text-body2">
-                  Portos Jarumã e Arapari próximo ao Açaí Biruta<br>
-                  📍 R. Siqueira Mendes, 10 - Cidade Velha, Belém - PA, 66020-600
+                  Portos Jarumã e Arapari próximo ao Açaí Biruta<br />
+                  📍 R. Siqueira Mendes, 10 - Cidade Velha, Belém - PA,
+                  66020-600
                 </q-item-label>
               </q-item-section>
             </q-item>
@@ -68,9 +73,11 @@
                 <q-icon name="mdi-bus" color="primary" size="md" />
               </q-item-section>
               <q-item-section>
-                <q-item-label class="text-weight-bold">Terminal Rodoviário - Alça Viária</q-item-label>
+                <q-item-label class="text-weight-bold"
+                  >Terminal Rodoviário - Alça Viária</q-item-label
+                >
                 <q-item-label caption class="text-body2">
-                  Terminal Rodoviário de Belém<br>
+                  Terminal Rodoviário de Belém<br />
                   📍 São Brás, Belém - PA, 66090-000
                 </q-item-label>
               </q-item-section>
@@ -81,9 +88,11 @@
                 <q-icon name="mdi-ship-wheel" color="primary" size="md" />
               </q-item-section>
               <q-item-section>
-                <q-item-label class="text-weight-bold">Terminal Rodofluvial</q-item-label>
+                <q-item-label class="text-weight-bold"
+                  >Terminal Rodofluvial</q-item-label
+                >
                 <q-item-label caption class="text-body2">
-                  Terminal Rodofluvial de Belém<br>
+                  Terminal Rodofluvial de Belém<br />
                   📍 Av. Bernardo Sayão, 3786 - Cidade Velha, Belém - PA
                 </q-item-label>
               </q-item-section>
@@ -99,14 +108,19 @@
         <q-card
           class="q-mb-xl"
           :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
-          :style="$q.dark.isActive ? 'box-shadow: 0 1px 5px rgba(255, 255, 255, 0.442);' : ''"
+          :style="
+            $q.dark.isActive
+              ? 'box-shadow: 0 1px 5px rgba(255, 255, 255, 0.442);'
+              : ''
+          "
         >
           <q-card-section class="text-center bg-primary text-white">
             <div class="text-h5 text-weight-bold">
               🚌 {{ trip.cidade1 }} ↔ {{ trip.cidade2 }}
             </div>
             <div class="text-subtitle1 q-mt-sm">
-              Horários atualizados de transporte entre {{ trip.cidade1 }} e {{ trip.cidade2 }}
+              Horários atualizados de transporte entre {{ trip.cidade1 }} e
+              {{ trip.cidade2 }}
             </div>
           </q-card-section>
 
@@ -128,14 +142,21 @@
               <template v-slot:header>
                 <q-item-section avatar>
                   <q-avatar class="float-right">
-                    <img :src="empresa.icon" :alt="`Logo da empresa ${empresa.nome}`" rounded />
+                    <img
+                      :src="empresa.icon"
+                      :alt="`Logo da empresa ${empresa.nome}`"
+                      rounded
+                    />
                   </q-avatar>
                 </q-item-section>
 
                 <q-item-section>
-                  <q-item-label class="text-weight-bold">{{ empresa.nome }}</q-item-label>
+                  <q-item-label class="text-weight-bold">{{
+                    empresa.nome
+                  }}</q-item-label>
                   <q-item-label caption>
-                    Empresa de transporte - {{ getRouteCount(empresa.viagens) }} rotas disponíveis
+                    Empresa de transporte -
+                    {{ getRouteCount(empresa.viagens) }} rotas disponíveis
                   </q-item-label>
                 </q-item-section>
               </template>
@@ -155,8 +176,12 @@
                     <!-- Cabeçalho da rota -->
                     <div
                       class="q-pa-md q-mb-md text-center"
-                      :class="$q.dark.isActive ? 'bg-secondary text-primary' : 'bg-primary text-white'"
-                      style="border-radius: 10px;"
+                      :class="
+                        $q.dark.isActive
+                          ? 'bg-secondary text-primary'
+                          : 'bg-primary text-white'
+                      "
+                      style="border-radius: 10px"
                     >
                       <div class="text-h6 text-weight-bold">
                         {{ viagem.origem }} → {{ viagem.destino }}
@@ -179,6 +204,7 @@
                         dense
                         class="q-pa-sm"
                       >
+                        <!--
                         <q-item-section avatar>
                           <q-icon
                             :name="getTransportIcon(horaViagem.modalidade)"
@@ -186,27 +212,29 @@
                             size="sm"
                           />
                         </q-item-section>
-
+                          -->
                         <q-item-section>
-                          <q-item-label class="text-weight-bold text-h6">
+                          <q-item-label class="text-weight-bold" :class="$q.screen.gt.sm ? 'text-h6' : 'text-subtitle1'">
                             🕐 {{ horaViagem.hora }}
                           </q-item-label>
                           <q-item-label
                             caption
                             lines="2"
-                            :class="$q.dark.isActive ? 'text-red-6' : 'text-negative'"
+                            :class="
+                              $q.dark.isActive ? 'text-red-6' : 'text-negative'
+                            "
                             v-if="horaViagem.obs"
                           >
                             ⚠️ {{ horaViagem.obs }}
                           </q-item-label>
                         </q-item-section>
 
-                        <q-item-section side>
+                        <q-item-section side v-if="horaViagem.modalidade">
                           <q-chip
-                            :color="getTransportColor(horaViagem.modalidade)"
+                            color="primary"
                             text-color="white"
                             dense
-                            class="text-weight-bold"
+                            class="text-weight-bold "
                           >
                             {{ horaViagem.modalidade }}
                           </q-chip>
@@ -215,9 +243,10 @@
                     </q-list>
 
                     <!-- Informações adicionais da rota -->
-                    <div class="q-mt-sm text-center">
-                      <q-badge color="info" class="q-pa-xs">
-                        💺 {{ getScheduleCount(viagem.horarios) }} horários disponíveis
+                    <div class="q-mb-sm text-center">
+                      <q-badge color="primary" class="q-pa-xs text-weight-bold">
+                        💺 {{ getScheduleCount(viagem.horarios) }} horários
+                        disponíveis
                       </q-badge>
                     </div>
                   </div>
@@ -242,7 +271,9 @@
                 <q-icon name="mdi-clock" color="white" />
               </q-item-section>
               <q-item-section>
-                <q-item-label class="text-weight-bold">Horários podem sofrer alterações</q-item-label>
+                <q-item-label class="text-weight-bold"
+                  >Horários podem sofrer alterações</q-item-label
+                >
                 <q-item-label caption class="text-white">
                   Consulte sempre a empresa antes de viajar
                 </q-item-label>
@@ -253,7 +284,9 @@
                 <q-icon name="mdi-weather-rainy" color="white" />
               </q-item-section>
               <q-item-section>
-                <q-item-label class="text-weight-bold">Condições climáticas</q-item-label>
+                <q-item-label class="text-weight-bold"
+                  >Condições climáticas</q-item-label
+                >
                 <q-item-label caption class="text-white">
                   Horários podem ser afetados por chuvas e marés
                 </q-item-label>
@@ -268,7 +301,9 @@
                 <q-icon name="mdi-ticket" color="white" />
               </q-item-section>
               <q-item-section>
-                <q-item-label class="text-weight-bold">Compre sua passagem com antecedência</q-item-label>
+                <q-item-label class="text-weight-bold"
+                  >Compre sua passagem com antecedência</q-item-label
+                >
                 <q-item-label caption class="text-white">
                   Especialmente em feriados e fins de semana
                 </q-item-label>
@@ -279,7 +314,9 @@
                 <q-icon name="mdi-phone" color="white" />
               </q-item-section>
               <q-item-section>
-                <q-item-label class="text-weight-bold">Contate as empresas</q-item-label>
+                <q-item-label class="text-weight-bold"
+                  >Contate as empresas</q-item-label
+                >
                 <q-item-label caption class="text-white">
                   Para confirmar horários e disponibilidade
                 </q-item-label>
@@ -293,7 +330,11 @@
     <!-- Rodapé com informações de localização -->
     <div class="row q-pa-sm">
       <div class="col-12">
-        <q-card flat class="bg-grey-1 q-pa-md" :class="$q.dark.isActive ? 'bg-grey-8' : ''">
+        <q-card
+          flat
+          class="bg-grey-1 q-pa-md"
+          :class="$q.dark.isActive ? 'bg-grey-8' : ''"
+        >
           <div class="text-h6 text-center q-mb-md text-primary">
             📍 Endereços Completos dos Terminais
           </div>
@@ -301,10 +342,12 @@
           <div class="row q-gutter-md">
             <div class="col-12 col-md-4">
               <q-card flat bordered class="q-pa-sm">
-                <div class="text-weight-bold text-primary">🚢 Porto Arapari</div>
+                <div class="text-weight-bold text-primary">
+                  🚢 Porto Arapari
+                </div>
                 <p class="text-caption q-mt-xs">
-                  R. Siqueira Mendes, 10 - Cidade Velha<br>
-                  Belém - PA, 66020-600<br>
+                  R. Siqueira Mendes, 10 - Cidade Velha<br />
+                  Belém - PA, 66020-600<br />
                   Próximo ao Açaí Biruta
                 </p>
               </q-card>
@@ -312,10 +355,12 @@
 
             <div class="col-12 col-md-4">
               <q-card flat bordered class="q-pa-sm">
-                <div class="text-weight-bold text-primary">🚌 Terminal Rodoviário</div>
+                <div class="text-weight-bold text-primary">
+                  🚌 Terminal Rodoviário
+                </div>
                 <p class="text-caption q-mt-xs">
-                  São Brás<br>
-                  Belém - PA, 66090-000<br>
+                  São Brás<br />
+                  Belém - PA, 66090-000<br />
                   Alça Viária
                 </p>
               </q-card>
@@ -323,10 +368,12 @@
 
             <div class="col-12 col-md-4">
               <q-card flat bordered class="q-pa-sm">
-                <div class="text-weight-bold text-primary">⛴️ Terminal Rodofluvial</div>
+                <div class="text-weight-bold text-primary">
+                  ⛴️ Terminal Rodofluvial
+                </div>
                 <p class="text-caption q-mt-xs">
-                  Av. Bernardo Sayão, 3786<br>
-                  Cidade Velha, Belém - PA<br>
+                  Av. Bernardo Sayão, 3786<br />
+                  Cidade Velha, Belém - PA<br />
                   Terminal de Balsas
                 </p>
               </q-card>
@@ -339,28 +386,39 @@
 </template>
 
 <script>
-import { trips } from 'src/constants/trips/index'
 import { openURL } from 'quasar'
+import { trips } from 'src/constants/trips/index'
+import BejaVerao2025 from './components/BejaVerao2025.vue'
 
 export default {
   name: 'TripsPage',
-
+  components: {
+    BejaVerao2025
+  },
   // Meta tags otimizadas para SEO
   meta: function () {
     const currentYear = new Date().getFullYear()
     const lastUpdated = new Date().toISOString().split('T')[0]
 
     return {
-      title: 'Horários de Viagem Belém ↔ Abaetetuba ' + currentYear + ' | Ônibus e Barcos Atualizados',
+      title:
+        'Horários de Viagem Belém ↔ Abaetetuba ' +
+        currentYear +
+        ' | Ônibus e Barcos Atualizados',
 
       meta: {
         description: {
           name: 'description',
-          content: 'Consulte os horários atualizados de ônibus e embarcações entre Belém e Abaetetuba. Saídas dos terminais Rodoviário, Porto Arapari e Rodofluvial. Horários ' + currentYear + ' das principais empresas de transporte.'
+          content:
+            'Consulte os horários atualizados de ônibus e embarcações entre Belém e Abaetetuba. Saídas dos terminais Rodoviário, Porto Arapari e Rodofluvial. Horários ' +
+            currentYear +
+            ' das principais empresas de transporte.'
         },
         keywords: {
           name: 'keywords',
-          content: 'horários ônibus abaetetuba, horários barco abaetetuba, belém abaetetuba transporte, viagem abaetetuba, horários viação abaetetuba, porto arapari, terminal rodoviário belém, embarcação abaetetuba, ' + currentYear
+          content:
+            'horários ônibus abaetetuba, horários barco abaetetuba, belém abaetetuba transporte, viagem abaetetuba, horários viação abaetetuba, porto arapari, terminal rodoviário belém, embarcação abaetetuba, ' +
+            currentYear
         },
         author: {
           name: 'author',
@@ -400,11 +458,17 @@ export default {
         // Open Graph
         ogTitle: {
           property: 'og:title',
-          content: 'Horários de Viagem Belém ↔ Abaetetuba ' + currentYear + ' | Transporte Atualizado'
+          content:
+            'Horários de Viagem Belém ↔ Abaetetuba ' +
+            currentYear +
+            ' | Transporte Atualizado'
         },
         ogDescription: {
           property: 'og:description',
-          content: 'Horários atualizados de ônibus e embarcações entre Belém e Abaetetuba. Consulte saídas dos terminais e empresas de transporte. Informações ' + currentYear + '.'
+          content:
+            'Horários atualizados de ônibus e embarcações entre Belém e Abaetetuba. Consulte saídas dos terminais e empresas de transporte. Informações ' +
+            currentYear +
+            '.'
         },
         ogImage: {
           property: 'og:image',
@@ -438,7 +502,8 @@ export default {
         },
         twitterDescription: {
           name: 'twitter:description',
-          content: 'Consulte horários atualizados de ônibus e embarcações entre Belém e Abaetetuba. Informações de todas as empresas de transporte.'
+          content:
+            'Consulte horários atualizados de ônibus e embarcações entre Belém e Abaetetuba. Informações de todas as empresas de transporte.'
         },
         twitterImage: {
           name: 'twitter:image',
@@ -493,7 +558,9 @@ export default {
     },
 
     shareSchedules: async function () {
-      if (typeof window === 'undefined' || typeof navigator === 'undefined') return
+      if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+        return
+      }
 
       const baseUrl = `${window.location.protocol}//${window.location.host}`
       const timestamp = new Date().getTime()
@@ -521,7 +588,9 @@ export default {
     },
 
     copyScheduleLink: async function () {
-      if (typeof window === 'undefined' || typeof navigator === 'undefined') return
+      if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+        return
+      }
 
       try {
         if (navigator.clipboard) {
@@ -552,7 +621,8 @@ export default {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
         name: 'Horários de Viagem Belém - Abaetetuba',
-        description: 'Horários atualizados de ônibus e embarcações entre Belém e Abaetetuba',
+        description:
+          'Horários atualizados de ônibus e embarcações entre Belém e Abaetetuba',
         url: 'https://app.abaetefest.com.br/trips',
         mainEntity: {
           '@type': 'ItemList',
@@ -625,7 +695,11 @@ export default {
             item: {
               '@type': 'Organization',
               name: empresa.nome,
-              description: 'Empresa de transporte operando a rota ' + trip.cidade1 + ' - ' + trip.cidade2,
+              description:
+                'Empresa de transporte operando a rota ' +
+                trip.cidade1 +
+                ' - ' +
+                trip.cidade2,
               serviceArea: {
                 '@type': 'Place',
                 name: trip.cidade1 + ' - ' + trip.cidade2
@@ -648,7 +722,10 @@ export default {
 
     openLink: function () {
       this.handleMixPanelEvent('Canal Genio whatsapp')
-      openURL('https://whatsapp.com/channel/0029Vb6Yxo4DjiOj0JZdJ71h', '_blank')
+      openURL(
+        'https://whatsapp.com/channel/0029Vb6Yxo4DjiOj0JZdJ71h',
+        '_blank'
+      )
     },
 
     handleMixPanelEvent: function (empresa) {
@@ -718,7 +795,7 @@ export default {
 }
 
 .animated-border::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
