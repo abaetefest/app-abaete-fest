@@ -69,7 +69,7 @@ const routes = [
         name: 'trips',
         component: () => import(
           /* webpackChunkName: "tourism" */
-          'src/pages/Trips.vue'
+          'src/pages/trips/Trips.vue'
         ),
         meta: {
           tab: true,
