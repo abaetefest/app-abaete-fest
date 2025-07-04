@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <div class="row q-pa-sm">
+    <div class="row ">
       <div class="col-12 q-mb-lg">
         <div class="text-h6 text-bold text-center q-mb-md">
           📍 Pontos de Embarque em Abaetetuba
