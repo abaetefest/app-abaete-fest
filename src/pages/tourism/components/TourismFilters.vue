@@ -13,7 +13,7 @@
           dense
           debounce="300"
           v-model="searchModel"
-          label="Pesquisar locais..."
+          label="Pesquisar pontos turísticos..."
           :label-color="$q.dark.isActive ? 'blue-3' : 'primary'"
         >
           <template v-slot:append>
