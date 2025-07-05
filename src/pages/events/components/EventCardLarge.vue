@@ -48,7 +48,7 @@
             <q-icon name="mdi-clock-outline" size="16px" class="q-mr-xs" />
             {{ formatHourString(event.start_date) }}
           </div>
-          <div v-if="event.location" class="text-caption text-grey-6">
+          <div v-if="event.location" class="text-caption text-grey-8">
             <q-icon name="mdi-map-marker-outline" size="14px" class="q-mr-xs" />
             {{ event.location }}
           </div>

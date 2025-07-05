@@ -45,7 +45,7 @@ const routes = [
         component: () => import(
           /* webpackChunkName: "tourism" */
           /* webpackPrefetch: true */
-          'src/pages/Tourism.vue'
+          'src/pages/tourism/Tourism.vue'
         ),
         meta: {
           tab: true,

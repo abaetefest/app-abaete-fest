@@ -127,4 +127,4 @@
 
 <script src="./events.js"></script>
 
-<style src="./events.css"></style>
+<style  src="./events.css"></style>

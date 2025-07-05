@@ -1,0 +1,45 @@
+/* Estilos para a página de turismo */
+.view-toggle {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.view-toggle .q-btn {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 5px 5px;
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.rounded-img {
+  border-radius: 16px;
+}
+
+/* Estilos para o skeleton */
+.skeleton-card {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Estilos para o estado vazio */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+}
+
+.empty-state-icon {
+  font-size: 100px;
+  color: var(--q-grey-4);
+}
+
+.empty-state-title {
+  font-size: 1.5rem;
+  color: var(--q-grey-6);
+  margin-top: 1rem;
+}
+
+.empty-state-subtitle {
+  font-size: 1rem;
+  color: var(--q-grey-6);
+}

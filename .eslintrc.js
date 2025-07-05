@@ -76,6 +76,7 @@ module.exports = {
 
     // Desabilita regras que estão causando bugs no ESLint 7.x com template literals
     'template-curly-spacing': 'off',
-    'indent': 'off'
+    'indent': 'off',
+    'no-multiple-empty-lines': 'off'
   }
 }
