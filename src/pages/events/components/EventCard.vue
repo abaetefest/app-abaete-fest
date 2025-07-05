@@ -63,7 +63,7 @@
         {{ getShortDescription(event.description) }}
       </div>
 
-      <div v-if="event.location" class="text-caption text-grey-6">
+      <div v-if="event.location" class="text-caption text-grey-8">
         <q-icon
           name="mdi-map-marker-outline"
           size="14px"
