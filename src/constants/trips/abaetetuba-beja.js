@@ -302,10 +302,61 @@ export const bejaVerao2025 = {
         ]
       },
       {
+        origem: 'Abaetetuba',
+        destino: 'Beja',
+        periodo: 'Sábado (tarde/noite)',
+        obs: 'Das 13:00 às 23:00, a cada 30 minutos conforme a demanda, saída no Ter. Rodoviário',
+        horarios: [
+          {
+            hora: '13:00 às 23:00',
+            modalidade: 'Ter. Rodoviário'
+          }
+        ]
+      },
+      {
+        origem: 'Abaetetuba',
+        destino: 'Beja',
+        periodo: 'Domingo (manhã)',
+        horarios: [
+          {
+            hora: '06:00',
+            modalidade: 'Pç. da Bandeira'
+          },
+          {
+            hora: '06:30',
+            modalidade: 'Pç. da Bandeira'
+          },
+          {
+            hora: '07:00',
+            modalidade: 'Pç. da Bandeira'
+          },
+          {
+            hora: '07:30',
+            modalidade: 'Pç. da Bandeira'
+          }
+        ]
+      },
+      {
+        origem: 'Abaetetuba',
+        destino: 'Beja',
+        periodo: 'Domingo (integral)',
+        obs: 'Das 08:00 às 16:00, a cada 30 minutos conforme a demanda, saída no Ter. Rodoviário',
+        horarios: [
+          {
+            hora: '08:00 às 16:00',
+            modalidade: 'Ter. Rodoviário'
+          }
+        ]
+      },
+      {
         origem: 'Beja',
         destino: 'Abaetetuba',
         periodo: 'Sexta-feira',
         horarios: [
+          {
+            hora: '05:15',
+            modalidade: 'Beja'
+          },
           {
             hora: '06:00',
             modalidade: 'Beja'
@@ -407,6 +458,57 @@ export const bejaVerao2025 = {
           },
           {
             hora: '12:30',
+            modalidade: 'Beja'
+          }
+        ]
+      },
+      {
+        origem: 'Beja',
+        destino: 'Abaetetuba',
+        periodo: 'Sábado (tarde/noite)',
+        obs: 'A partir das 13:00, a cada 30 minutos conforme a demanda, saída em Beja',
+        horarios: [
+          {
+            hora: '13:00',
+            modalidade: 'Beja'
+          }
+        ]
+      },
+      {
+        origem: 'Beja',
+        destino: 'Abaetetuba',
+        periodo: 'Domingo (manhã)',
+        horarios: [
+          {
+            hora: '05:00',
+            modalidade: 'Beja'
+          },
+          {
+            hora: '05:30',
+            modalidade: 'Beja'
+          },
+          {
+            hora: '06:00',
+            modalidade: 'Beja'
+          },
+          {
+            hora: '06:30',
+            modalidade: 'Beja'
+          },
+          {
+            hora: '07:00',
+            modalidade: 'Beja'
+          }
+        ]
+      },
+      {
+        origem: 'Abaetetuba',
+        destino: 'Beja',
+        periodo: 'Domingo (integral)',
+        obs: 'A partir das 08:00, a cada 30 minutos conforme a demanda, saída em Beja',
+        horarios: [
+          {
+            hora: '08:00',
             modalidade: 'Beja'
           }
         ]
