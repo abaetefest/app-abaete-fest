@@ -171,12 +171,11 @@
                   </q-item-section>
                 </q-item>
               </q-list>
-
-              <!-- Informações adicionais da rota -->
-              <div class="q-mb-sm text-center">
-                <q-badge color="primary" class="q-pa-xs text-weight-bold">
-                  💺 {{ getScheduleCount(viagem.horarios) }} horários disponíveis
-                </q-badge>
+              <div class="q-mb-sm text-center" v-if="viagem.obs">
+                <span class="text-subtitle2 text-grey-9 text-weight-bold">
+                  <q-icon name="mdi-alert" color="warning" size="sm" aria-label="Warning" />
+                  {{ viagem.obs }}
+                </span>
               </div>
             </div>
           </q-card-section>
