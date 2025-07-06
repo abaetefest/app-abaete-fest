@@ -502,8 +502,8 @@ export const bejaVerao2025 = {
         ]
       },
       {
-        origem: 'Abaetetuba',
-        destino: 'Beja',
+        origem: 'Beja',
+        destino: 'Abaetetuba',
         periodo: 'Domingo (integral)',
         obs: 'A partir das 08:00, a cada 30 minutos conforme a demanda, saída em Beja',
         horarios: [
