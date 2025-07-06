@@ -173,7 +173,7 @@
               </q-list>
               <div class="q-mb-sm text-center" v-if="viagem.obs">
                 <span class="text-subtitle2 text-grey-9 text-weight-bold">
-                  <q-icon name="mdi-alert" color="warning" size="sm" />
+                  <q-icon name="mdi-alert" color="warning" size="sm" aria-label="Warning" />
                   {{ viagem.obs }}
                 </span>
               </div>
