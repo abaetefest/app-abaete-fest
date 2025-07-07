@@ -57,7 +57,7 @@ const routes = [
         name: 'places',
         component: () => import(
           /* webpackChunkName: "tourism" */
-          'src/pages/Places.vue'
+          'src/pages/places/Places.vue'
         ),
         meta: {
           tab: true,
@@ -84,7 +84,7 @@ const routes = [
         component: () => import(
           /* webpackChunkName: "map" */
           /* webpackPreload: true */
-          'src/pages/MapCity.vue'
+          'src/pages/map-city/MapCity.vue'
         ),
         meta: {
           tab: true,
@@ -98,7 +98,7 @@ const routes = [
         name: 'radio',
         component: () => import(
           /* webpackChunkName: "media" */
-          'src/pages/Radio.vue'
+          'src/pages/radio/Radio.vue'
         ),
         meta: {
           tab: true,
@@ -110,7 +110,7 @@ const routes = [
         name: 'radio-player',
         component: () => import(
           /* webpackChunkName: "media" */
-          'src/pages/RadioPlayer.vue'
+          'src/pages/radio/RadioPlayer.vue'
         ),
         meta: {
           tab: true,
@@ -122,7 +122,7 @@ const routes = [
         name: 'podcast',
         component: () => import(
           /* webpackChunkName: "media" */
-          'pages/Podcast.vue'
+          'src/pages/podcast/Podcast.vue'
         ),
         props: true,
         meta: {
@@ -137,7 +137,7 @@ const routes = [
         name: 'services',
         component: () => import(
           /* webpackChunkName: "utilities" */
-          'src/pages/Services.vue'
+          'src/pages/services/Services.vue'
         ),
         meta: {
           tab: true,
@@ -149,7 +149,7 @@ const routes = [
         name: 'clima',
         component: () => import(
           /* webpackChunkName: "utilities" */
-          'pages/Clima.vue'
+          'src/pages/climate/Climate.vue'
         ),
         props: true,
         meta: {
@@ -164,7 +164,7 @@ const routes = [
         name: 'contact',
         component: () => import(
           /* webpackChunkName: "info" */
-          'pages/Contact.vue'
+          'src/pages/contact/Contact.vue'
         ),
         meta: {
           tab: true,
@@ -176,7 +176,7 @@ const routes = [
         name: 'about-city',
         component: () => import(
           /* webpackChunkName: "info" */
-          'pages/AboutCity.vue'
+          'src/pages/about-city/AboutCity.vue'
         ),
         props: true,
         meta: {
@@ -191,7 +191,7 @@ const routes = [
         name: 'userInformations',
         component: () => import(
           /* webpackChunkName: "user" */
-          'pages/UserInformations.vue'
+          'src/pages/user/UserInformations.vue'
         ),
         props: true,
         meta: {
@@ -206,7 +206,7 @@ const routes = [
         name: 'eventDetails',
         component: () => import(
           /* webpackChunkName: "event-details" */
-          'src/pages/EventDetails.vue'
+          'src/pages/event-details/EventDetails.vue'
         ),
         meta: {
           tab: false,
@@ -232,7 +232,7 @@ const routes = [
         name: 'manageEvents',
         component: () => import(
           /* webpackChunkName: "admin" */
-          'src/pages/ManageEvents.vue'
+          'src/pages/admin/ManageEvents.vue'
         ),
         meta: {
           admin: true,
@@ -244,7 +244,7 @@ const routes = [
         name: 'manageTourism',
         component: () => import(
           /* webpackChunkName: "admin" */
-          'src/pages/ManageTourism.vue'
+          'src/pages/admin/ManageTourism.vue'
         ),
         meta: {
           admin: true,
@@ -256,7 +256,7 @@ const routes = [
         name: 'manageUsers',
         component: () => import(
           /* webpackChunkName: "admin" */
-          'src/pages/ManageUsers.vue'
+          'src/pages/admin/ManageUsers.vue'
         ),
         meta: {
           admin: true,
@@ -268,7 +268,7 @@ const routes = [
         name: 'formEvents',
         component: () => import(
           /* webpackChunkName: "admin" */
-          'pages/FormEvents.vue'
+          'src/pages/admin/FormEvents.vue'
         ),
         props: true,
         meta: {
@@ -280,7 +280,7 @@ const routes = [
         name: 'formTourism',
         component: () => import(
           /* webpackChunkName: "admin" */
-          'pages/FormTourism.vue'
+          'src/pages/admin/FormTourism.vue'
         ),
         props: true,
         meta: {
@@ -306,7 +306,7 @@ const routes = [
         name: 'login',
         component: () => import(
           /* webpackChunkName: "auth" */
-          'src/pages/Login.vue'
+          'src/pages/admin/Login.vue'
         )
       },
       {
@@ -314,7 +314,7 @@ const routes = [
         name: 'cadastro',
         component: () => import(
           /* webpackChunkName: "auth" */
-          'src/pages/Cadastro.vue'
+          'src/pages/admin/Cadastro.vue'
         )
       }
     ]
