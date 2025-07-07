@@ -1,0 +1,10 @@
+.map-size {
+  /* Firefox */
+  height: -moz-calc(100vh - 250px) !important;
+  /* WebKit */
+  height: -webkit-calc(100vh - 250px) !important;
+  /* Opera */
+  height: -o-calc(100vh - 250px) !important;
+  /* Standard */
+  height: calc(100vh - 250px) !important;
+}
