@@ -56,73 +56,16 @@
             size="lg"
           />
         </div>
-        <!-- <p
-          class="text-subtitle1 q-pt-md"
-          :class="$q.dark.isActive ? 'text-white link-custom' : 'text-grey-9'">
-          <a href="https://abaetetech.com.br/" target="_blank">
-            abaetetech.com.br
-          </a>
-        </p> -->
       </div>
     </div>
     <div class="row justify-center">
       <div class="col-sm-12 col-xs-12 col-md-5 q-py-md">
-         <!-- <q-list>
-          <q-item>
-            <q-item-section top avatar>
-              <q-avatar>
-                <img src="contact/patrick.png">
-              </q-avatar>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label>Patrick Monteiro</q-item-label>
-              <q-item-label caption>Idealizador e Desenvolvedor Front-end.</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item>
-            <q-item-section top avatar>
-              <q-avatar>
-                <img src="contact/waldener.png">
-              </q-avatar>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label>Waldener Júnior</q-item-label>
-              <q-item-label caption>Mantenedor e Desenvolvedor Front-end.</q-item-label>
-            </q-item-section>
-          </q-item>
-          <q-item>
-            <q-item-section top avatar>
-              <q-avatar>
-                <img src="contact/iago.png">
-              </q-avatar>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label>Iago Cavalcante</q-item-label>
-              <q-item-label caption>Arquiteto e Desenvolvedor Back-end.</q-item-label>
-            </q-item-section>
-          </q-item>
-         </q-list> -->
       </div>
     </div>
   </q-page>
 </template>
 
-<script>
-export default {
-  name: 'PageContact',
-  methods: {
-    handleInstagram() {
-      this.$mixpanel.track('contact-instagram')
-    },
-    handleWhatsapp() {
-      this.$mixpanel.track('contact-whatsapp')
-    }
-  }
-}
-</script>
+<script src="./contact.js"></script>
 
 <style>
  .link-custom a {
