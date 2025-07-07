@@ -5,7 +5,7 @@
         <div class="column self-center q-mx-auto">
           <img
             class="q-mx-auto q-pb-md"
-            src="../assets/undraw_Profile_re_4a55.svg"
+            src="../../assets/undraw_Profile_re_4a55.svg"
             :width="$q.screen.gt.sm ? '300' : '140'"
           />
           <p
