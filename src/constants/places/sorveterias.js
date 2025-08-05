@@ -18,6 +18,15 @@ export const sorveterias = [
     address: 'Av. Quinze de Agosto, 309 - Centro'
   },
   {
+    latitude: -1.7231400,
+    longitude: -48.8844500,
+    icon: 'places/sorveteria/frutosgoias.png',
+    title: 'Sorveteria Frutos Goiás',
+    category: 'Sorveterias',
+    preco: 2,
+    address: 'Av. Quinze de Agosto, 693 - Centro'
+  },
+  {
     latitude: -1.7191682,
     longitude: -48.8831848,
     icon: 'categories/sorveteria.png',

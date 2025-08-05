@@ -1,6 +1,5 @@
 <template>
   <q-page padding :class="$q.dark.isActive ? '' : 'bg-grey-1'">
-    <BejaVerao2025 />
     <!-- Título principal otimizado para SEO -->
     <div class="text-h4 text-bold text-center q-py-md">
       <span class="text-accent">Horários</span> de viagens para Abaetetuba
@@ -388,12 +387,12 @@
 <script>
 import { openURL } from 'quasar'
 import { trips } from 'src/constants/trips/index'
-import BejaVerao2025 from './components/BejaVerao2025.vue'
+
 
 export default {
   name: 'TripsPage',
   components: {
-    BejaVerao2025
+
   },
   // Meta tags otimizadas para SEO
   meta: function () {
