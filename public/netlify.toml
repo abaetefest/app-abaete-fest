@@ -3,7 +3,7 @@
   publish = "dist/ssr/www"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "22"
 
 # === PROBLEMA IDENTIFICADO: Functions config incorreta ===
 # O problema está na configuração de functions que está conflitando
