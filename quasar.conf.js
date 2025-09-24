@@ -45,13 +45,13 @@ module.exports = function (ctx) {
             VERSION: require('./package.json').version,
             URI_API: 'https://polished-snowflake-9723.fly.dev/api',
             ONE_SIGNAL_KEY: '20a1804c-3398-4303-bbb9-9ee2d7465ce8',
-            GOOGLE_API_KEY: dotenv.config('.env').parsed?.GOOGLE_API_KEY
+            GOOGLE_API_KEY: dotenv.config().parsed?.GOOGLE_API_KEY
           }
         : {
             VERSION: require('./package.json').version,
             URI_API: 'https://polished-snowflake-9723.fly.dev/api',
             ONE_SIGNAL_KEY: '818f99e8-5855-4bc2-817b-69cfd8c9a1f9',
-            GOOGLE_API_KEY: dotenv?.config('.env')?.parsed?.GOOGLE_API_KEY || process.env.GOOGLE_API_KEY
+            GOOGLE_API_KEY: dotenv?.config()?.parsed?.GOOGLE_API_KEY || process.env.GOOGLE_API_KEY
           },
 
       // Webpack config mínimo e estável
