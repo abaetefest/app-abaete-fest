@@ -37,6 +37,30 @@ const routes = [
           preload: true
         }
       },
+      {
+        path: 'festas/:type?',
+        name: 'festas',
+        component: () => import(
+          'src/pages/events/Events.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'high',
+          preload: true
+        }
+      },
+      {
+        path: 'festas-abaetetuba/:type?',
+        name: 'festas-abaetetuba',
+        component: () => import(
+          'src/pages/events/Events.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'high',
+          preload: true
+        }
+      },
 
       // === CHUNK: TOURISM ===
       {
@@ -45,6 +69,39 @@ const routes = [
         component: () => import(
           /* webpackChunkName: "tourism" */
           /* webpackPrefetch: true */
+          'src/pages/tourism/Tourism.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+      {
+        path: 'turismo',
+        name: 'turismo',
+        component: () => import(
+          'src/pages/tourism/Tourism.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+      {
+        path: 'turismo-abaetetuba',
+        name: 'turismo-abaetetuba',
+        component: () => import(
+          'src/pages/tourism/Tourism.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+      {
+        path: 'turismo-cop-30',
+        name: 'turismo-cop-30',
+        component: () => import(
           'src/pages/tourism/Tourism.vue'
         ),
         meta: {
@@ -65,6 +122,17 @@ const routes = [
         }
       },
       {
+        path: 'pontos-turisticos-abaetetuba',
+        name: 'pontos-turisticos-abaetetuba',
+        component: () => import(
+          'src/pages/places/Places.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+      {
         path: 'trips',
         name: 'trips',
         component: () => import(
@@ -74,6 +142,61 @@ const routes = [
         meta: {
           tab: true,
           priority: 'low'
+        }
+      },
+      {
+        path: 'horarios-de-viagem-abaetetuba',
+        name: 'horarios-de-viagem-abaetetuba',
+        component: () => import(
+          'src/pages/trips/Trips.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+      {
+        path: 'horarios-arapari-abaetetuba',
+        name: 'horarios-arapari-abaetetuba',
+        component: () => import(
+          'src/pages/trips/Trips.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+      {
+        path: 'viagem-belem-abaetetuba',
+        name: 'viagem-belem-abaetetuba',
+        component: () => import(
+          'src/pages/trips/Trips.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+      {
+        path: 'passagem-belem-abaetetuba',
+        name: 'passagem-belem-abaetetuba',
+        component: () => import(
+          'src/pages/trips/Trips.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+      {
+        path: 'belem-abaetetuba',
+        name: 'belem-abaetetuba',
+        component: () => import(
+          'src/pages/trips/Trips.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
         }
       },
 
@@ -204,6 +327,18 @@ const routes = [
       {
         path: 'event-details/:id',
         name: 'eventDetails',
+        component: () => import(
+          /* webpackChunkName: "event-details" */
+          'src/pages/event-details/EventDetails.vue'
+        ),
+        meta: {
+          tab: false,
+          priority: 'high'
+        }
+      },
+      {
+        path: 'festa-abaetetuba-detalhes/:id',
+        name: 'festa-abaetetuba-detalhes',
         component: () => import(
           /* webpackChunkName: "event-details" */
           'src/pages/event-details/EventDetails.vue'
