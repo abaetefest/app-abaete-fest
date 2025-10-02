@@ -19,7 +19,7 @@ export default {
             {
               hora: '04:30',
               modalidade: 'Alça Viária',
-              obs: 'Somente Segunda-feira'
+              obs: 'Somente Segunda a Quinta-feira'
             },
             {
               hora: '06:30',
@@ -27,6 +27,11 @@ export default {
             },
             {
               hora: '07:00',
+              modalidade: 'Alça Viária',
+              obs: 'Somente Segunda, Terça, Sexta e Sábado'
+            },
+            {
+              hora: '08:30',
               modalidade: 'Alça Viária',
               obs: 'Somente Segunda-feira'
             },
@@ -91,11 +96,6 @@ export default {
           periodo: 'Segunda a Sábado',
           horarios: [
             {
-              hora: '05:30',
-              modalidade: 'Alça Viária',
-              obs: 'Somente Segunda-feira'
-            },
-            {
               hora: '07:30',
               modalidade: 'Alça Viária',
               obs: 'Somente Segunda-feira e Sábado'
@@ -119,7 +119,7 @@ export default {
             {
               hora: '15:00',
               modalidade: 'Alça Viária',
-              obs: 'Somente Segunda-feira'
+              obs: 'Somente Segunda e Terça-feira'
             },
             {
               hora: '16:30',
@@ -157,7 +157,7 @@ export default {
               modalidade: 'Arapari'
             },
             {
-              hora: '18:00',
+              hora: '18:40',
               modalidade: 'Alça Viária'
             }
           ]
