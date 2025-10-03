@@ -525,8 +525,7 @@ export default {
       modalPlaces: false,
       placeDetails: {},
       slide: 1,
-      canShare: false,
-      driverObj: null
+      canShare: false
     }
   },
 
