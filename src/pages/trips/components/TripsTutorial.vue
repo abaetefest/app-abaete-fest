@@ -129,7 +129,7 @@ export default {
           {
             element: '#trips-title',
             popover: {
-              title: '👋 Bem-vindo aos Horários de Viagem!',
+              title: '👋 Bem-vindo ao AbaetéFest!',
               description:
                 'Aqui você encontra todos os horários atualizados de transporte saindo de Abaetetuba para diversas localidades. Vamos fazer um tour rápido para que você aproveite ao máximo o app!',
               side: 'bottom',
