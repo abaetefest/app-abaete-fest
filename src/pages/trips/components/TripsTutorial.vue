@@ -172,6 +172,7 @@ export default {
             }
           },
           {
+            element: '#trips-title',
             popover: {
               title: '✅ Tutorial Concluído!',
               description:
