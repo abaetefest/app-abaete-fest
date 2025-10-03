@@ -32,9 +32,6 @@ export default {
             },
             {
               hora: '17:00'
-            },
-            {
-              hora: '17:30'
             }
           ]
         },
@@ -58,9 +55,6 @@ export default {
             },
             {
               hora: '17:00'
-            },
-            {
-              hora: '17:30'
             }
           ]
         },
@@ -79,13 +73,13 @@ export default {
               hora: '10:00'
             },
             {
-              hora: '14:00'
+              hora: '12:30'
             },
             {
               hora: '16:00'
             },
             {
-              hora: '18:00'
+              hora: '18:10'
             }
           ]
         },

@@ -14,11 +14,11 @@ export default {
           horarios: [
             {
               hora: '05:00',
-              obs: 'Somente Segunda-Feira a Sexta-feira e entra na fábrica'
+              obs: 'Somente Segunda a Sexta-feira e entra na fábrica'
             },
             {
               hora: '05:50',
-              obs: 'Entra na fábrica somente Segunda-feira a Sexta-feira'
+              obs: 'Entra na fábrica somente Segunda a Sexta-feira'
             },
             {
               hora: '06:00',
@@ -29,7 +29,7 @@ export default {
             },
             {
               hora: '09:00',
-              obs: 'Somente Segunda-feira a Sexta-feira'
+              obs: 'Somente Segunda a Sexta-feira'
             },
             {
               hora: '11:30'
@@ -42,7 +42,8 @@ export default {
               obs: 'Somente Sábado'
             },
             {
-              hora: '16:40'
+              hora: '16:40',
+              obs: 'Somente Segunda a Sexta-feira'
             },
             {
               hora: '17:00'
@@ -75,11 +76,11 @@ export default {
             },
             {
               hora: '06:40',
-              obs: 'Somente Segunda-Feira a Sexta-feira'
+              obs: 'Somente Segunda a Sexta-feira'
             },
             {
               hora: '07:05',
-              obs: 'Somente Segunda-Feira a Sexta-feira'
+              obs: 'Somente Segunda a Sexta-feira'
             },
             {
               hora: '07:35'
@@ -92,7 +93,7 @@ export default {
             },
             {
               hora: '10:50',
-              obs: 'Somente Segunda-Feira a Sexta-feira'
+              obs: 'Somente Segunda a Sexta-feira'
             },
             {
               hora: '13:15'
@@ -102,7 +103,7 @@ export default {
             },
             {
               hora: '16:55',
-              obs: 'Somente Segunda-Feira a Sexta-feira e entra na fábrica'
+              obs: 'Somente Segunda a Sexta-feira e entra na fábrica'
             },
             {
               hora: '17:45',
@@ -110,7 +111,7 @@ export default {
             },
             {
               hora: '18:00',
-              obs: 'Somente Segunda-Feira a Sexta-feira'
+              obs: 'Somente Segunda a Sexta-feira'
             },
             {
               hora: '19:10',
