@@ -1,13 +1,18 @@
 <template>
   <q-page padding :class="$q.dark.isActive ? '' : 'bg-grey-1'">
+    <TripsTutorial :auto-start="true" @started="handleMixPanelEvent('Tutorial de Horários Iniciado')" />
+
     <!-- Título principal otimizado para SEO -->
-    <div class="text-h4 text-bold text-center q-py-md">
+    <div id="trips-title" class="text-h4 text-bold text-center q-py-md">
       <span class="text-accent">Horários</span> de viagens para Abaetetuba
     </div>
 
     <!-- Subtítulo com keywords relevantes -->
     <div class="text-center q-mb-lg">
-      <p class="text-subtitle1 text-grey-7">
+      <p
+        class="text-subtitle1"
+        :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-8'"
+      >
         Consulte os horários atualizados de ônibus e embarcações de Belém para
         Abaetetuba e vice-versa
       </p>
@@ -15,6 +20,7 @@
       <!-- Botão de compartilhar no topo -->
       <div class="q-mt-md">
         <q-btn
+          id="share-button-section"
           unelevated
           rounded
           color="primary"
@@ -23,11 +29,15 @@
           @click="shareSchedules"
           no-caps
           class="text-weight-bold"
+          :class="
+            $q.dark.isActive ? 'bg-accent text-black' : 'bg-primary text-white'
+          "
           v-if="canShare"
         />
 
         <!-- Fallback para dispositivos sem Web Share API -->
         <q-btn
+          id="share-button-section"
           unelevated
           rounded
           outline
@@ -37,13 +47,16 @@
           @click="copyScheduleLink"
           no-caps
           class="text-weight-bold"
+          :class="
+            $q.dark.isActive ? 'bg-accent text-black' : 'bg-primary text-white'
+          "
           v-else
         />
       </div>
     </div>
 
     <!-- Seção de legendas otimizada -->
-    <div class="row">
+    <div class="row" id="boarding-points-section">
       <div class="col-12 q-mb-lg">
         <div class="text-h6 text-bold text-center q-mb-md">
           📍 Pontos de Embarque em Belém
@@ -53,7 +66,12 @@
           <q-list separator>
             <q-item>
               <q-item-section avatar>
-                <q-icon name="mdi-ferry" color="primary" size="md" />
+                <q-icon
+                  name="mdi-ferry"
+                  color="primary"
+                  size="md"
+                  :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-8'"
+                />
               </q-item-section>
               <q-item-section>
                 <q-item-label class="text-weight-bold"
@@ -69,7 +87,12 @@
 
             <q-item>
               <q-item-section avatar>
-                <q-icon name="mdi-bus" color="primary" size="md" />
+                <q-icon
+                  name="mdi-bus"
+                  color="primary"
+                  size="md"
+                  :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-8'"
+                />
               </q-item-section>
               <q-item-section>
                 <q-item-label class="text-weight-bold"
@@ -84,7 +107,12 @@
 
             <q-item>
               <q-item-section avatar>
-                <q-icon name="mdi-ship-wheel" color="primary" size="md" />
+                <q-icon
+                  name="mdi-ship-wheel"
+                  color="primary"
+                  size="md"
+                  :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-8'"
+                />
               </q-item-section>
               <q-item-section>
                 <q-item-label class="text-weight-bold"
@@ -102,7 +130,7 @@
     </div>
 
     <!-- Seção principal de horários -->
-    <div class="horarios-viagem">
+    <div id="schedules-section" class="horarios-viagem">
       <div v-for="(trip, tripIndex) in trips" :key="tripIndex">
         <q-card
           class="q-mb-xl"
@@ -126,7 +154,7 @@
           <q-list
             padding
             bordered
-            class="rounded-borders"
+            class="rounded-borders company-list-item"
             :class="$q.dark.isActive ? 'bg-primary' : 'bg-white'"
             v-for="(empresa, empresaIndex) in trip.empresas"
             :key="empresaIndex"
@@ -213,7 +241,12 @@
                         </q-item-section>
                           -->
                         <q-item-section>
-                          <q-item-label class="text-weight-bold" :class="$q.screen.gt.sm ? 'text-h6' : 'text-subtitle1'">
+                          <q-item-label
+                            class="text-weight-bold"
+                            :class="
+                              $q.screen.gt.sm ? 'text-h6' : 'text-subtitle1'
+                            "
+                          >
                             🕐 {{ horaViagem.hora }}
                           </q-item-label>
                           <q-item-label
@@ -233,7 +266,7 @@
                             color="primary"
                             text-color="white"
                             dense
-                            class="text-weight-bold "
+                            class="text-weight-bold"
                           >
                             {{ horaViagem.modalidade }}
                           </q-chip>
@@ -258,128 +291,82 @@
     </div>
 
     <!-- Seção de informações importantes -->
-    <q-card flat bordered class="q-pa-lg q-mb-lg bg-info text-white">
-      <div class="text-h6 text-center q-mb-md">
-        ℹ️ Informações Importantes para sua Viagem
-      </div>
-      <div class="row q-gutter-md">
-        <div class="col-12 col-md-6">
-          <q-list>
-            <q-item>
-              <q-item-section avatar>
-                <q-icon name="mdi-clock" color="white" />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label class="text-weight-bold"
-                  >Horários podem sofrer alterações</q-item-label
-                >
-                <q-item-label caption class="text-white">
-                  Consulte sempre a empresa antes de viajar
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item>
-              <q-item-section avatar>
-                <q-icon name="mdi-weather-rainy" color="white" />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label class="text-weight-bold"
-                  >Condições climáticas</q-item-label
-                >
-                <q-item-label caption class="text-white">
-                  Horários podem ser afetados por chuvas e marés
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
+
+    <div id="important-info-section">
+      <q-card
+        flat
+        bordered
+        class="q-pa-lg"
+        :class="
+          $q.dark.isActive ? 'bg-dark text-white' : 'bg-primary text-white'
+        "
+      >
+        <div class="text-h6 text-center q-mb-md text-weight-bold">
+          ℹ️ Informações Importantes para sua Viagem
         </div>
-        <div class="col-12 col-md-6">
-          <q-list>
-            <q-item>
-              <q-item-section avatar>
-                <q-icon name="mdi-ticket" color="white" />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label class="text-weight-bold"
-                  >Compre sua passagem com antecedência</q-item-label
-                >
-                <q-item-label caption class="text-white">
-                  Especialmente em feriados e fins de semana
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item>
-              <q-item-section avatar>
-                <q-icon name="mdi-phone" color="white" />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label class="text-weight-bold"
-                  >Contate as empresas</q-item-label
-                >
-                <q-item-label caption class="text-white">
-                  Para confirmar horários e disponibilidade
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
+        <div class="row q-col-gutter-md">
+          <div class="col-12 col-sm-6">
+            <q-list>
+              <q-item>
+                <q-item-section avatar>
+                  <q-icon name="mdi-clock" color="white" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label class="text-weight-bold"
+                    >Horários podem sofrer alterações</q-item-label
+                  >
+                  <q-item-label caption class="text-white">
+                    Consulte sempre a empresa antes de viajar
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
+              <q-item>
+                <q-item-section avatar>
+                  <q-icon name="mdi-weather-rainy" color="white" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label class="text-weight-bold"
+                    >Condições climáticas</q-item-label
+                  >
+                  <q-item-label caption class="text-white">
+                    Horários podem ser afetados por chuvas e marés
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </div>
+          <div class="col-12 col-sm-6">
+            <q-list>
+              <q-item>
+                <q-item-section avatar>
+                  <q-icon name="mdi-ticket" color="white" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label class="text-weight-bold"
+                    >Compre sua passagem com antecedência</q-item-label
+                  >
+                  <q-item-label caption class="text-white">
+                    Especialmente em feriados e fins de semana
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
+              <q-item>
+                <q-item-section avatar>
+                  <q-icon name="mdi-phone" color="white" />
+                </q-item-section>
+                <q-item-section>
+                  <q-item-label class="text-weight-bold"
+                    >Contate as empresas</q-item-label
+                  >
+                  <q-item-label caption class="text-white">
+                    Para confirmar horários e disponibilidade
+                  </q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </div>
         </div>
-      </div>
-    </q-card>
-
-    <!-- Rodapé com informações de localização -->
-    <div class="row q-pa-sm">
-      <div class="col-12">
-        <q-card
-          flat
-          class="bg-grey-1 q-pa-md"
-          :class="$q.dark.isActive ? 'bg-grey-8' : ''"
-        >
-          <div class="text-h6 text-center q-mb-md text-primary">
-            📍 Endereços Completos dos Terminais
-          </div>
-
-          <div class="row q-gutter-md">
-            <div class="col-12 col-md-4">
-              <q-card flat bordered class="q-pa-sm">
-                <div class="text-weight-bold text-primary">
-                  🚢 Porto Arapari
-                </div>
-                <p class="text-caption q-mt-xs">
-                  R. Siqueira Mendes, 10 - Cidade Velha<br />
-                  Belém - PA, 66020-600<br />
-                  Próximo ao Açaí Biruta
-                </p>
-              </q-card>
-            </div>
-
-            <div class="col-12 col-md-4">
-              <q-card flat bordered class="q-pa-sm">
-                <div class="text-weight-bold text-primary">
-                  🚌 Terminal Rodoviário
-                </div>
-                <p class="text-caption q-mt-xs">
-                  São Brás<br />
-                  Belém - PA, 66090-000<br />
-                  Alça Viária
-                </p>
-              </q-card>
-            </div>
-
-            <div class="col-12 col-md-4">
-              <q-card flat bordered class="q-pa-sm">
-                <div class="text-weight-bold text-primary">
-                  ⛴️ Terminal Rodofluvial
-                </div>
-                <p class="text-caption q-mt-xs">
-                  Av. Bernardo Sayão, 3786<br />
-                  Cidade Velha, Belém - PA<br />
-                  Terminal de Balsas
-                </p>
-              </q-card>
-            </div>
-          </div>
-        </q-card>
-      </div>
+      </q-card>
     </div>
   </q-page>
 </template>
@@ -387,13 +374,11 @@
 <script>
 import { openURL } from 'quasar'
 import { trips } from 'src/constants/trips/index'
-
+import TripsTutorial from 'src/pages/trips/components/TripsTutorial.vue'
 
 export default {
   name: 'TripsPage',
-  components: {
-
-  },
+  components: { TripsTutorial },
   // Meta tags otimizadas para SEO
   meta: function () {
     const currentYear = new Date().getFullYear()
@@ -540,7 +525,8 @@ export default {
       modalPlaces: false,
       placeDetails: {},
       slide: 1,
-      canShare: false
+      canShare: false,
+      driverObj: null
     }
   },
 
@@ -549,7 +535,11 @@ export default {
     this.addStructuredData()
   },
 
+  beforeDestroy: function () {},
+
   methods: {
+
+
     setupClientFeatures: function () {
       if (typeof navigator !== 'undefined' && navigator.canShare) {
         this.canShare = true
