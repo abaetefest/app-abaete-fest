@@ -226,10 +226,12 @@ export default {
       if (isHex || named.has(v.toLowerCase())) return v
       return fallback
     },
+    // Regex to validate CSS length values like '10px', '2em', etc.
+    CSS_LENGTH_REGEX: /^[0-9]{1,4}(px|rem|em|%)$/,
     sanitizeLength: function (val, fallback) {
       if (typeof val !== 'string') return fallback
       const v = val.trim()
-      if (/^[0-9]{1,4}(px|rem|em|%)$/.test(v)) return v
+      if (this.CSS_LENGTH_REGEX.test(v)) return v
       return fallback
     }
   }
