@@ -2,6 +2,7 @@
 // Componentes críticos (primeira visualização) - carregamento síncrono
 import MainLayout from 'layouts/MainLayout.vue'
 import Events from 'src/pages/events/Events.vue'
+import EventDetails from 'src/pages/event-details/EventDetails.vue'
 
 const routes = [
   {
@@ -323,14 +324,11 @@ const routes = [
         }
       },
 
-      // === ROTAS DETALHADAS (Carregamento sob demanda) ===
+      // === ROTAS DETALHADAS (Carregamento síncrono para offline) ===
       {
         path: 'event-details/:id',
         name: 'eventDetails',
-        component: () => import(
-          /* webpackChunkName: "event-details" */
-          'src/pages/event-details/EventDetails.vue'
-        ),
+        component: EventDetails, // Síncrono - necessário para funcionar offline
         meta: {
           tab: false,
           priority: 'high'
@@ -339,10 +337,7 @@ const routes = [
       {
         path: 'festa-abaetetuba-detalhes/:id',
         name: 'festa-abaetetuba-detalhes',
-        component: () => import(
-          /* webpackChunkName: "event-details" */
-          'src/pages/event-details/EventDetails.vue'
-        ),
+        component: EventDetails, // Síncrono - necessário para funcionar offline
         meta: {
           tab: false,
           priority: 'high'

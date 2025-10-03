@@ -534,6 +534,31 @@ export default {
     this.addStructuredData()
   },
 
+  errorCaptured: function (error, instance, info) {
+    console.error('Error in Trips component:', error, info)
+
+    // Verifica se é um erro de carregamento de chunk
+    if (error.message && (
+      error.message.includes('Loading chunk') ||
+      error.message.includes('ChunkLoadError') ||
+      error.message.includes('ERR_INTERNET_DISCONNECTED')
+    )) {
+      this.$q.notify({
+        type: 'warning',
+        message: 'Problema de carregamento offline detectado. Tentando resolver...',
+        position: 'top',
+        timeout: 3000
+      })
+
+      // Tenta recarregar a página após um delay
+      setTimeout(() => {
+        window.location.reload()
+      }, 2000)
+    }
+
+    return false // Permite que o erro seja propagado
+  },
+
   beforeDestroy: function () {},
 
   methods: {

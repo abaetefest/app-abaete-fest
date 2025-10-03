@@ -455,7 +455,11 @@ export default {
     return {
       event: {},
       load: true,
-      canShare: false
+      canShare: false,
+      // Informações de cache offline
+      isOffline: false,
+      cacheAge: null,
+      isCacheExpired: false
     }
   },
 
@@ -492,11 +496,28 @@ export default {
       }
     },
 
-    getEvent: async function (id) {
+    getEvent: async function (id, forceRefresh = false) {
       this.load = true
       try {
-        const { data } = await this.$services.events().get(id)
+        const response = await this.$services.events().get(id, forceRefresh)
+
+        // Extrai dados e informações de cache
+        const { data, fromCache, cacheAge, isExpired } = response
         this.event = data.data || {}
+
+        // Atualiza informações de cache
+        this.isOffline = fromCache || false
+        this.cacheAge = cacheAge || null
+        this.isCacheExpired = isExpired || false
+
+        // Log de modo offline (banner visual já informa o usuário)
+        if (fromCache) {
+          const ageText = cacheAge
+            ? `${cacheAge} minuto${cacheAge !== 1 ? 's' : ''}`
+            : 'recente'
+          console.log(`📦 Modo Offline: Usando cache de ${ageText}`)
+        }
+
         this.load = false
 
         this.$nextTick(function () {
@@ -505,7 +526,21 @@ export default {
       } catch (error) {
         this.load = false
         console.error('Erro ao carregar evento:', error)
+        this.$q.notify({
+          message: 'Erro ao carregar evento. Verifique sua conexão.',
+          color: 'negative',
+          position: 'top',
+          icon: 'mdi-alert-circle',
+          timeout: 4000
+        })
         this.$router.push('/404')
+      }
+    },
+
+    // Força atualização do evento
+    refreshEvent: function () {
+      if (this.$route.params.id) {
+        this.getEvent(this.$route.params.id, true)
       }
     },
 

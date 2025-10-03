@@ -1,5 +1,38 @@
 <template>
   <q-page padding :class="$q.dark.isActive ? 'bg-dark' : ''">
+    <!-- Indicador de Modo Offline -->
+    <q-banner
+      v-if="isOffline && !load"
+      dense
+      rounded
+      :class="isCacheExpired ? 'bg-warning text-white' : 'bg-info text-white'"
+      class="q-mb-md"
+      style="border-radius: 12px; max-width: 600px; margin: 0 auto 16px auto;"
+    >
+      <template v-slot:avatar>
+        <q-icon name="mdi-cloud-off-outline" size="sm" />
+      </template>
+      <div class="text-body2">
+        <strong>Modo Offline</strong>
+        <span v-if="cacheAge">
+          - Dados de {{ cacheAge }} minuto{{ cacheAge !== 1 ? 's' : '' }} atrás
+        </span>
+        <span v-if="isCacheExpired" class="q-ml-xs">(Cache expirado)</span>
+      </div>
+      <template v-slot:action>
+        <q-btn
+          flat
+          dense
+          rounded
+          size="sm"
+          color="white"
+          label="Atualizar"
+          icon="mdi-refresh"
+          @click="refreshEvent"
+        />
+      </template>
+    </q-banner>
+
     <!-- Loading skeleton -->
     <div v-if="load" class="q-pa-md" style="padding-top: 10px;">
       <div class="bg-white rounded-borders shadow-2 overflow-hidden" :class="$q.dark.isActive ? 'bg-dark' : ''"

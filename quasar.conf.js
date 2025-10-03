@@ -20,6 +20,7 @@ module.exports = function (ctx) {
       { path: 'mixpanel', server: false },
       { path: 'auto-migration', server: false },
       { path: 'sw-migration', server: false },
+      { path: 'offline-chunk-handler', server: false },
       ...(ctx.mode.ssr ? [] : ['leaflet']),
       ...(ctx.mode.ssr ? [] : [{ path: 'google-maps', server: false }])
     ],
@@ -86,6 +87,14 @@ module.exports = function (ctx) {
           chain.optimization.usedExports = true
           chain.optimization.sideEffects = false
         }
+
+        // === CONFIGURAÇÃO PARA CHUNKS OFFLINE ===
+        // Garante que os chunks sejam gerados com nomes consistentes
+        chain.output.filename('js/[name].[hash:8].js')
+        chain.output.chunkFilename('js/[name].[hash:8].js')
+
+        // Configuração para melhor resolução de chunks offline
+        chain.resolve.alias.set('@', require('path').resolve(__dirname, 'src'))
       }
     },
 
@@ -190,6 +199,17 @@ module.exports = function (ctx) {
                 maxAgeSeconds: 60 * 60 * 24 * 365
               }
             }
+          },
+          {
+            urlPattern: /\.js$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'js-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 30
+              }
+            }
           }
         ],
 
@@ -212,6 +232,15 @@ module.exports = function (ctx) {
           /\?source=/, // ✅ Links com source tracking
           /event-details\/\d+\?/, // ✅ Event details com query params
           /offline\.html$/ // ✅ Não interceptar página offline
+        ],
+
+        // === CONFIGURAÇÃO ADICIONAL PARA CHUNKS ===
+        // Garante que os chunks sejam precacheados corretamente
+        additionalManifestEntries: [
+          // Adiciona chunks críticos ao manifest
+          { url: '/js/tourism.js', revision: null },
+          { url: '/js/map.js', revision: null },
+          { url: '/js/utilities.js', revision: null }
         ]
       },
 

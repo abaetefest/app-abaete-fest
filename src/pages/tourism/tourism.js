@@ -39,7 +39,25 @@ export default {
   },
 
   async mounted() {
+    // Carrega preferência de visualização do localStorage
+    const savedViewMode = localStorage.getItem('tourism-view-mode')
+    if (savedViewMode && ['compact', 'large'].includes(savedViewMode)) {
+      this.viewMode = savedViewMode
+    }
+
     await this.listTourism()
+  },
+
+  watch: {
+    // Salva preferência de visualização no localStorage
+    viewMode(newMode) {
+      try {
+        localStorage.setItem('tourism-view-mode', newMode)
+        console.log('👁️ Modo de visualização de turismo salvo no localStorage:', newMode)
+      } catch (error) {
+        console.error('❌ Erro ao salvar preferência de visualização de turismo:', error)
+      }
+    }
   },
 
   methods: {

@@ -551,7 +551,11 @@ export default {
       load: true,
       modalCourse: false,
       courseDetails: {},
-      canCreateEvent: false // Definir baseado nas permissões do usuário
+      canCreateEvent: false, // Definir baseado nas permissões do usuário
+      // Informações de cache offline
+      isOffline: false,
+      cacheAge: null,
+      isCacheExpired: false
     }
   },
 
@@ -618,26 +622,49 @@ export default {
       }
     },
 
-    viewMode(newVal) {
-      // Salva a preferência de visualização no localStorage
-      localStorage.setItem('events-view-mode', newVal)
-      console.log('👁️ Modo de visualização alterado para:', newVal)
+    // Salva preferência de visualização no localStorage
+    viewMode(newMode) {
+      try {
+        localStorage.setItem('events-view-mode', newMode)
+        console.log('👁️ Modo de visualização salvo no localStorage:', newMode)
+      } catch (error) {
+        console.error('❌ Erro ao salvar preferência de visualização:', error)
+      }
     }
   },
 
   methods: {
-    async listEvents(category = '') {
+    async listEvents(category = '', forceRefresh = false) {
       this.load = true
       try {
         console.log('📡 Carregando eventos por categoria:', category || 'todas')
-        const { data } = await this.$services.events().listByCategory(category)
+        const response = await this.$services.events().listByCategory(category, forceRefresh)
+
+        // Extrai dados e informações de cache
+        const { data, fromCache, cacheAge, isExpired } = response
         this.events = data.data || []
+
+        // Atualiza informações de cache
+        this.isOffline = fromCache || false
+        this.cacheAge = cacheAge || null
+        this.isCacheExpired = isExpired || false
+
+        // Log de modo offline (banner visual já informa o usuário)
+        if (fromCache) {
+          const ageText = cacheAge
+            ? `${cacheAge} minuto${cacheAge !== 1 ? 's' : ''}`
+            : 'recente'
+          console.log(`📦 Modo Offline: Usando cache de ${ageText}`)
+        } else if (cacheAge === 0) {
+          // Dados acabaram de ser salvos no cache
+          console.log('✅ Dados sincronizados e salvos no cache')
+        }
 
         // Carrega todos os eventos para contador se for primeira vez
         if (!this.allEvents.length) {
           console.log('📊 Carregando total de eventos para contador...')
-          const { data: allData } = await this.$services.events().listByCategory('')
-          this.allEvents = allData.data || []
+          const allResponse = await this.$services.events().listByCategory('', forceRefresh)
+          this.allEvents = allResponse.data.data || []
         }
 
         console.log('📊 Eventos carregados:', this.events.length)
@@ -646,12 +673,40 @@ export default {
       } catch (error) {
         this.load = false
         console.error('❌ Erro ao carregar eventos:', error)
-        this.$q.notify({
-          message: 'Erro ao carregar eventos. Tente novamente.',
-          color: 'negative',
-          position: 'top'
-        })
+
+        // Fallback: tenta filtrar localmente se já tiver dados carregados
+        if (this.allEvents && this.allEvents.length > 0) {
+          console.log('🔄 Usando filtro local com dados já carregados')
+          this.filterEventsLocally(category)
+          this.isOffline = true
+        } else {
+          this.$q.notify({
+            message: 'Erro ao carregar eventos. Verifique sua conexão.',
+            color: 'negative',
+            position: 'top',
+            icon: 'mdi-alert-circle',
+            timeout: 4000
+          })
+        }
       }
+    },
+
+    // Filtra eventos localmente quando offline ou API falha
+    filterEventsLocally(category) {
+      if (!category || category === 'all') {
+        // Mostra todos os eventos
+        this.events = [...this.allEvents]
+        console.log('🔍 Filtro local: Exibindo todos os eventos')
+      } else {
+        // Filtra por categoria
+        this.events = this.allEvents.filter(event => {
+          return event.category === category ||
+                 event.categoria === category ||
+                 event.type === category
+        })
+        console.log(`🔍 Filtro local: ${this.events.length} eventos na categoria "${category}"`)
+      }
+      this.load = false
     },
 
     detailsEvent(event) {
@@ -680,8 +735,16 @@ export default {
     async onCategoryChange(newCategory) {
       console.log('📂 Alterando categoria para:', newCategory)
       this.categoria = newCategory
-      // Faz nova requisição para filtrar no backend
-      await this.listEvents(newCategory !== 'all' ? newCategory : '')
+
+      // Se já tiver todos os eventos carregados e estiver offline, filtra localmente
+      if (this.allEvents && this.allEvents.length > 0 && this.isOffline) {
+        console.log('🔄 Modo offline detectado: usando filtro local')
+        this.load = true
+        this.filterEventsLocally(newCategory !== 'all' ? newCategory : '')
+      } else {
+        // Tenta buscar da API/cache
+        await this.listEvents(newCategory !== 'all' ? newCategory : '')
+      }
     },
 
     onFilterChange(newFilter) {
@@ -691,6 +754,12 @@ export default {
     clearFilters() {
       this.filter = ''
       this.categoria = 'all'
+    },
+
+    // Força atualização dos dados da API
+    refreshEvents() {
+      const currentCategory = this.categoria !== 'all' ? this.categoria : ''
+      this.listEvents(currentCategory, true)
     },
 
     getCategoryLabel(category) {
