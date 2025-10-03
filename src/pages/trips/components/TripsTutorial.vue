@@ -71,14 +71,29 @@ export default {
     injectTheme: function () {
       if (typeof document === 'undefined') return
       this.removeTheme()
+
+      const safe = {
+        borderRadius: this.sanitizeLength(this.borderRadius, '12px'),
+        popoverMaxWidth: this.sanitizeLength(this.popoverMaxWidth, '400px'),
+        titleColor: this.sanitizeColor(this.titleColor, '#161931'),
+        descriptionColor: this.sanitizeColor(this.descriptionColor, '#666666'),
+        nextBtnBg: this.sanitizeColor(this.nextBtnBg, '#161931'),
+        nextBtnColor: this.sanitizeColor(this.nextBtnColor, '#ffffff'),
+        nextBtnBgHover: this.sanitizeColor(this.nextBtnBgHover, '#5ec4a8'),
+        nextBtnColorHover: this.sanitizeColor(this.nextBtnColorHover, '#161931'),
+        prevBtnBg: this.sanitizeColor(this.prevBtnBg, '#f5f5f5'),
+        prevBtnColor: this.sanitizeColor(this.prevBtnColor, '#161931'),
+        closeBtnColor: this.sanitizeColor(this.closeBtnColor, '#666666')
+      }
+
       const css = `
-        .driver-popover { border-radius: ${this.borderRadius} !important; max-width: ${this.popoverMaxWidth} !important; }
-        .driver-popover-title { color: ${this.titleColor} !important; }
-        .driver-popover-description { color: ${this.descriptionColor} !important; }
-        .driver-popover-next-btn { background-color: ${this.nextBtnBg} !important; color: ${this.nextBtnColor} !important; }
-        .driver-popover-next-btn:hover { background-color: ${this.nextBtnBgHover} !important; color: ${this.nextBtnColorHover} !important; }
-        .driver-popover-prev-btn { background-color: ${this.prevBtnBg} !important; color: ${this.prevBtnColor} !important; }
-        .driver-popover-close-btn { color: ${this.closeBtnColor} !important; }
+        .driver-popover { border-radius: ${safe.borderRadius} !important; max-width: ${safe.popoverMaxWidth} !important; }
+        .driver-popover-title { color: ${safe.titleColor} !important; }
+        .driver-popover-description { color: ${safe.descriptionColor} !important; }
+        .driver-popover-next-btn { background-color: ${safe.nextBtnBg} !important; color: ${safe.nextBtnColor} !important; }
+        .driver-popover-next-btn:hover { background-color: ${safe.nextBtnBgHover} !important; color: ${safe.nextBtnColorHover} !important; }
+        .driver-popover-prev-btn { background-color: ${safe.prevBtnBg} !important; color: ${safe.prevBtnColor} !important; }
+        .driver-popover-close-btn { color: ${safe.closeBtnColor} !important; }
       `
       const style = document.createElement('style')
       style.id = this.styleElId
@@ -201,6 +216,21 @@ export default {
       this.driverObj.drive()
 
       this.$emit('started')
+    },
+    // Sanitizadores simples para evitar injeção de CSS via props
+    sanitizeColor: function (val, fallback) {
+      if (typeof val !== 'string') return fallback
+      const v = val.trim()
+      const isHex = /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(v)
+      const named = new Set(['black', 'white', 'red', 'green', 'blue', 'gray', 'grey', 'silver', 'maroon', 'yellow', 'olive', 'lime', 'aqua', 'teal', 'navy', 'fuchsia', 'purple', 'orange'])
+      if (isHex || named.has(v.toLowerCase())) return v
+      return fallback
+    },
+    sanitizeLength: function (val, fallback) {
+      if (typeof val !== 'string') return fallback
+      const v = val.trim()
+      if (/^[0-9]{1,4}(px|rem|em|%)$/.test(v)) return v
+      return fallback
     }
   }
 }
