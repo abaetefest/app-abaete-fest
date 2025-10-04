@@ -316,9 +316,14 @@ export default {
               obs: 'Segunda a Sábado'
             },
             {
-              hora: '06:00*',
+              hora: '05:30',
               modalidade: 'Alça Viária',
-              obs: 'Domingos e Feriados (Pode sofrer alterações)'
+              obs: 'Segunda a Sábado'
+            },
+            {
+              hora: '06:00',
+              modalidade: 'Alça Viária',
+              obs: 'Domingos e Feriados'
             },
             {
               hora: '07:40',
@@ -347,7 +352,7 @@ export default {
             {
               hora: '13:45*',
               modalidade: 'Alça Viária',
-              obs: 'Pode sofrer alterações domingos e Feriados'
+              obs: 'Pode sofrer alterações no domingo e feriados'
             },
             {
               hora: '15:00',
@@ -373,9 +378,15 @@ export default {
           // periodo: 'Segunda a Sexta',
           horarios: [
             {
-              hora: '06:00*',
+              hora: '05:20',
               modalidade: 'Alça Viária',
-              obs: 'Domingos e Feriados (Pode sofrer alterações)'
+              obs: 'Segunda a Sábado'
+            },
+            {
+              hora: '06:20',
+              modalidade: 'Alça Viária',
+              obs: 'Domingos e Feriados'
+
             },
             {
               hora: '07:00',
@@ -399,8 +410,8 @@ export default {
             },
             {
               hora: '12:20',
-              modalidade: 'Alça Viária',
-              obs: 'A saída está ocorrendo 12:30 do terminal'
+              modalidade: 'Alça Viária'
+              // obs: 'A saída está ocorrendo 12:30 do terminal'
             },
             {
               hora: '13:30',
@@ -421,7 +432,7 @@ export default {
             {
               hora: '18:00*',
               modalidade: 'Alça Viária',
-              obs: 'Pode sofrer alterações domingos e Feriados'
+              obs: 'Pode sofrer alterações no domingo e Feriados'
             }
           ]
         }
@@ -438,7 +449,7 @@ export default {
           periodo: 'Segunda a Sexta',
           horarios: [
             {
-              hora: '02:00 | 03:30 | 04:20 | 05:30 | 06:15 | 07:00 | 07:45 | 08:30 | 09:15 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 |16:00 | 17:00 |18:00 | 19:00 | 20:00 | 21:30 | 23:00'
+              hora: '02:00 | 03:30 | 04:20 | 05:30 | 06:15 | 07:00 | 07:45 | 08:30 | 09:15 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 |16:00 | 17:00 | 18:00 | 19:00 | 20:00 | 21:30 | 23:00'
             }
           ]
         },
@@ -478,7 +489,7 @@ export default {
           periodo: 'Sábado',
           horarios: [
             {
-              hora: '02:00 | 04:00 | 06:00 | 07:00 | 08:00 | 09:00 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 | 16:00 | 17:00 | 18:00 | 20:00 | 22:00| 00:00'
+              hora: '02:00 | 04:00 | 06:00 | 07:00 | 08:00 | 09:00 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 | 16:00 | 17:00 | 18:00 | 20:00 | 22:00 | 00:00'
             }
           ]
         },
@@ -488,7 +499,7 @@ export default {
           periodo: 'Domingo',
           horarios: [
             {
-              hora: '04:00 | 06:00 | 07:00 | 08:00 | 09:00 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 | 16:00 | 17:00 | 18:00 | 19:00 | 20:00 | 21:30| 23:00'
+              hora: '04:00 | 06:00 | 07:00 | 08:00 | 09:00 | 10:00 | 11:00 | 12:00 | 13:00 | 14:00 | 15:00 | 16:00 | 17:00 | 18:00 | 19:00 | 20:00 | 21:30 | 23:00'
             }
           ]
         }
