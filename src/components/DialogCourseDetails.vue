@@ -67,7 +67,12 @@
                 class="text-body1"
                 :class="$q.dark.isActive ? 'text-white' : 'text-grey-9'"
               >
-                <strong>DATA:</strong> {{ formatDateString(courseData.start_date)}} - {{ formatHourString(courseData.start_date) }}
+                <div v-if="courseData.recurring && courseData.recurring_days && courseData.recurring_days.trim() !== ''">
+                  <strong>DIAS DO EVENTO:</strong> {{ courseData.recurring_days }}
+                </div>
+                <div v-else>
+                  <strong>DATA:</strong> {{ formatDateString(courseData.start_date)}} - {{ formatHourString(courseData.start_date) }}
+                </div>
               </div>
             </q-card-section>
           </q-card>
@@ -101,6 +106,7 @@ export default {
     }
   },
   async mounted() {
+    console.log(this.courseData)
     if (!navigator.canShare) {
       this.canShare = false
     } else {

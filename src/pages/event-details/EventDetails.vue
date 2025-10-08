@@ -47,9 +47,15 @@
                 <div class="row items-center q-gutter-sm">
                   <q-avatar color="primary" text-color="white" icon="mdi-calendar" size="sm" />
                   <div>
-                    <div class="text-caption text-grey-6 text-uppercase text-weight-medium">Data</div>
-                    <div class="text-body2 text-weight-bold">{{ formatDateString(event.start_date) }}</div>
-                    <div class="text-caption text-grey-6">{{ formatHourString(event.start_date) }}</div>
+                    <div v-if="event.recurring && event.recurring_days && event.recurring_days.trim() !== ''">
+                      <div class="text-caption text-grey-6 text-uppercase text-weight-medium">Dias do evento</div>
+                      <div class="text-body2 text-weight-bold">{{ event.recurring_days }}</div>
+                    </div>
+                    <div v-else>
+                      <div class="text-caption text-grey-6 text-uppercase text-weight-medium">Data</div>
+                      <div class="text-body2 text-weight-bold">{{ formatDateString(event.start_date) }}</div>
+                      <div class="text-caption text-grey-6">{{ formatHourString(event.start_date) }}</div>
+                    </div>
                   </div>
                 </div>
               </q-card>
