@@ -36,14 +36,20 @@
     <q-card-section class="">
       <!-- Data e hora -->
       <div class="row items-center justify-between q-gutter-md q-mb-md">
-        <div class="event-date-badge ">
+        <div v-if="event.recurring && event.recurring_days && event.recurring_days.trim() !== ''" class="event-date-badge">
+          <div class="event-day">
+            <q-icon name="mdi-repeat" size="16px" class="q-mr-xs" />
+            {{ event.recurring_days }}
+          </div>
+        </div>
+        <div v-else class="event-date-badge">
           <div class="event-day">
             <q-icon name="mdi-calendar" size="16px" class="q-mr-xs" />
             {{ getDayDate(event.start_date) }}
             {{ getMonthString(event.start_date) }}
           </div>
         </div>
-        <div class="col">
+        <div class="col" v-if="!event.recurring || !event.recurring_days || event.recurring_days.trim() === ''">
           <div class="text-body2 text-weight-medium">
             <q-icon name="mdi-clock-outline" size="16px" class="q-mr-xs" />
             {{ formatHourString(event.start_date) }}
