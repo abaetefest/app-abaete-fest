@@ -69,33 +69,79 @@
         />
       </div>
 
-      <!-- Grid de eventos - Visualização Compacta -->
-      <div v-if="viewMode === 'compact'" class="row q-mb-xl">
-        <div
-          v-for="event in filteredEvents"
-          :key="event.id"
-          class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
-        >
-          <EventCard
-            :event="event"
-            :category-options="options"
-            @click="detailsEvent"
-          />
+      <!-- Eventos Recorrentes -->
+      <div v-if="recurringEvents.length > 0" class="q-mb-lg">
+        <div class="text-h6 text-primary q-mb-md text-weight-bold">
+          <q-icon name="mdi-repeat" class="q-mr-sm" />
+          Eventos Recorrentes
+        </div>
+
+        <!-- Grid de eventos recorrentes - Visualização Compacta -->
+        <div v-if="viewMode === 'compact'" class="row q-mb-xl">
+          <div
+            v-for="event in recurringEvents"
+            :key="event.id"
+            class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
+          >
+            <EventCard
+              :event="event"
+              :category-options="options"
+              @click="detailsEvent"
+            />
+          </div>
+        </div>
+
+        <!-- Grid de eventos recorrentes - Visualização Grande -->
+        <div v-else class="row q-mb-xl">
+          <div
+            v-for="event in recurringEvents"
+            :key="event.id"
+            class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
+          >
+            <EventCardLarge
+              :event="event"
+              :category-options="options"
+              @click="detailsEvent"
+            />
+          </div>
         </div>
       </div>
 
-      <!-- Grid de eventos - Visualização Grande -->
-      <div v-else class="row q-mb-xl">
-        <div
-          v-for="event in filteredEvents"
-          :key="event.id"
-          class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
-        >
-          <EventCardLarge
-            :event="event"
-            :category-options="options"
-            @click="detailsEvent"
-          />
+      <!-- Eventos Normais -->
+      <div v-if="normalEvents.length > 0">
+        <div class="text-h6 text-primary q-mb-md text-weight-bold">
+          <q-icon name="mdi-calendar" class="q-mr-sm" />
+          Eventos com Data Específica
+        </div>
+
+        <!-- Grid de eventos normais - Visualização Compacta -->
+        <div v-if="viewMode === 'compact'" class="row q-mb-xl">
+          <div
+            v-for="event in normalEvents"
+            :key="event.id"
+            class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
+          >
+            <EventCard
+              :event="event"
+              :category-options="options"
+              @click="detailsEvent"
+            />
+          </div>
+        </div>
+
+        <!-- Grid de eventos normais - Visualização Grande -->
+        <div v-else class="row q-mb-xl">
+          <div
+            v-for="event in normalEvents"
+            :key="event.id"
+            class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
+          >
+            <EventCardLarge
+              :event="event"
+              :category-options="options"
+              @click="detailsEvent"
+            />
+          </div>
         </div>
       </div>
 

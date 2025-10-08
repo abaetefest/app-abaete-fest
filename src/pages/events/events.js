@@ -580,6 +580,22 @@ export default {
         console.log(`🔎 Busca aplicada: "${searchTerm}" → ${filtered.length} resultados`)
       }
       return filtered
+    },
+
+    recurringEvents() {
+      return this.filteredEvents.filter(event =>
+        event.recurring === true &&
+        event.recurring_days &&
+        event.recurring_days.trim() !== ''
+      )
+    },
+
+    normalEvents() {
+      return this.filteredEvents.filter(event =>
+        !event.recurring ||
+        !event.recurring_days ||
+        event.recurring_days.trim() === ''
+      )
     }
 
   },
