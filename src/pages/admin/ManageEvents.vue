@@ -123,7 +123,8 @@ export default {
           align: 'left'
         },
         { name: 'category', label: 'Categoria', field: 'category', sortable: true, align: 'left' },
-        { name: 'start_date', label: 'Data', field: 'start_date', align: 'left', format: (data) => this.formatDateString(data) },
+        { name: 'start_date', label: 'Data', field: 'start_date', align: 'left', format: (data, row) => this.formatDateOrRecurring(data, row) },
+        { name: 'recurring', label: 'Recorrente', field: 'recurring', align: 'center', format: (value) => this.formatRecurring(value) },
         { name: 'acoes', label: 'Ações', field: 'Ações', align: 'right' }
       ],
       events: [],
@@ -171,6 +172,17 @@ export default {
     },
     formatDateString(dateOriginal) {
       return date.formatDate(dateOriginal, 'DD/MM/YYYY HH:mm')
+    },
+    formatDateOrRecurring(startDate, row) {
+      // Se recurring_days não for null/undefined/vazio, mostra os dias recorrentes
+      if (row.recurring_days && row.recurring_days.trim() !== '') {
+        return row.recurring_days
+      }
+      // Caso contrário, mostra a data formatada
+      return this.formatDateString(startDate)
+    },
+    formatRecurring(value) {
+      return value ? 'Sim' : 'Não'
     },
     formatCategoryString(categoryName) {
       const category = this.category.find(item => item.value === categoryName)

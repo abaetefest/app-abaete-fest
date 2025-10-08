@@ -7,6 +7,21 @@
         </q-card-section>
         <q-card-section>
           <div class="row q-col-gutter-sm">
+            <div class="col-12 q-pb-md">
+              <q-checkbox
+                v-model="form.recurring"
+                label="Recorrente"
+                color="primary"
+              />
+            </div>
+            <q-input
+              v-if="form.recurring"
+              v-model="form.recurring_days"
+              label="Dias da semana"
+              outlined
+              class="col-md-8 col-xs-12 col-sm-12"
+              :rules="[ val => val && val.length > 0 || 'Dias da semana obrigatório']"
+            />
             <q-input
               v-model="form.name"
               label="Nome do Evento"
@@ -35,7 +50,7 @@
               />
             </div>
             <q-input
-              v-if="!form.id"
+              v-if="!form.id && !form.recurring"
               v-model="form.content_push"
               label="Mensagem Push Notification"
               outlined
@@ -81,7 +96,7 @@
               :rules="[ val => val && val.length > 0 || 'Categoria obrigatório']"
             />
 
-            <div class="col-md-8 col-xs-12 col-sm-12 q-gutter-md row items-start q-pb-sm">
+            <div v-if="!form.recurring" class="col-md-8 col-xs-12 col-sm-12 q-gutter-md row items-start q-pb-sm">
               <q-date v-model="form.start_date" mask="YYYY-MM-DD HH:mm" color="primary" :options="optionsFn" />
               <q-time v-model="form.start_date" mask="YYYY-MM-DD HH:mm" color="primary" />
             </div>
@@ -170,7 +185,9 @@ export default {
         description: '',
         category: '',
         start_date: '',
-        content_push: ''
+        content_push: '',
+        recurring: false,
+        recurring_days: ''
       },
       dialogWpp: false,
       preview: '',
@@ -257,6 +274,14 @@ export default {
       }
       delete this.form.image_url
       console.log(this.form)
+    }
+  },
+  watch: {
+    'form.recurring'(newValue) {
+      // Se recurring for desmarcado (false), limpa o campo recurring_days
+      if (!newValue) {
+        this.form.recurring_days = ''
+      }
     }
   },
   methods: {
