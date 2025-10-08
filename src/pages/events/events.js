@@ -573,17 +573,9 @@ export default {
 
       // Aplica filtro de tipo de evento primeiro
       if (this.eventTypeFilter === 'recurring') {
-        filtered = filtered.filter(event =>
-          event.recurring === true &&
-          event.recurring_days &&
-          event.recurring_days.trim() !== ''
-        )
+        filtered = filtered.filter(event => this.isRecurringEvent(event))
       } else if (this.eventTypeFilter === 'normal') {
-        filtered = filtered.filter(event =>
-          !event.recurring ||
-          !event.recurring_days ||
-          event.recurring_days.trim() === ''
-        )
+        filtered = filtered.filter(event => this.isNormalEvent(event))
       }
 
       // Filtro por texto de busca (frontend) - aplicado após o filtro de tipo
@@ -604,19 +596,11 @@ export default {
     },
 
     recurringEvents() {
-      return this.filteredEvents.filter(event =>
-        event.recurring === true &&
-        event.recurring_days &&
-        event.recurring_days.trim() !== ''
-      )
+      return this.filteredEvents.filter(event => this.isRecurringEvent(event))
     },
 
     normalEvents() {
-      return this.filteredEvents.filter(event =>
-        !event.recurring ||
-        !event.recurring_days ||
-        event.recurring_days.trim() === ''
-      )
+      return this.filteredEvents.filter(event => this.isNormalEvent(event))
     }
 
   },
@@ -675,6 +659,28 @@ export default {
   },
 
   methods: {
+    /**
+     * Verifica se um evento é recorrente
+     * @param {Object} event - O evento a ser verificado
+     * @returns {boolean} - true se o evento for recorrente
+     */
+    isRecurringEvent(event) {
+      return event.recurring === true &&
+        event.recurring_days &&
+        event.recurring_days.trim() !== ''
+    },
+
+    /**
+     * Verifica se um evento é normal (não recorrente)
+     * @param {Object} event - O evento a ser verificado
+     * @returns {boolean} - true se o evento for normal
+     */
+    isNormalEvent(event) {
+      return !event.recurring ||
+        !event.recurring_days ||
+        event.recurring_days.trim() === ''
+    },
+
     async listEvents(category = '') {
       this.load = true
       try {

@@ -106,7 +106,6 @@ export default {
     }
   },
   async mounted() {
-    console.log(this.courseData)
     if (!navigator.canShare) {
       this.canShare = false
     } else {
