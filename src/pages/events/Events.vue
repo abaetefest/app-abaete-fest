@@ -4,9 +4,11 @@
     <EventFilters
       :selected-category="categoria"
       :search-filter="filter"
+      :selected-event-type="eventTypeFilter"
       :options="options"
       @update:selectedCategory="onCategoryChange"
       @update:searchFilter="onFilterChange"
+      @update:selectedEventType="onEventTypeChange"
       @clear-filters="clearFilters"
     />
 
@@ -50,7 +52,7 @@
             icon="mdi-calendar-multiple"
             class="text-weight-medium"
           >
-            {{ filteredEvents.length }} de {{ allEvents.length }} eventos
+            {{ getFilteredTotal() }} de {{ allEvents.length }} eventos
           </q-chip>
         </div>
       </div>
@@ -70,14 +72,14 @@
       </div>
 
       <!-- Eventos Recorrentes -->
-      <div v-if="recurringEvents.length > 0" class="q-mb-lg">
+      <div v-if="recurringEvents.length > 0">
         <div class="text-h6 text-primary q-mb-md text-weight-bold">
           <q-icon name="mdi-repeat" class="q-mr-sm" />
           Eventos Recorrentes
         </div>
 
         <!-- Grid de eventos recorrentes - Visualização Compacta -->
-        <div v-if="viewMode === 'compact'" class="row q-mb-xl">
+        <div v-if="viewMode === 'compact'" class="row q-mb-lg">
           <div
             v-for="event in recurringEvents"
             :key="event.id"
@@ -92,7 +94,7 @@
         </div>
 
         <!-- Grid de eventos recorrentes - Visualização Grande -->
-        <div v-else class="row q-mb-xl">
+        <div v-else class="row q-mb-lg">
           <div
             v-for="event in recurringEvents"
             :key="event.id"

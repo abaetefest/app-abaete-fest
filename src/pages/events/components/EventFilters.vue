@@ -6,7 +6,7 @@
 
     <div class="row q-col-gutter-md items-end justify-center">
       <!-- Filtro de categoria -->
-      <div class="col-12 col-sm-6">
+      <div class="col-12 col-sm-4">
         <q-select
           outlined
           rounded
@@ -46,8 +46,49 @@
         </q-select>
       </div>
 
+      <!-- Filtro de tipo de evento -->
+      <div class="col-12 col-sm-4">
+        <q-select
+          outlined
+          rounded
+          v-model="eventTypeModel"
+          :options="eventTypeOptions"
+          label="Tipo de evento"
+          :bg-color="$q.dark.isActive ? 'primary' : 'white'"
+          :label-color="$q.dark.isActive ? 'white' : 'primary'"
+          :color="$q.dark.isActive ? 'white' : 'primary'"
+          map-options
+          emit-value
+          dense
+        >
+          <template v-slot:prepend>
+            <q-avatar
+              rounded
+              :icon="getIconEventType"
+              size="40px"
+              :class="$q.dark.isActive ? 'text-secondary' : 'text-primary'"
+            />
+          </template>
+          <template v-slot:option="scope">
+            <q-item
+              v-bind="scope.itemProps"
+              v-on="scope.itemEvents"
+              :class="$q.dark.isActive ? 'bg-primary' : 'white'"
+              dense
+            >
+              <q-item-section avatar>
+                <q-avatar rounded :icon="scope.opt.icon" size="40px" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label class="text-weight-bold" v-html="scope.opt.label" />
+              </q-item-section>
+            </q-item>
+          </template>
+        </q-select>
+      </div>
+
       <!-- Campo de busca -->
-      <div class="col-12 col-sm-6">
+      <div class="col-12 col-sm-4">
         <q-input
           outlined
           rounded
@@ -85,10 +126,24 @@ export default {
     options: {
       type: Array,
       required: true
+    },
+    selectedEventType: {
+      type: String,
+      default: 'all'
     }
   },
 
-  emits: ['update:selectedCategory', 'update:searchFilter', 'clear-filters'],
+  emits: ['update:selectedCategory', 'update:searchFilter', 'update:selectedEventType', 'clear-filters'],
+
+  data() {
+    return {
+      eventTypeOptions: [
+        { label: 'Todos os Eventos', value: 'all', icon: 'mdi-calendar-multiple' },
+        { label: 'Eventos Recorrentes', value: 'recurring', icon: 'mdi-repeat' },
+        { label: 'Eventos com Data Específica', value: 'normal', icon: 'mdi-calendar' }
+      ]
+    }
+  },
 
   computed: {
     getIconCategory() {
@@ -96,6 +151,13 @@ export default {
         (opt) => opt.value === this.selectedCategory
       )
       return img[0] ? img[0].icon : 'mdi-calendar'
+    },
+
+    getIconEventType() {
+      const img = this.eventTypeOptions.filter(
+        (opt) => opt.value === this.selectedEventType
+      )
+      return img[0] ? img[0].icon : 'mdi-calendar-multiple'
     },
 
     categoryModel: {
@@ -114,6 +176,15 @@ export default {
       set(value) {
         this.$emit('update:searchFilter', value)
       }
+    },
+
+    eventTypeModel: {
+      get() {
+        return this.selectedEventType
+      },
+      set(value) {
+        this.$emit('update:selectedEventType', value)
+      }
     }
   },
 
@@ -121,6 +192,7 @@ export default {
     clearFilters() {
       this.$emit('update:selectedCategory', 'all')
       this.$emit('update:searchFilter', '')
+      this.$emit('update:selectedEventType', 'all')
       this.$emit('clear-filters')
     }
   }

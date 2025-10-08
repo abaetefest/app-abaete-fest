@@ -551,7 +551,13 @@ export default {
       load: true,
       modalCourse: false,
       courseDetails: {},
-      canCreateEvent: false // Definir baseado nas permissões do usuário
+      canCreateEvent: false, // Definir baseado nas permissões do usuário
+      eventTypeFilter: 'all', // 'all', 'recurring', 'normal'
+      eventTypeOptions: [
+        { label: 'Todos os Eventos', value: 'all' },
+        { label: 'Eventos Recorrentes', value: 'recurring' },
+        { label: 'Eventos com Data Específica', value: 'normal' }
+      ]
     }
   },
 
@@ -565,7 +571,22 @@ export default {
       // Categoria já vem filtrada do backend
       let filtered = [...this.events]
 
-      // Filtro por texto de busca (frontend)
+      // Aplica filtro de tipo de evento primeiro
+      if (this.eventTypeFilter === 'recurring') {
+        filtered = filtered.filter(event =>
+          event.recurring === true &&
+          event.recurring_days &&
+          event.recurring_days.trim() !== ''
+        )
+      } else if (this.eventTypeFilter === 'normal') {
+        filtered = filtered.filter(event =>
+          !event.recurring ||
+          !event.recurring_days ||
+          event.recurring_days.trim() === ''
+        )
+      }
+
+      // Filtro por texto de busca (frontend) - aplicado após o filtro de tipo
       if (this.filter && this.filter.trim()) {
         const searchTerm = this.filter.toLowerCase().trim()
         filtered = filtered.filter((event) => {
@@ -607,6 +628,12 @@ export default {
       this.viewMode = savedViewMode
     }
 
+    // Carrega preferência do filtro de tipo de evento do localStorage
+    const savedEventTypeFilter = localStorage.getItem('events-type-filter')
+    if (savedEventTypeFilter && ['all', 'recurring', 'normal'].includes(savedEventTypeFilter)) {
+      this.eventTypeFilter = savedEventTypeFilter
+    }
+
     // Verifica parâmetros da URL
     if (this.$route.params.type) {
       this.categoria = this.$route.params.type
@@ -638,6 +665,12 @@ export default {
       // Salva a preferência de visualização no localStorage
       localStorage.setItem('events-view-mode', newVal)
       console.log('👁️ Modo de visualização alterado para:', newVal)
+    },
+
+    eventTypeFilter(newVal) {
+      // Salva a preferência do filtro de tipo de evento no localStorage
+      localStorage.setItem('events-type-filter', newVal)
+      console.log('🔄 Filtro de tipo de evento alterado para:', newVal)
     }
   },
 
@@ -707,11 +740,24 @@ export default {
     clearFilters() {
       this.filter = ''
       this.categoria = 'all'
+      this.eventTypeFilter = 'all'
+    },
+
+    onEventTypeChange(newEventType) {
+      console.log('🔄 Alterando tipo de evento para:', newEventType)
+      this.eventTypeFilter = newEventType
+      // Salva a preferência no localStorage
+      localStorage.setItem('events-type-filter', newEventType)
     },
 
     getCategoryLabel(category) {
       const categoryObj = this.options.find(opt => opt.value === category)
       return categoryObj ? categoryObj.label : 'Evento'
+    },
+
+    getFilteredTotal() {
+      // Retorna o total de eventos após aplicar todos os filtros (categoria, tipo, busca)
+      return this.filteredEvents.length
     },
 
     scrollToTop() {
