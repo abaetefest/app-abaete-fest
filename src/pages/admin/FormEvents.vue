@@ -276,6 +276,14 @@ export default {
       console.log(this.form)
     }
   },
+  watch: {
+    'form.recurring'(newValue) {
+      // Se recurring for desmarcado (false), limpa o campo recurring_days
+      if (!newValue) {
+        this.form.recurring_days = ''
+      }
+    }
+  },
   methods: {
     onSubmit() {
       if (this.form.id) {
