@@ -139,7 +139,7 @@ export default {
 .tutorial-card {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-radius: 20px;
-  max-width: 500px;
+  max-width: 550px;
   width: 90vw;
   min-height: 60vh;
   margin: 0 auto;
@@ -228,7 +228,7 @@ export default {
   }
 
   .tutorial-footer {
-    padding: 1rem;
+    /* padding: 1rem; */
     border-radius: 0 0 16px 16px;
   }
 
