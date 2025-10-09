@@ -170,6 +170,12 @@
       :course-data="courseDetails"
       @close="closeModal"
     />
+
+    <!-- Tutorial de eventos recorrentes -->
+    <TutorialRecurringEvents
+      :show="showRecurringTutorial"
+      @close="closeRecurringTutorial"
+    />
   </q-page>
 </template>
 
