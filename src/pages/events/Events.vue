@@ -75,7 +75,7 @@
       <div v-if="recurringEvents.length > 0">
         <div class="text-h6 text-primary q-mb-md text-weight-bold">
           <q-icon name="mdi-repeat" class="q-mr-sm" />
-          Eventos Recorrentes
+          Eventos recorrentes
         </div>
 
         <!-- Grid de eventos recorrentes - Visualização Compacta -->
@@ -113,7 +113,7 @@
       <div v-if="normalEvents.length > 0">
         <div class="text-h6 text-primary q-mb-md text-weight-bold">
           <q-icon name="mdi-calendar" class="q-mr-sm" />
-          Eventos com Data Específica
+          Eventos com data específica
         </div>
 
         <!-- Grid de eventos normais - Visualização Compacta -->
