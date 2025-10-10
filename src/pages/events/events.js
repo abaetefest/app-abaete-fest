@@ -537,7 +537,8 @@ export default {
     EventCardLarge: () => import('./components/EventCardLarge'),
     EventSkeleton: () => import('./components/EventSkeleton'),
     EventCardSkeleton: () => import('./components/EventCardSkeleton'),
-    EmptyState: () => import('./components/EmptyState')
+    EmptyState: () => import('./components/EmptyState'),
+    TutorialRecurringEvents: () => import('./components/TutorialRecurringEvents')
   },
 
   data() {
@@ -557,7 +558,8 @@ export default {
         { label: 'Todos os Eventos', value: 'all' },
         { label: 'Eventos Recorrentes', value: 'recurring' },
         { label: 'Eventos com Data Específica', value: 'normal' }
-      ]
+      ],
+      showRecurringTutorial: false // Controla a exibição do tutorial
     }
   },
 
@@ -629,6 +631,9 @@ export default {
     }
 
     await this.listEvents(this.categoria !== 'all' ? this.categoria : '')
+
+    // Verifica se deve mostrar o tutorial de eventos recorrentes
+    this.checkRecurringTutorial()
   },
 
   watch: {
@@ -655,6 +660,17 @@ export default {
       // Salva a preferência do filtro de tipo de evento no localStorage
       localStorage.setItem('events-type-filter', newVal)
       console.log('🔄 Filtro de tipo de evento alterado para:', newVal)
+    },
+
+    // Watcher para verificar quando eventos recorrentes são carregados
+    recurringEvents: {
+      handler(newVal) {
+        // Se eventos recorrentes foram carregados e o tutorial não foi mostrado ainda
+        if (newVal && newVal.length > 0 && !this.showRecurringTutorial) {
+          this.checkRecurringTutorial()
+        }
+      },
+      immediate: false
     }
   },
 
@@ -771,6 +787,34 @@ export default {
         top: 0,
         behavior: 'smooth'
       })
+    },
+
+    /**
+     * Verifica se deve mostrar o tutorial de eventos recorrentes
+     */
+    checkRecurringTutorial() {
+      // Verifica se o usuário já dispensou o tutorial
+      const tutorialDismissed = localStorage.getItem('tutorial-recurring-events-dismissed')
+      if (tutorialDismissed === 'true') {
+        return
+      }
+
+      // Verifica se existem eventos recorrentes
+      const hasRecurringEvents = this.recurringEvents.length > 0
+
+      if (hasRecurringEvents) {
+        // Mostra o tutorial após um pequeno delay para melhor UX
+        setTimeout(() => {
+          this.showRecurringTutorial = true
+        }, 1000)
+      }
+    },
+
+    /**
+     * Fecha o tutorial de eventos recorrentes
+     */
+    closeRecurringTutorial() {
+      this.showRecurringTutorial = false
     }
   }
 }
