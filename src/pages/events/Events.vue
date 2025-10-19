@@ -24,7 +24,7 @@
     <!-- Lista de eventos -->
     <div v-else>
       <!-- Contador de eventos e botão de visualização -->
-      <div class="row items-center justify-center q-mb-md" v-if="allEvents.length > 0">
+      <div class="row items-center justify-center q-mb-md" v-if="!load && allEvents.length > 0">
 
         <!-- Botão de alternância de visualização -->
         <div class="col-12 q-mb-md">
@@ -58,7 +58,7 @@
       </div>
 
       <!-- Botão Novo Evento (se aplicável) -->
-      <div class="text-center q-mb-lg" v-if="canCreateEvent">
+      <div class="text-center q-mb-lg" v-if="!load && canCreateEvent">
         <q-btn
           rounded
           size="lg"
@@ -72,7 +72,7 @@
       </div>
 
       <!-- Eventos Recorrentes -->
-      <div v-if="recurringEvents.length > 0">
+      <div v-if="!load && recurringEvents.length > 0">
         <div class="text-h6 text-primary q-mb-md text-weight-bold">
           <q-icon name="mdi-repeat" class="q-mr-sm" />
           Eventos recorrentes
@@ -110,7 +110,7 @@
       </div>
 
       <!-- Eventos Normais -->
-      <div v-if="normalEvents.length > 0">
+      <div v-if="!load && normalEvents.length > 0">
         <div class="text-h6 text-primary q-mb-md text-weight-bold">
           <q-icon name="mdi-calendar" class="q-mr-sm" />
           Eventos com data específica
@@ -148,7 +148,7 @@
       </div>
 
       <!-- Estado vazio -->
-      <EmptyState v-if="filteredEvents.length === 0" />
+      <EmptyState v-if="!load && filteredEvents.length === 0" />
 
       <!-- Botão de voltar ao topo
       <q-btn
