@@ -73,7 +73,10 @@
 
       <!-- Eventos Recorrentes -->
       <div v-if="!load && recurringEvents.length > 0">
-        <div class="text-h6 text-primary q-mb-md text-weight-bold">
+        <div
+          class="text-h6  q-mb-md text-weight-bold"
+          :class="$q.dark.isActive ? 'text-white' : 'text-primary'"
+        >
           <q-icon name="mdi-repeat" class="q-mr-sm" />
           Eventos recorrentes
         </div>
@@ -111,9 +114,11 @@
 
       <!-- Eventos Normais -->
       <div v-if="!load && normalEvents.length > 0">
-        <div class="text-h6 text-primary q-mb-md text-weight-bold">
+        <div class="text-h6  q-mb-md text-weight-bold"
+          :class="$q.dark.isActive ? 'text-white' : 'text-primary'"
+        >
           <q-icon name="mdi-calendar" class="q-mr-sm" />
-          Eventos com data específica
+          Eventos únicos
         </div>
 
         <!-- Grid de eventos normais - Visualização Compacta -->
