@@ -175,10 +175,16 @@ const menusRoute = [
     route: 'trips',
     footer: true
   },
+   {
+    title: 'P. Turísticos',
+    icon: 'mdi-map-marker-radius',
+    route: 'tourism',
+    footer: true
+  },
   {
-    title: 'Locais',
-    icon: 'mdi-storefront-outline',
-    route: 'places',
+    title: 'Blog',
+    icon: 'mdi-post-outline',
+    route: 'blog',
     footer: true
   },
   {
@@ -186,21 +192,10 @@ const menusRoute = [
     icon: 'mdi-hammer-screwdriver',
     route: 'services'
   },
-  // {
-  //   title: 'Mapa',
-  //   icon: 'mdi-map',
-  //   route: 'map'
-  // },
-  // {
-  //   title: 'Promoções',
-  //   icon: 'mdi-food',
-  //   route: 'combos',
-  //   disable: true
-  // },
-  {
-    title: 'P. Turísticos',
-    icon: 'mdi-map-marker-radius',
-    route: 'tourism',
+   {
+    title: 'Locais',
+    icon: 'mdi-storefront-outline',
+    route: 'places',
     footer: true
   },
   {

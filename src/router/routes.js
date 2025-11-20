@@ -307,6 +307,30 @@ const routes = [
           priority: 'low'
         }
       },
+      {
+        path: 'blog',
+        name: 'blog',
+        component: () => import(
+          /* webpackChunkName: "info" */
+          'src/pages/blog/Index.vue'
+        ),
+        meta: {
+          tab: true,
+          priority: 'medium'
+        }
+      },
+      {
+        path: 'blog/:id',
+        name: 'post-details',
+        component: () => import(
+          /* webpackChunkName: "info" */
+          'src/pages/blog/PostDetails.vue'
+        ),
+        meta: {
+          tab: false,
+          priority: 'medium'
+        }
+      },
 
       // === CHUNK: USER ===
       {
