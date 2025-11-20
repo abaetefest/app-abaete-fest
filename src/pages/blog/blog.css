@@ -1,0 +1,97 @@
+/* Estilos gerais da página de blog */
+.q-page {
+  padding: 16px;
+}
+
+/* Estado de loading e erro */
+.skeleton-card {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 64px 16px;
+}
+
+.empty-state-icon {
+  font-size: 64px;
+  color: #ccc;
+  margin-bottom: 16px;
+}
+
+.empty-state-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--q-dark);
+}
+
+.empty-state-subtitle {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Dark mode adjustments */
+.q-dark .empty-state-title {
+  color: white;
+}
+
+.q-dark .empty-state-subtitle {
+  color: #ccc;
+}
+
+/* Paginação */
+.q-pagination {
+  margin-top: 32px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .q-page {
+    padding: 8px;
+  }
+
+  .empty-state {
+    padding: 48px 16px;
+  }
+
+  .empty-state-icon {
+    font-size: 48px;
+  }
+
+  .empty-state-title {
+    font-size: 18px;
+  }
+}
+
+/* Animações suaves para transições */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Ajustes de grid para melhor layout */
+.row {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.row > [class*='col-'] {
+  padding-left: 8px;
+  padding-right: 8px;
+}
