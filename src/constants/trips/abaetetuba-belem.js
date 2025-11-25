@@ -13,7 +13,7 @@ export default {
           periodo: 'Segunda a Sábado',
           horarios: [
             {
-              hora: '04:00',
+              hora: '03:45',
               modalidade: 'Arapari'
             },
             {
@@ -36,11 +36,11 @@ export default {
               obs: 'Somente Segunda-feira'
             },
             {
-              hora: '08:45',
+              hora: '07:55',
               modalidade: 'Arapari'
             },
             {
-              hora: '13:45',
+              hora: '12:40',
               modalidade: 'Arapari'
             },
             {
@@ -53,7 +53,7 @@ export default {
               obs: 'Somente Sexta-feira'
             },
             {
-              hora: '16:30',
+              hora: '15:40',
               modalidade: 'Arapari'
             }
           ]
@@ -69,11 +69,11 @@ export default {
               modalidade: 'Alça Viária'
             },
             {
-              hora: '08:45',
+              hora: '07:55',
               modalidade: 'Arapari'
             },
             {
-              hora: '13:45',
+              hora: '12:40',
               modalidade: 'Arapari'
             },
             {
@@ -85,7 +85,7 @@ export default {
               modalidade: 'Alça Viária'
             },
             {
-              hora: '16:30',
+              hora: '15:40',
               modalidade: 'Arapari'
             }
           ]
@@ -101,7 +101,7 @@ export default {
               obs: 'Somente Segunda-feira e Sábado'
             },
             {
-              hora: '09:00',
+              hora: '09:15',
               modalidade: 'Arapari'
             },
             {
@@ -126,7 +126,7 @@ export default {
               modalidade: 'Alça Viária'
             },
             {
-              hora: '16:30',
+              hora: '16:45',
               modalidade: 'Arapari'
             }
           ]
@@ -137,7 +137,7 @@ export default {
           periodo: 'Domingos e Feriados',
           horarios: [
             {
-              hora: '09:00',
+              hora: '09:15',
               modalidade: 'Arapari'
             },
             {
@@ -153,7 +153,7 @@ export default {
               modalidade: 'Alça Viária'
             },
             {
-              hora: '16:30',
+              hora: '16:45',
               modalidade: 'Arapari'
             },
             {
@@ -175,31 +175,32 @@ export default {
           periodo: 'Segunda a Sábado',
           horarios: [
             {
-              hora: '05:30',
+              hora: '05:10',
               modalidade: 'Arapari'
             },
             {
-              hora: '06:20',
+              hora: '06:40',
               modalidade: 'Arapari'
             },
             {
-              hora: '07:40',
+              hora: '09:25',
               modalidade: 'Arapari'
             },
             {
-              hora: '09:45',
+              hora: '11:10',
+              modalidade: 'Arapari'
+            },
+             {
+              hora: '14:10',
               modalidade: 'Arapari'
             },
             {
-              hora: '11:40',
-              modalidade: 'Arapari'
+              hora: '16:40',
+              modalidade: 'Arapari',
+              obs: 'Segunda a Sexta'
             },
             {
-              hora: '15:00',
-              modalidade: 'Arapari'
-            },
-            {
-              hora: '18:45',
+              hora: '18:40',
               modalidade: 'Arapari'
             }
           ]
@@ -210,23 +211,23 @@ export default {
           periodo: 'Domingos e Feriados',
           horarios: [
             {
-              hora: '06:45',
+              hora: '06:40',
               modalidade: 'Arapari'
             },
             {
-              hora: '09:45',
+              hora: '09:25',
               modalidade: 'Arapari'
             },
             {
-              hora: '11:40',
+              hora: '11:10',
               modalidade: 'Arapari'
             },
             {
-              hora: '15:00',
+              hora: '14:10',
               modalidade: 'Arapari'
             },
             {
-              hora: '18:45',
+              hora: '18:40',
               modalidade: 'Arapari'
             }
           ]
@@ -237,11 +238,7 @@ export default {
           periodo: 'Segunda a Sábado',
           horarios: [
             {
-              hora: '06:00',
-              modalidade: 'Arapari'
-            },
-            {
-              hora: '06:40',
+              hora: '06:30',
               modalidade: 'Arapari'
             },
             {
@@ -249,7 +246,7 @@ export default {
               modalidade: 'Arapari'
             },
             {
-              hora: '10:00',
+              hora: '10:45',
               modalidade: 'Arapari'
             },
             {
@@ -257,11 +254,16 @@ export default {
               modalidade: 'Arapari'
             },
             {
-              hora: '15:00',
+              hora: '15:30',
               modalidade: 'Arapari'
             },
             {
-              hora: '19:10',
+              hora: '18:30',
+              modalidade: 'Arapari',
+              obs: 'Segunda a Sexta'
+            },
+            {
+              hora: '19:30',
               modalidade: 'Arapari'
             },
             {
@@ -281,7 +283,7 @@ export default {
               modalidade: 'Arapari'
             },
             {
-              hora: '10:00',
+              hora: '10:45',
               modalidade: 'Arapari'
             },
             {
@@ -289,11 +291,15 @@ export default {
               modalidade: 'Arapari'
             },
             {
-              hora: '15:00',
+              hora: '15:30',
               modalidade: 'Arapari'
             },
             {
-              hora: '19:10',
+              hora: '19:30',
+              modalidade: 'Arapari'
+            },
+            {
+              hora: '21:30',
               modalidade: 'Arapari'
             }
           ]
