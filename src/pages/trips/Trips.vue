@@ -263,7 +263,7 @@
 
                         <q-item-section side v-if="horaViagem.modalidade">
                           <q-chip
-                            color="primary"
+                            :color="horaViagem.modalidade === 'Arapari' ? 'info': 'primary'"
                             text-color="white"
                             dense
                             class="text-weight-bold"
