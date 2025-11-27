@@ -52,7 +52,7 @@
           <!-- Post Header -->
           <header class="q-mb-lg">
             <h1
-              class="text-h3 text-weight-bold q-mb-md"
+              class="text-h5 text-weight-bold q-mb-md"
               :class="$q.dark.isActive ? 'text-white' : 'text-primary'"
               v-html="post.title.rendered"
             ></h1>

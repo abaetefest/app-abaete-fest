@@ -115,6 +115,14 @@ export default {
     await this.fetchPost()
   },
 
+  watch: {
+    postId(newId, oldId) {
+      if (newId !== oldId) {
+        this.fetchPost()
+      }
+    }
+  },
+
   methods: {
     async fetchPost() {
       this.loading = true
