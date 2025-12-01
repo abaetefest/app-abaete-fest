@@ -196,8 +196,7 @@ export default {
             },
             {
               hora: '16:40',
-              modalidade: 'Arapari',
-              obs: 'Segunda a Sexta'
+              modalidade: 'Arapari'
             },
             {
               hora: '18:40',
@@ -224,6 +223,10 @@ export default {
             },
             {
               hora: '14:10',
+              modalidade: 'Arapari'
+            },
+             {
+              hora: '16:40',
               modalidade: 'Arapari'
             },
             {
@@ -259,8 +262,7 @@ export default {
             },
             {
               hora: '18:30',
-              modalidade: 'Arapari',
-              obs: 'Segunda a Sexta'
+              modalidade: 'Arapari'
             },
             {
               hora: '19:30',
@@ -292,6 +294,10 @@ export default {
             },
             {
               hora: '15:30',
+              modalidade: 'Arapari'
+            },
+             {
+              hora: '18:30',
               modalidade: 'Arapari'
             },
             {
