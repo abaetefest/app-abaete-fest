@@ -17,6 +17,78 @@
         Abaetetuba e vice-versa
       </p>
 
+      <!-- Carrossel de imagens -->
+      <div class="q-mt-md q-mb-md">
+        <!-- Desktop: Multi-image slides -->
+        <q-carousel
+          v-if="$q.screen.gt.sm"
+          v-model="slide"
+          transition-prev="slide-right"
+          transition-next="slide-left"
+          swipeable
+          animated
+          control-color="primary"
+          padding
+          arrows
+          height="300px"
+          class="rounded-carousel"
+        >
+          <q-carousel-slide :name="1" class="q-pa-none">
+            <div class="row fit q-col-gutter-sm">
+              <div class="col-6" v-for="(image, index) in carnavalImages.slice(0, 2)" :key="index">
+                <img
+                  :src="image"
+                  class="carousel-image clickable-image"
+                  style="width: 100%; height: 280px; object-fit: cover; border-radius: 8px; cursor: pointer;"
+                  @click="openCarnavalWhatsapp"
+                  :alt="`Propaganda Carnaval ${index + 1}`"
+                />
+              </div>
+            </div>
+          </q-carousel-slide>
+          <q-carousel-slide :name="2" class="q-pa-none">
+            <div class="row fit q-col-gutter-sm">
+              <div class="col-6" v-for="(image, index) in carnavalImages.slice(2, 4)" :key="index">
+                <img
+                  :src="image"
+                  class="carousel-image clickable-image"
+                  style="width: 100%; height: 280px; object-fit: cover; border-radius: 8px; cursor: pointer;"
+                  @click="openCarnavalWhatsapp"
+                  :alt="`Propaganda Carnaval ${index + 3}`"
+                />
+              </div>
+            </div>
+          </q-carousel-slide>
+        </q-carousel>
+
+        <!-- Mobile: Single image with autoplay -->
+        <q-carousel
+          v-else
+          v-model="slide"
+          transition-prev="slide-right"
+          transition-next="slide-left"
+          swipeable
+          animated
+          control-color="white"
+          navigation
+          arrows
+          height="250px"
+          :autoplay="3500"
+          infinite
+          class="rounded-carousel"
+        >
+          <q-carousel-slide
+            v-for="(image, index) in carnavalImages"
+            :key="index"
+            :name="index + 1"
+            :img-src="image"
+            class="carousel-slide-mobile clickable-image"
+            style="cursor: pointer;"
+            @click="openCarnavalWhatsapp"
+          />
+        </q-carousel>
+      </div>
+
       <!-- Botão de compartilhar no topo -->
       <div class="q-mt-md">
         <q-btn
@@ -55,79 +127,6 @@
       </div>
     </div>
 
-    <!-- Seção de legendas otimizada -->
-    <div class="row" id="boarding-points-section">
-      <div class="col-12 q-mb-lg">
-        <div class="text-h6 text-bold text-center q-mb-md">
-          📍 Pontos de Embarque em Belém
-        </div>
-
-        <q-card flat bordered class="q-pa-md">
-          <q-list separator>
-            <q-item>
-              <q-item-section avatar>
-                <q-icon
-                  name="mdi-ferry"
-                  color="primary"
-                  size="md"
-                  :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-8'"
-                />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label class="text-weight-bold"
-                  >Porto Arapari</q-item-label
-                >
-                <q-item-label caption class="text-body2">
-                  Portos Jarumã e Arapari próximo ao Açaí Biruta<br />
-                  📍 R. Siqueira Mendes, 10 - Cidade Velha, Belém - PA,
-                  66020-600
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item>
-              <q-item-section avatar>
-                <q-icon
-                  name="mdi-bus"
-                  color="primary"
-                  size="md"
-                  :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-8'"
-                />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label class="text-weight-bold"
-                  >Terminal Rodoviário - Alça Viária</q-item-label
-                >
-                <q-item-label caption class="text-body2">
-                  Terminal Rodoviário de Belém<br />
-                  📍 São Brás, Belém - PA, 66090-000
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-
-            <q-item>
-              <q-item-section avatar>
-                <q-icon
-                  name="mdi-ship-wheel"
-                  color="primary"
-                  size="md"
-                  :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-8'"
-                />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label class="text-weight-bold"
-                  >Terminal Rodofluvial</q-item-label
-                >
-                <q-item-label caption class="text-body2">
-                  Terminal Rodofluvial de Belém<br />
-                  📍 Av. Bernardo Sayão, 3786 - Cidade Velha, Belém - PA
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-card>
-      </div>
-    </div>
 
     <!-- Seção principal de horários -->
     <div id="schedules-section" class="horarios-viagem">
@@ -285,6 +284,80 @@
                 </q-card-section>
               </q-card>
             </q-expansion-item>
+          </q-list>
+        </q-card>
+      </div>
+    </div>
+
+    <!-- Seção de legendas otimizada -->
+    <div class="row" id="boarding-points-section">
+      <div class="col-12 q-mb-lg">
+        <div class="text-h6 text-bold text-center q-mb-md">
+          📍 Pontos de Embarque em Belém
+        </div>
+
+        <q-card flat bordered class="q-pa-md">
+          <q-list separator>
+            <q-item>
+              <q-item-section avatar>
+                <q-icon
+                  name="mdi-ferry"
+                  color="primary"
+                  size="md"
+                  :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-8'"
+                />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label class="text-weight-bold"
+                  >Porto Arapari</q-item-label
+                >
+                <q-item-label caption class="text-body2">
+                  Portos Jarumã e Arapari próximo ao Açaí Biruta<br />
+                  📍 R. Siqueira Mendes, 10 - Cidade Velha, Belém - PA,
+                  66020-600
+                </q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item>
+              <q-item-section avatar>
+                <q-icon
+                  name="mdi-bus"
+                  color="primary"
+                  size="md"
+                  :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-8'"
+                />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label class="text-weight-bold"
+                  >Terminal Rodoviário - Alça Viária</q-item-label
+                >
+                <q-item-label caption class="text-body2">
+                  Terminal Rodoviário de Belém<br />
+                  📍 São Brás, Belém - PA, 66090-000
+                </q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item>
+              <q-item-section avatar>
+                <q-icon
+                  name="mdi-ship-wheel"
+                  color="primary"
+                  size="md"
+                  :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-8'"
+                />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label class="text-weight-bold"
+                  >Terminal Rodofluvial</q-item-label
+                >
+                <q-item-label caption class="text-body2">
+                  Terminal Rodofluvial de Belém<br />
+                  📍 Av. Bernardo Sayão, 3786 - Cidade Velha, Belém - PA
+                </q-item-label>
+              </q-item-section>
+            </q-item>
           </q-list>
         </q-card>
       </div>
@@ -525,7 +598,13 @@ export default {
       modalPlaces: false,
       placeDetails: {},
       slide: 1,
-      canShare: false
+      canShare: false,
+      carnavalImages: [
+        '/carnaval/1.png',
+        '/carnaval/2.png',
+        '/carnaval/3.png',
+        '/carnaval/4.png'
+      ]
     }
   },
 
@@ -537,7 +616,14 @@ export default {
   beforeDestroy: function () {},
 
   methods: {
+    openCarnavalWhatsapp: function () {
+      const phoneNumber = '5591982828945'
+      const message = encodeURIComponent('Olá, gostaria de divulgar meu bloco no AbaetéFest!')
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`
 
+      window.open(whatsappUrl, '_blank')
+      this.handleMixPanelEvent('Carnaval WhatsApp Clicked')
+    },
 
     setupClientFeatures: function () {
       if (typeof navigator !== 'undefined' && navigator.canShare) {

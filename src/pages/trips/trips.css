@@ -152,6 +152,29 @@
   }
 }
 
+/* Carousel styles */
+.rounded-carousel {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.rounded-carousel .q-carousel__slide {
+  border-radius: 12px;
+}
+
+.carousel-image {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.clickable-image:active {
+  transform: scale(0.98);
+}
+
 /* Responsividade */
 @media (max-width: 600px) {
   .text-h4 {
