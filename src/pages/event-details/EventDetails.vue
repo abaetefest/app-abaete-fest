@@ -18,6 +18,8 @@
       </div>
     </div>
 
+
+
     <!-- Conteúdo do evento -->
     <div v-else style="padding-top: 10px;">
       <div class="bg-white rounded-borders shadow-2 overflow-hidden q-ma-md" :class="$q.dark.isActive ? 'bg-dark' : ''"
@@ -31,6 +33,18 @@
               <q-skeleton class="full-width full-height" />
             </template>
           </q-img>
+          <!-- Botão fechar (canto superior esquerdo sobre a imagem) -->
+          <q-btn
+            round
+            flat
+            color="white"
+            icon="mdi-close"
+            class="close-event-btn absolute"
+            size="sm"
+            aria-label="Fechar"
+            style="top: 2px; left: 2px; z-index: 10; background: rgba(0,0,0,0.4);"
+            @click="backToEvents"
+          />
         </div>
 
         <!-- Conteúdo principal -->
