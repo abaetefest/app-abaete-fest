@@ -1,4 +1,5 @@
 import { date } from 'quasar'
+import { getCarnivalEventById } from 'src/constants/carnivalSchedule'
 
 export default {
   name: 'PageEventDetails',
@@ -10,6 +11,12 @@ export default {
     if (!id) {
       redirect('/')
       return
+    }
+
+    // Eventos fixos (ex.: programação carnaval)
+    const fixedEvent = getCarnivalEventById(id)
+    if (fixedEvent) {
+      return { event: fixedEvent, load: false }
     }
 
     try {
@@ -30,7 +37,7 @@ export default {
       }
 
       // Retorna os dados para uso no componente
-      return eventData
+      return { event: eventData, load: false }
     } catch (error) {
       console.error('Erro no preFetch:', error)
       redirect('/404')
@@ -493,6 +500,15 @@ export default {
     },
 
     getEvent: async function (id) {
+      // Eventos fixos (ex.: programação carnaval) – não chamam a API
+      const fixedEvent = getCarnivalEventById(id)
+      if (fixedEvent) {
+        this.event = fixedEvent
+        this.load = false
+        this.$nextTick(() => this.addStructuredData())
+        return
+      }
+
       this.load = true
       try {
         const { data } = await this.$services.events().get(id)
@@ -534,7 +550,8 @@ export default {
         sport: 'orange-6',
         food: 'red-6',
         business: 'blue-6',
-        education: 'green-6'
+        education: 'green-6',
+        carnival: 'deep-orange-6'
       }
       return colors[category] || 'primary'
     },
@@ -547,7 +564,8 @@ export default {
         sport: 'mdi-soccer',
         food: 'mdi-food',
         business: 'mdi-briefcase',
-        education: 'mdi-school'
+        education: 'mdi-school',
+        carnival: 'mdi-drama-masks'
       }
       return icons[category] || 'mdi-calendar'
     },
@@ -560,7 +578,8 @@ export default {
         sport: 'Esporte',
         food: 'Gastronomia',
         business: 'Negócios',
-        education: 'Educação'
+        education: 'Educação',
+        carnival: 'Carnaval'
       }
       return categoryLabels[category] || 'Evento'
     },

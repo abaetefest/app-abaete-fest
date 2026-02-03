@@ -104,6 +104,11 @@
   color: inherit;
 }
 
+/* Cards de Data e Local */
+.event-info-card {
+  height: 100%;
+}
+
 /* Cards de informação */
 .info-cards-row {
   display: grid;
