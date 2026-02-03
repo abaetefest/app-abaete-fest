@@ -104,6 +104,11 @@
   color: inherit;
 }
 
+/* Botão fechar */
+.close-event-btn {
+  z-index: 100;
+}
+
 /* Cards de Data e Local */
 .event-info-card {
   height: 100%;

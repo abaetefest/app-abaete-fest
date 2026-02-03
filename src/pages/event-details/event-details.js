@@ -311,153 +311,6 @@ export default {
     }
   },
 
-  // Método para structured data otimizado
-  addStructuredData: function () {
-    if (!this.event.id || (typeof process !== 'undefined' && !process.env.CLIENT)) return
-
-    const eventDate = this.formatDateString(this.event.start_date)
-    const cleanDescription = this.event.description
-      ? this.event.description.replace(/<[^>]*>/g, '').substring(0, 200)
-      : `Evento ${this.event.name} em ${this.event.location || 'Abaetetuba'} no dia ${eventDate}`
-
-    // Structured Data principal para eventos
-    const eventStructuredData = {
-      '@context': 'https://schema.org',
-      '@type': 'Event',
-      name: this.event.name,
-      description: cleanDescription,
-      startDate: this.event.start_date,
-      endDate: this.event.end_date || this.event.start_date,
-      eventStatus: 'https://schema.org/EventScheduled',
-      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-      image: {
-        '@type': 'ImageObject',
-        url: this.event.image_url,
-        width: 1200,
-        height: 630
-      },
-      url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
-      location: {
-        '@type': 'Place',
-        name: this.event.location || 'Abaetetuba',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: this.event.address || '',
-          addressLocality: 'Abaetetuba',
-          addressRegion: 'Pará',
-          postalCode: '68440-000',
-          addressCountry: 'BR'
-        },
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: -1.721247,
-          longitude: -48.878883
-        }
-      },
-      organizer: {
-        '@type': 'Organization',
-        name: this.event.organizer || 'AbaetéFest',
-        url: 'https://app.abaetefest.com.br',
-        logo: {
-          '@type': 'ImageObject',
-          url: 'https://app.abaetefest.com.br/logo.png'
-        },
-        sameAs: [
-          'https://www.facebook.com/abaetefest',
-          'https://www.instagram.com/abaetefest',
-          'https://twitter.com/abaetefest'
-        ]
-      },
-      performer: this.event.performer
-        ? {
-            '@type': 'Person',
-            name: this.event.performer
-          }
-        : undefined
-    }
-
-    // Adiciona preço se disponível
-    if (this.event.price !== undefined) {
-      eventStructuredData.offers = {
-        '@type': 'Offer',
-        price: this.event.price,
-        priceCurrency: 'BRL',
-        availability: this.event.tickets_available ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut',
-        url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
-        validFrom: new Date().toISOString()
-      }
-    }
-
-    // Breadcrumbs estruturados
-    const breadcrumbStructuredData = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Início',
-          item: 'https://app.abaetefest.com.br'
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Eventos',
-          item: 'https://app.abaetefest.com.br/events'
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: this.event.name,
-          item: `https://app.abaetefest.com.br/event-details/${this.event.id}`
-        }
-      ]
-    }
-
-    // Organização estruturada
-    const organizationStructuredData = {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: 'AbaetéFest',
-      url: 'https://app.abaetefest.com.br',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://app.abaetefest.com.br/logo.png'
-      },
-      description: 'Plataforma de eventos de Abaetetuba e região amazônica',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Abaetetuba',
-        addressRegion: 'Pará',
-        addressCountry: 'BR'
-      },
-      sameAs: [
-        'https://www.facebook.com/abaetefest',
-        'https://www.instagram.com/abaetefest',
-        'https://twitter.com/abaetefest'
-      ]
-    }
-
-    // Remove structured data anterior
-    const existingScripts = document.querySelectorAll('[id^="structured-data-"]')
-    existingScripts.forEach(script => script.remove())
-
-    // Adiciona os structured data
-    const structuredDataSets = [
-      { id: 'structured-data-event', data: eventStructuredData },
-      { id: 'structured-data-breadcrumb', data: breadcrumbStructuredData },
-      { id: 'structured-data-organization', data: organizationStructuredData }
-    ]
-
-    structuredDataSets.forEach(({ id, data }) => {
-      const script = document.createElement('script')
-      script.id = id
-      script.type = 'application/ld+json'
-      script.textContent = JSON.stringify(data)
-      document.head.appendChild(script)
-    })
-  },
-
   data: function () {
     return {
       event: {},
@@ -497,6 +350,152 @@ export default {
       if (typeof navigator !== 'undefined' && navigator.canShare) {
         this.canShare = true
       }
+    },
+
+    addStructuredData: function () {
+      if (!this.event.id || (typeof process !== 'undefined' && !process.env.CLIENT)) return
+
+      const eventDate = this.formatDateString(this.event.start_date)
+      const cleanDescription = this.event.description
+        ? this.event.description.replace(/<[^>]*>/g, '').substring(0, 200)
+        : `Evento ${this.event.name} em ${this.event.location || 'Abaetetuba'} no dia ${eventDate}`
+
+      // Structured Data principal para eventos
+      const eventStructuredData = {
+        '@context': 'https://schema.org',
+        '@type': 'Event',
+        name: this.event.name,
+        description: cleanDescription,
+        startDate: this.event.start_date,
+        endDate: this.event.end_date || this.event.start_date,
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        image: {
+          '@type': 'ImageObject',
+          url: this.event.image_url,
+          width: 1200,
+          height: 630
+        },
+        url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
+        location: {
+          '@type': 'Place',
+          name: this.event.location || 'Abaetetuba',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: this.event.address || '',
+            addressLocality: 'Abaetetuba',
+            addressRegion: 'Pará',
+            postalCode: '68440-000',
+            addressCountry: 'BR'
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: -1.721247,
+            longitude: -48.878883
+          }
+        },
+        organizer: {
+          '@type': 'Organization',
+          name: this.event.organizer || 'AbaetéFest',
+          url: 'https://app.abaetefest.com.br',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://app.abaetefest.com.br/logo.png'
+          },
+          sameAs: [
+            'https://www.facebook.com/abaetefest',
+            'https://www.instagram.com/abaetefest',
+            'https://twitter.com/abaetefest'
+          ]
+        },
+        performer: this.event.performer
+          ? {
+              '@type': 'Person',
+              name: this.event.performer
+            }
+          : undefined
+      }
+
+      // Adiciona preço se disponível
+      if (this.event.price !== undefined) {
+        eventStructuredData.offers = {
+          '@type': 'Offer',
+          price: this.event.price,
+          priceCurrency: 'BRL',
+          availability: this.event.tickets_available ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut',
+          url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
+          validFrom: new Date().toISOString()
+        }
+      }
+
+      // Breadcrumbs estruturados
+      const breadcrumbStructuredData = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Início',
+            item: 'https://app.abaetefest.com.br'
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Eventos',
+            item: 'https://app.abaetefest.com.br/events'
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: this.event.name,
+            item: `https://app.abaetefest.com.br/event-details/${this.event.id}`
+          }
+        ]
+      }
+
+      // Organização estruturada
+      const organizationStructuredData = {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'AbaetéFest',
+        url: 'https://app.abaetefest.com.br',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://app.abaetefest.com.br/logo.png'
+        },
+        description: 'Plataforma de eventos de Abaetetuba e região amazônica',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Abaetetuba',
+          addressRegion: 'Pará',
+          addressCountry: 'BR'
+        },
+        sameAs: [
+          'https://www.facebook.com/abaetefest',
+          'https://www.instagram.com/abaetefest',
+          'https://twitter.com/abaetefest'
+        ]
+      }
+
+      // Remove structured data anterior
+      const existingScripts = document.querySelectorAll('[id^="structured-data-"]')
+      existingScripts.forEach(script => script.remove())
+
+      // Adiciona os structured data
+      const structuredDataSets = [
+        { id: 'structured-data-event', data: eventStructuredData },
+        { id: 'structured-data-breadcrumb', data: breadcrumbStructuredData },
+        { id: 'structured-data-organization', data: organizationStructuredData }
+      ]
+
+      structuredDataSets.forEach(({ id, data }) => {
+        const script = document.createElement('script')
+        script.id = id
+        script.type = 'application/ld+json'
+        script.textContent = JSON.stringify(data)
+        document.head.appendChild(script)
+      })
     },
 
     getEvent: async function (id) {
