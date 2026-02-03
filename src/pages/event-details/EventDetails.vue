@@ -40,13 +40,13 @@
             {{ event.name }}
           </div>
 
-          <!-- Data e horário -->
-          <div class="row q-gutter-sm q-mb-lg">
+          <!-- Data e Local -->
+          <div class="row q-gutter-sm q-mb-lg items-stretch">
             <div class="col-12 col-sm">
-              <q-card flat bordered class="q-pa-md bg-grey-1" :class="$q.dark.isActive ? 'bg-grey-9' : ''">
-                <div class="row items-center q-gutter-sm">
-                  <q-avatar color="primary" text-color="white" icon="mdi-calendar" size="sm" />
-                  <div>
+              <q-card flat bordered class="q-pa-md bg-grey-1 event-info-card" :class="$q.dark.isActive ? 'bg-grey-9' : ''">
+                <div class="row items-start q-gutter-sm no-wrap">
+                  <q-avatar color="primary" text-color="white" icon="mdi-calendar" size="sm" class="q-mt-xs" />
+                  <div class="min-width-0 col">
                     <div v-if="event.recurring && event.recurring_days && event.recurring_days.trim() !== ''">
                       <div class="text-caption text-grey-6 text-uppercase text-weight-medium">Dias do evento</div>
                       <div class="text-body2 text-weight-bold">{{ event.recurring_days }}</div>
@@ -62,10 +62,10 @@
             </div>
 
             <div class="col-12 col-sm" v-if="event.location">
-              <q-card flat bordered class="q-pa-md bg-grey-1" :class="$q.dark.isActive ? 'bg-grey-9' : ''">
-                <div class="row items-center q-gutter-sm">
-                  <q-avatar color="primary" text-color="white" icon="mdi-map-marker" size="sm" />
-                  <div>
+              <q-card flat bordered class="q-pa-md bg-grey-1 event-info-card" :class="$q.dark.isActive ? 'bg-grey-9' : ''">
+                <div class="row items-start q-gutter-sm no-wrap">
+                  <q-avatar color="primary" text-color="white" icon="mdi-map-marker" size="sm" class="q-mt-xs" />
+                  <div class="min-width-0 col">
                     <div class="text-caption text-grey-6 text-uppercase text-weight-medium">Local</div>
                     <div class="text-body2 text-weight-bold">{{ event.location }}</div>
                   </div>
@@ -124,17 +124,17 @@
           <div class="q-gutter-y-sm">
             <div class="row q-gutter-sm">
               <div class="col-12 col-sm">
-                <q-btn v-if="canShare" unelevated rounded color="primary" icon-right="mdi-share-variant"
+                <q-btn v-if="canShare" unelevated rounded color="primary" icon="mdi-share-variant"
                   label="Compartilhar" class="full-width" @click="shareApp" no-caps />
               </div>
 
               <div class="col-12 col-sm">
-                <q-btn rounded color="grey-7" icon="mdi-calendar-plus" label="Adicionar ao calendário"
+                <q-btn rounded color="grey-7" icon="mdi-calendar-plus" label="Adicionar"
                   @click="addToCalendar" no-caps class="full-width" />
               </div>
 
               <div class="col-12 col-sm">
-                <q-btn outline rounded color="primary" icon-right="mdi-arrow-left" label="Voltar" class="full-width"
+                <q-btn outline rounded color="primary" icon="mdi-arrow-left" label="Voltar" class="full-width"
                   no-caps @click="backToEvents" />
               </div>
 
