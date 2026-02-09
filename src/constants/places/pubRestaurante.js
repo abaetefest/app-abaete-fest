@@ -81,8 +81,8 @@ export const pubRestaurante = [
     address: 'Av. Dom Pedro II, 696 - Centro'
   },
   {
-    latitude: -1.7238736,
-    longitude: -48.8868696,
+    latitude: -1.72379536,
+    longitude: -48.8869396,
     icon: 'places/pub-restaurante/ducaliari.png',
     title: "Du'Calliari Pub & Restô",
     category: 'Pub&Restaurante',
@@ -115,15 +115,6 @@ export const pubRestaurante = [
     category: 'Pub&Restaurante',
     preco: 2,
     address: 'Rio Sirituba - Abaetetuba'
-  },
-  {
-    latitude: -1.7170225,
-    longitude: -48.8785428,
-    icon: 'places/pub-restaurante/cantinhonilda.png',
-    title: 'Cantinho da Tia Nilda',
-    category: 'Pub&Restaurante',
-    preco: 2,
-    address: 'Tv. Dom Pedro I, 1201 - Francilândia'
   },
   {
     latitude: -1.718968,

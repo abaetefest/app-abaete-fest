@@ -50,6 +50,11 @@ export const placesCategories = [
     icon: 'flat/church.png'
   },
   {
+    label: 'Lanchonetes',
+    value: 'Lanchonetes',
+    icon: 'places/categories/lanchonete.png'
+  },
+  {
     label: 'Pub & Restaurante',
     value: 'Pub&Restaurante',
     icon: 'flat/cheers.png'

@@ -8,6 +8,7 @@ import { hoteis } from './hoteis.js'
 import { hospitaisPostos } from './hospitaisPostos.js'
 import { igrejasCatolicas } from './igrejasCatolicas.js'
 import { igrejasEvangelicas } from './igrejasEvangelicas.js'
+import { lanchonetes } from './lanchonetes.js'
 import { pubRestaurante } from './pubRestaurante.js'
 import { sorveterias } from './sorveterias.js'
 import { suplementosSaude } from './suplementosSaude.js'
@@ -22,6 +23,7 @@ export const makers = [
   ...hospitaisPostos,
   ...igrejasCatolicas,
   ...igrejasEvangelicas,
+  ...lanchonetes,
   ...pesca,
   ...pubRestaurante,
   ...sorveterias,
