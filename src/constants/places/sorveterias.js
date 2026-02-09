@@ -1,5 +1,15 @@
 export const sorveterias = [
   {
+    latitude: '-1.7245102',
+    longitude: '-48.8875107',
+    icon: 'places/sorveterias/iacafrozen.png',
+    title: 'Açaiteria IAÇA FROZEN®️',
+    category: 'Sorveterias',
+    preco: 0,
+    phone: '919321-0974',
+    address: 'Passagem Padre Luís Varela, 1466 - Centro'
+  },
+  {
     latitude: -1.7242434,
     longitude: -48.88609,
     icon: 'places/sorveterias/chiquinhosorvetes.png',

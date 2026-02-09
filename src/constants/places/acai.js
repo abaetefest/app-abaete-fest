@@ -1,13 +1,13 @@
 export const acai = [
   {
-    latitude: '-1.7243786',
-    longitude: '-48.8822046',
-    icon: 'flat/acai.png',
+    latitude: '-1.7245102',
+    longitude: '-48.8875107',
+    icon: 'places/sorveterias/iacafrozen.png',
     title: 'Açaiteria IAÇA FROZEN®️',
     category: 'Açaí',
     preco: 0,
     phone: '919321-0974',
-    address: 'Av. Dom Pedro II - Centro'
+    address: 'Passagem Padre Luís Varela, 1466 - Centro'
   },
   {
     latitude: '-1.729252',
