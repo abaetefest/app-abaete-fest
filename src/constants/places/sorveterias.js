@@ -55,6 +55,15 @@ export const sorveterias = [
     address: 'R. Magno de Araújo, 2151 - São Lourenço'
   },
   {
+    latitude: -1.7237693,
+    longitude: -48.8860084,
+    icon: 'places/sorveterias/milkyMoo.png',
+    title: 'Milky Moo',
+    category: 'Sorveterias',
+    preco: 2,
+    address: 'R. Lauro Sodré, 1586 - Centro'
+  },
+  {
     latitude: -1.7242825,
     longitude: -48.8848977,
     icon: 'places/sorveterias/spazio_gourmet.png',
