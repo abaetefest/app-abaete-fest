@@ -1,12 +1,11 @@
 export const comidasRegionais = [
   {
-    latitude: '-1.7245102',
-    longitude: '-48.8875107',
-    icon: 'places/sorveterias/iacafrozen.png',
-    title: 'Açaiteria IAÇA FROZEN®️',
+    latitude: '-1.72471061',
+    longitude: '-48.8847607',
+    icon: 'places/categories/comidasRegionais.png',
+    title: 'Tacacá da tia Bena',
     category: 'ComidasRegionais',
-    preco: 0,
-    phone: '919321-0974',
-    address: 'Passagem Padre Luís Varela, 1466 - Centro'
+    address:
+      'Ao lado da Escola Bernadino Pereira de Barros - R. Magno de Araújo, 1513 - Centro'
   }
 ]

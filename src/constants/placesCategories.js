@@ -15,6 +15,11 @@ export const placesCategories = [
     icon: 'flat/bank.png'
   },
   {
+    label: 'Comidas Regionais',
+    value: 'ComidasRegionais',
+    icon: 'places/categories/comidasRegionais.png'
+  },
+  {
     label: 'Churrascarias/Espetarias',
     value: 'Churrascaria&Espetaria',
     icon: 'places/categories/churrascaria.png'
