@@ -80,5 +80,14 @@ export const sorveterias = [
     category: 'Sorveterias',
     preco: 2,
     address: 'Av. Dom Pedro II, 1258 - Santa Rosa'
+  },
+  {
+    latitude: -1.7306316,
+    longitude: -48.8705933,
+    icon: 'places/sorveterias/bobs.png',
+    title: "Bob's Sorveteria",
+    category: 'Sorveterias',
+    preco: 2,
+    address: 'Rod. Dr. João Miranda, 2429 - São Sebastião'
   }
 ]
