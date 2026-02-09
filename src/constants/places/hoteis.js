@@ -12,7 +12,7 @@ export const hoteis = [
   {
     latitude: '-1.7263766',
     longitude: '-48.8818199',
-    icon: 'categories/hotel.png',
+    icon: 'places/categories/hotel.png',
     title: 'Hotel Maratauira',
     category: 'Hotéis',
     preco: 2,
@@ -22,7 +22,7 @@ export const hoteis = [
   {
     latitude: '-1.7243473',
     longitude: '-48.879200',
-    icon: 'categories/hotel.png',
+    icon: 'places/categories/hotel.png',
     title: 'Hotel São Paulo',
     category: 'Hotéis',
     preco: 2,
@@ -32,7 +32,7 @@ export const hoteis = [
   {
     latitude: '-1.7222281',
     longitude: '-48.8774083',
-    icon: 'categories/hotel.png',
+    icon: 'places/categories/hotel.png',
     title: 'Hotel Miriti',
     category: 'Hotéis',
     preco: 2,
@@ -82,7 +82,7 @@ export const hoteis = [
   {
     latitude: '-1.7284712',
     longitude: '-48.8738797',
-    icon: 'categories/hotel.png',
+    icon: 'places/categories/hotel.png',
     title: 'Hotel Cristo Redentor',
     category: 'Hotéis',
     preco: 2,
@@ -92,7 +92,7 @@ export const hoteis = [
   {
     latitude: '-1.7196882',
     longitude: '-48.8823879',
-    icon: 'categories/hotel.png',
+    icon: 'places/categories/hotel.png',
     title: 'Hotel 3 Irmãos',
     category: 'Hotéis',
     preco: 2,

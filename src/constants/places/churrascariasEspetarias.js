@@ -11,7 +11,7 @@ export const churrascariasEspetarias = [
   {
     latitude: -1.7257891,
     longitude: -48.8810354,
-    icon: 'categories/churrascaria.png',
+    icon: 'places/categories/churrascaria.png',
     title: 'Restaurante E Churrascaria Bom Paladar',
     category: 'Churrascaria&Espetaria',
     preco: 2,
@@ -38,7 +38,7 @@ export const churrascariasEspetarias = [
   {
     latitude: -1.7232899,
     longitude: -48.8783825,
-    icon: 'categories/churrascaria.png',
+    icon: 'places/categories/churrascaria.png',
     title: 'Restaurante E Churrascaria Bom Paladar 2',
     category: 'Churrascaria&Espetaria',
     preco: 2,
@@ -74,7 +74,7 @@ export const churrascariasEspetarias = [
   {
     latitude: -1.7209169,
     longitude: -48.8854631,
-    icon: 'categories/churrascaria.png',
+    icon: 'places/categories/churrascaria.png',
     title: 'Churrasco e Boteco da Lauro Sodré',
     category: 'Churrascaria&Espetaria',
     preco: 2,

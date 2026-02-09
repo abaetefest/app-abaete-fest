@@ -21,7 +21,7 @@ export const sorveterias = [
   {
     latitude: -1.7224157,
     longitude: -48.8878984,
-    icon: 'categories/sorveteria.png',
+    icon: 'places/categories/sorveteria.png',
     title: 'Sorveteria Iracema',
     category: 'Sorveterias',
     preco: 2,
@@ -48,7 +48,7 @@ export const sorveterias = [
   {
     latitude: -1.7191682,
     longitude: -48.8831848,
-    icon: 'categories/sorveteria.png',
+    icon: 'places/categories/sorveteria.png',
     title: 'Sorveteria Iracema 2',
     category: 'Sorveterias',
     preco: 2,
@@ -66,7 +66,7 @@ export const sorveterias = [
   {
     latitude: -1.7252525,
     longitude: -48.8807299,
-    icon: 'categories/sorveteria.png',
+    icon: 'places/categories/sorveteria.png',
     title: 'Sorveteria Ituzinho Mania',
     category: 'Sorveterias',
     preco: 2,
