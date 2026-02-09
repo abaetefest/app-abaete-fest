@@ -72,6 +72,15 @@ export const pubRestaurante = [
     address: 'Av. Dom Pedro II, 712 - Centro'
   },
   {
+    latitude: -1.7239066,
+    longitude: -48.8858218,
+    icon: 'places/pub-restaurante/miranteAvenida.png',
+    title: 'Mirante Avenida',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'Av. Dom Pedro II, 613 - Centro'
+  },
+  {
     latitude: -1.7240142,
     longitude: -48.88608,
     icon: 'places/pub-restaurante/salemelgrelhados.png',

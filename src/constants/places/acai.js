@@ -60,16 +60,6 @@ export const acai = [
     address: 'Tv. Rui Barbosa, n⁰ 573, bairro: Algodoal'
   },
   {
-    latitude: '-1.7239045',
-    longitude: '-48.8858251',
-    icon: 'flat/acai.png',
-    title: 'Açaí do centro',
-    category: 'Açaí',
-    preco: 0,
-    phone: '91 992448077',
-    address: 'Av. Dom Pedro II, n⁰ 703- Centro'
-  },
-  {
     latitude: '-1.7285304',
     longitude: '-48.8698371',
     icon: 'flat/acai.png',
