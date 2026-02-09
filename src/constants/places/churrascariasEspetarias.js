@@ -2,7 +2,7 @@ export const churrascariasEspetarias = [
   {
     latitude: -1.7274963,
     longitude: -48.8763478,
-    icon: 'map-icon/berrodoboi.png',
+    icon: 'places/churrascarias/berrodoboi.png',
     title: 'Churrascaria Berro do Boi',
     category: 'Churrascaria&Espetaria',
     preco: 2,
@@ -20,7 +20,7 @@ export const churrascariasEspetarias = [
   {
     latitude: -1.7184173,
     longitude: -48.8821348,
-    icon: 'places/churrascaria/espetariaabaetetuba.png',
+    icon: 'places/churrascarias/espetariaabaetetuba.png',
     title: 'Espetaria Abaetetuba',
     category: 'Churrascaria&Espetaria',
     preco: 2,
@@ -29,7 +29,7 @@ export const churrascariasEspetarias = [
   {
     latitude: -1.7208352,
     longitude: -48.8836972,
-    icon: 'map-icon/texas.png',
+    icon: 'places/churrascarias/texas.png',
     title: 'Texas Premium Steakhouse',
     category: 'Churrascaria&Espetaria',
     preco: 3,
@@ -47,7 +47,7 @@ export const churrascariasEspetarias = [
   {
     latitude: -1.7211932,
     longitude: -48.8870013,
-    icon: 'places/churrascaria/churrascotravanca.png',
+    icon: 'places/churrascarias/churrascotravanca.png',
     title: 'Churrasco do Travanca',
     category: 'Churrascaria&Espetaria',
     preco: 2,
@@ -56,7 +56,7 @@ export const churrascariasEspetarias = [
   {
     latitude: -1.720709,
     longitude: -48.8840228,
-    icon: 'places/churrascaria/botecodopapai.png',
+    icon: 'places/churrascarias/botecodopapai.png',
     title: 'Boteco do Papai - Churrascaria',
     category: 'Churrascaria&Espetaria',
     preco: 2,
@@ -65,7 +65,7 @@ export const churrascariasEspetarias = [
   {
     latitude: -1.720441,
     longitude: -48.8833538,
-    icon: 'places/churrascaria/churrascariaprimicias.png',
+    icon: 'places/churrascarias/churrascariaprimicias.png',
     title: 'Churrascaria Primícias',
     category: 'Churrascaria&Espetaria',
     preco: 2,
@@ -83,7 +83,7 @@ export const churrascariasEspetarias = [
   {
     latitude: -1.7244941,
     longitude: -48.8838516,
-    icon: 'places/churrascaria/churrascariaboigordo.png',
+    icon: 'places/churrascarias/churrascariaboigordo.png',
     title: 'Churrascaria Boi Gordo',
     category: 'Churrascaria&Espetaria',
     preco: 2,

@@ -2,7 +2,7 @@ export const bancos = [
   {
     latitude: '-1.7236845',
     longitude: '-48.8876783',
-    icon: 'places/bancobrasil.png',
+    icon: 'places/bancos/bancobrasil.png',
     title: 'Banco do Brasil',
     category: 'Bancos',
     preco: 0,
@@ -12,7 +12,7 @@ export const bancos = [
   {
     latitude: '-1.7258585',
     longitude: '-48.8793673',
-    icon: 'places/banpara.png',
+    icon: 'places/bancos/banpara.png',
     title: 'Banpará',
     category: 'Bancos',
     preco: 0,
@@ -22,7 +22,7 @@ export const bancos = [
   {
     latitude: '-1.7234557',
     longitude: '-48.8888714',
-    icon: 'places/basa.png',
+    icon: 'places/bancos/basa.png',
     title: 'Basa',
     category: 'Bancos',
     preco: 0,
@@ -32,7 +32,7 @@ export const bancos = [
   {
     latitude: '-1.7238046',
     longitude: '-48.8873328',
-    icon: 'places/bradesco.png',
+    icon: 'places/bancos/bradesco.png',
     title: 'Bradesco',
     category: 'Bancos',
     preco: 0,
@@ -42,7 +42,7 @@ export const bancos = [
   {
     latitude: '-1.7248895',
     longitude: '-48.8902235',
-    icon: 'places/caixa.png',
+    icon: 'places/bancos/caixa.png',
     title: 'Caixa Econômica Federal',
     category: 'Bancos',
     preco: 0,
@@ -52,7 +52,7 @@ export const bancos = [
   {
     latitude: '-1.7239915',
     longitude: '-48.8886968',
-    icon: 'places/itau.png',
+    icon: 'places/bancos/itau.png',
     title: 'Itaú',
     category: 'Bancos',
     preco: 0,
@@ -62,7 +62,7 @@ export const bancos = [
   {
     latitude: '-1.7265462',
     longitude: '-48.8901371',
-    icon: 'places/santander.png',
+    icon: 'places/bancos/santander.png',
     title: 'Santander',
     category: 'Bancos',
     preco: 0,
@@ -72,7 +72,7 @@ export const bancos = [
   {
     latitude: '-1.7240100',
     longitude: '-48.8858000',
-    icon: 'places/sicoob.png',
+    icon: 'places/bancos/sicoob.png',
     title: 'Sicoob',
     category: 'Bancos',
     preco: 0,

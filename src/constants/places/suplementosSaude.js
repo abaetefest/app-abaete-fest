@@ -11,7 +11,7 @@ export const suplementosSaude = [
   {
     latitude: '-1.7340233',
     longitude: '-48.8595294',
-    icon: 'map-icon/bioflora.png',
+    icon: 'places/suplementos-saude/bioflora.png',
     title: 'Bioflora Abaetetuba',
     category: 'Suplemento&Saude',
     phone: '(91) 99215-9858',

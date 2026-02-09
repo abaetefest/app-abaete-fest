@@ -1,8 +1,8 @@
 export const sorveterias = [
   {
     latitude: -1.7242434,
-    longitude: -48.886090,
-    icon: 'places/sorveteria/chiquinhosorvetes.png',
+    longitude: -48.88609,
+    icon: 'places/sorveterias/chiquinhosorvetes.png',
     title: 'Chiquinho Sorvetes',
     category: 'Sorveterias',
     preco: 2,
@@ -18,9 +18,18 @@ export const sorveterias = [
     address: 'Av. Quinze de Agosto, 309 - Centro'
   },
   {
-    latitude: -1.7231400,
-    longitude: -48.8844500,
-    icon: 'places/sorveteria/frutosgoias.png',
+    latitude: -1.7197705,
+    longitude: -48.8853801,
+    icon: 'places/sorveterias/pops-sorveteria.png',
+    title: "Pop's Sorveteria e Cafeteria",
+    category: 'Sorveterias',
+    preco: 2,
+    address: 'Av. Quinze de Agosto, 309 - Centro'
+  },
+  {
+    latitude: -1.72314,
+    longitude: -48.88445,
+    icon: 'places/sorveterias/frutosgoias.png',
     title: 'Sorveteria Frutos Goiás',
     category: 'Sorveterias',
     preco: 2,
@@ -38,7 +47,7 @@ export const sorveterias = [
   {
     latitude: -1.7242825,
     longitude: -48.8848977,
-    icon: 'places/sorveteria/spazio_gourmet.png',
+    icon: 'places/sorveterias/spazio_gourmet.png',
     title: 'Spazio Gourmet - Burger & Pizza',
     category: 'Sorveterias',
     preco: 2,
@@ -56,7 +65,7 @@ export const sorveterias = [
   {
     latitude: -1.7253068,
     longitude: -48.8802539,
-    icon: 'places/sorveteria/milkshakeup.png',
+    icon: 'places/sorveterias/milkshakeup.png',
     title: 'Sorveteria Milk Shake UP',
     category: 'Sorveterias',
     preco: 2,

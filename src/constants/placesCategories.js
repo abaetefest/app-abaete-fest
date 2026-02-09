@@ -22,17 +22,17 @@ export const placesCategories = [
   {
     label: 'Farmácias',
     value: 'Farmácias',
-    icon: 'places/farmacia.png'
+    icon: 'categories/farmacia.png'
   },
   {
     label: 'Hotéis',
     value: 'Hotéis',
-    icon: 'places/hotel.png'
+    icon: 'categories/hotel.png'
   },
   {
     label: 'Hospitais e Postos de Saúde',
     value: 'Hospital&Posto',
-    icon: 'places/hospital.png'
+    icon: 'categories/hospital.png'
   },
   {
     label: 'Igrejas Católicas',

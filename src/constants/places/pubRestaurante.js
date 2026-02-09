@@ -1,8 +1,8 @@
 export const pubRestaurante = [
   {
-    latitude: -1.7240800,
+    latitude: -1.72408,
     longitude: -48.8811225,
-    icon: 'map-icon/casarao.png',
+    icon: 'places/pub-restaurante/casarao.png',
     title: 'Restaurante e Pizzaria Casarão',
     category: 'Pub&Restaurante',
     preco: 2,
@@ -11,16 +11,16 @@ export const pubRestaurante = [
   {
     latitude: -1.7245973,
     longitude: -48.8817265,
-    icon: 'map-icon/resenha-beer.png',
+    icon: 'places/pub-restaurante/resenha-beer.png',
     title: 'Resenha Beer',
     category: 'Pub&Restaurante',
     preco: 2,
     address: 'Av. Dom Pedro II, 1079'
   },
   {
-    latitude: -1.7250500,
+    latitude: -1.72505,
     longitude: -48.8862901,
-    icon: 'map-icon/simple.png',
+    icon: 'places/pub-restaurante/simple.png',
     title: 'Simple. Bar & Restaurante',
     category: 'Pub&Restaurante',
     preco: 2,
@@ -29,7 +29,7 @@ export const pubRestaurante = [
   {
     latitude: -1.7243967,
     longitude: -48.8841696,
-    icon: 'map-icon/texasburguer.png',
+    icon: 'places/pub-restaurante/texasburguer.png',
     title: 'Texas Pub & Burguer',
     category: 'Pub&Restaurante',
     preco: 3,
@@ -38,7 +38,7 @@ export const pubRestaurante = [
   {
     latitude: -1.724292,
     longitude: -48.884684,
-    icon: 'map-icon/lenhador.png',
+    icon: 'places/pub-restaurante/lenhador.png',
     title: 'Lenhador',
     category: 'Pub&Restaurante',
     preco: 2,
@@ -47,7 +47,7 @@ export const pubRestaurante = [
   {
     latitude: -1.7208352,
     longitude: -48.8836972,
-    icon: 'map-icon/texas.png',
+    icon: 'places/pub-restaurante/texas.png',
     title: 'Texas Premium Steakhouse',
     category: 'Pub&Restaurante',
     preco: 3,
@@ -56,7 +56,7 @@ export const pubRestaurante = [
   {
     latitude: -1.7238808,
     longitude: -48.8852956,
-    icon: 'map-icon/domo.png',
+    icon: 'places/pub-restaurante/domo.png',
     title: 'Restaurante DOMO',
     category: 'Pub&Restaurante',
     preco: 3,
@@ -65,7 +65,7 @@ export const pubRestaurante = [
   {
     latitude: -1.7242825,
     longitude: -48.8848977,
-    icon: 'map-icon/spazio_gourmet.png',
+    icon: 'places/pub-restaurante/spazio_gourmet.png',
     title: 'Spazio Gourmet - Burger & Pizza',
     category: 'Pub&Restaurante',
     preco: 2,
@@ -73,8 +73,8 @@ export const pubRestaurante = [
   },
   {
     latitude: -1.7240142,
-    longitude: -48.8860800,
-    icon: 'map-icon/salemelgrelhados.png',
+    longitude: -48.88608,
+    icon: 'places/pub-restaurante/salemelgrelhados.png',
     title: 'Sal e Mel Grelhados',
     category: 'Pub&Restaurante',
     preco: 2,
@@ -83,7 +83,7 @@ export const pubRestaurante = [
   {
     latitude: -1.7238736,
     longitude: -48.8868696,
-    icon: 'map-icon/ducaliari.png',
+    icon: 'places/pub-restaurante/ducaliari.png',
     title: "Du'Calliari Pub & Restô",
     category: 'Pub&Restaurante',
     preco: 2,
@@ -92,7 +92,7 @@ export const pubRestaurante = [
   {
     latitude: -1.7274963,
     longitude: -48.8763478,
-    icon: 'map-icon/berrodoboi.png',
+    icon: 'places/pub-restaurante/berrodoboi.png',
     title: 'Churrascaria Berro do Boi',
     category: 'Pub&Restaurante',
     preco: 2,
@@ -101,25 +101,16 @@ export const pubRestaurante = [
   {
     latitude: -1.7284956,
     longitude: -48.8942448,
-    icon: 'map-icon/malocabelavista.png',
+    icon: 'places/pub-restaurante/malocabelavista.png',
     title: 'Maloca Bela Vista',
     category: 'Pub&Restaurante',
     preco: 2,
     address: 'Tv. Padre Pímentel, 1 - Centro'
   },
   {
-    latitude: -1.7180197,
-    longitude: -48.8894869,
-    icon: 'map-icon/hotfolia.png',
-    title: 'Hot Folia Beira Mar',
-    category: 'Pub&Restaurante',
-    preco: 2,
-    address: 'R. Siqueira Mendes, 2207 - São José'
-  },
-  {
     latitude: -1.7112146,
     longitude: -48.9093037,
-    icon: 'map-icon/preamar.png',
+    icon: 'places/pub-restaurante/preamar.png',
     title: 'Bar Point Pré a Mar',
     category: 'Pub&Restaurante',
     preco: 2,
@@ -128,16 +119,34 @@ export const pubRestaurante = [
   {
     latitude: -1.7170225,
     longitude: -48.8785428,
-    icon: 'map-icon/cantinhonilda.png',
+    icon: 'places/pub-restaurante/cantinhonilda.png',
     title: 'Cantinho da Tia Nilda',
     category: 'Pub&Restaurante',
     preco: 2,
     address: 'Tv. Dom Pedro I, 1201 - Francilândia'
   },
   {
+    latitude: -1.718968,
+    longitude: -48.889915,
+    icon: 'places/pub-restaurante/bar-por-do-sol.png',
+    title: 'Bar Pôr do Sol',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'Tv. Evandro Chagas, SN - Centro.'
+  },
+  {
+    latitude: -1.719609,
+    longitude: -48.889915,
+    icon: 'places/pub-restaurante/mirante-pub.png',
+    title: 'Mirante GastroPub',
+    category: 'Pub&Restaurante',
+    preco: 2,
+    address: 'Tv. Evandro Chagas, SN - Centro.'
+  },
+  {
     latitude: -1.7200579,
     longitude: -48.8900612,
-    icon: 'map-icon/jbportorestaurante.png',
+    icon: 'places/pub-restaurante/jbportorestaurante.png',
     title: 'JB Restaurante',
     category: 'Pub&Restaurante',
     preco: 2,
@@ -146,7 +155,7 @@ export const pubRestaurante = [
   {
     latitude: -1.7129316,
     longitude: -48.886889,
-    icon: 'map-icon/paxiuba.png',
+    icon: 'places/pub-restaurante/paxiuba.png',
     title: 'Bar E Restaurante Paxiuba',
     category: 'Pub&Restaurante',
     preco: 2,
@@ -155,19 +164,10 @@ export const pubRestaurante = [
   {
     latitude: -1.7257391,
     longitude: -48.8810016,
-    icon: 'map-icon/aguanaboca.png',
+    icon: 'places/pub-restaurante/aguanaboca.png',
     title: 'Água na Boca',
     category: 'Pub&Restaurante',
     preco: 2,
     address: 'R. Joaquim Mendes Contente, 1501'
-  },
-  {
-    latitude: -1.7199928,
-    longitude: -48.8834146,
-    icon: 'map-icon/divinacolher.png',
-    title: 'Divina Colher',
-    category: 'Pub&Restaurante',
-    preco: 2,
-    address: 'R. Magno de Araújo, 2047 - São Lourenço'
   }
 ]
