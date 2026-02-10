@@ -7,14 +7,13 @@ export default {
   data() {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      zoom: 13,
+      zoom: 16,
       center: [],
       ready: false,
       makers: makers,
       makersMap: makers,
       categoria: 'Todas',
       icon: L.icon({
-        iconUrl: 'map-icon/barbudos.png',
         iconSize: [50, 50],
         iconAnchor: [16, 37]
       }),
@@ -82,8 +81,12 @@ export default {
       this.infoOptions.content = `
       <div>
         <strong class="text-h6" style="color: black">${m.title}</strong> <br>
-        <span class="text-body1 text-weight-medium" style="color: black">${m.address}</span> <br>
-        <span class="text-body1 text-weight-medium" style="color: black">${m.phone ? m.phone : ''}</span> <br>
+        <span class="text-body1 text-weight-medium" style="color: black">${
+          m.address
+        }</span> <br>
+        <span class="text-body1 text-weight-medium" style="color: black">${
+          m.phone ? m.phone : ''
+        }</span> <br>
       </div>
       `
 

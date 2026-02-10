@@ -2,7 +2,7 @@ export const suplementosSaude = [
   {
     latitude: '-1.7236019',
     longitude: '-48.8862466',
-    icon: 'categories/whey.png',
+    icon: 'places/categories/whey.png',
     title: 'Loja Supplement Time',
     category: 'Suplemento&Saude',
     phone: '91 98400-7157',
@@ -11,7 +11,7 @@ export const suplementosSaude = [
   {
     latitude: '-1.7340233',
     longitude: '-48.8595294',
-    icon: 'map-icon/bioflora.png',
+    icon: 'places/suplementos-saude/bioflora.png',
     title: 'Bioflora Abaetetuba',
     category: 'Suplemento&Saude',
     phone: '(91) 99215-9858',
@@ -20,7 +20,7 @@ export const suplementosSaude = [
   {
     latitude: '-1.7224807',
     longitude: '-48.8859769',
-    icon: 'categories/whey.png',
+    icon: 'places/categories/whey.png',
     title: 'Helton Suplementos Atacadão',
     category: 'Suplemento&Saude',
     phone: '(91) 99288-1707',
@@ -29,7 +29,7 @@ export const suplementosSaude = [
   {
     latitude: '-1.7179714',
     longitude: '-48.8752396',
-    icon: 'categories/whey.png',
+    icon: 'places/categories/whey.png',
     title: 'Boa forma Suplementos',
     category: 'Suplemento&Saude',
     phone: '(91) 98457-4115',

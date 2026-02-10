@@ -1,13 +1,13 @@
 export const acai = [
   {
-    latitude: '-1.7243786',
-    longitude: '-48.8822046',
-    icon: 'flat/acai.png',
+    latitude: '-1.7245102',
+    longitude: '-48.8875107',
+    icon: 'places/sorveterias/iacafrozen.png',
     title: 'Açaiteria IAÇA FROZEN®️',
     category: 'Açaí',
     preco: 0,
     phone: '919321-0974',
-    address: 'Av. Dom Pedro II - Centro'
+    address: 'Passagem Padre Luís Varela, 1466 - Centro'
   },
   {
     latitude: '-1.729252',
@@ -58,16 +58,6 @@ export const acai = [
     preco: 0,
     phone: '91 9 89892926',
     address: 'Tv. Rui Barbosa, n⁰ 573, bairro: Algodoal'
-  },
-  {
-    latitude: '-1.7239045',
-    longitude: '-48.8858251',
-    icon: 'flat/acai.png',
-    title: 'Açaí do centro',
-    category: 'Açaí',
-    preco: 0,
-    phone: '91 992448077',
-    address: 'Av. Dom Pedro II, n⁰ 703- Centro'
   },
   {
     latitude: '-1.7285304',

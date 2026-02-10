@@ -15,24 +15,29 @@ export const placesCategories = [
     icon: 'flat/bank.png'
   },
   {
+    label: 'Comidas Regionais',
+    value: 'ComidasRegionais',
+    icon: 'places/categories/comidasRegionais.png'
+  },
+  {
     label: 'Churrascarias/Espetarias',
     value: 'Churrascaria&Espetaria',
-    icon: 'categories/churrascaria.png'
+    icon: 'places/categories/churrascaria.png'
   },
   {
     label: 'Farmácias',
     value: 'Farmácias',
-    icon: 'places/farmacia.png'
+    icon: 'places/categories/farmacia.png'
   },
   {
     label: 'Hotéis',
     value: 'Hotéis',
-    icon: 'places/hotel.png'
+    icon: 'places/categories/hotel.png'
   },
   {
     label: 'Hospitais e Postos de Saúde',
     value: 'Hospital&Posto',
-    icon: 'places/hospital.png'
+    icon: 'places/categories/hospital.png'
   },
   {
     label: 'Igrejas Católicas',
@@ -45,6 +50,11 @@ export const placesCategories = [
     icon: 'flat/church.png'
   },
   {
+    label: 'Lanchonetes',
+    value: 'Lanchonetes',
+    icon: 'places/categories/lanchonete.png'
+  },
+  {
     label: 'Pub & Restaurante',
     value: 'Pub&Restaurante',
     icon: 'flat/cheers.png'
@@ -52,12 +62,12 @@ export const placesCategories = [
   {
     label: 'Sorveterias',
     value: 'Sorveterias',
-    icon: 'categories/sorveteria.png'
+    icon: 'places/categories/sorveteria.png'
   },
 
   {
     label: 'Suplementos e Saúde',
     value: 'Suplemento&Saude',
-    icon: 'categories/whey.png'
+    icon: 'places/categories/whey.png'
   }
 ]

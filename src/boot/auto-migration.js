@@ -26,8 +26,9 @@ export default boot(({ Vue }) => {
     Vue.prototype.$autoMigrate = async function () {
       try {
         if ('serviceWorker' in navigator) {
-          const registrations = await navigator.serviceWorker.getRegistrations()
-          const hasActiveWorker = registrations.some(reg => reg.active)
+          const registrations =
+            await navigator.serviceWorker.getRegistrations()
+          const hasActiveWorker = registrations.some((reg) => reg.active)
 
           if (hasActiveWorker) {
             console.log('✅ Service Worker ativo encontrado, pulando migração')
@@ -40,7 +41,9 @@ export default boot(({ Vue }) => {
 
         // Step 1: Verificar se está em hash mode
         if (this.$hasHashInURL()) {
-          console.log('📍 Hash detectado na URL, redirecionando para history mode...')
+          console.log(
+            '📍 Hash detectado na URL, redirecionando para history mode...'
+          )
 
           // Extrai a rota sem hash
           const hashRoute = window.location.hash.replace('#', '')
@@ -55,7 +58,8 @@ export default boot(({ Vue }) => {
         if ('serviceWorker' in navigator) {
           console.log('🧹 Limpando Service Workers antigos...')
 
-          const registrations = await navigator.serviceWorker.getRegistrations()
+          const registrations =
+            await navigator.serviceWorker.getRegistrations()
 
           for (const registration of registrations) {
             console.log('🗑️ Removendo SW:', registration.scope)
@@ -82,7 +86,9 @@ export default boot(({ Vue }) => {
           ]
 
           for (const cacheName of cacheNames) {
-            const shouldDelete = oldCachePatterns.some(pattern => pattern.test(cacheName))
+            const shouldDelete = oldCachePatterns.some((pattern) =>
+              pattern.test(cacheName)
+            )
 
             if (shouldDelete) {
               console.log('🗑️ Removendo cache:', cacheName)
@@ -117,24 +123,24 @@ export default boot(({ Vue }) => {
     // Mostra notificação de migração bem-sucedida
     Vue.prototype.$showMigrationSuccess = function () {
       // Aguarda um pouco para não interferir no carregamento
-      setTimeout(() => {
-        if (this.$q && this.$q.notify) {
-          this.$q.notify({
-            message: 'App atualizado!',
-            caption: 'Nova versão com melhorias de performance e SEO',
-            color: 'positive',
-            icon: 'system_update_alt',
-            position: 'top',
-            timeout: 4000,
-            actions: [
-              {
-                label: 'OK',
-                color: 'white'
-              }
-            ]
-          })
-        }
-      }, 2000)
+      // setTimeout(() => {
+      //   if (this.$q && this.$q.notify) {
+      //     this.$q.notify({
+      //       message: 'App atualizado!',
+      //       caption: 'Nova versão com melhorias de performance e SEO',
+      //       color: 'positive',
+      //       icon: 'system_update_alt',
+      //       position: 'top',
+      //       timeout: 4000,
+      //       actions: [
+      //         {
+      //           label: 'OK',
+      //           color: 'white'
+      //         }
+      //       ]
+      //     })
+      //   }
+      // }, 2000)
     }
 
     // Migração silenciosa para usuários que já migraram
@@ -144,14 +150,21 @@ export default boot(({ Vue }) => {
         if (this.$hasHashInURL()) {
           const hashRoute = window.location.hash.replace('#', '')
           const cleanRoute = hashRoute || '/'
-          window.history.replaceState({}, '', window.location.origin + cleanRoute)
+          window.history.replaceState(
+            {},
+            '',
+            window.location.origin + cleanRoute
+          )
         }
 
         // Limpar apenas caches muito antigos sem notificação
         if ('caches' in window) {
           const cacheNames = await caches.keys()
-          const veryOldCaches = cacheNames.filter(name =>
-            name.includes('-v1') || name.includes('-old') || name.includes('webpack-runtime')
+          const veryOldCaches = cacheNames.filter(
+            (name) =>
+              name.includes('-v1') ||
+              name.includes('-old') ||
+              name.includes('webpack-runtime')
           )
 
           for (const cacheName of veryOldCaches) {
@@ -172,7 +185,11 @@ export default boot(({ Vue }) => {
         const cleanRoute = hashRoute || '/'
 
         // Redireciona sem hash
-        window.history.replaceState({}, '', window.location.origin + cleanRoute)
+        window.history.replaceState(
+          {},
+          '',
+          window.location.origin + cleanRoute
+        )
 
         // Força uma migração se necessário
         if (this.$checkNeedsMigration()) {
@@ -186,7 +203,7 @@ export default boot(({ Vue }) => {
     // Sistema principal de migração
     Vue.prototype.$initMigrationSystem = async function () {
       // Aguarda um pouco para não interferir no carregamento inicial
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      await new Promise((resolve) => setTimeout(resolve, 1000))
 
       try {
         // 1. Primeiro, verifica URLs legadas

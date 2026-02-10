@@ -2,7 +2,7 @@ export const farmacias = [
   {
     latitude: '-1.7243925',
     longitude: '-48.8915142',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Farmácia Drogacacia',
     category: 'Farmácias',
     preco: 2,
@@ -12,7 +12,7 @@ export const farmacias = [
   {
     latitude: '-1.7229941',
     longitude: '-48.8910871',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Farmácia do Trabalhador',
     category: 'Farmácias',
     preco: 2,
@@ -22,7 +22,7 @@ export const farmacias = [
   {
     latitude: '-1.7243434',
     longitude: '-48.8907581',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'DM FARMA',
     category: 'Farmácias',
     preco: 2,
@@ -32,7 +32,7 @@ export const farmacias = [
   {
     latitude: '-1.7230784',
     longitude: '-48.8895938',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Farmácia Contente',
     category: 'Farmácias',
     preco: 2,
@@ -42,7 +42,7 @@ export const farmacias = [
   {
     latitude: '-1.7222669',
     longitude: '-48.8891602',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Farmácia das Ilhas',
     category: 'Farmácias',
     preco: 2,
@@ -52,7 +52,7 @@ export const farmacias = [
   {
     latitude: '-1.7221713',
     longitude: '-48.8890151',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Farma Popular',
     category: 'Farmácias',
     preco: 2,
@@ -62,7 +62,7 @@ export const farmacias = [
   {
     latitude: '-1.7232623',
     longitude: '-48.8888914',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Extrafarma',
     category: 'Farmácias',
     preco: 3,
@@ -72,7 +72,7 @@ export const farmacias = [
   {
     latitude: '-1.7241677',
     longitude: '-48.8889802',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Drogarias Maxi Popular 1',
     category: 'Farmácias',
     preco: 2,
@@ -82,7 +82,7 @@ export const farmacias = [
   {
     latitude: '-1.724398',
     longitude: '-48.8890739',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Drogasil',
     category: 'Farmácias',
     preco: 2,
@@ -92,7 +92,7 @@ export const farmacias = [
   {
     latitude: '-1.7240915',
     longitude: '-48.8886968',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Farmácia Tem Tudo Popular',
     category: 'Farmácias',
     preco: 2,
@@ -102,7 +102,7 @@ export const farmacias = [
   {
     latitude: '-1.7238915',
     longitude: '-48.8886568',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Farmácia Pague Menos',
     category: 'Farmácias',
     preco: 2,
@@ -112,7 +112,7 @@ export const farmacias = [
   {
     latitude: '-1.7291757',
     longitude: '-48.8897365',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Casa dos Medicamentos',
     category: 'Farmácias',
     preco: 2,
@@ -122,7 +122,7 @@ export const farmacias = [
   {
     latitude: '-1.7245439',
     longitude: '-48.8864114',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Reinafarma',
     category: 'Farmácias',
     preco: 2,
@@ -132,7 +132,7 @@ export const farmacias = [
   {
     latitude: '-1.7241479',
     longitude: '-48.8844839',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Farnobre',
     category: 'Farmácias',
     preco: 2,
@@ -142,7 +142,7 @@ export const farmacias = [
   {
     latitude: '-1.7246451',
     longitude: '-48.881466',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Drogarias Maxi Popular 2',
     category: 'Farmácias',
     preco: 2,
@@ -152,7 +152,7 @@ export const farmacias = [
   {
     latitude: '-1.7172251',
     longitude: '-48.8780155',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Farmácia Santa Rita',
     category: 'Farmácias',
     preco: 2,
@@ -162,7 +162,7 @@ export const farmacias = [
   {
     latitude: '-1.7195153',
     longitude: '-48.8747582',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Drogaria R Farma',
     category: 'Farmácias',
     preco: 2,
@@ -172,7 +172,7 @@ export const farmacias = [
   {
     latitude: '-1.7324038',
     longitude: '-48.8699954',
-    icon: 'places/farmacia.png',
+    icon: 'places/categories/farmacia.png',
     title: 'Farma Líder',
     category: 'Farmácias',
     preco: 2,
