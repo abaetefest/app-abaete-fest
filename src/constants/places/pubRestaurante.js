@@ -162,8 +162,8 @@ export const pubRestaurante = [
     address: 'Tv. São Joaquim, 1-117 - São João'
   },
   {
-    latitude: -1.7257391,
-    longitude: -48.8810016,
+    latitude: -1.7254391,
+    longitude: -48.8808016,
     icon: 'places/pub-restaurante/aguanaboca.png',
     title: 'Água na Boca',
     category: 'Pub&Restaurante',

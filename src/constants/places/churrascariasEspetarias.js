@@ -9,6 +9,15 @@ export const churrascariasEspetarias = [
     address: 'Rod. Dr. João Miranda, 1724 - Santa Rosa'
   },
   {
+    latitude: -1.7256841,
+    longitude: -48.8796012,
+    icon: 'places/churrascarias/churrascariaprimicias.png',
+    title: 'Churrascaria Primícias 2',
+    category: 'Churrascaria&Espetaria',
+    preco: 2,
+    address: 'Av. Dom Pedro II, 1368 - Santa Rosa'
+  },
+  {
     latitude: -1.7257891,
     longitude: -48.8810354,
     icon: 'places/categories/churrascaria.png',
@@ -16,6 +25,15 @@ export const churrascariasEspetarias = [
     category: 'Churrascaria&Espetaria',
     preco: 2,
     address: 'R. Joaquim Mendes Contente, 1436 - Santa Rosa'
+  },
+  {
+    latitude: -1.7254391,
+    longitude: -48.8808016,
+    icon: 'places/pub-restaurante/aguanaboca.png',
+    title: 'Água na Boca',
+    category: 'Churrascaria&Espetaria',
+    preco: 2,
+    address: 'R. Joaquim Mendes Contente, 1501'
   },
   {
     latitude: -1.7184173,
