@@ -1,5 +1,4 @@
 import { category } from 'src/constants/category'
-import { CARNIVAL_SCHEDULE_EVENTS } from 'src/constants/carnivalSchedule'
 
 export default {
   name: 'PageEvents',
@@ -558,11 +557,9 @@ export default {
       eventTypeOptions: [
         { label: 'Todos os Eventos', value: 'all' },
         { label: 'Eventos Recorrentes', value: 'recurring' },
-        { label: 'Eventos com Data Específica', value: 'normal' }
+        { label: 'Eventos Únicos', value: 'normal' }
       ],
-      showRecurringTutorial: false, // Controla a exibição do tutorial
-
-      carnivalScheduleEvents: CARNIVAL_SCHEDULE_EVENTS
+      showRecurringTutorial: false // Controla a exibição do tutorial
     }
   },
 
@@ -606,10 +603,6 @@ export default {
 
     normalEvents() {
       return this.filteredEvents.filter(event => this.isNormalEvent(event))
-    },
-
-    carnivalEvents() {
-      return this.carnivalScheduleEvents
     }
   },
 

@@ -140,7 +140,7 @@ export default {
       eventTypeOptions: [
         { label: 'Todos os Eventos', value: 'all', icon: 'mdi-calendar-multiple' },
         { label: 'Eventos Recorrentes', value: 'recurring', icon: 'mdi-repeat' },
-        { label: 'Eventos com Data Específica', value: 'normal', icon: 'mdi-calendar' }
+        { label: 'Eventos Únicos', value: 'normal', icon: 'mdi-calendar' }
       ]
     }
   },
