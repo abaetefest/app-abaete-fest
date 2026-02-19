@@ -175,7 +175,13 @@ const menusRoute = [
     route: 'trips',
     footer: true
   },
-   {
+  {
+    title: 'Locais',
+    icon: 'mdi-storefront-outline',
+    route: 'places',
+    footer: true
+  },
+  {
     title: 'P. Turísticos',
     icon: 'mdi-map-marker-radius',
     route: 'tourism',
@@ -191,12 +197,6 @@ const menusRoute = [
     title: 'Telefones Úteis',
     icon: 'mdi-hammer-screwdriver',
     route: 'services'
-  },
-   {
-    title: 'Locais',
-    icon: 'mdi-storefront-outline',
-    route: 'places',
-    footer: true
   },
   {
     title: 'Podcasts',
