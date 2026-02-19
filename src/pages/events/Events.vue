@@ -71,47 +71,6 @@
         />
       </div>
 
-      <!-- Programação Carnaval -->
-      <div v-if="!load && carnivalEvents.length > 0">
-        <div
-          class="text-h6  q-mb-md text-weight-bold"
-          :class="$q.dark.isActive ? 'text-white' : 'text-primary'"
-        >
-          <q-icon name="mdi-drama-masks" class="q-mr-sm" />
-          Programação Carnaval
-        </div>
-
-        <!-- Grid programação carnaval - Visualização Compacta (título do card = dia da semana) -->
-        <div v-if="viewMode === 'compact'" class="row q-mb-lg">
-          <div
-            v-for="event in carnivalEvents"
-            :key="event.id"
-            class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
-          >
-            <EventCard
-              :event="{ ...event, name: event.dia_semana }"
-              :category-options="options"
-              @click="detailsEvent"
-            />
-          </div>
-        </div>
-
-        <!-- Grid programação carnaval - Visualização Grande (título do card = dia da semana) -->
-        <div v-else class="row q-mb-lg">
-          <div
-            v-for="event in carnivalEvents"
-            :key="event.id"
-            class="col-12 col-sm-6 col-md-6 col-lg-4 q-pa-sm"
-          >
-            <EventCardLarge
-              :event="{ ...event, name: event.dia_semana }"
-              :category-options="options"
-              @click="detailsEvent"
-            />
-          </div>
-        </div>
-      </div>
-
       <!-- Eventos Recorrentes -->
       <div v-if="!load && recurringEvents.length > 0">
         <div
