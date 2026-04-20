@@ -4,8 +4,8 @@
       Lista de <span class="text-accent">Locais</span>
     </div>
     <div class="row q-pb-md justify-center">
-      <q-btn-group push>
-        <q-btn
+      <q-btn-group rounded push>
+        <q-btn rounded
           push
           label="Lista"
           icon="mdi-format-list-bulleted-square"
@@ -13,7 +13,7 @@
           :class="$q.dark.isActive ? 'text-black' : 'text-white'"
           :color="$q.dark.isActive ? 'white' : 'primary'"
         />
-        <q-btn
+        <q-btn rounded
           push
           label="Mapa"
           icon="mdi-map-legend"

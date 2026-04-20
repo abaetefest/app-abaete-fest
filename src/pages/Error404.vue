@@ -12,7 +12,7 @@
         Página não encontrada
       </div>
 
-      <q-btn
+      <q-btn rounded
         class="q-mt-xl"
         color="primary"
         text-color="white"

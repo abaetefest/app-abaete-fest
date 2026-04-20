@@ -18,7 +18,7 @@
       </template>
 
       <template v-slot:top-right>
-        <q-btn label="Novo" dense icon="mdi-plus" color="primary" class="q-ml-md" :to="{name: 'formEvents'}" />
+        <q-btn rounded unelevated no-caps label="Novo" icon="mdi-plus" color="primary" class="q-ml-md q-px-md" :to="{name: 'formEvents'}" />
       </template>
 
       <template v-slot:body-cell-image_url="props">
@@ -54,7 +54,7 @@
 
       <template v-slot:body-cell-acoes="props">
         <q-td :props="props">
-          <q-btn
+          <q-btn rounded
             icon="mdi-magnify"
             color="positive"
             class="q-ml-md"
@@ -66,7 +66,7 @@
               Editar Evento
             </q-tooltip>
           </q-btn>
-          <q-btn
+          <q-btn rounded
             icon="mdi-pencil"
             color="primary"
             class="q-ml-md"
@@ -78,11 +78,12 @@
               Editar Evento
             </q-tooltip>
           </q-btn>
-          <q-btn
+          <q-btn rounded
             icon="mdi-delete"
             color="negative"
             class="q-ml-md"
-            dense size="sm"
+            dense
+            size="sm"
             @click="confirmDelete(props.row)">
             <q-tooltip>
               Deletar Evento

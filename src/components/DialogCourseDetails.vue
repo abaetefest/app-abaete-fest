@@ -15,11 +15,12 @@
       >
         <q-toolbar inset>
           <q-toolbar-title>
-            <q-btn
+            <q-btn rounded
+              unelevated
+              no-caps
               label="Fechar"
-              class="float-right"
+              class="float-right q-px-md"
               :color="$q.dark.isActive ? 'white' : 'primary'"
-              dense
               @click="$emit('close')"
             />
           </q-toolbar-title>
@@ -43,7 +44,7 @@
             </q-card-section>
 
             <q-card-section class="q-pa-sm">
-              <q-btn
+              <q-btn rounded
                 v-if="canShare"
                 dense
                 label="Compartilhar"

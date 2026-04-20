@@ -71,7 +71,7 @@
               />
               <div class="row q-pt-sm">
                 <div class="col-md-4">
-                  <q-btn
+                  <q-btn rounded
                     label="Alterar Imagem"
                     icon="mdi-image-edit-outline"
                     color="primary"
@@ -87,13 +87,13 @@
         <q-card-section>
           <div class="row">
             <div class="col-12 q-gutter-md">
-              <q-btn
+              <q-btn rounded
                 :label="form.id ? 'Atualizar' : 'Cadastrar'"
                 color="primary"
                 class="float-right"
                 type="submit"
               />
-              <q-btn
+              <q-btn rounded
                 label="Cancelar"
                 color="white"
                 class="float-right text-black"

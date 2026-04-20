@@ -138,14 +138,14 @@
           </q-card-section>
 
           <q-card-actions align="right">
-            <q-btn
+            <q-btn rounded
               outline
               label="Agora não"
               :color="$q.dark.isActive ? 'negative' : 'negative'"
               v-close-popup
               @click="recusaNotificacao()"
             />
-            <q-btn
+            <q-btn rounded
               icon="mdi-check-circle-outline"
               label="Aceitar notificações"
               :color="$q.dark.isActive ? 'secondary' : 'primary'"

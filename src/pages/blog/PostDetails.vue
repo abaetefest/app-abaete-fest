@@ -14,7 +14,7 @@
               Não foi possível carregar o artigo. Por favor, tente novamente mais tarde.
             </div>
             <template #action>
-              <q-btn
+              <q-btn rounded
                 flat
                 color="white"
                 label="Voltar para Blog"

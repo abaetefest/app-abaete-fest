@@ -46,7 +46,7 @@
           </q-avatar>
         </a>
         <div>
-          <q-btn
+          <q-btn rounded
             href="https://abaetetech.com.br/"
             target="_blank"
             label="abaetetech.com.br"

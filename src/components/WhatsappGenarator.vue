@@ -23,7 +23,7 @@
           />
         </q-card-section>
         <q-card-section>
-          <q-btn label="Copiar Link" color="positive" class="full-width" @click="copyLinkWpp" />
+          <q-btn rounded label="Copiar Link" color="positive" class="full-width" @click="copyLinkWpp" />
         </q-card-section>
       </q-card>
     </q-dialog>

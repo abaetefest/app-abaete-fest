@@ -49,7 +49,7 @@
 
       <!-- Botão de leitura -->
       <div class="q-mt-md">
-        <q-btn
+        <q-btn rounded
           flat
           dense
           no-caps
