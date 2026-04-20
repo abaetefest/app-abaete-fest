@@ -174,11 +174,10 @@ export default {
       return date.formatDate(dateOriginal, 'DD/MM/YYYY HH:mm')
     },
     formatDateOrRecurring(startDate, row) {
-      // Se recurring_days não for null/undefined/vazio, mostra os dias recorrentes
-      if (row.recurring_days && row.recurring_days.trim() !== '') {
-        return row.recurring_days
+      const days = row.recurring_days
+      if (days && typeof days === 'string' && days.trim() !== '' && days.trim().toLowerCase() !== 'null') {
+        return days
       }
-      // Caso contrário, mostra a data formatada
       return this.formatDateString(startDate)
     },
     formatRecurring(value) {
