@@ -2,6 +2,7 @@ export const urlBase = process.env.URI_API
 
 function buildQuery(params) {
   if (!params) return ''
+  if (typeof params !== 'object' || Array.isArray(params)) return ''
   const qs = new URLSearchParams()
   Object.keys(params).forEach(key => {
     const value = params[key]
@@ -59,7 +60,13 @@ async function request(method, path, { data, params, headers = {} } = {}) {
   } catch (networkError) {
     const err = new Error(networkError.message || 'Network error')
     err.request = { url, method }
-    err.response = undefined
+    err.response = {
+      data: null,
+      status: 0,
+      statusText: 'Network Error',
+      headers: null,
+      ok: false
+    }
     throw err
   }
 

@@ -15,9 +15,7 @@ export default {
 
   data() {
     return {
-      modalWelcomeTourism: typeof window !== 'undefined'
-        ? window.localStorage.getItem(HIDE_WELCOME_KEY) !== '1'
-        : false,
+      modalWelcomeTourism: false,
       filter: '',
       tourism: [],
       load: true,
@@ -43,6 +41,9 @@ export default {
   },
 
   async mounted() {
+    if (typeof window !== 'undefined' && window.localStorage.getItem(HIDE_WELCOME_KEY) !== '1') {
+      this.modalWelcomeTourism = true
+    }
     await this.listTourism()
   },
 

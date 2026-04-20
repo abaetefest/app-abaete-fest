@@ -203,13 +203,15 @@ export default {
   },
   mounted() {
     if (this.tourism && this.tourism.id) {
-      // this.$refs.imgFileInput.value = this.form.image_url
       if (this.tourism.image_url) {
         this.preview = this.tourism.image_url
       }
-      this.form = {
-        ...this.tourism
-      }
+      const normalized = {}
+      Object.keys(this.tourism).forEach(key => {
+        const value = this.tourism[key]
+        normalized[key] = value === null || value === undefined ? '' : value
+      })
+      this.form = normalized
       delete this.form.image_url
     }
   },

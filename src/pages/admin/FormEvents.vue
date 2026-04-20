@@ -273,15 +273,16 @@ export default {
     const formattedString = date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm:ss')
     this.form.start_date = formattedString
     if (this.event && this.event.id) {
-      // this.$refs.imgFileInput.value = this.form.image_url
       if (this.event.image_url) {
         this.preview = this.event.image_url
       }
-      this.form = {
-        ...this.event
-      }
+      const normalized = {}
+      Object.keys(this.event).forEach(key => {
+        const value = this.event[key]
+        normalized[key] = value === null || value === undefined ? '' : value
+      })
+      this.form = normalized
       delete this.form.image_url
-      console.log(this.form)
     }
   },
   watch: {
