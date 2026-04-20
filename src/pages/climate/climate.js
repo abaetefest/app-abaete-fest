@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export default {
   name: 'PageWeather',
   data() {
@@ -24,7 +22,9 @@ export default {
     async getWeather() {
       try {
         this.tempResult = false
-        const { data } = await axios.get('https://api.hgbrasil.com/weather?format=json-cors&key=3ae5537e&woeid=458294')
+        const response = await fetch('https://api.hgbrasil.com/weather?format=json-cors&key=3ae5537e&woeid=458294')
+        if (!response.ok) throw new Error(`Weather request failed: ${response.status}`)
+        const data = await response.json()
         this.condition_slug = data.results.condition_slug
         this.temp = data.results.temp
         this.moon = data.results.moon_phase

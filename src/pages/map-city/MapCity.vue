@@ -1,14 +1,14 @@
 <template>
   <q-page :class="$q.dark.isActive ? 'bg-primary' : 'bg-grey-1'">
     <div class="row q-pb-sm q-pt-sm justify-center">
-      <q-btn-group push>
-        <q-btn
+      <q-btn-group rounded push>
+        <q-btn rounded
           push
           label="Lista"
           icon="mdi-format-list-bulleted-square"
           :to="{ name: 'places' }"
         />
-        <q-btn
+        <q-btn rounded
           push
           label="Mapa"
           icon="mdi-map-legend"

@@ -21,7 +21,7 @@
       <q-footer elevated :class="$q.dark.isActive ? 'bg-primary text-white' : 'bg-white text-primary'">
         <q-toolbar inset>
           <q-toolbar-title>
-            <q-btn
+            <q-btn rounded
               label="Fechar"
               class="float-right"
               :color="$q.dark.isActive ? 'secondary' : 'primary'"

@@ -8,10 +8,10 @@
       @mouseleave="isDragging = false" @wheel.prevent="handleWheel" />
 
     <div class="zoom-controls">
-      <q-btn size="lg" color="white" text-color="primary" icon="mdi-arrow-left" @click="$emit('close')" label="Sair" no-caps />
-      <q-btn size="lg" color="white" text-color="primary" icon="refresh" @click="resetZoom" />
-      <q-btn size="lg" color="white" text-color="primary" icon="zoom_out" @click="zoomOut" />
-      <q-btn size="lg" color="white" text-color="primary" icon="zoom_in" @click="zoomIn" />
+      <q-btn rounded size="lg" color="white" text-color="primary" icon="mdi-arrow-left" @click="$emit('close')" label="Sair" no-caps />
+      <q-btn rounded size="lg" color="white" text-color="primary" icon="refresh" @click="resetZoom" />
+      <q-btn rounded size="lg" color="white" text-color="primary" icon="zoom_out" @click="zoomOut" />
+      <q-btn rounded size="lg" color="white" text-color="primary" icon="zoom_in" @click="zoomIn" />
     </div>
   </div>
 </template>

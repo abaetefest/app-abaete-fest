@@ -34,7 +34,7 @@
 
       <!-- Botão limpar filtros -->
       <div class="col-12 col-sm-4 col-md-3">
-        <q-btn
+        <q-btn rounded
           outline
           no-caps
           color="primary"

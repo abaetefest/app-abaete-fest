@@ -14,7 +14,7 @@ module.exports = function (ctx) {
       'global-meta',
       'services',
       'i18n',
-      'axios',
+      'fetch',
       'notify',
       { path: 'auth-router', server: false },
       { path: 'mixpanel', server: false },

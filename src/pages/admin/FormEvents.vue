@@ -123,7 +123,7 @@
               />
               <div class="row q-pt-sm">
                 <div class="col-md-4">
-                  <q-btn
+                  <q-btn rounded
                     label="Alterar Imagem"
                     icon="mdi-image-edit-outline"
                     color="primary"
@@ -139,17 +139,24 @@
         <q-card-section>
           <div class="row">
             <div class="col-12 q-gutter-md">
-              <q-btn
+              <q-btn rounded
                 :label="form.id ? 'Atualizar' : 'Cadastrar'"
                 color="primary"
                 class="float-right"
                 type="submit"
-              />
-              <q-btn
+                :loading="loading"
+                :disable="loading"
+              >
+                <template v-slot:loading>
+                  <q-spinner-dots />
+                </template>
+              </q-btn>
+              <q-btn rounded
                 label="Cancelar"
                 color="white"
                 class="float-right text-black"
                 :to="{ name: 'manageEvents'}"
+                :disable="loading"
               />
             </div>
           </div>
@@ -190,6 +197,7 @@ export default {
         recurring_days: ''
       },
       dialogWpp: false,
+      loading: false,
       preview: '',
       model: '',
       category: category,
@@ -265,15 +273,16 @@ export default {
     const formattedString = date.formatDate(timeStamp, 'YYYY-MM-DD HH:mm:ss')
     this.form.start_date = formattedString
     if (this.event && this.event.id) {
-      // this.$refs.imgFileInput.value = this.form.image_url
       if (this.event.image_url) {
         this.preview = this.event.image_url
       }
-      this.form = {
-        ...this.event
-      }
+      const normalized = {}
+      Object.keys(this.event).forEach(key => {
+        const value = this.event[key]
+        normalized[key] = value === null || value === undefined ? '' : value
+      })
+      this.form = normalized
       delete this.form.image_url
-      console.log(this.form)
     }
   },
   watch: {
@@ -308,12 +317,8 @@ export default {
       this.form.image_url = []
     },
     async registerEvent() {
+      this.loading = true
       try {
-        // if (this.image) {
-        //   await this.registerImage()
-        // }
-        // const birthday = date.extractDate(this.form.start_date, 'DD/MM/YYYY')
-        // const formattedString = date.formatDate(birthday, 'YYYY-MM-DD')
         await this.$services.events().register({
           ...this.form
         })
@@ -322,9 +327,12 @@ export default {
       } catch (error) {
         console.error('erro', error)
         this.$q.notify('Erro ao cadastrar Evento')
+      } finally {
+        this.loading = false
       }
     },
     async updateEvent() {
+      this.loading = true
       try {
         await this.$services.events().updateEvent(this.form.id, {
           ...this.form
@@ -334,6 +342,8 @@ export default {
       } catch (error) {
         console.error(error)
         this.$q.notify('Erro ao cadastrar categoria')
+      } finally {
+        this.loading = false
       }
     },
     async listCategory() {

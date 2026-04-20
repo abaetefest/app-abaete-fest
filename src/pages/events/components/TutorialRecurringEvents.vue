@@ -72,7 +72,7 @@
       <!-- Footer com botões -->
       <q-card-actions class="tutorial-footer">
         <div class="row full-width q-gutter-sm">
-          <q-btn
+          <q-btn rounded
             flat
             label="Não mostrar novamente"
             color="grey-6"

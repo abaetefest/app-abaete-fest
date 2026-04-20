@@ -1,6 +1,8 @@
 import { TourismCard, TourismCardLarge, TourismFilters } from './components'
 import DialogTourismDetails from './components/DialogTourismDetails'
 
+const HIDE_WELCOME_KEY = 'abaete-fest-hide-tourism-welcome'
+
 export default {
   name: 'PageTourism',
 
@@ -13,7 +15,7 @@ export default {
 
   data() {
     return {
-      modalWelcomeTourism: true,
+      modalWelcomeTourism: false,
       filter: '',
       tourism: [],
       load: true,
@@ -39,6 +41,9 @@ export default {
   },
 
   async mounted() {
+    if (typeof window !== 'undefined' && window.localStorage.getItem(HIDE_WELCOME_KEY) !== '1') {
+      this.modalWelcomeTourism = true
+    }
     await this.listTourism()
   },
 
@@ -72,6 +77,17 @@ export default {
 
     clearFilters() {
       this.filter = ''
+    },
+
+    closeWelcome() {
+      this.modalWelcomeTourism = false
+    },
+
+    dontShowAgain() {
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem(HIDE_WELCOME_KEY, '1')
+      }
+      this.modalWelcomeTourism = false
     }
   }
 }

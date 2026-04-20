@@ -130,13 +130,24 @@
               </q-card-section>
             </q-card>
 
-            <div class="row justify-center absolute-bottom q-mb-xl">
+            <div class="row justify-center absolute-bottom q-mb-xl q-gutter-y-sm">
               <div class="col-xs-10 col-sm-8">
                 <q-btn
                   label="Vamos nessa!"
                   :color="$q.dark.isActive ? 'secondary' : 'primary'"
                   :text-color="$q.dark.isActive ? 'primary' : 'white'"
-                  @click="modalWelcomeTourism = false"
+                  @click="closeWelcome"
+                  class="full-width"
+                  rounded
+                />
+              </div>
+              <div class="col-xs-10 col-sm-8">
+                <q-btn
+                  label="Não mostrar novamente"
+                  flat
+                  no-caps
+                  :color="$q.dark.isActive ? 'white' : 'grey-7'"
+                  @click="dontShowAgain"
                   class="full-width"
                   rounded
                 />

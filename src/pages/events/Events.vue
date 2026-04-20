@@ -156,7 +156,7 @@
       <EmptyState v-if="!load && filteredEvents.length === 0" />
 
       <!-- Botão de voltar ao topo
-      <q-btn
+      <q-btn rounded
         v-if="filteredEvents.length > 6"
         fab
         color="primary"
