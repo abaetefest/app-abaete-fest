@@ -19,7 +19,7 @@ export default {
             {
               hora: '04:30',
               modalidade: 'Alça Viária',
-              obs: 'Somente Segunda a Quinta-feira'
+              obs: 'Segunda a Sexta-feira'
             },
             {
               hora: '06:30',
@@ -28,16 +28,15 @@ export default {
             {
               hora: '07:00',
               modalidade: 'Alça Viária',
-              obs: 'Somente Segunda, Terça, Sexta e Sábado'
-            },
-            {
-              hora: '08:30',
-              modalidade: 'Alça Viária',
               obs: 'Somente Segunda-feira'
             },
             {
               hora: '07:55',
               modalidade: 'Arapari'
+            },
+            {
+              hora: '08:30',
+              modalidade: 'Alça Viária'
             },
             {
               hora: '12:40',
@@ -48,13 +47,13 @@ export default {
               modalidade: 'Alça Viária'
             },
             {
+              hora: '15:40',
+              modalidade: 'Arapari'
+            },
+            {
               hora: '16:00',
               modalidade: 'Alça Viária',
               obs: 'Somente Sexta-feira'
-            },
-            {
-              hora: '15:40',
-              modalidade: 'Arapari'
             }
           ]
         },
@@ -62,7 +61,6 @@ export default {
           origem: 'Abaetetuba',
           destino: 'Belém',
           periodo: 'Domingos e Feriados',
-          modalidade: 'Arapari',
           horarios: [
             {
               hora: '07:00',
@@ -81,12 +79,12 @@ export default {
               modalidade: 'Alça Viária'
             },
             {
-              hora: '16:00',
-              modalidade: 'Alça Viária'
-            },
-            {
               hora: '15:40',
               modalidade: 'Arapari'
+            },
+            {
+              hora: '16:00',
+              modalidade: 'Alça Viária'
             }
           ]
         },
@@ -95,6 +93,11 @@ export default {
           destino: 'Abaetetuba',
           periodo: 'Segunda a Sábado',
           horarios: [
+            {
+              hora: '05:30',
+              modalidade: 'Alça Viária',
+              obs: 'Somente Segunda-feira'
+            },
             {
               hora: '07:30',
               modalidade: 'Alça Viária',
@@ -117,9 +120,9 @@ export default {
               modalidade: 'Arapari'
             },
             {
-              hora: '15:00',
+              hora: '15:30',
               modalidade: 'Alça Viária',
-              obs: 'Somente Segunda e Terça-feira'
+              obs: 'Segunda a Sexta-feira'
             },
             {
               hora: '16:30',
@@ -155,10 +158,6 @@ export default {
             {
               hora: '16:45',
               modalidade: 'Arapari'
-            },
-            {
-              hora: '18:40',
-              modalidade: 'Alça Viária'
             }
           ]
         }
