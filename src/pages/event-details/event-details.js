@@ -4,8 +4,8 @@ import { getCarnivalEventById } from 'src/constants/carnivalSchedule'
 export default {
   name: 'PageEventDetails',
 
-  // preFetch para SSR - carrega dados no servidor
-  async preFetch({ currentRoute, redirect }) {
+  // preFetch para SSR - carrega dados no servidor via Vuex store
+  async preFetch({ currentRoute, redirect, store }) {
     const id = currentRoute.params.id
 
     if (!id) {
@@ -16,7 +16,8 @@ export default {
     // Eventos fixos (ex.: programação carnaval)
     const fixedEvent = getCarnivalEventById(id)
     if (fixedEvent) {
-      return { event: fixedEvent, load: false }
+      store.commit('events/SET_CURRENT_EVENT', fixedEvent)
+      return
     }
 
     try {
@@ -36,8 +37,8 @@ export default {
         return
       }
 
-      // Retorna os dados para uso no componente
-      return { event: eventData, load: false }
+      // Commit no store — o Quasar serializa o estado no HTML para hidratação
+      store.commit('events/SET_CURRENT_EVENT', eventData)
     } catch (error) {
       console.error('Erro no preFetch:', error)
       redirect('/404')
@@ -311,10 +312,15 @@ export default {
     }
   },
 
+  computed: {
+    event() {
+      return this.$store.state.events.currentEvent || {}
+    }
+  },
+
   data: function () {
     return {
-      event: {},
-      load: true,
+      load: false,
       canShare: false
     }
   },
@@ -322,14 +328,13 @@ export default {
   mounted: function () {
     this.setupClientFeatures()
 
-    if (!this.event.id) {
-      if (this.$route.params.id) {
-        this.getEvent(this.$route.params.id)
-      } else {
-        this.$router.push('/')
-      }
-    } else {
+    if (this.event.id) {
       this.addStructuredData()
+    } else if (this.$route.params.id) {
+      // Fallback para navegação direta sem preFetch (edge case)
+      this.getEvent(this.$route.params.id)
+    } else {
+      this.$router.push('/')
     }
   },
 
@@ -502,7 +507,7 @@ export default {
       // Eventos fixos (ex.: programação carnaval) – não chamam a API
       const fixedEvent = getCarnivalEventById(id)
       if (fixedEvent) {
-        this.event = fixedEvent
+        this.$store.commit('events/SET_CURRENT_EVENT', fixedEvent)
         this.load = false
         this.$nextTick(() => this.addStructuredData())
         return
@@ -511,7 +516,7 @@ export default {
       this.load = true
       try {
         const { data } = await this.$services.events().get(id)
-        this.event = data.data || {}
+        this.$store.commit('events/SET_CURRENT_EVENT', data.data || {})
         this.load = false
 
         this.$nextTick(function () {

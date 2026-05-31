@@ -17,7 +17,15 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      // example
+      events: {
+        namespaced: true,
+        state: () => ({ currentEvent: null }),
+        mutations: {
+          SET_CURRENT_EVENT(state, event) {
+            state.currentEvent = event
+          }
+        }
+      }
     },
 
     // enable strict mode (adds overhead!)
