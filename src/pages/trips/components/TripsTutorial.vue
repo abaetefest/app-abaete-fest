@@ -7,7 +7,7 @@
       style="z-index: 9999"
     >
       <q-btn
-        fab
+        fab-mini
         icon="mdi-help-circle"
         color="accent"
         @click="startTutorial"
