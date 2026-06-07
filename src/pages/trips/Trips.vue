@@ -17,44 +17,130 @@
         Abaetetuba e vice-versa
       </p>
 
-      <!-- Botão de compartilhar no topo -->
-      <div class="q-mt-md">
-        <q-btn
-          id="share-button-section"
-          unelevated
-          rounded
-          color="primary"
-          icon-right="mdi-share-variant"
-          label="Compartilhar Horários"
-          @click="shareSchedules"
-          no-caps
-          class="text-weight-bold"
-          :class="
-            $q.dark.isActive ? 'bg-accent text-black' : 'bg-primary text-white'
-          "
-          v-if="canShare"
-        />
-
-        <!-- Fallback para dispositivos sem Web Share API -->
-        <q-btn
-          id="share-button-section"
-          unelevated
-          rounded
-          outline
-          color="primary"
-          icon-right="mdi-content-copy"
-          label="Copiar Link dos Horários"
-          @click="copyScheduleLink"
-          no-caps
-          class="text-weight-bold"
-          :class="
-            $q.dark.isActive ? 'bg-accent text-black' : 'bg-primary text-white'
-          "
-          v-else
-        />
-      </div>
     </div>
 
+    <!-- Banners Amazon Afiliados -->
+    <div class="q-mb-lg">
+      <a
+        href="https://amzn.to/4og7j6n"
+        target="_blank"
+        rel="noopener noreferrer sponsored"
+        @click="handleMixPanelEvent('Amazon Banner Clicked - Trips')"
+        class="block"
+      >
+        <img
+          src="/advertising/amazon.jpg"
+          alt="Publicidade Amazon"
+          style="max-width: 100%; border-radius: 8px; cursor: pointer; display: block;"
+        />
+      </a>
+
+      <q-card
+        flat
+        bordered
+        class="q-mt-sm"
+        style="border-radius: 8px;"
+        :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
+      >
+        <q-card-section horizontal>
+          <a
+            href="https://amzn.to/4uhtJWb"
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            @click="handleMixPanelEvent('Amazon TV LG Banner Clicked - Trips')"
+            style="text-decoration: none; display: flex; align-items: center;"
+          >
+            <img
+              src="/advertising/tv-LG.jpg"
+              alt="Smart TV 43' LG 4K"
+              style="width: 110px; height: 110px; object-fit: cover; border-radius: 8px 0 0 8px; flex-shrink: 0;"
+            />
+          </a>
+          <q-card-section class="col q-pa-sm" style="min-width: 0;">
+            <div class="text-caption text-orange-8 text-weight-bold q-mb-xs">Publicidade</div>
+            <div
+              class="text-body2 text-weight-bold ellipsis-2-lines q-mb-xs"
+              :class="$q.dark.isActive ? 'text-white' : 'text-dark'"
+            >
+              Smart TV 43" LG 4K
+            </div>
+            <div class="text-h6 text-weight-bold text-orange-8 q-mb-sm">R$ 1.610,10</div>
+            <a
+              href="https://amzn.to/4uhtJWb"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              @click="handleMixPanelEvent('Amazon TV LG Button Clicked - Trips')"
+              style="text-decoration: none;"
+            >
+              <q-btn
+                unelevated
+                rounded
+                dense
+                size="sm"
+                color="orange-8"
+                label="Ver na Amazon"
+                icon-right="mdi-open-in-new"
+                no-caps
+                class="text-weight-bold"
+              />
+            </a>
+          </q-card-section>
+        </q-card-section>
+      </q-card>
+
+      <q-card
+        flat
+        bordered
+        class="q-mt-sm"
+        style="border-radius: 8px;"
+        :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
+      >
+        <q-card-section horizontal>
+          <a
+            href="https://amzn.to/4g6Jf3L"
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            @click="handleMixPanelEvent('Amazon Airfryer Banner Clicked - Trips')"
+            style="text-decoration: none; display: flex; align-items: center;"
+          >
+            <img
+              src="/advertising/airfryer.jpg"
+              alt="Fritadeira Sem Óleo Oster 127V"
+              style="width: 110px; height: 110px; object-fit: cover; border-radius: 8px 0 0 8px; flex-shrink: 0;"
+            />
+          </a>
+          <q-card-section class="col q-pa-sm" style="min-width: 0;">
+            <div class="text-caption text-orange-8 text-weight-bold q-mb-xs">Publicidade</div>
+            <div
+              class="text-body2 text-weight-bold ellipsis-2-lines q-mb-xs"
+              :class="$q.dark.isActive ? 'text-white' : 'text-dark'"
+            >
+              Fritadeira Sem Óleo Oster 127V
+            </div>
+            <div class="text-h6 text-weight-bold text-orange-8 q-mb-sm">R$ 288,99</div>
+            <a
+              href="https://amzn.to/4g6Jf3L"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              @click="handleMixPanelEvent('Amazon Airfryer Button Clicked - Trips')"
+              style="text-decoration: none;"
+            >
+              <q-btn
+                unelevated
+                rounded
+                dense
+                size="sm"
+                color="orange-8"
+                label="Ver na Amazon"
+                icon-right="mdi-open-in-new"
+                no-caps
+                class="text-weight-bold"
+              />
+            </a>
+          </q-card-section>
+        </q-card-section>
+      </q-card>
+    </div>
 
     <!-- Seção principal de horários -->
     <div id="schedules-section" class="horarios-viagem">
@@ -369,6 +455,32 @@
         </div>
       </q-card>
     </div>
+    <!-- Botão flutuante de compartilhar -->
+    <q-page-sticky
+      id="share-button-section"
+      position="bottom-right"
+      :offset="[18, 90]"
+      style="z-index: 9999"
+    >
+      <q-btn
+        fab-mini
+        icon="mdi-share-variant"
+        color="primary"
+        @click="shareSchedules"
+        v-if="canShare"
+      >
+        <q-tooltip anchor="center left" self="center right">Compartilhar Horários</q-tooltip>
+      </q-btn>
+      <q-btn
+        fab-mini
+        icon="mdi-content-copy"
+        color="primary"
+        @click="copyScheduleLink"
+        v-else
+      >
+        <q-tooltip anchor="center left" self="center right">Copiar Link dos Horários</q-tooltip>
+      </q-btn>
+    </q-page-sticky>
   </q-page>
 </template>
 
