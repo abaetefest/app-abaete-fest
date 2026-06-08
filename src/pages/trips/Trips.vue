@@ -21,20 +21,6 @@
 
     <!-- Banners Amazon Afiliados -->
     <div class="q-mb-lg">
-      <a
-        href="https://amzn.to/4og7j6n"
-        target="_blank"
-        rel="noopener noreferrer sponsored"
-        @click="handleMixPanelEvent('Amazon Banner Clicked - Trips')"
-        class="block"
-      >
-        <img
-          src="/advertising/amazon.jpg"
-          alt="Publicidade Amazon"
-          style="max-width: 100%; border-radius: 8px; cursor: pointer; display: block;"
-        />
-      </a>
-
       <q-card
         flat
         bordered
@@ -44,32 +30,32 @@
       >
         <q-card-section horizontal>
           <a
-            href="https://amzn.to/4uhtJWb"
+            href="https://amzn.to/3SrUn1j"
             target="_blank"
             rel="noopener noreferrer sponsored"
-            @click="handleMixPanelEvent('Amazon TV LG Banner Clicked - Trips')"
+            @click="handleMixPanelEvent('Amazon iPhone Banner Clicked - Trips')"
             style="text-decoration: none; display: flex; align-items: center;"
           >
             <img
-              src="/advertising/tv-LG.jpg"
-              alt="Smart TV 43' LG 4K"
+              src="/advertising/iphone.png"
+              alt="Apple iPhone 16e 128GB"
               style="width: 110px; height: 110px; object-fit: cover; border-radius: 8px 0 0 8px; flex-shrink: 0;"
             />
           </a>
           <q-card-section class="col q-pa-sm" style="min-width: 0;">
-            <div class="text-caption text-orange-8 text-weight-bold q-mb-xs">Publicidade</div>
+            <img src="/advertising/amazon.png" alt="Amazon" style="height: 16px; display: block; margin-bottom: 4px;" />
             <div
               class="text-body2 text-weight-bold ellipsis-2-lines q-mb-xs"
               :class="$q.dark.isActive ? 'text-white' : 'text-dark'"
             >
-              Smart TV 43" LG 4K
+              Apple iPhone 16e de 128 GB
             </div>
-            <div class="text-h6 text-weight-bold text-orange-8 q-mb-sm">R$ 1.610,10</div>
+            <div class="text-h6 text-weight-bold text-orange-8 q-mb-sm">12x de R$ 312,49/mês</div>
             <a
-              href="https://amzn.to/4uhtJWb"
+              href="https://amzn.to/3SrUn1j"
               target="_blank"
               rel="noopener noreferrer sponsored"
-              @click="handleMixPanelEvent('Amazon TV LG Button Clicked - Trips')"
+              @click="handleMixPanelEvent('Amazon iPhone Button Clicked - Trips')"
               style="text-decoration: none;"
             >
               <q-btn
@@ -97,32 +83,32 @@
       >
         <q-card-section horizontal>
           <a
-            href="https://amzn.to/4g6Jf3L"
+            href="https://amzn.to/43SoEJd"
             target="_blank"
             rel="noopener noreferrer sponsored"
-            @click="handleMixPanelEvent('Amazon Airfryer Banner Clicked - Trips')"
+            @click="handleMixPanelEvent('Amazon Fone Banner Clicked - Trips')"
             style="text-decoration: none; display: flex; align-items: center;"
           >
             <img
-              src="/advertising/airfryer.jpg"
-              alt="Fritadeira Sem Óleo Oster 127V"
+              src="/advertising/fone.png"
+              alt="Fone de Ouvido Bluetooth 5.4 Soundcore"
               style="width: 110px; height: 110px; object-fit: cover; border-radius: 8px 0 0 8px; flex-shrink: 0;"
             />
           </a>
           <q-card-section class="col q-pa-sm" style="min-width: 0;">
-            <div class="text-caption text-orange-8 text-weight-bold q-mb-xs">Publicidade</div>
+            <img src="/advertising/amazon.png" alt="Amazon" style="height: 16px; display: block; margin-bottom: 4px;" />
             <div
               class="text-body2 text-weight-bold ellipsis-2-lines q-mb-xs"
               :class="$q.dark.isActive ? 'text-white' : 'text-dark'"
             >
-              Fritadeira Sem Óleo Oster 127V
+              Fone de Ouvido Bluetooth 5.4 Soundcore
             </div>
-            <div class="text-h6 text-weight-bold text-orange-8 q-mb-sm">R$ 288,99</div>
+            <div class="text-h6 text-weight-bold text-orange-8 q-mb-sm">6x de R$ 34,20 sem juros</div>
             <a
-              href="https://amzn.to/4g6Jf3L"
+              href="https://amzn.to/43SoEJd"
               target="_blank"
               rel="noopener noreferrer sponsored"
-              @click="handleMixPanelEvent('Amazon Airfryer Button Clicked - Trips')"
+              @click="handleMixPanelEvent('Amazon Fone Button Clicked - Trips')"
               style="text-decoration: none;"
             >
               <q-btn
