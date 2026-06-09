@@ -3,9 +3,10 @@
     <div
       v-for="(product, index) in products"
       :key="index"
-      class="col-12"
+      class="col-12 col-sm-6 col-md-4 col-lg-3"
     >
       <q-card
+        class="fit"
         style="border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.10);"
         :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
       >
@@ -27,7 +28,7 @@
             <img
               :src="product.image"
               :alt="product.alt"
-              style="width: 100%; height: auto; display: block; border-radius: 12px 12px 0 0;"
+              style="width: 100%; height: 220px; object-fit: cover; display: block; border-radius: 12px 12px 0 0;"
             />
           </a>
         </div>
