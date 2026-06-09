@@ -27,7 +27,7 @@
 
         <!-- Imagem principal -->
         <div class="relative-position">
-          <q-img :src="event.image_url" :alt="`Imagem do evento ${event.name}`" fit="cover"
+          <q-img :key="event.id" :src="event.image_url" :alt="`Imagem do evento ${event.name}`" fit="cover"
             placeholder-src="loadPlaceholder.png" style="border-radius: 10px;">
             <template #loading>
               <q-skeleton class="full-width full-height" />

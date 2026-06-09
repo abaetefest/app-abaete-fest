@@ -328,13 +328,25 @@ export default {
   mounted: function () {
     this.setupClientFeatures()
 
-    if (this.event.id) {
-      this.addStructuredData()
-    } else if (this.$route.params.id) {
-      // Fallback para navegação direta sem preFetch (edge case)
-      this.getEvent(this.$route.params.id)
-    } else {
+    const routeId = this.$route.params.id
+    if (!routeId) {
       this.$router.push('/')
+      return
+    }
+
+    // Se o evento no store já é o correto, apenas inicializa; caso contrário busca
+    if (this.event.id && String(this.event.id) === String(routeId)) {
+      this.addStructuredData()
+    } else {
+      this.getEvent(routeId)
+    }
+  },
+
+  // Necessário para quando o Vue reutiliza o componente ao navegar entre eventos
+  beforeRouteUpdate: function (to, from, next) {
+    next()
+    if (to.params.id) {
+      this.getEvent(to.params.id)
     }
   },
 
