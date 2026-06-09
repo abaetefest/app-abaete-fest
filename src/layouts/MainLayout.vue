@@ -10,22 +10,33 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-          <q-space />
 
-        <q-toolbar-title>
-          <q-avatar size="xl" rounded>
-            <img src="new-abaetefest.png" alt="logo abaetéfest" />
-          </q-avatar>
+        <q-toolbar-title class="text-center">
+          <div class="row items-center justify-center">
+            <!-- Clima na toolbar -->
+            <div
+              v-if="weatherTemp !== null"
+              class="row items-center q-mr-sm cursor-pointer"
+              @click="goTo('clima')"
+            >
+              <q-icon :name="weatherIcon" color="white" size="28px" />
+              <span class="text-white text-weight-bold q-ml-xs" style="font-size: 15px;">{{ weatherTemp }}°C</span>
+            </div>
+
+            <q-toggle
+              v-model="darkMode"
+              checked-icon="mdi-moon-waning-crescent"
+              :color="$q.dark.isActive ? 'grey-7' : 'white'"
+              unchecked-icon="mdi-white-balance-sunny"
+              size="lg"
+              @input="setDarkMode"
+            />
+          </div>
         </q-toolbar-title>
 
-        <q-toggle
-          v-model="darkMode"
-          checked-icon="mdi-moon-waning-crescent"
-          :color="$q.dark.isActive ? 'grey-7' : 'white'"
-          unchecked-icon="mdi-white-balance-sunny"
-          size="lg"
-          @input="setDarkMode"
-        />
+        <q-avatar size="xl" rounded>
+          <img src="new-abaetefest.png" alt="logo abaetéfest" />
+        </q-avatar>
 
         <!-- <q-btn
           v-if="canShare"
@@ -61,23 +72,18 @@
     </q-header>
 
     <q-footer
-      v-if="!!$route.meta.tab" class="lt-md"
-      :class="[
-        $q.platform.is.ios ? 'q-pb-md' : '',
-        $q.dark.isActive ? 'bg-primary' : 'bg-white'
-      ]"
-      >
+      v-if="!!$route.meta.tab"
+      class="lt-md floating-footer"
+    >
       <q-tabs
+        class="floating-nav"
         align="justify"
         dense
         no-caps
-        indicator-color="white"
+        indicator-color="transparent"
         mobile-arrows
-        :class="[
-          $q.dark.isActive ? 'bg-primary text-white' : 'bg-white text-weight-thin text-grey-7',
-          $q.platform.is.ios ? 'q-pb-md' : ''
-        ]"
-        :active-color="$q.dark.isActive ? 'secondary' : 'primary'"
+        :class="$q.dark.isActive ? 'bg-primary text-grey-4' : 'bg-white text-grey-8'"
+        :active-color="$q.dark.isActive ? 'white' : 'primary'"
       >
         <q-route-tab
           v-for="(tab, index) in essentialLinks"
@@ -85,11 +91,11 @@
           :key="index"
           :icon="tab.icon"
           :label="tab.title"
+          :alert="tab.alert || false"
           exact
-          content-class="text-weight-thin"
+          content-class="text-weight-medium"
           :to="{ name: tab.route }"
-        >
-        </q-route-tab>
+        />
       </q-tabs>
     </q-footer>
 
@@ -176,6 +182,14 @@ const menusRoute = [
     footer: true
   },
   {
+    title: 'Descontos',
+    icon: 'mdi-sale',
+    route: 'discounts',
+    footer: true,
+    badge: 'Novo',
+    alert: 'orange'
+  },
+  {
     title: 'Locais',
     icon: 'mdi-storefront-outline',
     route: 'places',
@@ -197,11 +211,6 @@ const menusRoute = [
     title: 'Telefones Úteis',
     icon: 'mdi-hammer-screwdriver',
     route: 'services'
-  },
-  {
-    title: 'Podcasts',
-    icon: 'mdi-microphone-variant',
-    route: 'podcast'
   },
   {
     title: 'Rádios',
@@ -257,7 +266,28 @@ export default {
       version_app: process.env.VERSION_APP,
       darkMode: false,
       notificationModal: false,
-      colorConsole: 'background: #111; color: #BE1A25'
+      colorConsole: 'background: #111; color: #BE1A25',
+      weatherTemp: null,
+      weatherCondition: ''
+    }
+  },
+  computed: {
+    weatherIcon() {
+      const map = {
+        storm: 'mdi-weather-lightning-rainy',
+        snow: 'mdi-weather-snowy',
+        hail: 'mdi-weather-hail',
+        rain: 'mdi-weather-pouring',
+        fog: 'mdi-weather-fog',
+        clear_day: 'mdi-weather-sunny',
+        clear_night: 'mdi-weather-night',
+        cloud: 'mdi-weather-cloudy',
+        cloudly_day: 'mdi-weather-partly-cloudy',
+        cloudly_night: 'mdi-weather-night-partly-cloudy',
+        sleet: 'mdi-weather-snowy-rainy',
+        wind: 'mdi-weather-windy'
+      }
+      return map[this.weatherCondition] || 'mdi-weather-cloudy'
     }
   },
   async mounted() {
@@ -278,9 +308,32 @@ export default {
     // }, true)
 
     this.verifyDarkMode()
+    this.fetchToolbarWeather()
     // this.verificarPermissaoNotificacoes()
   },
   methods: {
+    async fetchToolbarWeather() {
+      const CACHE_KEY = 'abaetefest-weather-cache'
+      const CACHE_TTL = 30 * 60 * 1000 // 30 minutos
+      try {
+        const cached = JSON.parse(localStorage.getItem(CACHE_KEY))
+        if (cached && Date.now() - cached.ts < CACHE_TTL) {
+          this.weatherTemp = cached.temp
+          this.weatherCondition = cached.condition
+          return
+        }
+        const res = await fetch('https://api.hgbrasil.com/weather?format=json-cors&key=3ae5537e&woeid=458294')
+        if (!res.ok) return
+        const data = await res.json()
+        this.weatherTemp = data.results.temp
+        this.weatherCondition = data.results.condition_slug
+        localStorage.setItem(CACHE_KEY, JSON.stringify({
+          temp: this.weatherTemp,
+          condition: this.weatherCondition,
+          ts: Date.now()
+        }))
+      } catch {}
+    },
     logout(rota = '/') {
       localStorage.removeItem('abaete-fest-token')
       localStorage.removeItem('abaete-manage')
@@ -380,3 +433,44 @@ export default {
   }
 }
 </script>
+
+<style>
+/* Footer flutuante */
+.floating-footer {
+  background: transparent !important;
+  padding: 0 12px 10px;
+  /* cobre iOS (home indicator) e Android com nav gesture ou botões virtuais */
+  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+}
+
+.floating-nav {
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.body--dark .floating-nav {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Ícone ativo: scale + cor via active-color do Quasar */
+.floating-nav .q-tab--active .q-tab__icon {
+  transform: scale(1.25);
+  transition: transform 0.25s ease;
+}
+
+.floating-nav .q-tab--active .q-tab__label {
+  font-weight: 700;
+}
+
+/* Setas de navegação do mobile-arrows */
+.floating-nav .q-tabs__arrow {
+  color: var(--q-color-primary);
+}
+
+.body--dark .floating-nav .q-tabs__arrow {
+  color: white;
+}
+</style>

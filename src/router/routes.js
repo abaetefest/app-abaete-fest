@@ -268,6 +268,19 @@ const routes = [
         }
       },
       {
+        path: 'discounts',
+        name: 'discounts',
+        component: () => import(
+          /* webpackChunkName: "utilities" */
+          'src/pages/discounts/Discounts.vue'
+        ),
+        props: true,
+        meta: {
+          tab: true,
+          priority: 'low'
+        }
+      },
+      {
         path: 'clima',
         name: 'clima',
         component: () => import(

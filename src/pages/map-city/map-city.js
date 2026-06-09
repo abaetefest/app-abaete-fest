@@ -28,6 +28,7 @@ export default {
       infoWindowPos: null,
       infoWinOpen: false,
       currentMidx: null,
+      showAllCategories: false,
       infoOptions: {
         content: '',
         pixelOffset: {
@@ -39,12 +40,6 @@ export default {
   },
   mounted() {
     this.setPosition()
-  },
-  computed: {
-    getIconCategory() {
-      const img = this.options.filter((opt) => opt.value === this.categoria)
-      return img[0].icon
-    }
   },
   methods: {
     async setPosition() {
@@ -100,6 +95,10 @@ export default {
     },
     getIcon(icon) {
       return `${icon}`
+    },
+    selectCategory(value) {
+      this.categoria = value
+      this.setFilterMap()
     },
     async setFilterMap() {
       this.ready = false

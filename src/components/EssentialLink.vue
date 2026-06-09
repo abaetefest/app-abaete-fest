@@ -14,7 +14,10 @@
     </q-item-section>
 
     <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
+      <q-item-label>
+        {{ title }}
+        <q-badge v-if="badge" color="orange" :label="badge" class="q-ml-xs" />
+      </q-item-label>
       <q-item-label caption>
         {{ caption }}
       </q-item-label>
@@ -44,6 +47,21 @@ export default {
     icon: {
       type: String,
       default: ''
+    },
+
+    badge: {
+      type: String,
+      default: ''
+    },
+
+    footer: {
+      type: Boolean,
+      default: false
+    },
+
+    alert: {
+      type: [String, Boolean],
+      default: false
     }
   },
   computed: {
