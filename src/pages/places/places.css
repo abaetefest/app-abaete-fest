@@ -1,12 +1,12 @@
-.map-size {
-  /* Firefox */
-  height: -moz-calc(100vh - 310px) !important;
-  /* WebKit */
-  height: -webkit-calc(100vh - 310px) !important;
-  /* Opera */
-  height: -o-calc(100vh - 310px) !important;
-  /* Standard */
-  height: calc(100vh - 310px) !important;
+.place-card {
+  transition: all 0.25s ease;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.place-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
 .category-chips {

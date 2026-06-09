@@ -18,38 +18,44 @@
         />
       </q-btn-group>
     </div>
-    <div class="row q-pb-md q-px-sm q-pt-sm">
-      <q-select
-        outlined
-        v-model="categoria"
-        :options="options"
-        label="Selecione uma categoria"
-        class="col-sm-12 col-xs-12 col-md-6"
-        :bg-color="$q.dark.isActive ? '' : 'white'"
-        :label-color="$q.dark.isActive ? 'white' : 'primary'"
-        :color="$q.dark.isActive ? 'white' : 'primary'"
-        map-options
-        emit-value
-        @input="setFilterMap"
+    <!-- Carrossel de categorias -->
+    <div :class="['category-chips', { 'category-chips--collapsed': !showAllCategories }]" class="q-px-sm q-mb-xs">
+      <div
+        v-for="opt in options"
+        :key="opt.value"
+        class="category-chip"
+        @click="selectCategory(opt.value)"
       >
-        <template v-slot:prepend>
-          <q-avatar rounded>
-            <img :src="getIconCategory" />
-          </q-avatar>
-        </template>
-        <template v-slot:option="scope">
-          <q-item v-bind="scope.itemProps" v-on="scope.itemEvents">
-            <q-item-section avatar>
-              <q-avatar rounded>
-                <img :src="scope.opt.icon" />
-              </q-avatar>
-            </q-item-section>
-            <q-item-section>
-              <q-item-label v-html="scope.opt.label" />
-            </q-item-section>
-          </q-item>
-        </template>
-      </q-select>
+        <q-chip
+          :color="categoria === opt.value ? 'primary' : ($q.dark.isActive ? 'grey-8' : 'grey-2')"
+          :text-color="categoria === opt.value ? 'white' : ($q.dark.isActive ? 'white' : 'grey-9')"
+          clickable
+          dense
+          class="text-weight-medium"
+          style="font-size: 13px; padding: 6px 10px; height: auto;"
+        >
+          <img
+            :src="opt.icon"
+            :alt="opt.label"
+            style="width: 22px; height: 22px; object-fit: contain; margin-right: 6px; flex-shrink: 0;"
+          />
+          {{ opt.label }}
+        </q-chip>
+      </div>
+    </div>
+
+    <!-- Botão expandir categorias -->
+    <div class="text-center q-mb-sm">
+      <q-btn
+        outline
+        rounded
+        no-caps
+        size="md"
+        :icon-right="showAllCategories ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+        :label="showAllCategories ? 'Ver menos' : 'Ver todas as categorias'"
+        color="primary"
+        @click="showAllCategories = !showAllCategories"
+      />
     </div>
 
     <GmapMap

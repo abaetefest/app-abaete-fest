@@ -20,113 +20,7 @@
     </div>
 
     <!-- Banners Amazon Afiliados -->
-    <div class="q-mb-lg">
-      <q-card
-        flat
-        bordered
-        class="q-mt-sm"
-        style="border-radius: 8px;"
-        :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
-      >
-        <q-card-section horizontal>
-          <a
-            href="https://amzn.to/3SrUn1j"
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            @click="handleMixPanelEvent('Amazon iPhone Banner Clicked - Trips')"
-            style="text-decoration: none; display: flex; align-items: center;"
-          >
-            <img
-              src="/advertising/iphone.png"
-              alt="Apple iPhone 16e 128GB"
-              style="width: 110px; height: 110px; object-fit: cover; border-radius: 8px 0 0 8px; flex-shrink: 0;"
-            />
-          </a>
-          <q-card-section class="col q-pa-sm" style="min-width: 0;">
-            <img src="/advertising/amazon.png" alt="Amazon" style="height: 16px; display: block; margin-bottom: 4px;" />
-            <div
-              class="text-body2 text-weight-bold ellipsis-2-lines q-mb-xs"
-              :class="$q.dark.isActive ? 'text-white' : 'text-dark'"
-            >
-              Apple iPhone 16e de 128 GB
-            </div>
-            <div class="text-h6 text-weight-bold text-orange-8 q-mb-sm">12x de R$ 312,49/mês</div>
-            <a
-              href="https://amzn.to/3SrUn1j"
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              @click="handleMixPanelEvent('Amazon iPhone Button Clicked - Trips')"
-              style="text-decoration: none;"
-            >
-              <q-btn
-                unelevated
-                rounded
-                dense
-                size="sm"
-                color="orange-8"
-                label="Ver na Amazon"
-                icon-right="mdi-open-in-new"
-                no-caps
-                class="text-weight-bold"
-              />
-            </a>
-          </q-card-section>
-        </q-card-section>
-      </q-card>
-
-      <q-card
-        flat
-        bordered
-        class="q-mt-sm"
-        style="border-radius: 8px;"
-        :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
-      >
-        <q-card-section horizontal>
-          <a
-            href="https://amzn.to/43SoEJd"
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            @click="handleMixPanelEvent('Amazon Fone Banner Clicked - Trips')"
-            style="text-decoration: none; display: flex; align-items: center;"
-          >
-            <img
-              src="/advertising/fone.png"
-              alt="Fone de Ouvido Bluetooth 5.4 Soundcore"
-              style="width: 110px; height: 110px; object-fit: cover; border-radius: 8px 0 0 8px; flex-shrink: 0;"
-            />
-          </a>
-          <q-card-section class="col q-pa-sm" style="min-width: 0;">
-            <img src="/advertising/amazon.png" alt="Amazon" style="height: 16px; display: block; margin-bottom: 4px;" />
-            <div
-              class="text-body2 text-weight-bold ellipsis-2-lines q-mb-xs"
-              :class="$q.dark.isActive ? 'text-white' : 'text-dark'"
-            >
-              Fone de Ouvido Bluetooth 5.4 Soundcore
-            </div>
-            <div class="text-h6 text-weight-bold text-orange-8 q-mb-sm">6x de R$ 34,20 sem juros</div>
-            <a
-              href="https://amzn.to/43SoEJd"
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              @click="handleMixPanelEvent('Amazon Fone Button Clicked - Trips')"
-              style="text-decoration: none;"
-            >
-              <q-btn
-                unelevated
-                rounded
-                dense
-                size="sm"
-                color="orange-8"
-                label="Ver na Amazon"
-                icon-right="mdi-open-in-new"
-                no-caps
-                class="text-weight-bold"
-              />
-            </a>
-          </q-card-section>
-        </q-card-section>
-      </q-card>
-    </div>
+    <AmazonProductsCompact :products="amazonProducts" class="q-mb-lg" />
 
     <!-- Seção principal de horários -->
     <div id="schedules-section" class="horarios-viagem">
@@ -474,10 +368,11 @@
 import { openURL } from 'quasar'
 import { trips } from 'src/constants/trips/index'
 import TripsTutorial from 'src/pages/trips/components/TripsTutorial.vue'
+import AmazonProductsCompact from 'src/components/AmazonProductsCompact.vue'
 
 export default {
   name: 'TripsPage',
-  components: { TripsTutorial },
+  components: { TripsTutorial, AmazonProductsCompact },
   // Meta tags otimizadas para SEO
   meta: function () {
     const currentYear = new Date().getFullYear()
@@ -630,6 +525,27 @@ export default {
         '/carnaval/2.png',
         '/carnaval/3.png',
         '/carnaval/4.png'
+      ],
+      amazonProducts: [
+        {
+          href: 'https://amzn.to/3SrUn1j',
+          image: '/advertising/iphone.png',
+          alt: 'Apple iPhone 16e 128GB',
+          name: 'Apple iPhone 16e de 128 GB',
+          price: '12x de R$ 312,49',
+          bannerEvent: 'Amazon iPhone Banner Clicked - Trips',
+          buttonEvent: 'Amazon iPhone Button Clicked - Trips'
+        },
+        {
+          href: 'https://amzn.to/43pZzVT',
+          image: '/advertising/Giorgio.jpg',
+          alt: 'My Way Giorgio Armani',
+          name: 'My Way Giorgio Armani',
+          price: 'Por R$310,17',
+          originalPrice: 'R$559,00',
+          bannerEvent: 'Amazon Giorgio Banner Clicked - Trips',
+          buttonEvent: 'Amazon Giorgio Button Clicked - Trips'
+        }
       ]
     }
   },

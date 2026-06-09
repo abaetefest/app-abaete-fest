@@ -5,8 +5,8 @@ export default {
   data() {
     return {
       services: servicesList,
-      ratingModel: 3,
       categoria: 'arCondicionado',
+      showAllCategories: false,
       options: [
         {
           label: 'Água Mineral',
@@ -69,10 +69,6 @@ export default {
   computed: {
     getPlaces: function () {
       return servicesList.filter((place) => place.category === this.categoria)
-    },
-    getIconCategory: function () {
-      const img = this.options.filter((opt) => opt.value === this.categoria)
-      return img[0].icon
     }
   },
   methods: {

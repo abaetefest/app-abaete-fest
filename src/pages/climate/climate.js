@@ -12,7 +12,8 @@ export default {
       tempMin: 0,
       humidity: 0,
       windSpeed: 0,
-      moonPhaseText: ''
+      moonPhaseText: '',
+      hasError: false
     }
   },
   async mounted() {
@@ -36,7 +37,7 @@ export default {
         this.moonPhaseText = this.getMoonPhaseText(data.results.moon_phase)
         this.tempResult = true
       } catch (error) {
-        console.log('Não foi possível recuperar tempo e clima', error)
+        this.hasError = true
       }
     },
     getCurrentDate() {

@@ -13,23 +13,18 @@ export default {
       categoria: 'Açaí',
       options: [...placesCategories],
       modalPlaces: false,
-      placeDetails: {}
+      placeDetails: {},
+      showAllCategories: false
     }
   },
   computed: {
     getPlaces: function () {
       return makers.filter((place) => place.category === this.categoria)
-    },
-    getIconCategory: function () {
-      const img = this.options.filter((opt) => opt.value === this.categoria)
-      return img[0].icon
     }
   },
-  mounted() {
-    console.log(this.categoria)
-  },
+  mounted() {},
   methods: {
-    openDialogCourse(place) {
+    openDialog(place) {
       this.modalPlaces = true
       this.placeDetails = place
       this.$mixpanel.track(place.title)
