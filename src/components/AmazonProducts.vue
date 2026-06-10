@@ -1,20 +1,23 @@
 <template>
-  <div class="row q-col-gutter-md">
+  <div>
+    <div class="text-center q-mb-md">
+      <img src="/advertising/amazon.png" alt="Amazon" style="height: 32px;" />
+    </div>
+  <div class="row q-col-gutter-sm">
     <div
       v-for="(product, index) in products"
       :key="index"
-      class="col-12 col-sm-6 col-md-4 col-lg-3"
+      class="col-6 col-md-4 col-lg-3"
     >
       <q-card
-        class="fit"
-        style="border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.10);"
+        class="fit product-card"
         :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
       >
-        <!-- Imagem + badge de desconto -->
-        <div style="position: relative;">
+        <!-- Imagem 1:1 + badge de desconto -->
+        <div class="image-wrapper">
           <div
             v-if="getDiscount(product)"
-            style="position: absolute; top: 8px; left: 8px; z-index: 1; background: #e53935; color: white; font-weight: 700; font-size: 12px; border-radius: 6px; padding: 2px 7px;"
+            class="discount-badge"
           >
             {{ getDiscount(product) }}
           </div>
@@ -28,36 +31,34 @@
             <img
               :src="product.image"
               :alt="product.alt"
-              style="width: 100%; height: 220px; object-fit: cover; display: block; border-radius: 12px 12px 0 0;"
+              class="product-image"
             />
           </a>
         </div>
 
         <!-- Conteúdo -->
-        <q-card-section class="q-pa-sm q-pb-none">
-          <img src="/advertising/amazon.png" alt="Amazon" style="height: 14px; display: block; margin-bottom: 4px;" />
+        <q-card-section class="q-pa-xs q-pb-none">
           <div
-            class="text-body2 text-weight-bold ellipsis-2-lines q-mb-xs"
-            style="min-height: 40px; line-height: 1.4;"
+            class="product-name ellipsis-2-lines q-mb-xs"
             :class="$q.dark.isActive ? 'text-white' : 'text-dark'"
           >
             {{ product.name }}
           </div>
 
           <div
-            class="text-caption text-grey-6 q-mb-xs"
-            style="text-decoration: line-through; min-height: 14px; font-size: 11px;"
+            v-if="product.originalPrice"
+            class="original-price q-mb-xs"
           >
-            {{ product.originalPrice ? 'De: ' + product.originalPrice : '' }}
+            De: {{ product.originalPrice }}
           </div>
 
-          <div class="price-pulse q-mb-sm" style="display: inline-block; background: #fb8c00; border-radius: 8px; padding: 3px 8px;">
-            <span class="text-weight-bold text-white" style="font-size: 16px; line-height: 1.3;">{{ product.price }}</span>
+          <div class="price-pulse q-mb-xs" style="display: inline-block; background: #fb8c00; border-radius: 6px; padding: 2px 6px;">
+            <span class="text-weight-bold text-white product-price">{{ product.price }}</span>
           </div>
         </q-card-section>
 
         <!-- Botão full-width -->
-        <q-card-actions class="q-pa-sm q-pt-none">
+        <q-card-actions class="q-pa-xs q-pt-none">
           <a
             :href="product.href"
             target="_blank"
@@ -66,19 +67,21 @@
             style="text-decoration: none; width: 100%;"
           >
             <q-btn
-              unelevated
+              outline
               rounded
               dense
-              color="orange-8"
-              label="Ver na Amazon"
+              color="primary"
+              label="Resgatar oferta"
               icon-right="mdi-open-in-new"
               no-caps
-              class="full-width text-weight-bold"
+              class="full-width"
+              style="font-size: 11px;"
             />
           </a>
         </q-card-actions>
       </q-card>
     </div>
+  </div>
   </div>
 </template>
 
@@ -117,6 +120,57 @@ export default {
 </script>
 
 <style scoped>
+.product-card {
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.10);
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 1;
+  background: #e53935;
+  color: white;
+  font-weight: 700;
+  font-size: 11px;
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.product-name {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  min-height: 32px;
+}
+
+.original-price {
+  font-size: 10px;
+  color: #9e9e9e;
+  text-decoration: line-through;
+}
+
+.product-price {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
 .price-pulse {
   animation: pricePulse 1.8s ease-in-out infinite;
 }
