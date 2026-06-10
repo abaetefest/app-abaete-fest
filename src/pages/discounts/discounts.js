@@ -25,6 +25,15 @@ export default {
           buttonEvent: 'Amazon iPhone16e Button Clicked - Discounts'
         },
         {
+          href: 'https://amzn.to/43XF9nh',
+          image: '/advertising/tv_britania.jpg',
+          alt: 'Smart TV 40" Britânia Roku TV LED Dolby Audio',
+          name: 'Smart TV 40" Britânia Roku TV LED Dolby Audio',
+          price: 'R$1.245,90',
+          bannerEvent: 'Amazon TVBritania Banner Clicked - Discounts',
+          buttonEvent: 'Amazon TVBritania Button Clicked - Discounts'
+        },
+        {
           href: 'https://amzn.to/3POkY8c',
           image: '/advertising/galaxy_a17.jpg',
           alt: 'Samsung Galaxy A17 128GB',
@@ -78,6 +87,15 @@ export default {
           price: 'R$55,90',
           bannerEvent: 'Amazon CamisetaDry Banner Clicked - Discounts',
           buttonEvent: 'Amazon CamisetaDry Button Clicked - Discounts'
+        },
+        {
+          href: 'https://amzn.to/43lHf0d',
+          image: '/advertising/pote_bambu.jpg',
+          alt: 'Kit 4 Potes Herméticos de Vidro 450ml com Tampa de Bambu',
+          name: 'Kit 4 Potes Herméticos de Vidro 450ml com Tampa de Bambu',
+          price: 'R$29,99',
+          bannerEvent: 'Amazon PoteBambu Banner Clicked - Discounts',
+          buttonEvent: 'Amazon PoteBambu Button Clicked - Discounts'
         }
       ]
     }
