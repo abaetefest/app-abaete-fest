@@ -425,21 +425,15 @@ export default {
             'https://twitter.com/abaetefest'
           ]
         },
-        performer: this.event.performer
-          ? {
-              '@type': 'Person',
-              name: this.event.performer
-            }
-          : undefined
-      }
-
-      // Adiciona preço se disponível
-      if (this.event.price !== undefined) {
-        eventStructuredData.offers = {
+        performer: {
+          '@type': 'PerformingGroup',
+          name: this.event.performer || this.event.organizer || 'AbaetéFest'
+        },
+        offers: {
           '@type': 'Offer',
-          price: this.event.price,
+          price: this.event.price !== undefined ? this.event.price : '0',
           priceCurrency: 'BRL',
-          availability: this.event.tickets_available ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut',
+          availability: this.event.tickets_available === false ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
           url: `https://app.abaetefest.com.br/event-details/${this.event.id}`,
           validFrom: new Date().toISOString()
         }
