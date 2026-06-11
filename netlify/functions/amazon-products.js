@@ -5,8 +5,7 @@ const CLIENT_SECRET = process.env.AMAZON_CLIENT_SECRET
 const PARTNER_TAG = process.env.AMAZON_PARTNER_TAG || 'patrickmont04-20'
 
 const TOKEN_URL = 'https://api.amazon.com/auth/o2/token'
-const API_BASE = 'https://creatorsapi.amazon.com/catalog/v1'
-const API_VERSION = 'v3.1'
+const API_BASE = 'https://creatorsapi.amazon/catalog/v1'
 
 const RESPONSE_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -20,14 +19,16 @@ let _tokenExpiry = 0
 async function getAccessToken () {
   if (_token && Date.now() < _tokenExpiry) return _token
 
+  const basicAuth = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')
   const res = await fetch(TOKEN_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: `Basic ${basicAuth}`
+    },
     body: new URLSearchParams({
       grant_type: 'client_credentials',
-      client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET,
-      scope: 'creatorshub:read_only'
+      scope: 'creatorsapi/default'
     }).toString()
   })
 
@@ -43,7 +44,7 @@ async function searchItems (token, keyword, itemCount) {
   const res = await fetch(`${API_BASE}/searchItems`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${token}, Version ${API_VERSION}`,
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
       'x-marketplace': 'www.amazon.com.br'
     },
@@ -55,9 +56,9 @@ async function searchItems (token, keyword, itemCount) {
       marketplace: 'www.amazon.com.br',
       itemCount: itemCount,
       resources: [
-        'Images.Primary.Large',
-        'ItemInfo.Title',
-        'OffersV2'
+        'images.primary.large',
+        'itemInfo.title',
+        'offersV2'
       ]
     })
   })
