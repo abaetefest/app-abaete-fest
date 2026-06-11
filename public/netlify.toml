@@ -36,7 +36,13 @@
   to = "/statics/:splat"
   status = 200
 
-# 2. PWA files (crítico para funcionamento)
+# 2. OneSignal push service workers (sem cache para updates imediatos)
+[[redirects]]
+  from = "/push/*"
+  to = "/push/:splat"
+  status = 200
+
+# 3. PWA files (crítico para funcionamento)
 [[redirects]]
   from = "/manifest.json"
   to = "/manifest.json"
@@ -109,6 +115,13 @@
   for = "/icons/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+
+# OneSignal push worker files (sem cache — crítico para atualizações do SW)
+[[headers]]
+  for = "/push/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Service-Worker-Allowed = "/"
 
 # PWA files (sem cache para updates)
 [[headers]]
