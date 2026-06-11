@@ -107,12 +107,24 @@ exports.handler = async (event) => {
     }
   }
 
+  const debug = event.queryStringParameters && event.queryStringParameters.debug === '1'
+
   try {
     const token = await getAccessToken()
 
     const results = await Promise.allSettled(
       KEYWORDS.map(({ keyword, itemCount }) => searchItems(token, keyword, itemCount))
     )
+
+    if (debug) {
+      return {
+        statusCode: 200,
+        headers: RESPONSE_HEADERS,
+        body: JSON.stringify({
+          raw: results.map(r => r.status === 'fulfilled' ? r.value : { error: r.reason?.message })
+        })
+      }
+    }
 
     const seenAsins = new Set()
     const products = results
