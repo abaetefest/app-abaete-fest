@@ -136,29 +136,45 @@
 
     <q-page-container>
       <router-view />
-      <q-dialog v-model="notificationModal" persistent >
-        <q-card class="full-width">
-          <q-card-section class="row items-center">
-            <q-avatar icon="mdi-bell-ring" color="primary" text-color="white" />
-            <span class="q-ml-sm text-body2">Permita nossas notificações <br> e não perca nenhuma novidade!</span>
-          </q-card-section>
+      <q-dialog v-model="notificationModal" persistent>
+        <q-card class="notification-permission-card full-width">
+          <div class="notification-permission-card__header column flex-center q-py-xl q-px-lg">
+            <div class="notification-permission-card__icon-ring flex flex-center q-mb-md">
+              <q-icon name="mdi-bell-ring" color="white" size="38px" />
+            </div>
+            <div class="text-white text-h6 text-weight-bold text-center">
+              Fique por dentro de tudo!
+            </div>
+            <div class="text-center q-mt-sm notification-permission-card__subtitle">
+              Ative as notificações e saiba primeiro sobre os melhores eventos de Abaetetuba.
+            </div>
+          </div>
 
-          <q-card-actions align="right">
-            <q-btn rounded
-              outline
+          <q-card-section
+            class="q-pt-md q-pb-lg q-px-lg column"
+            :class="$q.dark.isActive ? 'bg-grey-10' : 'bg-white'"
+          >
+            <q-btn
+              unelevated
+              rounded
+              icon="mdi-bell-check-outline"
+              label="Ativar notificações"
+              color="primary"
+              text-color="white"
+              class="full-width q-mb-sm notification-permission-card__btn-confirm"
+              v-close-popup
+              @click="confirmarPermissao"
+            />
+            <q-btn
+              flat
+              rounded
               label="Agora não"
-              :color="$q.dark.isActive ? 'negative' : 'negative'"
+              :color="$q.dark.isActive ? 'grey-4' : 'grey-6'"
+              class="full-width"
               v-close-popup
               @click="recusaNotificacao()"
             />
-            <q-btn rounded
-              icon="mdi-check-circle-outline"
-              label="Aceitar notificações"
-              :color="$q.dark.isActive ? 'secondary' : 'primary'"
-              :text-color="$q.dark.isActive ? 'primary' : 'secondary'"
-              v-close-popup
-              @click="confirmarPermissao" />
-          </q-card-actions>
+          </q-card-section>
         </q-card>
       </q-dialog>
     </q-page-container>
@@ -309,7 +325,9 @@ export default {
 
     this.verifyDarkMode()
     this.fetchToolbarWeather()
-    // this.verificarPermissaoNotificacoes()
+    setTimeout(() => {
+      this.verificarPermissaoNotificacoes()
+    }, 5000)
   },
   methods: {
     async fetchToolbarWeather() {
@@ -382,52 +400,45 @@ export default {
         this.darkMode = false
       }
     },
-    async verificarPermissaoNotificacoes() {
-    // Verifica se o navegador tem suporte a notificações
-      if ('Notification' in window) {
-        // Verifica o status da permissão de notificações
-        if (Notification.permission === 'granted') {
-          console.log('%c Notificações já permitidas.', this.colorConsole)
-        } else if (Notification.permission === 'denied') {
-          let dataUltimaRecusa = localStorage.getItem('dataUltimaRecusa')
-          if (dataUltimaRecusa) {
-            // Converte a string para objeto Date
-            dataUltimaRecusa = new Date(dataUltimaRecusa)
-            const diasDepois = (new Date() - dataUltimaRecusa) / (1000 * 3600 * 24)
-            // Se passaram mais de 2 dias desde a recusa, solicita novamente
-            if (diasDepois > 2) {
-              this.solicitarPermissao()
-            } else {
-              console.log('%c Você recusou recentemente, aguardando 2 dias para solicitar novamente.', this.colorConsole)
-            }
-          } else {
-            console.log('%c Você recusou recentemente, aguardando 2 dias para solicitar novamente.', this.colorConsole)
-          }
-        } else {
-          this.solicitarPermissao()
+    verificarPermissaoNotificacoes() {
+      if (typeof window === 'undefined') return
+
+      const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent)
+      const isInstalledPWA = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches
+
+      // iOS fora do modo standalone não consegue se inscrever — ignora silenciosamente
+      if (isIOS && !isInstalledPWA) return
+
+      window.OneSignalDeferred = window.OneSignalDeferred || []
+      window.OneSignalDeferred.push((OneSignal) => {
+        const isOptedIn = OneSignal.User.PushSubscription.optedIn
+        if (isOptedIn) return
+
+        const dataUltimaRecusa = localStorage.getItem('dataUltimaRecusa')
+        if (dataUltimaRecusa) {
+          const diasDepois = (new Date() - new Date(dataUltimaRecusa)) / (1000 * 3600 * 24)
+          if (diasDepois < 7) return
         }
-      } else {
-        console.log('%c Este navegador não suporta notificações.', this.colorConsole)
-      }
+
+        this.notificationModal = true
+      })
     },
     solicitarPermissao() {
       this.notificationModal = true
     },
     confirmarPermissao() {
       this.notificationModal = false
-      Notification.requestPermission().then(permission => {
-        if (permission === 'granted') {
-          console.log('%c Notificações permitidas.', this.colorConsole)
-        } else {
-          console.log('%c Notificações recusadas.', this.colorConsole)
-          // Salva a data da recusa no localStorage
-          localStorage.setItem('dataUltimaRecusa', new Date().toISOString())
+      window.OneSignalDeferred = window.OneSignalDeferred || []
+      window.OneSignalDeferred.push(async (OneSignal) => {
+        try {
+          await OneSignal.User.PushSubscription.optIn()
+        } catch (err) {
+          console.error('%c OneSignal optIn error:', this.colorConsole, err)
         }
       })
     },
     recusaNotificacao() {
       this.notificationModal = false
-      // Salva a data da recusa no localStorage
       localStorage.setItem('dataUltimaRecusa', new Date().toISOString())
     }
   }
@@ -472,5 +483,37 @@ export default {
 
 .body--dark .floating-nav .q-tabs__arrow {
   color: white;
+}
+
+/* Modal de permissão de notificações */
+.notification-permission-card {
+  border-radius: 20px !important;
+  overflow: hidden;
+  max-width: 360px;
+}
+
+.notification-permission-card__header {
+  background: linear-gradient(135deg, #151933 0%, #1a2d6b 100%);
+}
+
+.notification-permission-card__icon-ring {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.notification-permission-card__subtitle {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.notification-permission-card__btn-confirm {
+  height: 48px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 </style>
