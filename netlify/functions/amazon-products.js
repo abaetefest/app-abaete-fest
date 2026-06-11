@@ -19,17 +19,16 @@ let _tokenExpiry = 0
 async function getAccessToken () {
   if (_token && Date.now() < _tokenExpiry) return _token
 
-  const basicAuth = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')
+  // v3.x (LwA) credentials: JSON body, client_id/secret no body, scope com "::"
   const res = await fetch(TOKEN_URL, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: `Basic ${basicAuth}`
-    },
-    body: new URLSearchParams({
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
       grant_type: 'client_credentials',
-      scope: 'creatorsapi/default'
-    }).toString()
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
+      scope: 'creatorsapi::default'
+    })
   })
 
   if (!res.ok) throw new Error(`Auth ${res.status}: ${await res.text()}`)
@@ -52,13 +51,13 @@ async function searchItems (token, keyword, itemCount) {
       keywords: keyword,
       searchIndex: 'All',
       partnerTag: PARTNER_TAG,
-      partnerType: 'Associates',
       marketplace: 'www.amazon.com.br',
       itemCount: itemCount,
+      languagesOfPreference: ['pt_BR'],
       resources: [
         'images.primary.large',
         'itemInfo.title',
-        'offersV2'
+        'offersV2.listings.price'
       ]
     })
   })
@@ -68,20 +67,17 @@ async function searchItems (token, keyword, itemCount) {
 }
 
 function mapItem (item) {
-  // Creators API usa lowerCamelCase na resposta
-  const asin = item.asin || item.ASIN || ''
+  const asin = item.asin || ''
   const title = (item.itemInfo && item.itemInfo.title && item.itemInfo.title.displayValue) || ''
   const imageUrl = (item.images && item.images.primary && item.images.primary.large && item.images.primary.large.url) || ''
-  const detailUrl = item.detailPageUrl || item.detailPageURL || '#'
+  const detailUrl = item.detailPageURL || item.detailPageUrl || '#'
 
-  // OffersV2 substitui Offers.Listings na Creators API
-  const offersV2 = item.offersV2 || {}
-  const listings = offersV2.listings || offersV2.items || []
-  const firstListing = listings[0] || {}
-  const price = (firstListing.price && firstListing.price.displayAmount) ||
-                (offersV2.summary && offersV2.summary.lowestPrice && offersV2.summary.lowestPrice.displayAmount) || ''
-  const originalPrice = (firstListing.savingBasis && firstListing.savingBasis.displayAmount) ||
-                        (offersV2.summary && offersV2.summary.savingBasis && offersV2.summary.savingBasis.displayAmount) || null
+  const listings = (item.offersV2 && item.offersV2.listings) || []
+  const listing = listings[0] || {}
+  const priceObj = listing.price || {}
+
+  const price = (priceObj.money && priceObj.money.displayAmount) || ''
+  const originalPrice = (priceObj.savingBasis && priceObj.savingBasis.money && priceObj.savingBasis.money.displayAmount) || null
 
   return {
     asin,
@@ -114,7 +110,6 @@ exports.handler = async (event) => {
   try {
     const token = await getAccessToken()
 
-    // Busca todas as keywords em paralelo; falhas individuais não quebram o restante
     const results = await Promise.allSettled(
       KEYWORDS.map(({ keyword, itemCount }) => searchItems(token, keyword, itemCount))
     )
