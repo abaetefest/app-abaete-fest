@@ -26,7 +26,8 @@ async function getAccessToken () {
     body: new URLSearchParams({
       grant_type: 'client_credentials',
       client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET
+      client_secret: CLIENT_SECRET,
+      scope: 'creatorshub:read_only'
     }).toString()
   })
 
@@ -42,7 +43,7 @@ async function searchItems (token, keyword, itemCount) {
   const res = await fetch(`${API_BASE}/searchItems`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}, Version ${API_VERSION}`,
       'Content-Type': 'application/json',
       'x-marketplace': 'www.amazon.com.br'
     },
