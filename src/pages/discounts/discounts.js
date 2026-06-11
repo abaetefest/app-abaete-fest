@@ -3,13 +3,13 @@ import AmazonProducts from 'src/components/AmazonProducts.vue'
 export default {
   name: 'DiscountsPage',
   components: { AmazonProducts },
-  data () {
+  data() {
     return {
       products: [],
       loading: true
     }
   },
-  async created () {
+  async created() {
     if (process.env.SERVER) return
     try {
       const res = await fetch('/.netlify/functions/amazon-products')
