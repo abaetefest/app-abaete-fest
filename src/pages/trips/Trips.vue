@@ -528,23 +528,22 @@ export default {
       ],
       amazonProducts: [
         {
-          href: 'https://amzn.to/3SrUn1j',
-          image: '/advertising/iphone.png',
-          alt: 'Apple iPhone 16e 128GB',
-          name: 'Apple iPhone 16e de 128 GB',
-          price: '12x de R$ 312,49',
-          bannerEvent: 'Amazon iPhone Banner Clicked - Trips',
-          buttonEvent: 'Amazon iPhone Button Clicked - Trips'
+          href: 'https://amzn.to/4gea2v9',
+          image: '/advertising/cicaplast.jpg',
+          alt: 'La Roche-Posay Cicaplast Baume B5+',
+          name: 'La Roche-Posay Cicaplast Baume B5+ Cuidado Multirreparador Calmante',
+          price: 'R$70,99',
+          bannerEvent: 'Amazon Cicaplast Banner Clicked - Trips',
+          buttonEvent: 'Amazon Cicaplast Button Clicked - Trips'
         },
         {
-          href: 'https://amzn.to/43pZzVT',
-          image: '/advertising/Giorgio.jpg',
-          alt: 'My Way Giorgio Armani',
-          name: 'My Way Giorgio Armani',
-          price: 'Por R$310,17',
-          originalPrice: 'R$559,00',
-          bannerEvent: 'Amazon Giorgio Banner Clicked - Trips',
-          buttonEvent: 'Amazon Giorgio Button Clicked - Trips'
+          href: 'https://amzn.to/4gfkrXn',
+          image: '/advertising/argan.jpg',
+          alt: 'Argan Óleo Reparador 50ml Lola Cosmetics',
+          name: 'Argan Óleo Reparador 50ml - Lola Cosmetics',
+          price: 'R$15,90',
+          bannerEvent: 'Amazon Argan Banner Clicked - Trips',
+          buttonEvent: 'Amazon Argan Button Clicked - Trips'
         }
       ]
     }

@@ -96,6 +96,24 @@ export default {
           price: 'R$29,99',
           bannerEvent: 'Amazon PoteBambu Banner Clicked - Discounts',
           buttonEvent: 'Amazon PoteBambu Button Clicked - Discounts'
+        },
+        {
+          href: 'https://amzn.to/4gea2v9',
+          image: '/advertising/cicaplast.jpg',
+          alt: 'La Roche-Posay Cicaplast Baume B5+',
+          name: 'La Roche-Posay Cicaplast Baume B5+ Cuidado Multirreparador Calmante',
+          price: 'R$70,99',
+          bannerEvent: 'Amazon Cicaplast Banner Clicked - Discounts',
+          buttonEvent: 'Amazon Cicaplast Button Clicked - Discounts'
+        },
+        {
+          href: 'https://amzn.to/4gfkrXn',
+          image: '/advertising/argan.jpg',
+          alt: 'Argan Óleo Reparador 50ml Lola Cosmetics',
+          name: 'Argan Óleo Reparador 50ml - Lola Cosmetics',
+          price: 'R$15,90',
+          bannerEvent: 'Amazon Argan Banner Clicked - Discounts',
+          buttonEvent: 'Amazon Argan Button Clicked - Discounts'
         }
       ]
     }
