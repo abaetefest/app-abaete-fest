@@ -327,7 +327,7 @@ export default {
     this.fetchToolbarWeather()
     setTimeout(() => {
       this.verificarPermissaoNotificacoes()
-    }, 5000)
+    }, 8000)
   },
   methods: {
     async fetchToolbarWeather() {
@@ -403,24 +403,22 @@ export default {
     verificarPermissaoNotificacoes() {
       if (typeof window === 'undefined') return
 
-      const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent)
-      const isInstalledPWA = window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches
-
-      // iOS fora do modo standalone não consegue se inscrever — ignora silenciosamente
-      if (isIOS && !isInstalledPWA) return
-
       window.OneSignalDeferred = window.OneSignalDeferred || []
-      window.OneSignalDeferred.push((OneSignal) => {
-        const isOptedIn = OneSignal.User.PushSubscription.optedIn
-        if (isOptedIn) return
+      window.OneSignalDeferred.push(async (OneSignal) => {
+        try {
+          const isOptedIn = OneSignal.User.PushSubscription.optedIn
+          if (isOptedIn) return
 
-        const dataUltimaRecusa = localStorage.getItem('dataUltimaRecusa')
-        if (dataUltimaRecusa) {
-          const diasDepois = (new Date() - new Date(dataUltimaRecusa)) / (1000 * 3600 * 24)
-          if (diasDepois < 7) return
+          const dataUltimaRecusa = localStorage.getItem('dataUltimaRecusa')
+          if (dataUltimaRecusa) {
+            const diasDepois = (new Date() - new Date(dataUltimaRecusa)) / (1000 * 3600 * 24)
+            if (diasDepois < 7) return
+          }
+
+          this.notificationModal = true
+        } catch (err) {
+          console.error('%c OneSignal verificarPermissao error:', this.colorConsole, err)
         }
-
-        this.notificationModal = true
       })
     },
     solicitarPermissao() {
