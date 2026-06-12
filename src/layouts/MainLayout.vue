@@ -403,21 +403,30 @@ export default {
     verificarPermissaoNotificacoes() {
       if (typeof window === 'undefined') return
 
+      console.log('%c [PushModal] função chamada', this.colorConsole)
       window.OneSignalDeferred = window.OneSignalDeferred || []
       window.OneSignalDeferred.push(async (OneSignal) => {
         try {
+          console.log('%c [PushModal] callback OneSignal disparou', this.colorConsole)
           const isOptedIn = OneSignal.User.PushSubscription.optedIn
-          if (isOptedIn) return
+          console.log('%c [PushModal] optedIn:', this.colorConsole, isOptedIn)
+
+          if (isOptedIn) {
+            console.log('%c [PushModal] já inscrito, modal suprimido', this.colorConsole)
+            return
+          }
 
           const dataUltimaRecusa = localStorage.getItem('dataUltimaRecusa')
           if (dataUltimaRecusa) {
             const diasDepois = (new Date() - new Date(dataUltimaRecusa)) / (1000 * 3600 * 24)
+            console.log('%c [PushModal] dias desde recusa:', this.colorConsole, diasDepois.toFixed(1))
             if (diasDepois < 7) return
           }
 
+          console.log('%c [PushModal] exibindo modal', this.colorConsole)
           this.notificationModal = true
         } catch (err) {
-          console.error('%c OneSignal verificarPermissao error:', this.colorConsole, err)
+          console.error('%c [PushModal] OneSignal erro:', this.colorConsole, err)
         }
       })
     },
