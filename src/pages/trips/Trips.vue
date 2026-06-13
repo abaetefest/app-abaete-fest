@@ -528,22 +528,22 @@ export default {
       ],
       amazonProducts: [
         {
-          href: 'https://amzn.to/4gea2v9',
-          image: '/advertising/cicaplast.jpg',
-          alt: 'La Roche-Posay Cicaplast Baume B5+',
-          name: 'La Roche-Posay Cicaplast Baume B5+ Cuidado Multirreparador Calmante',
-          price: 'R$70,99',
-          bannerEvent: 'Amazon Cicaplast Banner Clicked - Trips',
-          buttonEvent: 'Amazon Cicaplast Button Clicked - Trips'
+          href: 'https://amzn.to/4fKrIyj',
+          image: '/advertising/mizunoneo2.jpg',
+          alt: 'Tênis de Corrida Mizuno Neo Vortex',
+          name: 'Tênis de Corrida Mizuno Neo Vortex',
+          price: 'R$397,99',
+          bannerEvent: 'Amazon Mizuno Neo Vortex Banner Clicked - Trips',
+          buttonEvent: 'Amazon Mizuno Neo Vortex Button Clicked - Trips'
         },
         {
-          href: 'https://amzn.to/4gfkrXn',
-          image: '/advertising/argan.jpg',
-          alt: 'Argan Óleo Reparador 50ml Lola Cosmetics',
-          name: 'Argan Óleo Reparador 50ml - Lola Cosmetics',
-          price: 'R$15,90',
-          bannerEvent: 'Amazon Argan Banner Clicked - Trips',
-          buttonEvent: 'Amazon Argan Button Clicked - Trips'
+          href: 'https://amzn.to/4aOXmr1',
+          image: '/advertising/modus.jpg',
+          alt: 'MODUS Garrafa Térmica Esportiva De Aço Inoxidável 950ML',
+          name: 'MODUS Garrafa Térmica Esportiva De Aço Inoxidável Com Isolamento A Vácuo De 950ML',
+          price: 'R$78,99',
+          bannerEvent: 'Amazon Modus Garrafa Banner Clicked - Trips',
+          buttonEvent: 'Amazon Modus Garrafa Button Clicked - Trips'
         }
       ]
     }

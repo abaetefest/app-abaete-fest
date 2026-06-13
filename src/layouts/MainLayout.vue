@@ -488,6 +488,16 @@ export default {
   color: var(--q-color-primary);
 }
 
+/* Alerta pulsante no tab de descontos */
+@keyframes tab-alert-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.5; }
+}
+
+.floating-nav .q-tab__alert {
+  animation: tab-alert-pulse 1.4s ease-in-out infinite;
+}
+
 .body--dark .floating-nav .q-tabs__arrow {
   color: white;
 }

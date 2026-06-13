@@ -4,23 +4,16 @@
       <q-card
         v-for="(product, index) in products"
         :key="index"
-        style="border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.09);"
+        style="border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.09); cursor: pointer;"
         :class="$q.dark.isActive ? 'bg-dark' : 'bg-white'"
+        @click="openProduct(product)"
       >
         <q-card-section horizontal>
-          <a
-            :href="product.href"
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            @click="track(product.bannerEvent)"
-            style="text-decoration: none; flex-shrink: 0;"
-          >
-            <img
-              :src="product.image"
-              :alt="product.alt"
-              style="width: 90px; height: 90px; object-fit: cover; border-radius: 10px 0 0 10px; display: block;"
-            />
-          </a>
+          <img
+            :src="product.image"
+            :alt="product.alt"
+            style="width: 90px; height: 90px; object-fit: cover; border-radius: 10px 0 0 10px; display: block; flex-shrink: 0;"
+          />
 
           <div class="col q-pa-sm" style="min-width: 0; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
@@ -39,25 +32,18 @@
                 <span class="text-weight-bold text-white" style="font-size: 14px; line-height: 1.3;">{{ product.price }}</span>
               </div>
 
-              <a
-                :href="product.href"
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                @click="track(product.buttonEvent)"
-                style="text-decoration: none; flex-shrink: 0;"
+              <q-btn
+                unelevated
+                rounded
+                color="orange-8"
+                no-caps
+                dense
+                class="text-weight-bold"
+                style="font-size: 11px;"
+                @click.stop="openProduct(product)"
               >
-                <q-btn
-                  unelevated
-                  rounded
-                  color="orange-8"
-                  no-caps
-                  dense
-                  class="text-weight-bold"
-                  style="font-size: 11px;"
-                >
-                  Amazon <q-icon name="mdi-open-in-new" size="12px" class="q-ml-xs" />
-                </q-btn>
-              </a>
+                Amazon <q-icon name="mdi-open-in-new" size="12px" class="q-ml-xs" />
+              </q-btn>
             </div>
           </div>
         </q-card-section>
@@ -93,6 +79,10 @@ export default {
       if (this.$mixpanel && event) {
         this.$mixpanel.track(event)
       }
+    },
+    openProduct(product) {
+      this.track(product.bannerEvent)
+      window.open(product.href, '_blank', 'noopener,noreferrer')
     },
     goToDiscounts() {
       if (this.$mixpanel) {

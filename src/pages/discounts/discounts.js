@@ -7,6 +7,15 @@ export default {
     return {
       products: [
         {
+          href: 'https://amzn.to/4uvaYyH',
+          image: '/advertising/pulse.jpg',
+          alt: 'Headphone HB200 Bluetooth Branco Pulse - PH431',
+          name: 'Headphone HB200 Bluetooth Branco Pulse - PH431',
+          price: 'R$111,06',
+          bannerEvent: 'Amazon Pulse HB200 Banner Clicked - Discounts',
+          buttonEvent: 'Amazon Pulse HB200 Button Clicked - Discounts'
+        },
+        {
           href: 'https://amzn.to/4vCoi5i',
           image: '/advertising/iphone_15_128gb.jpg',
           alt: 'Apple iPhone 15 128GB Preto',
@@ -114,6 +123,24 @@ export default {
           price: 'R$15,90',
           bannerEvent: 'Amazon Argan Banner Clicked - Discounts',
           buttonEvent: 'Amazon Argan Button Clicked - Discounts'
+        },
+        {
+          href: 'https://amzn.to/4fKrIyj',
+          image: '/advertising/mizunoneo2.jpg',
+          alt: 'Tênis de Corrida Mizuno Neo Vortex',
+          name: 'Tênis de Corrida Mizuno Neo Vortex',
+          price: 'R$397,99',
+          bannerEvent: 'Amazon Mizuno Neo Vortex Banner Clicked - Discounts',
+          buttonEvent: 'Amazon Mizuno Neo Vortex Button Clicked - Discounts'
+        },
+        {
+          href: 'https://amzn.to/4aOXmr1',
+          image: '/advertising/modus.jpg',
+          alt: 'MODUS Garrafa Térmica Esportiva De Aço Inoxidável 950ML',
+          name: 'MODUS Garrafa Térmica Esportiva De Aço Inoxidável Com Isolamento A Vácuo De 950ML',
+          price: 'R$78,99',
+          bannerEvent: 'Amazon Modus Garrafa Banner Clicked - Discounts',
+          buttonEvent: 'Amazon Modus Garrafa Button Clicked - Discounts'
         }
       ]
     }
